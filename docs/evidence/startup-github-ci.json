@@ -1,0 +1,30 @@
+{
+  "retrievedAt": "2026-10-27T22:07:49.325Z",
+  "repository": "3bHussein/JARVIS-OS",
+  "sourceCommit": "48a94393880dfaabacabb8127081f4ec652c23d5",
+  "runId": 40592161891,
+  "url": "https://github.com/3bHussein/JARVIS-OS/actions/runs/40592161891",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "windows-launcher",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/3bHussein/JARVIS-OS/actions/runs/40592161891/job/122498885581"
+    },
+    {
+      "name": "foundation",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/3bHussein/JARVIS-OS/actions/runs/40592161891/job/122498886614"
+    }
+  ],
+  "acceptance": {
+    "unitHttpPerPlatform": 24,
+    "launcherLifecyclePerPlatform": 1,
+    "linuxBrowserScenarios": 13,
+    "physicalWindowsDevice": "not tested"
+  },
+  "deployment": "not deployed"
+}

@@ -72,3 +72,5 @@ All listed files were created in the independent project. Generated dependencies
 - `tests/launcher.test.ts`, `tests/launcher-smoke.mjs`
 - `docs/RUN-LOCALLY.md`
 - `docs/evidence/startup-check.txt`, `docs/evidence/startup-smoke.txt`, `docs/evidence/workspace-ci-completed.json`
+
+- `docs/evidence/startup-github-ci.json` — successful exact-source Linux/Windows workflow.

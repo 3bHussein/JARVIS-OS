@@ -103,3 +103,15 @@ Immediate next action: inspect run 40550291400, record its actual outcome and fi
 Local: 24 unit/HTTP tests PASS, typecheck/build PASS, one separate real-process launcher smoke test PASS. START-01 covers runtime/config validation and no secret error disclosure; START-02 covers occupied-port ownership; START-03 covers setup preservation, path spaces, API/UI readiness, authentication, second-instance failure without killing the first, and owned-process shutdown. Interactive Linux PTY first-run password creation was exercised separately with synthetic input. Evidence: startup-check.txt/startup-smoke.txt.
 
 Previous workspace remote CI is now VERIFIED as success for a1bb666 / run 40550291400, including 13 browser scenarios. Current launcher Windows CI is pending; Linux PTY is not Windows certification. Physical double-click/default-browser/Ctrl+C and Tauri installer remain untested. No deployment or real account acceptance.
+
+## Session 004 remote acceptance — 2026-10-28T01:07:49+03:00
+
+Source commit: `48a94393880dfaabacabb8127081f4ec652c23d5` (`feat: add first-run setup and one-window Windows launcher`). Exact-source GitHub Actions https://github.com/3bHussein/JARVIS-OS/actions/runs/40592161891 completed SUCCESS. Both foundation (ubuntu-latest) and windows-launcher (windows-latest) jobs passed. On each platform: npm ci, typecheck, 24 unit/HTTP tests, build and one real-process launcher smoke passed. Windows BAT help entry points passed. Linux additionally passed all 13 browser scenarios. Evidence: docs/evidence/startup-github-ci.json.
+
+Status: VERIFIED for this automated Linux/Windows scope only. Physical double-click/default-browser/console Ctrl+C are still manual acceptance items; Tauri installer, voice accuracy, AI and live data links remain incomplete. No deployment.
+
+Local source was preserved in a named Git stash and fast-forwarded to origin/main. Final documentation-only commit records this successful source/run using [skip ci]; it has no new runtime change and does not claim a distinct CI execution.
+
+User run path: install Node 24+, download and extract repository ZIP, run Setup-JARVIS.bat once, then Start-JARVIS.bat; open http://127.0.0.1:5173 and unlock in Settings with the setup password. Keep launcher open and Ctrl+C to stop. Full guide: docs/RUN-LOCALLY.md.
+
+Exact next development: optional local AI adapter with explicit configuration, source attribution and synthetic tests; then push-to-talk STT/VAD and correction workflow. Do not mistake launcher availability for M6 completion. Corporate/health app data and production databases remain untouched.
