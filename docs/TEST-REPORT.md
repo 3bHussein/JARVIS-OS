@@ -115,3 +115,20 @@ Local source was preserved in a named Git stash and fast-forwarded to origin/mai
 User run path: install Node 24+, download and extract repository ZIP, run Setup-JARVIS.bat once, then Start-JARVIS.bat; open http://127.0.0.1:5173 and unlock in Settings with the setup password. Keep launcher open and Ctrl+C to stop. Full guide: docs/RUN-LOCALLY.md.
 
 Exact next development: optional local AI adapter with explicit configuration, source attribution and synthetic tests; then push-to-talk STT/VAD and correction workflow. Do not mistake launcher availability for M6 completion. Corporate/health app data and production databases remain untouched.
+
+## Personal briefing batch — 2026-10-28T01:37:03+03:00
+
+35 unit/HTTP tests PASS, typecheck/build PASS, launcher smoke PASS, 16 Chromium checks PASS. Evidence personal-check.txt/personal-launcher.txt/personal-browser.txt. All health fixtures and credentials are synthetic; there is no successful real-account claim.
+
+| Requirement | Evidence | Limit |
+| --- | --- | --- |
+| Editable profile and labelled missing values | PERSON-01, UI-14 | No trained model or inferred medical profile |
+| DST-correct reminders | PERSON-02 | Ambiguous/nonexistent local times rejected |
+| Food target arithmetic | PERSON-03 | Logged intake only; no automatic expenditure add-back |
+| Health data freshness | PERSON-04, WHOOP-01 | No previous-day/stale substitution |
+| Due notes and optional free slot | PERSON-05 | Requires explicit schedule completeness; not background notifications |
+| Private persistence and concurrency | VAULT-01/02, PERSON-HTTP-01 | Password-derived encryption; not OS vault/multi-user certification |
+| Existing WHOOP read contract | WHOOP-02/03, PERSON-HTTP-01, UI-16 | No real account, MFA or vendor sync acceptance |
+| Mobile home and note reload | UI-15 | Chromium synthetic only |
+
+Precise medical prescriptions, sodium doses, automatic ProgressXX sync, generative AI recommendations and physical Windows acceptance are not covered or claimed. Remote exact-commit CI will be appended after publication.

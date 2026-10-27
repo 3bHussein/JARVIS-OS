@@ -6,3 +6,5 @@ dist/
 test-results/
 *.log
 target/
+
+.jarvis-data/

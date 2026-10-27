@@ -7,7 +7,7 @@ Status at 2026-10-27: M0 source discovery/design IMPLEMENTED with live-access li
 | M0 | IMPLEMENTED | Seven target repositories inspected, inventory and evidence matrix recorded, contracts/security/ADRs designed. Runtime/deployment facts not inferred from source. |
 | M1 | IN PROGRESS | Responsive shell/core/local auth implemented. Remote repository and initial CI available; production auth, tenant model and persistence TODO. |
 | M2 | IN PROGRESS | Selected-repository GET adapter and UI implemented with synthetic failure/auth tests. Session cache/ETags/status/cooldown implemented; OAuth app, live credential consent and pagination TODO. |
-| M3 | TODO | Delegated ProgressXX/WHOOP summaries, private Sheets reads, unified verified briefing, missing/stale state and account isolation acceptance. |
+| M3 | IN PROGRESS | Delegated ProgressXX/WHOOP summaries, private Sheets reads, unified verified briefing, missing/stale state and account isolation acceptance. |
 | M4 | TODO | Ollama/cloud provider adapters, read-only tool orchestration, attribution, memory controls and injection isolation. |
 | M5 | IN PROGRESS (contracts/diagnostic only) | Push-to-talk STT, VAD, transcripts, correction, real benchmarks, selected neural TTS, audio-synchronized state. |
 | M6 | TODO (launcher precursor available) | Tauri 2, credential vault, Windows Agent pairing/approval transport, tray, shortcuts, notifications/startup, Windows QA. |
@@ -43,3 +43,7 @@ No production database changes; no auto deploy/merge/destructive actions/credent
 ## 2026-10-28 launcher delivery
 
 One-window local startup and first-run setup implemented and tested on Linux. Windows CI added; result must be recorded separately. This is immediate local-browser access, not completion of M6. Continue provider adapters after launcher acceptance.
+
+## Personal home milestone — 2026-10-28
+
+Editable profile, private notes/check-ins, contextual home and session-only WHOOP saved-record reader implemented with synthetic acceptance. Automatic ProgressXX, task-service delegates, true live-account acceptance, background reminders, model-based personalization and sourced content recommendations remain TODO. No health data will be silently sent to future AI adapters.

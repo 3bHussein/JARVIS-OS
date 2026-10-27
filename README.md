@@ -2,7 +2,7 @@
 
 An original personal AI command center, built as a separate hybrid application.
 
-**Current release: local foundation 0.1.0, not production-ready.** Repository discovery is documented; the React interface, local-development authentication and read-only GitHub adapter are implemented. AI, speech recognition, live personal integrations, installable PWA and Windows packaging remain pending.
+**Current release: local foundation 0.1.0, not production-ready.** Repository discovery is documented; the React interface, local-development authentication and read-only GitHub adapter are implemented. AI, speech recognition, automatic ProgressXX integration, installable PWA and Windows packaging remain pending. A session-only WHOOP saved-record bridge and optional private local profile/notes are available for local acceptance.
 
 ## Windows quick start
 
@@ -76,3 +76,7 @@ See [test evidence](docs/TEST-REPORT.md), [integration audit](docs/INTEGRATION-A
 | docs | Append-only history, evidence, decisions and remaining work |
 
 No production database, application repository or external deployment was modified. No license or commercial reuse claim is made for the existing integrated projects.
+
+## Personal daily home
+
+After local sign-in, complete the editable profile on Overview. Choose optional encrypted persistence in the privacy controls, add timed notes/tasks, and connect the existing WHOOP Intelligence account with explicit health-read consent. Food and workout schedule input is currently manual and labelled; no ProgressXX sync is implied. See [Personal briefing](docs/PERSONAL-BRIEFING.md) for calculations, sources, privacy and limitations.

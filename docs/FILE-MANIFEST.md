@@ -74,3 +74,12 @@ All listed files were created in the independent project. Generated dependencies
 - `docs/evidence/startup-check.txt`, `docs/evidence/startup-smoke.txt`, `docs/evidence/workspace-ci-completed.json`
 
 - `docs/evidence/startup-github-ci.json` — successful exact-source Linux/Windows workflow.
+
+## Personal daily briefing additions
+
+- `packages/personal/src/model.ts`, `packages/personal/src/briefing.ts`
+- `packages/connectors/src/whoop.ts`
+- `apps/api/src/personal-store.ts`, `apps/web/src/PersonalHome.tsx`
+- `tests/personal.test.ts`, `tests/personal-api.test.ts`, `tests/whoop.test.ts`
+- `docs/PERSONAL-BRIEFING.md`
+- `docs/evidence/personal-check.txt`, `docs/evidence/personal-launcher.txt`, `docs/evidence/personal-browser.txt`, `docs/evidence/whoop-read-contract.json`

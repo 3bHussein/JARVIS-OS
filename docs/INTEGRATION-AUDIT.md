@@ -57,3 +57,7 @@ Use `https://github.com/OWNER/REPO/blob/COMMIT/PATH` with exact pins above. Prim
 - Lexora-Academy: README.md, scripts/hub.js.
 - Project-Factory-AI: README.md, scripts/local_ollama_agent.py.
 - Autel-Code-Manager: README.md, worker/backup.js. An attempted worker/src/index.ts read returned 404; the actual Worker was then located and read.
+
+## 2026-10-28 WHOOP contract follow-up
+
+Source reviewed at 22f16886dc3fca87220fcc8ee11352deb5a3bd33; exact blobs in evidence/whoop-read-contract.json. WHOOP read bridge now uses session-only existing account password sign-in and the existing whoop-data read action. No new WHOOP OAuth, vendor refresh/sync, service-role credential or source repo change. Synthetic acceptance only; actual owner account still needs local sign-in/validation. ProgressXX remains launch/manual bridge until a safe unified delegated summary is available.

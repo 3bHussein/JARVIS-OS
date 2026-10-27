@@ -6,7 +6,7 @@ import {makeServer} from '../apps/api/src/server.ts';
 import {hashPassword} from '../apps/api/src/auth.ts';
 const origin='http://127.0.0.1:5173';
 let githubCalls=0;
-const server=makeServer({origin,passwordHash:hashPassword('synthetic-browser-password'),githubToken:'SYNTHETIC_BROWSER_TOKEN',transport:async(_url,init)=>{
+const server=makeServer({origin,passwordHash:hashPassword('synthetic-browser-password'),githubToken:'SYNTHETIC_BROWSER_TOKEN',whoopTransport:async(url)=>String(url).includes('/auth/v1/')?Response.json({access_token:'SYNTHETIC_HEALTH_TOKEN',expires_in:3600,user:{factors:[]}}):Response.json({connected:true,records:{sleep:[],recovery:[]},sync_history:[{status:'complete',finished_at:new Date().toISOString()}]}),transport:async(_url,init)=>{
  githubCalls++;
  if(new Headers(init?.headers).has('if-none-match'))return new Response(null,{status:304});
  return Response.json({name:'Synthetic ProgressXX',html_url:'https://github.com/3bHussein/ProgressXX-Web',body:'NEVER_SHOW_PRIVATE_BODY'},{headers:{etag:'"synthetic"'}});
@@ -54,7 +54,19 @@ try{
  const revoked=await context.request.post(origin+'/api/logout',{headers:{Origin:origin,'Content-Type':'application/json','X-CSRF-Token':sessionData.csrf},data:{}});assert.equal(revoked.status(),200);
  await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await page.getByRole('button',{name:'Unlock local workspace',exact:true}).waitFor();
  await page.getByRole('button',{name:'Overview',exact:true}).click();assert.equal(await page.locator('.messages p').count(),0);passed++;console.log('PASS UI-13 server-side session revocation clears workspace on focus');
- assert.deepEqual(errors,[]);console.log(`Browser acceptance: ${passed}/13 passed. Synthetic fixtures only.`);
+ await page.getByRole('button',{name:'Settings',exact:true}).click();await page.getByLabel('Local workspace password',{exact:true}).fill('synthetic-browser-password');await page.getByRole('button',{name:'Unlock local workspace',exact:true}).click();await page.getByRole('button',{name:'Lock workspace',exact:true}).waitFor();await page.getByRole('button',{name:'Overview',exact:true}).click();
+ await page.getByLabel('Preferred name',{exact:true}).fill('Synthetic Owner');await page.getByLabel('Learning / reading interests',{exact:true}).fill('Russian practice');await page.getByLabel('Existing calorie target (optional)',{exact:true}).fill('2400');await page.getByRole('button',{name:'Save profile',exact:true}).click();await page.locator('.personal-summary').getByRole('heading').filter({hasText:'Synthetic Owner'}).waitFor();
+ await page.locator('summary').filter({hasText:'Today’s food / manual sleep'}).click();await page.getByLabel('Manual sleep hours (optional)',{exact:true}).fill('6');await page.getByLabel('Food calories logged so far',{exact:true}).fill('1400');await page.getByRole('button',{name:'Save check-in',exact:true}).click();await page.locator('.personal-metrics strong').filter({hasText:'1000 kcal'}).waitFor();assert.match(await page.locator('.personal-summary').innerText(),/Self-reported/);passed++;console.log('PASS UI-14 personal onboarding, labelled manual inputs and calorie arithmetic');
+ await page.locator('summary').filter({hasText:'Notes and timed tasks'}).click();await page.getByLabel('Note / task text',{exact:true}).fill('<script>synthetic note</script>');await page.getByRole('button',{name:'Add note',exact:true}).click();await page.getByText('<script>synthetic note</script>',{exact:false}).waitFor();
+ await page.reload();await page.locator('.personal-summary').getByRole('heading').filter({hasText:'Synthetic Owner'}).waitFor();assert.equal(await page.locator('.personal-metrics strong').nth(2).innerText(),'1000 kcal');
+ await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'عربي',exact:true}).click();await page.getByRole('heading',{name:'يومك، بسياقه',exact:true}).waitFor();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);passed++;console.log('PASS UI-15 personal notes/reload and Arabic mobile overview');
+ await page.getByRole('button',{name:'English',exact:true}).click();await page.locator('summary').filter({hasText:'Connect WHOOP Intelligence'}).click();
+ await page.getByLabel('WHOOP Intelligence email',{exact:true}).fill('synthetic@example.invalid');await page.getByLabel('WHOOP Intelligence password',{exact:true}).fill('synthetic-whoop-password');assert.equal(await page.getByRole('button',{name:'Connect account',exact:true}).isDisabled(),true);
+ await page.getByLabel('Allow read-only health data for this JARVIS session',{exact:true}).setChecked(true);await page.getByRole('button',{name:'Connect account',exact:true}).click();await page.getByText('WHOOP: ready',{exact:true}).waitFor();assert.equal(await page.getByLabel('WHOOP Intelligence password',{exact:true}).inputValue(),'');
+ const privateStorage=await page.evaluate(()=>JSON.stringify(localStorage));assert.ok(!privateStorage.includes('SYNTHETIC_HEALTH_TOKEN'));assert.ok(!privateStorage.includes('synthetic-whoop-password'));passed++;console.log('PASS UI-16 explicit WHOOP consent, synthetic link and credential clearing');
+ await page.locator('.personal-home details').evaluateAll(nodes=>nodes.forEach(node=>node.open=false));
+ await page.screenshot({path:'test-results/personal-mobile-internal.png',fullPage:true});await page.setViewportSize({width:1440,height:1060});await page.screenshot({path:'test-results/personal-desktop-internal.png',fullPage:true});
+ assert.deepEqual(errors,[]);console.log(`Browser acceptance: ${passed}/16 passed. Synthetic fixtures only.`);
 }finally{
  await browser?.close();vite.kill('SIGTERM');server.closeAllConnections();await new Promise(r=>server.close(r));
 }

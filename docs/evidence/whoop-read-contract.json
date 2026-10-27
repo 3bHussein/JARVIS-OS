@@ -1,0 +1,12 @@
+{
+  "reviewedAt": "2026-10-28T01:37:03+03:00",
+  "repository": "3bHussein/Whoop-Intelligence-",
+  "commit": "22f16886dc3fca87220fcc8ee11352deb5a3bd33",
+  "files": {
+    "supabase/functions/whoop-data/index.ts": "f1390788bd756ebcf91ec46c156f2883e919ac22",
+    "assets/dashboard.js": "565d8cd7222c20c8bd31bf52a827945c7284bff0",
+    "assets/daily-home.js": "ba220ae17686c2c5ae435eb2037c153e06a24952"
+  },
+  "readOnly": "POST existing whoop-data action=read; no provider sync/OAuth/SQL",
+  "realAccountTest": false
+}

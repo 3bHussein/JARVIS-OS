@@ -64,3 +64,7 @@ The running application remains on loopback only. This development authenticatio
 The launcher has automated tests for configuration validation, occupied ports, an isolated first-run configuration, paths with spaces, readiness through the UI/API proxy, authentication, second-instance rejection and owned-child shutdown. Windows CI runs the actual BAT help entry points and Node launcher lifecycle. Physical Windows double-click behavior, system browser selection and console Ctrl+C remain manual acceptance items until tested on a user's device. Automated IPC shutdown is not a claim of physical-console acceptance.
 
 Automated result recorded on 2026-10-28: [Windows and Linux launcher CI passed](https://github.com/3bHussein/JARVIS-OS/actions/runs/40592161891) for source 48a9439. Physical user-device acceptance remains separate.
+
+## Personal home update
+
+The authenticated home now has profile setup, notes, manual food/schedule check-ins and a WHOOP Intelligence saved-record connection. Follow PERSONAL-BRIEFING.md. If retaining personal notes across sessions, opt in to encrypted saves and keep the original local password and private data directory during code updates. Resetting the login password does not decrypt old personal data; do not discard the original password expecting recovery automatically.

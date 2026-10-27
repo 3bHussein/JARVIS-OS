@@ -44,3 +44,9 @@ Scope limitation: provider cooldown and serialization are per session; coordinat
 ## 2026-10-28 — run experience
 
 The current app can be launched through Setup-JARVIS.bat and Start-JARVIS.bat. This does not resolve K-008 (Tauri/native packaging). Current combined launcher intentionally supports only default ports 4310/5173 and a valid local password hash. Initial npm dependency installation needs internet. Windows automation is pending CI; physical console/browser behavior still needs device acceptance.
+
+## 2026-10-28 — personal workspace limits
+
+M3 is partial: WHOOP password-account read bridge is implemented/synthetic-tested, but requires real local acceptance. Passwordless/MFA accounts, narrow delegated token issuance, automatic provider reauthentication and credential vault remain pending. ProgressXX nutrition/training sync is not implemented; manual inputs are labelled. Profile is explicit memory, not model training. Notes appear on open/while running, not closed-app notifications. No automatic book/movie retrieval yet.
+
+Persistence is single-owner, local password-derived encryption. Losing/changing that password can lock old data. Multi-process vault writers are unsupported (the normal launcher prevents a second default-port instance); multi-tab revision guards are implemented. 90 daily entries/200 notes maximum, no silent rollover. Session-only changes do not erase older persistent files.

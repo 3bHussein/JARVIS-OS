@@ -71,3 +71,11 @@ Primary reference reviewed: https://docs.github.com/en/rest/using-the-rest-api/b
 ## Local startup supervisor — 2026-10-28
 
 Node setup/start scripts are maintenance entry points, not AI tools or the Windows Agent. Setup creates only the local .env with a salted password hash and installs lockfile dependencies on explicit invocation. Start spawns only fixed API/Vite child entry points, validates loopback config and port availability, and waits for authenticated-configuration health through the UI proxy. No secret is printed or passed through argv. Windows browser launch uses a fixed URL and no caller-provided executable/URL. A parent-only IPC stop hook permits Windows lifecycle tests without equating it to physical Ctrl+C behavior.
+
+## Personal workspace — 2026-10-28
+
+PersonalData is schema-projected, bounded, date-validated and independent of connector caches. PersonalStore is optional single-owner local encrypted persistence with per-session derived keys, explicit consent, disk/base revisions and typed deletion. Its ciphertext directory is Git-ignored and Vite-denied. It is not a production database or OS vault.
+
+WHOOP connection state is a separate WeakMap keyed by JARVIS session. Credentials go to the fixed existing project Auth endpoint; only access token and bounded sleep/recovery records remain transiently. read mode calls the existing user-authorized Edge Function, not direct privileged database access. No health records enter personal persistence or an AI prompt. POST personal edits are intentionally scoped user-owned records; external tool writes remain denied.
+
+Personal briefing rules, provenance, freshness, local time handling and encryption/recovery limitations are specified in PERSONAL-BRIEFING.md.
