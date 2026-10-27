@@ -30,3 +30,7 @@ No issue is marked resolved solely on code edits; see final test evidence for pa
 ## Dated correction — 2026-10-27T13:23:24+03:00
 
 K-015 is superseded: response bytes are now bounded during stream reading and Content-Length is checked before buffering. GH-05 passes for both cases. Status: TESTED for synthetic oversized responses. Also corrected a late microphone-permission race after AudioContext.resume and the stale unlocked notification after logout; browser acceptance passes. Repository/resource selection is disabled during a GitHub request to prevent a result/selection race.
+
+## Repository blocker correction — 2026-10-27T14:25:50+03:00
+
+K-001 is superseded: the user supplied JARVIS-OS, missing setup files were restored, and exact-commit CI passed (59e0bc4655cca1e4181532afe2a38931d8c977e3; run 40495860032). Status: VERIFIED for repository access and the recorded workflow only. No deployment.

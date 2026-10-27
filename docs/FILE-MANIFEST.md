@@ -45,3 +45,7 @@ All listed files were created in the independent project. Generated dependencies
 - `tests/core.test.ts`
 - `tests/github.test.ts`
 - `tsconfig.json`
+
+## Repository publication addition
+
+- `docs/evidence/github-foundation-ci.json` — exact-commit remote workflow evidence.

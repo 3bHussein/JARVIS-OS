@@ -88,3 +88,13 @@ Repository metadata reports public visibility (not the previously requested priv
 Commands/tools: GitHub repository/tree/commit/Actions GETs; local git status/log/ls-files/hash comparison; local Python append-only tracking update; create_tree/create_commit/update_ref to publish additive setup; subsequent Actions GETs for exact commit evidence. Final remote SHA and CI result are recorded in a later dated entry once available.
 
 Next: inspect exact-commit CI; resolve any concrete failure; continue M1 production identity and M2 source freshness. Deployment remains prohibited without separate approval.
+
+## Successful remote foundation CI — 2026-10-27T14:25:50+03:00
+
+Status: VERIFIED for the exact source/config commit `59e0bc4655cca1e4181532afe2a38931d8c977e3`. GitHub Actions run https://github.com/3bHussein/JARVIS-OS/actions/runs/40495860032 completed with conclusion `success`. npm ci, npm run check (typecheck, 15 unit/HTTP tests and build), Chromium installation and npm run test:e2e (10 synthetic browser acceptance checks) all passed. Evidence metadata: docs/evidence/github-foundation-ci.json. No live personal-account or Windows/voice-quality acceptance is implied.
+
+Restored .env.example, .gitignore and .github/workflows/ci.yml. 40 pre-existing tracked file blob hashes matched the previously tested local source, with zero differing shared blobs. BUILD-INFO.json/history.bundle were preserved. Local checkout was aligned to origin/main after preserving earlier local log edits in a named Git stash; git diff origin/main was empty. git check-ignore confirmed .env, node_modules, apps/web/dist and test-results exclusions.
+
+Repository: https://github.com/3bHussein/JARVIS-OS (public at inspection). Repository-access blocker K-001 and ADR-013 are resolved for this supplied repository. Private visibility has not been established. No PR, deployment, production DB change or other project write occurred.
+
+The documentation-only follow-up records this result using a [skip ci] commit because it does not change runtime, tests, dependencies or CI configuration. It does not claim a separate CI execution for its own SHA. Next actions: continue connector freshness/configuration and production identity work with synthetic data; actual STT and Windows delivery remain pending.
