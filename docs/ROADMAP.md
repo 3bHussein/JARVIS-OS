@@ -10,7 +10,7 @@ Status at 2026-10-27: M0 source discovery/design IMPLEMENTED with live-access li
 | M3 | TODO | Delegated ProgressXX/WHOOP summaries, private Sheets reads, unified verified briefing, missing/stale state and account isolation acceptance. |
 | M4 | TODO | Ollama/cloud provider adapters, read-only tool orchestration, attribution, memory controls and injection isolation. |
 | M5 | IN PROGRESS (contracts/diagnostic only) | Push-to-talk STT, VAD, transcripts, correction, real benchmarks, selected neural TTS, audio-synchronized state. |
-| M6 | TODO | Tauri 2, credential vault, Windows Agent pairing/approval transport, tray, shortcuts, notifications/startup, Windows QA. |
+| M6 | TODO (launcher precursor available) | Tauri 2, credential vault, Windows Agent pairing/approval transport, tray, shortcuts, notifications/startup, Windows QA. |
 | M7 | TODO | Delegated CloudHub metadata, Lexora optional progress bridge, factory approved actions and isolated corporate status. |
 | M8 | TODO | Production auth/security, persistent audit, offline/PWA, accessibility/performance, cross-browser/devices, installer/signing, recovery, RC. |
 
@@ -39,3 +39,7 @@ Status at 2026-10-27: M0 source discovery/design IMPLEMENTED with live-access li
 ## Scope gates
 
 No production database changes; no auto deploy/merge/destructive actions/credential rotation. Corporate and health live tests require explicit scope. Real-device and voice recordings acceptance are separate from synthetic automated tests.
+
+## 2026-10-28 launcher delivery
+
+One-window local startup and first-run setup implemented and tested on Linux. Windows CI added; result must be recorded separately. This is immediate local-browser access, not completion of M6. Continue provider adapters after launcher acceptance.

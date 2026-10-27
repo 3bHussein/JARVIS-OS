@@ -64,3 +64,11 @@ All listed files were created in the independent project. Generated dependencies
 - `docs/evidence/workspace-final-browser.txt` — final 13-scenario browser result.
 
 - `docs/evidence/workspace-github-ci.json` — timestamped remote CI checkpoint; not a completed-run claim.
+
+## Launcher batch additions
+
+- `.gitattributes`, `Setup-JARVIS.bat`, `Start-JARVIS.bat`
+- `scripts/local-runtime.mjs`, `scripts/local-runtime.d.mts`, `scripts/setup.mjs`, `scripts/start.mjs`
+- `tests/launcher.test.ts`, `tests/launcher-smoke.mjs`
+- `docs/RUN-LOCALLY.md`
+- `docs/evidence/startup-check.txt`, `docs/evidence/startup-smoke.txt`, `docs/evidence/workspace-ci-completed.json`

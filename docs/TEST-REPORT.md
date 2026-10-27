@@ -97,3 +97,9 @@ Final local evidence: 22 unit/HTTP tests and 13 Chromium scenarios PASS, plus Ty
 Attempted to retrieve predecessor job logs while the job was running; GitHub returned BlobNotFound/404 for not-yet-available logs. This is not an application test failure. No production or real-account test was executed.
 
 Immediate next action: inspect run 40550291400, record its actual outcome and fix a concrete failure if any. Do not claim successful remote acceptance from this pending snapshot. Then continue the planned optional local AI adapter/voice pipeline and production identity design. GitHub runtime needs its own server credential; ChatGPT connection is not reused. Existing health/task/corporate apps remain unchanged and disconnected. Documentation-only checkpoint commit uses [skip ci] to avoid another redundant source test run.
+
+## Launcher batch — 2026-10-28T01:05:34+03:00
+
+Local: 24 unit/HTTP tests PASS, typecheck/build PASS, one separate real-process launcher smoke test PASS. START-01 covers runtime/config validation and no secret error disclosure; START-02 covers occupied-port ownership; START-03 covers setup preservation, path spaces, API/UI readiness, authentication, second-instance failure without killing the first, and owned-process shutdown. Interactive Linux PTY first-run password creation was exercised separately with synthetic input. Evidence: startup-check.txt/startup-smoke.txt.
+
+Previous workspace remote CI is now VERIFIED as success for a1bb666 / run 40550291400, including 13 browser scenarios. Current launcher Windows CI is pending; Linux PTY is not Windows certification. Physical double-click/default-browser/Ctrl+C and Tauri installer remain untested. No deployment or real account acceptance.

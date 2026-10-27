@@ -1,0 +1,61 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 check
+> npm run typecheck && npm test && npm run build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 typecheck
+> tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 test
+> node --test tests/*.test.ts
+
+✔ AUTH-01 salted hash, bounded input, expiring revocable session (125.963786ms)
+✔ AUTH-02 HTTP auth, CSRF, origin, redacted audit, writes and logout (181.028407ms)
+✔ AUTH-03 unconfigured auth fails closed and login rate limited (235.645624ms)
+✔ TIME-01 greeting boundaries use configured timezone (21.694663ms)
+✔ TIME-02 Cairo DST and local date rollover (1.002057ms)
+✔ DATA-01 no invented tasks and stale/future source excluded (0.674431ms)
+✔ SEC-01 writes and corporate tools fail closed (0.211734ms)
+✔ SEC-02 nested redaction excludes free-text secrets (0.55218ms)
+✔ VOICE-01 uncertainty requires review; bilingual WER metric (1.214382ms)
+✔ AGENT-01 unknown application and absent approval denied (0.252094ms)
+✔ GH-01 disconnected never calls upstream (1.440677ms)
+✔ GH-02 arbitrary repository or prototype resource denied (0.482095ms)
+✔ GH-03 safe projection and bounded source provenance (6.040354ms)
+✔ GH-04 unauthorized, rate-limited, outage and malformed response (1.92028ms)
+✔ GH-05 upstream response byte limit fails closed (11.866939ms)
+✔ START-01 runtime and configuration fail safely without revealing secrets (13.528225ms)
+✔ START-02 occupied port is rejected without terminating its owner (8.137225ms)
+✔ STATUS-01 authenticated provenance, per-session cache, blocked corporate and revoked in-flight read (178.240448ms)
+✔ PREF-01 validate stored settings and exclude private data (20.597746ms)
+✔ CACHE-01 configured is not ready; dedup, cache TTL and ETag revalidation (8.675654ms)
+✔ CACHE-02 sessions do not share results and failure preserves accurate history (2.462644ms)
+✔ CACHE-03 honor Retry-After across resources without hidden retries (0.475095ms)
+✔ CACHE-04 unauthorized discards cached metadata and configured token does not leak (0.752456ms)
+✔ CACHE-05 permission denial is not falsely labelled rate limiting (0.499191ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 722.906645
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 build
+> vite build --config apps/web/vite.config.ts
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 32 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.30 kB
+dist/assets/index-HWaxHxg_.css   15.99 kB │ gzip:  4.67 kB
+dist/assets/index-DLnHaNG7.js   214.68 kB │ gzip: 68.60 kB
+✓ built in 948ms

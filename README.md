@@ -4,6 +4,12 @@ An original personal AI command center, built as a separate hybrid application.
 
 **Current release: local foundation 0.1.0, not production-ready.** Repository discovery is documented; the React interface, local-development authentication and read-only GitHub adapter are implemented. AI, speech recognition, live personal integrations, installable PWA and Windows packaging remain pending.
 
+## Windows quick start
+
+Install Node.js 24 LTS, download/extract this repository, run **Setup-JARVIS.bat** once, then **Start-JARVIS.bat**. Setup asks for a hidden local password; the launcher opens http://127.0.0.1:5173 when ready. Unlock from Settings. Keep its window open; Ctrl+C stops both services. This is the local browser foundation, not the Tauri installer.
+
+Full walkthrough and troubleshooting: [Run locally](docs/RUN-LOCALLY.md). Terminal alternative: `npm run setup`, then `npm start`.
+
 ## Run the foundation
 
 Requirements: Node.js 24+, npm, a modern browser. No database is needed for this slice.
