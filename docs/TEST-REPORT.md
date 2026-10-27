@@ -132,3 +132,13 @@ Exact next development: optional local AI adapter with explicit configuration, s
 | Mobile home and note reload | UI-15 | Chromium synthetic only |
 
 Precise medical prescriptions, sodium doses, automatic ProgressXX sync, generative AI recommendations and physical Windows acceptance are not covered or claimed. Remote exact-commit CI will be appended after publication.
+
+## Session 005 remote acceptance — 2026-10-28T01:40:22+03:00
+
+Source commit: `6104c72ccdf91a06555b64340cb0e912858e8eef` (`feat: add private daily context and consent-based WHOOP reads`). Run https://github.com/3bHussein/JARVIS-OS/actions/runs/40596339068 completed SUCCESS. Both Windows launcher and Linux foundation jobs succeeded. Per platform: 35 unit/HTTP tests, typecheck/build and launcher lifecycle passed; Linux Chromium passed all 16 scenarios. Evidence: personal-github-ci.json. Status: VERIFIED for those synthetic automated checks only; no real WHOOP account, personal health record, physical device or clinician validation was tested. No PR or deployment.
+
+Local source changes were preserved in a named stash before fast-forward alignment to origin/main. Internal synthetic screenshots were inspected and excluded from Git. A docs-only [skip ci] commit records this exact successful source without claiming its own distinct CI run.
+
+User acceptance: restart Start-JARVIS after updating source; unlock, complete Overview profile, explicitly choose encrypted persistence if desired, then connect the existing WHOOP Intelligence account through the health-consent form. Do not paste credentials into chat. Today’s nutrition/scheduled workouts remain clearly labelled manual until ProgressXX's safe delegated summary exists. Timed notes are shown in-app, not while the program is closed.
+
+Next: implement safe ProgressXX read aggregation respecting its snapshot/confirmed-row/pending state, then optional local AI and speech adapters; curated book/video recommendations require preferences and source-backed retrieval. Existing app repositories and production databases remain unchanged.

@@ -83,3 +83,5 @@ All listed files were created in the independent project. Generated dependencies
 - `tests/personal.test.ts`, `tests/personal-api.test.ts`, `tests/whoop.test.ts`
 - `docs/PERSONAL-BRIEFING.md`
 - `docs/evidence/personal-check.txt`, `docs/evidence/personal-launcher.txt`, `docs/evidence/personal-browser.txt`, `docs/evidence/whoop-read-contract.json`
+
+- `docs/evidence/personal-github-ci.json` — successful personal-briefing Linux/Windows CI.
