@@ -11,14 +11,15 @@ export async function readGitHub(repo: string, resource: Resource, token: string
     const response = await transport(`https://api.github.com/repos/${repo}${suffix[resource]}`,{headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${token}`,'X-GitHub-Api-Version':'2022-11-28',...(options.etag?{'If-None-Match':options.etag}:{})},signal:AbortSignal.timeout(10000),redirect:'error'});
     if(response.status===304&&options.previous?.data)return {...options.previous,source:{...source,observedAt:now.toISOString()},cache:'revalidated'};
     if (!response.ok) {
-      const limited=response.status===429||response.status===403;
+      const limited=response.status===429||(response.status===403&&(response.headers.get('x-ratelimit-remaining')==='0'||response.headers.has('retry-after')));
+      const cooldown=limited||response.status===403;
       let retryAt:string|undefined;
-      if(limited){
+      if(cooldown){
         const raw=response.headers.get('retry-after');
         const retry=raw&&/^\d+$/.test(raw)?now.getTime()+Number(raw)*1000:raw?Date.parse(raw):Number(response.headers.get('x-ratelimit-reset'))*1000;
         retryAt=new Date(Math.max(now.getTime()+60000,Number.isFinite(retry)&&retry<8640000000000000?retry:0)).toISOString();
       }
-      return {status:'error',source,data:null,error:response.status===401?'unauthorized':limited?'rate_limited':'upstream_unavailable',retryAt};
+      return {status:'error',source,data:null,error:response.status===401?'unauthorized':limited?'rate_limited':response.status===403?'forbidden':'upstream_unavailable',retryAt};
     }
     if(Number(response.headers.get('content-length'))>2000000||!response.body) throw new Error('Oversized or empty response');
     const reader=response.body.getReader(), chunks:Uint8Array[]=[];let bytes=0;

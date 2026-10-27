@@ -39,3 +39,8 @@ test('CACHE-04 unauthorized discards cached metadata and configured token does n
   await reader.read(repo,'repository');revoked=true;await reader.read(repo,'repository',true);
   assert.equal(reader.status().lastSuccessfulSync,null);assert.ok(!JSON.stringify(reader.status()).includes('NEVER_RETURN_THIS'));
 });
+test('CACHE-05 permission denial is not falsely labelled rate limiting',async()=>{
+  let calls=0;const reader=new GitHubReader('synthetic',async()=>{calls++;return new Response('',{status:403})});
+  assert.equal((await reader.read(repo,'repository')).error,'forbidden');
+  assert.equal((await reader.read(repo,'issues')).error,'forbidden');assert.equal(calls,1);
+});

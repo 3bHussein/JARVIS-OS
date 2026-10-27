@@ -8,6 +8,7 @@ export class GitHubReader {
   private lastSuccess:string|null=null;
   private lastError:ConnectorResult<unknown>['error']|null=null;
   private retryAt:string|null=null;
+  private cooldownError:'forbidden'|'rate_limited'='rate_limited';
   private tail:Promise<unknown>=Promise.resolve();
   private token:string|undefined;
   private transport:typeof fetch;
@@ -33,10 +34,10 @@ export class GitHubReader {
         this.lastSuccess=result.source.observedAt;this.retryAt=null;
         this.cache.set(key,{result,etag});
       }else if(result.error==='unauthorized'){this.cache.clear();this.lastSuccess=null;}
-      if(result.retryAt)this.retryAt=result.retryAt;
+      if(result.retryAt){this.retryAt=result.retryAt;this.cooldownError=result.error==='forbidden'?'forbidden':'rate_limited';}
       return result;
     }).finally(()=>this.inflight.delete(key));
     this.inflight.set(key,task);this.tail=task.catch(()=>{});return task;
   }
-  private limited():ConnectorResult<GitHubSummary>{return {status:'error',source:{connector:'github',observedAt:null,maxAgeMs:300000},data:null,error:'rate_limited',retryAt:this.retryAt!};}
+  private limited():ConnectorResult<GitHubSummary>{return {status:'error',source:{connector:'github',observedAt:null,maxAgeMs:300000},data:null,error:this.cooldownError,retryAt:this.retryAt!};}
 }

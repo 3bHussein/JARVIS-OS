@@ -5,7 +5,7 @@ export interface ConnectorManifest {
   authentication: string; permissions: readonly string[]; writes: false;
   maxAgeMs: number; audit: readonly string[]; limitation: string; launchUrl?: string;
 }
-export interface ConnectorResult<T> { status: ConnectorStatus; source: Source; data: T | null; error?: 'not_connected' | 'unauthorized' | 'rate_limited' | 'upstream_unavailable' | 'invalid_response'; retryAt?:string; cache?:'hit'|'miss'|'revalidated'; }
+export interface ConnectorResult<T> { status: ConnectorStatus; source: Source; data: T | null; error?: 'not_connected' | 'unauthorized' | 'forbidden' | 'rate_limited' | 'upstream_unavailable' | 'invalid_response'; retryAt?:string; cache?:'hit'|'miss'|'revalidated'; }
 export interface ConnectorView extends ConnectorManifest {
   status:ConnectorStatus|'configured'|'stale';lastSuccessfulSync:string|null;
   freshness:'current'|'stale'|'unavailable';lastError:ConnectorResult<unknown>['error']|null;

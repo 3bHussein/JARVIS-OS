@@ -136,3 +136,11 @@ Commit SHA/PR/CI: pending publication after final acceptance; previous remote CI
 ### Final local workspace acceptance — 2026-10-27T20:20:48+03:00
 
 21/21 unit/HTTP tests PASS, TypeScript/build PASS, and 13/13 Chromium browser checks PASS, including server-side revocation on focus. Evidence: workspace-check.txt, workspace-build.txt and workspace-browser.txt. No live-account/physical-device acceptance implied. Ready for exact-commit remote CI; no deployment.
+
+### Provider error classification correction — 2026-10-27T20:24:16+03:00
+
+Source workspace batch was published as `8a295e68306e92dd71f996efaefafbbac5a82434` (`feat: add session-aware sources and persistent preferences`). Run 40549833883 had passed npm ci/typecheck/unit/build and was still installing Chromium at inspection. A subsequent review found ambiguous HTTP 403 classification. Added normalized `forbidden` for permission-denied responses without rate-limit evidence; explicit 429 or 403 with rate-limit headers retains `rate_limited`. Both respect a conservative cooldown, preserving the true error through that interval. No automatic retry.
+
+Added CACHE-05. Final local acceptance after correction: **22/22 unit/HTTP tests, TypeScript/build and 13/13 browser checks PASS**. Evidence: workspace-final-check.txt and workspace-final-browser.txt. This supersedes the earlier 21-test count for the corrected source. No dependency, provider credential, production DB or deployment change. A new exact-commit CI follows publication; do not treat the predecessor run as proof of the correction.
+
+Publication tooling: one combined JSON source read exceeded the tool output budget; no remote mutation occurred from that failed parse. Retried with bounded independent file groups, created Git tree/commit and updated main using expected-head protection. Local work was preserved in Git stash then fast-forwarded to origin/main. No unapproved external repository was changed.
