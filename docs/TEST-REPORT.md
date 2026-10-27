@@ -87,3 +87,13 @@ Source workspace batch was published as `8a295e68306e92dd71f996efaefafbbac5a8243
 Added CACHE-05. Final local acceptance after correction: **22/22 unit/HTTP tests, TypeScript/build and 13/13 browser checks PASS**. Evidence: workspace-final-check.txt and workspace-final-browser.txt. This supersedes the earlier 21-test count for the corrected source. No dependency, provider credential, production DB or deployment change. A new exact-commit CI follows publication; do not treat the predecessor run as proof of the correction.
 
 Publication tooling: one combined JSON source read exceeded the tool output budget; no remote mutation occurred from that failed parse. Retried with bounded independent file groups, created Git tree/commit and updated main using expected-head protection. Local work was preserved in Git stash then fast-forwarded to origin/main. No unapproved external repository was changed.
+
+## Session 003 delivery handoff — 2026-10-27T20:26:02+03:00
+
+Published implementation commit: `8a295e68306e92dd71f996efaefafbbac5a82434`. Published correction/current source commit: `a1bb666eb2f4c3564bdc37734c84a8c6fb51f431`. Changes are on main. No PR or deployment. Local checkout fast-forwarded to origin/main; local changes were preserved in named Git stashes before alignment.
+
+Final local evidence: 22 unit/HTTP tests and 13 Chromium scenarios PASS, plus TypeScript/build. Exact corrected-source remote CI: https://github.com/3bHussein/JARVIS-OS/actions/runs/40550291400. At this recorded checkpoint status was IN PROGRESS: npm ci and npm run check succeeded; Chromium installation was in progress and remote browser tests pending. **Remote browser CI is not yet VERIFIED.** The predecessor run 40549833883 is not evidence for the correction. Snapshot: docs/evidence/workspace-github-ci.json.
+
+Attempted to retrieve predecessor job logs while the job was running; GitHub returned BlobNotFound/404 for not-yet-available logs. This is not an application test failure. No production or real-account test was executed.
+
+Immediate next action: inspect run 40550291400, record its actual outcome and fix a concrete failure if any. Do not claim successful remote acceptance from this pending snapshot. Then continue the planned optional local AI adapter/voice pipeline and production identity design. GitHub runtime needs its own server credential; ChatGPT connection is not reused. Existing health/task/corporate apps remain unchanged and disconnected. Documentation-only checkpoint commit uses [skip ci] to avoid another redundant source test run.

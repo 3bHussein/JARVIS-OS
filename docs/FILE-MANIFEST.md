@@ -62,3 +62,5 @@ All listed files were created in the independent project. Generated dependencies
 
 - `docs/evidence/workspace-final-check.txt` — corrected provider error classification acceptance.
 - `docs/evidence/workspace-final-browser.txt` — final 13-scenario browser result.
+
+- `docs/evidence/workspace-github-ci.json` — timestamped remote CI checkpoint; not a completed-run claim.
