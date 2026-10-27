@@ -1,0 +1,52 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 check
+> npm run typecheck && npm test && npm run build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 typecheck
+> tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 test
+> node --test tests/*.test.ts
+
+✔ AUTH-01 salted hash, bounded input, expiring revocable session (99.886716ms)
+✔ AUTH-02 HTTP auth, CSRF, origin, redacted audit, writes and logout (135.249542ms)
+✔ AUTH-03 unconfigured auth fails closed and login rate limited (209.408509ms)
+✔ TIME-01 greeting boundaries use configured timezone (12.646249ms)
+✔ TIME-02 Cairo DST and local date rollover (0.663957ms)
+✔ DATA-01 no invented tasks and stale/future source excluded (0.526905ms)
+✔ SEC-01 writes and corporate tools fail closed (0.161898ms)
+✔ SEC-02 nested redaction excludes free-text secrets (0.375783ms)
+✔ VOICE-01 uncertainty requires review; bilingual WER metric (0.80882ms)
+✔ AGENT-01 unknown application and absent approval denied (0.151292ms)
+✔ GH-01 disconnected never calls upstream (0.939462ms)
+✔ GH-02 arbitrary repository or prototype resource denied (0.364757ms)
+✔ GH-03 safe projection and bounded source provenance (4.388958ms)
+✔ GH-04 unauthorized, rate-limited, outage and malformed response (1.047702ms)
+✔ GH-05 upstream response byte limit fails closed (3.291163ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 567.185605
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 build
+> vite build --config apps/web/vite.config.ts
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 31 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.30 kB
+dist/assets/index-x9JIPDky.css   15.59 kB │ gzip:  4.56 kB
+dist/assets/index-DRr74R0o.js   210.20 kB │ gzip: 67.04 kB
+✓ built in 777ms

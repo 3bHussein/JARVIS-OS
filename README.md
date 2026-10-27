@@ -1,1 +1,71 @@
-# JARVIS-OS
+# JARVIS OS
+
+An original personal AI command center, built as a separate hybrid application.
+
+**Current release: local foundation 0.1.0, not production-ready.** Repository discovery is documented; the React interface, local-development authentication and read-only GitHub adapter are implemented. AI, speech recognition, live personal integrations, installable PWA and Windows packaging remain pending.
+
+## Run the foundation
+
+Requirements: Node.js 24+, npm, a modern browser. No database is needed for this slice.
+
+```sh
+npm ci --ignore-scripts
+```
+
+Create a private `.env` from `.env.example`. Generate a salted hash using `npm run password`: it reads a password from stdin. Use at least 12 characters. Do not put passwords into shell history, commits, screenshots or chat. The helper also supports `node scripts/password.mjs --write-env` and refuses to overwrite an existing file. On Windows PowerShell a hidden prompt can supply stdin:
+
+```powershell
+$credential = Get-Credential -UserName local-owner -Message 'Choose a local JARVIS password (12+ characters)'
+$credential.GetNetworkCredential().Password | node scripts/password.mjs --write-env
+Remove-Variable credential
+```
+
+Run these in two terminals from the repository root:
+
+```sh
+npm run api
+npm run dev
+```
+
+Open http://127.0.0.1:5173, select Settings and unlock the local workspace. This is a **single-owner, loopback-only development service**. Do not expose it to a LAN, internet or reverse proxy. Sessions last one hour, are memory-only and are invalidated by restart. The local HTTP cookie intentionally lacks Secure; an HTTPS production identity system is a release gate.
+
+Optionally configure `GITHUB_TOKEN` in `.env`, restricted to the selected personal repositories and read-only metadata/contents/issues/pull requests/Actions permissions. JARVIS performs GET requests only. No corporate repository is allowlisted. Do not paste tokens into the UI. OAuth consent and encrypted credential vault are not implemented.
+
+## Available now
+
+- Original navy/cyan responsive command center and animated core.
+- Actual IANA-zone clock, time-sensitive greeting and Cairo DST support.
+- English/Arabic interface direction, simple navigation, explicit disconnected states.
+- Full/reduced/off motion; OS reduced-motion preference is respected.
+- Honest task briefing with zero invented tasks and freshness utilities.
+- Local deterministic commands for time and source availability, visibly labelled as not an AI model.
+- Optional authenticated read-only GitHub repository/PR/Issue/Actions views.
+- Microphone activity test with echo cancellation requested, RMS visualization, stop/cleanup and no recording/upload.
+- System speech test with available browser voices. This is not evaluated neural TTS or audio-synchronized animation.
+- Locked write tools and local-agent launch policy prototype with **no OS execution**.
+
+## Validation
+
+```sh
+npm run check
+npx playwright install chromium --only-shell
+npm run test:e2e
+npm audit
+```
+
+See [test evidence](docs/TEST-REPORT.md), [integration audit](docs/INTEGRATION-AUDIT.md), [architecture](docs/ARCHITECTURE.md), [roadmap](docs/ROADMAP.md) and [handoff](docs/PROJECT-HANDOFF.md).
+
+## Layout
+
+| Path | Purpose |
+| --- | --- |
+| apps/web | React/TypeScript static client |
+| apps/api | Loopback development API and opaque sessions |
+| apps/windows-agent | Deny-by-default launch policy only |
+| packages/core | Time, briefing, freshness, authorization, redaction |
+| packages/connectors | Read-only contracts, manifests, GitHub adapter |
+| packages/voice | Voice contracts, uncertainty review, WER metric |
+| tests | Synthetic unit/HTTP/browser acceptance |
+| docs | Append-only history, evidence, decisions and remaining work |
+
+No production database, application repository or external deployment was modified. No license or commercial reuse claim is made for the existing integrated projects.

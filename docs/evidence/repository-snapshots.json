@@ -1,0 +1,4999 @@
+{
+  "retrievedAt": "2026-10-27T10:07:16.286Z",
+  "repositories": [
+    {
+      "repository": "3bHussein/ProgressXX-Web",
+      "truncated": false,
+      "files": [
+        {
+          "path": ".github/workflows/cross-browser-ui.yml",
+          "sha": "489a913e26c9dbc020eadbe6cd896a226b435239",
+          "size": 7420
+        },
+        {
+          "path": ".github/workflows/deploy-pages.yml",
+          "sha": "27790f211c35967698970e6a29eaba2b17fb43ee",
+          "size": 5066
+        },
+        {
+          "path": ".github/workflows/fast-conflict-contracts.yml",
+          "sha": "63d142703e83e27896212b58a7c106b7614664a6",
+          "size": 2401
+        },
+        {
+          "path": ".github/workflows/full-ui-smoke.yml",
+          "sha": "4ac9a29b9b129e28e87bdd2124b43c82c43936f6",
+          "size": 7850
+        },
+        {
+          "path": ".github/workflows/page-snapshot-regression.yml",
+          "sha": "6aa706c5ae37b9a3189da282357baad9b3cf1bca",
+          "size": 1093
+        },
+        {
+          "path": ".github/workflows/postgres-cas-integration.yml",
+          "sha": "604310f526145044a1a80584b0fa278638d79d01",
+          "size": 2160
+        },
+        {
+          "path": ".github/workflows/v3-preview-artifact.yml",
+          "sha": "cacf20ff18f8ab0877352ad7610f6967177bde2e",
+          "size": 2589
+        },
+        {
+          "path": ".github/workflows/weight-table-bridge.yml",
+          "sha": "6b2a03fb6f17720259e5e764b146fc62e6235a28",
+          "size": 542
+        },
+        {
+          "path": ".github/workflows/workout-log-regression.yml",
+          "sha": "9b6699f786fc1e0ed2b3ff510aa9654acfd8baaf",
+          "size": 1079
+        },
+        {
+          "path": ".github/workflows/workout-schedule-table-safety.yml",
+          "sha": "d068a51fcc739ef3acccf368182b64953576b637",
+          "size": 558
+        },
+        {
+          "path": ".github/workflows/workout-supabase-table.yml",
+          "sha": "9886c9c2a11a2d64abf8d142b5fe3354b73b9938",
+          "size": 1116
+        },
+        {
+          "path": "CHANGELOG.md",
+          "sha": "10337195042666b43d6d979d4a9f794da8f87f15",
+          "size": 2750
+        },
+        {
+          "path": "README.md",
+          "sha": "d3e082d3669a6db915ee54924c4e7959ea1640ff",
+          "size": 16879
+        },
+        {
+          "path": "ROADMAP.md",
+          "sha": "f7b8b0ece6119c0322ce82452a20da861875de73",
+          "size": 234360
+        },
+        {
+          "path": "commercial-v1.html",
+          "sha": "4b6bc64fbcf4b03b9ac3ab2ff0794f11e31a56b2",
+          "size": 66524
+        },
+        {
+          "path": "conflict-review-prototype.html",
+          "sha": "827a36060b4dae58ad4cab362b3e8fe9331993da",
+          "size": 7024
+        },
+        {
+          "path": "docs/BETA-ACCEPTANCE-MATRIX.md",
+          "sha": "7476fe276b34c37278e559944971aad0157fd64e",
+          "size": 2732
+        },
+        {
+          "path": "docs/CAS-SQL-REFERENCE.sql",
+          "sha": "85ff2772b1cac51563eec7df3be873b3b35b2ac0",
+          "size": 1097
+        },
+        {
+          "path": "docs/CAS-STAGING-ACCEPTANCE.md",
+          "sha": "a61fc051467b7223d5d84eb5d2db0de3fd008481",
+          "size": 2739
+        },
+        {
+          "path": "docs/COMMERCIAL-READINESS.md",
+          "sha": "7ff0d0082d7cf9560f19de0c2cfd00c58c1908a2",
+          "size": 89769
+        },
+        {
+          "path": "docs/COMPACT-FOOD-NAVIGATION.md",
+          "sha": "fc5b5b7f1860b1bd86924086c9e0af7bb6e457cf",
+          "size": 4954
+        },
+        {
+          "path": "docs/CONFLICT-SAFE-ROLLOUT-PLAN.md",
+          "sha": "3acd25f03e92e7ab69f44849ede82bf38e6a7346",
+          "size": 2555
+        },
+        {
+          "path": "docs/CROSS-BROWSER-ACCEPTANCE.md",
+          "sha": "8e872be27c6ffb35c5cf9cb18fd5e3f2c6bf7946",
+          "size": 9893
+        },
+        {
+          "path": "docs/DAILY-CONFLICT-RECOVERY-SPEC.md",
+          "sha": "583425c28f45109b5279d0bf4eec5c394bc3547e",
+          "size": 2256
+        },
+        {
+          "path": "docs/DAILY-CONVENIENCE.md",
+          "sha": "5ab57ba29dba1b902e2d6cfb21ddbb6c225ca0a5",
+          "size": 3494
+        },
+        {
+          "path": "docs/DAILY-PROGRESS-FOCUS.md",
+          "sha": "2eadc03c49c31bd1d81829b9e6c45c6c6b7a7afb",
+          "size": 4637
+        },
+        {
+          "path": "docs/DEVELOPMENT-LOG.md",
+          "sha": "081bebf6d5f1db93ccf69e8c2ade3a6b02f319dd",
+          "size": 403465
+        },
+        {
+          "path": "docs/FOOD-LAYOUT-ACCEPTANCE.md",
+          "sha": "b1e3129a00ee75eb9d5a32be922c6ec3b02ade65",
+          "size": 4261
+        },
+        {
+          "path": "docs/FOOD-UNDO-SAVE-STATUS.md",
+          "sha": "43aded6ff455673883bd05de33e0bc4cdbf07c21",
+          "size": 5121
+        },
+        {
+          "path": "docs/FOOD-WORKFLOW-TOOLS.md",
+          "sha": "14d5e8ac892635e66b64ac598e1fa5be533e4db5",
+          "size": 5619
+        },
+        {
+          "path": "docs/FRONTEND-2.1-ACCEPTANCE.md",
+          "sha": "7fac9360b7a1cdcfdff1d09ce015a196aee895b9",
+          "size": 3971
+        },
+        {
+          "path": "docs/FRONTEND-PERFORMANCE-BASELINE.md",
+          "sha": "9678c47187de4ca3175121addf99645ba7123b79",
+          "size": 8624
+        },
+        {
+          "path": "docs/FULL-LEGACY-CUTOVER.md",
+          "sha": "0c2c774b07c65f2c7ea5fdc518b51bfff9a712ab",
+          "size": 2847
+        },
+        {
+          "path": "docs/INSIGHTS-ANATOMY-ACCESSIBILITY.md",
+          "sha": "ea60893eaf5c83dfca920d6de39053b30891ed62",
+          "size": 4608
+        },
+        {
+          "path": "docs/INSIGHTS-EVIDENCE-ACTIONS.md",
+          "sha": "7ce257a9fca658e029a54f5d68bfe566e21cf74d",
+          "size": 7185
+        },
+        {
+          "path": "docs/INSIGHTS-LOGIC-AUDIT.md",
+          "sha": "b629c54eeebdfec3148c2d060edb2ce90601ad1d",
+          "size": 4883
+        },
+        {
+          "path": "docs/INSIGHTS-RECOVERY-ACCEPTANCE.md",
+          "sha": "8b3efcf1f2218b57da38c243985c5e699d1fe8ed",
+          "size": 4839
+        },
+        {
+          "path": "docs/ISOLATED-OWNER-CAS-RESTORE.md",
+          "sha": "658f4f1defcb6d1faebd9bb75db4fe6c58e1d8b9",
+          "size": 5397
+        },
+        {
+          "path": "docs/MOBILE-ACCESSIBILITY-ACCEPTANCE.md",
+          "sha": "2299f5b281f6702c9b162f21eb09fbda292bcd33",
+          "size": 5516
+        },
+        {
+          "path": "docs/MOCK-LOGOUT-CI-ACCEPTANCE.md",
+          "sha": "01f179f6c050c9d299cba80d49f46480592659e2",
+          "size": 5463
+        },
+        {
+          "path": "docs/NAVIGATION-ACCESSIBILITY.md",
+          "sha": "08309b730d33a94d5579b0c22e2911f9d54170c7",
+          "size": 4502
+        },
+        {
+          "path": "docs/OPERATIONS-RUNBOOK.md",
+          "sha": "25c51765936df89a656df3508d34613152539566",
+          "size": 7922
+        },
+        {
+          "path": "docs/PROJECT-HANDOFF.md",
+          "sha": "e5d28382b80a088f8b8ad97dc2d1ad6d9b5d53f6",
+          "size": 264945
+        },
+        {
+          "path": "docs/PWA-LOCAL-ACCEPTANCE.md",
+          "sha": "7c28e612e0ae4fdb11f918e2bc036289628a1130",
+          "size": 2352
+        },
+        {
+          "path": "docs/REAL-DEVICE-SYNC-CHECKLIST.md",
+          "sha": "d4b087b0a9e9435c6b3d52ecec240552d014edcd",
+          "size": 5341
+        },
+        {
+          "path": "docs/RECORDED-PROGRESS.md",
+          "sha": "6e0ad7f0bf6b35631ccb3c5c3ee95c287588bee2",
+          "size": 4506
+        },
+        {
+          "path": "docs/RELEASE-CI-AUDIT.md",
+          "sha": "b71aee76b84e9f7c481c41d5e5c2140dfe10c57e",
+          "size": 13197
+        },
+        {
+          "path": "docs/RELEASE-NOTES-M4.md",
+          "sha": "aa89a0453ce5480296c26ba3c6cad9eeaed2dffc",
+          "size": 3106
+        },
+        {
+          "path": "docs/RELEASE-POLICY.md",
+          "sha": "9da65fd3d18c0ada820d385af1f0781c0e9456b2",
+          "size": 6369
+        },
+        {
+          "path": "docs/RLS-NEGATIVE-READ-PROBE.md",
+          "sha": "2a1e63e5c8c5ef62f3fa1911f4f63bc49fb7fb10",
+          "size": 1861
+        },
+        {
+          "path": "docs/SNAPSHOT-CAS-STAGING-PLAN.md",
+          "sha": "53debfb9df41e32fe69ac8a1405103c894c8868d",
+          "size": 3325
+        },
+        {
+          "path": "docs/SUPABASE-SECURITY-AUDIT.md",
+          "sha": "aee0cc4039da2ede9eeb7569ea8e42962cdeafc5",
+          "size": 3932
+        },
+        {
+          "path": "docs/SYNC-CONFLICT-PRODUCTION-ACCEPTANCE.md",
+          "sha": "20f9ed7ba40222cc059327e720f235c1aa366de9",
+          "size": 2289
+        },
+        {
+          "path": "docs/UI-LANGUAGE-CATALOGUE.json",
+          "sha": "7eca235d2edad18c1a5d224bdb18d02401567d3f",
+          "size": 68877
+        },
+        {
+          "path": "docs/WEEKLY-WEIGHT-USUAL-FOODS.md",
+          "sha": "9c9c10b18a8f9bbc97e7d9692b80e950279dcae1",
+          "size": 5159
+        },
+        {
+          "path": "docs/images/pages-actions-source-2026-10-13.jpg",
+          "sha": "95ccebbdeb08c29b695822a0f6ed33de05c15bdc",
+          "size": 115391
+        },
+        {
+          "path": "docs/performance/startup-2026-10-13.json",
+          "sha": "4ca2646d3cd2d50646b62b60cf3f2374677b390f",
+          "size": 2691
+        },
+        {
+          "path": "docs/performance/workout-log-2026-10-13.json",
+          "sha": "d59dfb9baa2d96be35f0cd791d80cda19edbb35e",
+          "size": 2825
+        },
+        {
+          "path": "docs/screenshots/daily-mobile.jpg",
+          "sha": "9e99750c05601ce6ffa6baad11b05a2b75f160bc",
+          "size": 58638
+        },
+        {
+          "path": "docs/screenshots/food-batch-move.jpg",
+          "sha": "bb5a1946fe3a201cb90231d36837f4c7ba0ea2aa",
+          "size": 70764
+        },
+        {
+          "path": "docs/screenshots/food-focused-add.jpg",
+          "sha": "76afaad0519c7418b85b27f513341bc2d99dd599",
+          "size": 63441
+        },
+        {
+          "path": "docs/screenshots/food-mobile.jpg",
+          "sha": "e45c0b6adb3a3e4a0591af78c78409daad5ff064",
+          "size": 60748
+        },
+        {
+          "path": "docs/screenshots/food-quick-add-ar.jpg",
+          "sha": "522b1ec37ad308b675c29e9febcd5e814e85d128",
+          "size": 36624
+        },
+        {
+          "path": "docs/screenshots/food-quick-add.jpg",
+          "sha": "ed70821d1f9a7b75df3686fb424dcb3d3df55151",
+          "size": 39105
+        },
+        {
+          "path": "docs/screenshots/food-repeat-amount.jpg",
+          "sha": "158dc18e4db1027a5d758620351e915282eb92b4",
+          "size": 33552
+        },
+        {
+          "path": "docs/screenshots/home-mobile.jpg",
+          "sha": "bad9f2e4b277838225b9ac1eaed713844b522291",
+          "size": 67466
+        },
+        {
+          "path": "docs/screenshots/insights-decisions-ar.jpg",
+          "sha": "43b850b2afe7bc484230c96483eecf3850cd41b0",
+          "size": 82597
+        },
+        {
+          "path": "docs/screenshots/insights-decisions.jpg",
+          "sha": "bd3b9f983d2071c1f94a093e11f3e99f9ba1ff4d",
+          "size": 95561
+        },
+        {
+          "path": "docs/screenshots/manifest.json",
+          "sha": "1483e376dc89771d1d2460410ee393a8a6a768f9",
+          "size": 3946
+        },
+        {
+          "path": "docs/screenshots/page-sections.jpg",
+          "sha": "bcd84965eb6f71d9857affafa3dc08124553392e",
+          "size": 24627
+        },
+        {
+          "path": "docs/screenshots/progress-weekly-review.jpg",
+          "sha": "8a4f8b1464dc651c592fc8a9209798dbe27addff",
+          "size": 81576
+        },
+        {
+          "path": "docs/screenshots/saved-portions.jpg",
+          "sha": "291e7f17039bbe6dc8d55517e056030cd5315e3d",
+          "size": 17096
+        },
+        {
+          "path": "docs/screenshots/settings-mobile.jpg",
+          "sha": "162fbb70e3541b7c4efb9fd8cc43ef00be83e918",
+          "size": 53302
+        },
+        {
+          "path": "docs/screenshots/weekly-share-report.jpg",
+          "sha": "acd08e76a58da69db313f82e45ba25a71702dfe2",
+          "size": 55942
+        },
+        {
+          "path": "docs/screenshots/weight-latest-readings.jpg",
+          "sha": "23d62583facb1e5632ba3f6eef0f1e591fd82a32",
+          "size": 64370
+        },
+        {
+          "path": "docs/screenshots/weight-weekly-trend.jpg",
+          "sha": "1c556fbc686df11aa2b27e7f91d38bc52cfe4743",
+          "size": 43902
+        },
+        {
+          "path": "full-app.html",
+          "sha": "440b18efef35ee7b6bdbeaaf37df734a299b899b",
+          "size": 513923
+        },
+        {
+          "path": "icon-192.svg",
+          "sha": "653f437ba770ae356c0e90cf321dc07d2ca25442",
+          "size": 480
+        },
+        {
+          "path": "icon-512.svg",
+          "sha": "3142f293e148e318953b8d9ec068893fe0f7c35d",
+          "size": 480
+        },
+        {
+          "path": "index.html",
+          "sha": "5c671b1e70f7b972aa612170a65199c4b6dae3a9",
+          "size": 929299
+        },
+        {
+          "path": "manifest.webmanifest",
+          "sha": "305a22376df9f68dd4ed2a16828126b9afbdd8aa",
+          "size": 567
+        },
+        {
+          "path": "prototypes/daily-conflict-recovery.html",
+          "sha": "a991cb649f5ba95e24e20aa270960e87e712df83",
+          "size": 3905
+        },
+        {
+          "path": "prototypes/sync-delete-conflict-preview.html",
+          "sha": "f25deadec40314eefd628a459a6a55643c3e6c9b",
+          "size": 3698
+        },
+        {
+          "path": "scripts/audit-migration.mjs",
+          "sha": "4f5365aab5c56f00e2e3bb5b19df656d5db23546",
+          "size": 1667
+        },
+        {
+          "path": "scripts/backup-integrity.cjs",
+          "sha": "79796241e603684da17e7e1d42af1fe4b513667e",
+          "size": 715
+        },
+        {
+          "path": "scripts/capture-readme-screenshots.cjs",
+          "sha": "29b11000d99fa927fd0c2eb9a9fb362673835196",
+          "size": 7668
+        },
+        {
+          "path": "scripts/conflict-boundary.cjs",
+          "sha": "74631d24f6a70e0d298c1a2f11236060686f053b",
+          "size": 959
+        },
+        {
+          "path": "scripts/conflict-review-queue.cjs",
+          "sha": "b15f2fd67a3ee11d04ce191da890668d7757f52f",
+          "size": 1792
+        },
+        {
+          "path": "scripts/measure-root-startup.cjs",
+          "sha": "c6917687f261ad20fdd38c67ceaa825cee9553eb",
+          "size": 1548
+        },
+        {
+          "path": "scripts/measure-workout-log.cjs",
+          "sha": "5adf5f685337a957aa603c86d307fd4a4cfd7308",
+          "size": 2739
+        },
+        {
+          "path": "scripts/release-ci-gate.cjs",
+          "sha": "877e3f9d94d3d0cc2444d6dd5218b1b628f7d046",
+          "size": 2214
+        },
+        {
+          "path": "scripts/smoke-full-ui.cjs",
+          "sha": "05bd4372f6a3aaaaeac622ae8f58d6d81c0980de",
+          "size": 30616
+        },
+        {
+          "path": "scripts/snapshot-conflict-guard.cjs",
+          "sha": "a5b8eddf03ad83ef944c1b493139ec165f10fdf3",
+          "size": 748
+        },
+        {
+          "path": "scripts/update-ui-catalogue.cjs",
+          "sha": "b9f96718f148407243f229c2f00769e755343cbc",
+          "size": 473
+        },
+        {
+          "path": "scripts/versioned-cas-reference.cjs",
+          "sha": "efb8b1dde9c7426618770f233628b6ecbe3d2e68",
+          "size": 1058
+        },
+        {
+          "path": "supabase/migrations/20261011_daily_history_account_archive.sql",
+          "sha": "cf3d70334f27ff40bdce31b135597fa5742cc840",
+          "size": 861
+        },
+        {
+          "path": "supabase/migrations/20261011_reminder_archive_restore.sql",
+          "sha": "a76af051bd617110fafb60f4defac67ca0e5c1eb",
+          "size": 847
+        },
+        {
+          "path": "supabase/migrations/20261012_revoke_excess_table_privileges.sql",
+          "sha": "cfce7bd4ae1c0fe2a53dffe5ec8e8a3dfcf03877",
+          "size": 1357
+        },
+        {
+          "path": "supabase/proposals/20261012_snapshot_compare_and_swap_NOT_APPLIED.sql",
+          "sha": "c3e530021fc3aef249464119f12576173733f791",
+          "size": 1774
+        },
+        {
+          "path": "supabase/security-grants-verification.sql",
+          "sha": "c98f272162d49f5a346a79c1d3242257c264fac4",
+          "size": 1385
+        },
+        {
+          "path": "sw.js",
+          "sha": "04ed889d69081a2d9d855cbc5a3d5031258068d9",
+          "size": 1442
+        },
+        {
+          "path": "tests/account-pages-snapshot-sync.cjs",
+          "sha": "9b770627fd436c40993d0da1342548fe652b4144",
+          "size": 4560
+        },
+        {
+          "path": "tests/auth-refresh-browser-concurrency.cjs",
+          "sha": "48fb8c53648b858f2c1a2e8bf7fa14db9c11d026",
+          "size": 3966
+        },
+        {
+          "path": "tests/auth-refresh-singleflight.cjs",
+          "sha": "059a41589ff5dece687ccd23fdfb5f06b2c8c527",
+          "size": 1729
+        },
+        {
+          "path": "tests/auth-retry-browser.cjs",
+          "sha": "72a11086c3b6cb55b5712ecb8e1c9cb58b8074b6",
+          "size": 6110
+        },
+        {
+          "path": "tests/backup-download-import-browser.cjs",
+          "sha": "0a0f9f9f01b891a8a75669f5e910e757ec191301",
+          "size": 7319
+        },
+        {
+          "path": "tests/backup-integrity-contract.cjs",
+          "sha": "b57b0d34a901d6efd7e551c95678bd34fd343f2d",
+          "size": 870
+        },
+        {
+          "path": "tests/backup-offline-restore-rehearsal.cjs",
+          "sha": "5e43c7b00f02720a5eda1347491a0e283b3dd4c1",
+          "size": 1196
+        },
+        {
+          "path": "tests/barcode-lazy-library-browser.cjs",
+          "sha": "14d0f8bc86e5f6a20bae78f651df7ea2f3907f86",
+          "size": 4863
+        },
+        {
+          "path": "tests/cas-concurrency-matrix.cjs",
+          "sha": "4fc9a9a923f35defd94f25db7f69b9111957842c",
+          "size": 2503
+        },
+        {
+          "path": "tests/cas-delete-unrelated-edit-acceptance.cjs",
+          "sha": "4b5fe8bb322da6ab21dab5857b929e91a89f97d0",
+          "size": 2061
+        },
+        {
+          "path": "tests/compact-food-navigation-browser.cjs",
+          "sha": "687efc6dee832f221f2604e6b27cfc2a74a46b56",
+          "size": 9462
+        },
+        {
+          "path": "tests/conflict-boundary-contract.cjs",
+          "sha": "50bee1eeb9c7a68f547641d722b18551b763046f",
+          "size": 1965
+        },
+        {
+          "path": "tests/conflict-review-prototype-browser.cjs",
+          "sha": "cfb9f66e8bfaf4e05439e64080b95fb614aeae60",
+          "size": 2575
+        },
+        {
+          "path": "tests/conflict-review-queue-contract.cjs",
+          "sha": "3bdbe0de643b3557a1b87ac380ff49d300a9e826",
+          "size": 2691
+        },
+        {
+          "path": "tests/cross-device-delete-resurrection-regression.cjs",
+          "sha": "bc9d85fdd0f74c73bbdee0059dcb3871afac2ed2",
+          "size": 1669
+        },
+        {
+          "path": "tests/cross-device-safe-rebase-simulation.cjs",
+          "sha": "ccce050e8d9b3fc122b6551ce16b996f5574acec",
+          "size": 2135
+        },
+        {
+          "path": "tests/daily-alarm-dismiss-accessibility.cjs",
+          "sha": "f5b661599636861d65a926de67ee1a92bae8030e",
+          "size": 1574
+        },
+        {
+          "path": "tests/daily-alarm-tab-focus-browser.cjs",
+          "sha": "eae8a9099c44dc23085948ff85d6159019b28b89",
+          "size": 2004
+        },
+        {
+          "path": "tests/daily-concurrent-conflict-regression.cjs",
+          "sha": "681b1a880dde58b06aff955947279a97c41eb782",
+          "size": 1798
+        },
+        {
+          "path": "tests/daily-conflict-mobile-browser.cjs",
+          "sha": "1f4cc8b636e28593c730b4191f3ebf4afd04de7b",
+          "size": 2527
+        },
+        {
+          "path": "tests/daily-conflict-prototype-safety.cjs",
+          "sha": "958b691ad44ce54fbbff79b0427cd5d4b94253ae",
+          "size": 798
+        },
+        {
+          "path": "tests/daily-history-supabase-hydration.cjs",
+          "sha": "504ca0a31fba0de858ab3f2c345fe705c00c2cc0",
+          "size": 7250
+        },
+        {
+          "path": "tests/daily-progress-focus-browser.cjs",
+          "sha": "ca28a2afddae24dd75849d6f881a9aaaf6006c06",
+          "size": 7355
+        },
+        {
+          "path": "tests/database-experiments-paused.cjs",
+          "sha": "abda7f5eece95ffbdc5295bff02bef87c8b11b30",
+          "size": 711
+        },
+        {
+          "path": "tests/diagnostics-redaction-browser.cjs",
+          "sha": "a1366f974b378593c6272cef9632da106de03a94",
+          "size": 3111
+        },
+        {
+          "path": "tests/food-portions-after-refresh-browser.cjs",
+          "sha": "741c4f556c9a511bf5f5cd95f99b760d62b5f853",
+          "size": 3932
+        },
+        {
+          "path": "tests/food-priority-collapse-browser.cjs",
+          "sha": "0cf229e54272d0490ff10e34293e8014b6cd3da7",
+          "size": 5352
+        },
+        {
+          "path": "tests/food-undo-save-status-browser.cjs",
+          "sha": "f4f1311013a9bd70b2d0bb4aba22a1638a39e2ee",
+          "size": 12198
+        },
+        {
+          "path": "tests/food-weight-browsing-browser.cjs",
+          "sha": "8d7a9ae4eeaaa7b138df506cce50ddd05441f309",
+          "size": 6045
+        },
+        {
+          "path": "tests/food-workflow-tools-browser.cjs",
+          "sha": "51b06acce5a90e0e5ace4728f039ce21c924fc33",
+          "size": 12281
+        },
+        {
+          "path": "tests/full-app-daily-alarm-keyboard-browser.cjs",
+          "sha": "9ab2b0466b7b0b9ab84e5b94749d88a01efef2a1",
+          "size": 2845
+        },
+        {
+          "path": "tests/full-app-sync-503-reload-browser.cjs",
+          "sha": "58eb899a9cdb12dae589b22c85902c150dca9272",
+          "size": 3335
+        },
+        {
+          "path": "tests/full-app-two-account-isolation-browser.cjs",
+          "sha": "0f9a0695a402e5eae940bcd2fa0e91adcb55d80f",
+          "size": 3120
+        },
+        {
+          "path": "tests/full-app-two-device-daily-resurrection.cjs",
+          "sha": "5ad322436a6f5c5466e7b1e02ad0995a00986ba7",
+          "size": 4609
+        },
+        {
+          "path": "tests/helpers/browser-engine.cjs",
+          "sha": "480e0be57c58a2c44b23e93a7dd70b2d17070e3c",
+          "size": 246
+        },
+        {
+          "path": "tests/helpers/logout-dialog.cjs",
+          "sha": "015df9d56a5d10f918349c73f1b3660033ab3358",
+          "size": 763
+        },
+        {
+          "path": "tests/helpers/production-snapshot-fixture.cjs",
+          "sha": "a7cb0574d2976ebd4b1a1a48cc1f02fcf700e623",
+          "size": 615
+        },
+        {
+          "path": "tests/home-action-hub-browser.cjs",
+          "sha": "e31dcc8ffa8014a0648970207a471b548431b60a",
+          "size": 4656
+        },
+        {
+          "path": "tests/insights-anatomy-controls-browser.cjs",
+          "sha": "64afa137d24fdeef77c0c35d1b51359019cc58f9",
+          "size": 4338
+        },
+        {
+          "path": "tests/insights-evidence-actions-browser.cjs",
+          "sha": "0e14edf03873720bdb18ff80f32073727ce37f53",
+          "size": 12226
+        },
+        {
+          "path": "tests/insights-panel-recovery-browser.cjs",
+          "sha": "7e009c156154c8234726c114bb67342af7b2885e",
+          "size": 3109
+        },
+        {
+          "path": "tests/legacy-nutrition-settings-restore.cjs",
+          "sha": "347f2fbda68efd68e57dc84059acfb5be84df7ef",
+          "size": 1691
+        },
+        {
+          "path": "tests/live-conflict-draft-export-contract.cjs",
+          "sha": "c9cab030923a7f0413a5497972853eaa77f82502",
+          "size": 918
+        },
+        {
+          "path": "tests/live-conflict-pair-export-contract.cjs",
+          "sha": "2228090a65c212804aa6ecc3dbb911b6b19bbd7d",
+          "size": 1079
+        },
+        {
+          "path": "tests/live-conflict-review-contract.cjs",
+          "sha": "79fa59c78735b25aad168d68fe04f54d4daced63",
+          "size": 753
+        },
+        {
+          "path": "tests/live-snapshot-preflight-contract.cjs",
+          "sha": "29105019a91fa1b5ffbc0f31d2b9fcce255db51f",
+          "size": 1538
+        },
+        {
+          "path": "tests/live-snapshot-runtime-regression.cjs",
+          "sha": "3538bcac779c7f1bed913a2c6bc73030c3fd2005",
+          "size": 3402
+        },
+        {
+          "path": "tests/live-sync-release-classifier.cjs",
+          "sha": "3424a0e1e9fb2cf601a5b4fd5fd2f979d33022bc",
+          "size": 1114
+        },
+        {
+          "path": "tests/locked-workspace-refresh-browser.cjs",
+          "sha": "b843a8251dce554620c3634245eff57c55f3fa1a",
+          "size": 1551
+        },
+        {
+          "path": "tests/login-imported-archive-regression.cjs",
+          "sha": "dde5ccb9fe3698d2cdd8b3d9461af12229b7885f",
+          "size": 4514
+        },
+        {
+          "path": "tests/login-optional-render-recovery.cjs",
+          "sha": "f183097cd5f6dd13403fca769f2ffffa5e7d0e2b",
+          "size": 1210
+        },
+        {
+          "path": "tests/logout-dialog-policy-browser.cjs",
+          "sha": "42d6771e89ddf4b5fb7617a6c11686ad1d4d0d9e",
+          "size": 1549
+        },
+        {
+          "path": "tests/mobile-all-pages-design-browser.cjs",
+          "sha": "7a1d594d6b48e1d6e5f92bad3639c43ff6c281b9",
+          "size": 8884
+        },
+        {
+          "path": "tests/mobile-barcode-keyboard-rtl-browser.cjs",
+          "sha": "fe8b7b3cebf54c642dca8dd59be7e9a82bda1c63",
+          "size": 6799
+        },
+        {
+          "path": "tests/mobile-motion-anatomy-accessibility.cjs",
+          "sha": "6ade739ae1e6e3d61e4c16e13c4960b4c797a941",
+          "size": 5122
+        },
+        {
+          "path": "tests/mobile-settings-insights-regression.cjs",
+          "sha": "bb680cb8709117c68f5fc3a98fc943ee4410fbb9",
+          "size": 1155
+        },
+        {
+          "path": "tests/navigation-current-page-browser.cjs",
+          "sha": "3bd6a6d9b0c6c035cd89529a30cbfc67d85f75e6",
+          "size": 2780
+        },
+        {
+          "path": "tests/offline-delete-replay-contract.cjs",
+          "sha": "dc4593bede2c1dd8e0350731d21172fab2f1412f",
+          "size": 1611
+        },
+        {
+          "path": "tests/offline-reconnect-browser-contract.cjs",
+          "sha": "b059f3c64fad04f09f7d88539fd4851a9c16d8cb",
+          "size": 1949
+        },
+        {
+          "path": "tests/offline-same-record-conflict-contract.cjs",
+          "sha": "5b2ab9f76257a434065f85e75f867d462325d8dd",
+          "size": 1624
+        },
+        {
+          "path": "tests/offline-upload-failure-reload-browser.cjs",
+          "sha": "519baf972deb3e07df882ec54fd35f9581e74eea",
+          "size": 1460
+        },
+        {
+          "path": "tests/postgres-cas-concurrency.py",
+          "sha": "fffa0d5632022c1ff3814f1207543e48752e26f7",
+          "size": 2507
+        },
+        {
+          "path": "tests/postgres-cas-isolated.sql",
+          "sha": "aebe80f53d365b3fa75405c89ee42e5aa7ad83f6",
+          "size": 3408
+        },
+        {
+          "path": "tests/postgres-owner-cas-acceptance.py",
+          "sha": "bf366229ae1b40751f0a69f7aed3d7e2d02269bd",
+          "size": 11065
+        },
+        {
+          "path": "tests/postgres-owner-cas-fixture.sql",
+          "sha": "20b6d8cbe15cce007a322927ced28e8001f30547",
+          "size": 3453
+        },
+        {
+          "path": "tests/postgres-owner-cas-guard.py",
+          "sha": "289ac9cd2bd7598a5348d9671538d3bced0a539f",
+          "size": 1903
+        },
+        {
+          "path": "tests/practical-weekly-progress-browser.cjs",
+          "sha": "391cc3db27122c4c51b8099e55d9ba73a96ba7c8",
+          "size": 7976
+        },
+        {
+          "path": "tests/production-flush-chromium-contract.cjs",
+          "sha": "4fe3e17e01ba9a9690f856c953189fcd50a76b82",
+          "size": 3879
+        },
+        {
+          "path": "tests/production-flush-failure-retry-contract.cjs",
+          "sha": "d1a00f70091914f995a1d6a09005b6b999638bc8",
+          "size": 3599
+        },
+        {
+          "path": "tests/production-pending-snapshot-contract.cjs",
+          "sha": "9c37afa2e11898049ef869a394ab06c8069c781d",
+          "size": 1842
+        },
+        {
+          "path": "tests/production-stale-snapshot-release-gate.cjs",
+          "sha": "834f725609dbece960c709d51bd85954ee90ac54",
+          "size": 1504
+        },
+        {
+          "path": "tests/production-sync-retry-backoff.cjs",
+          "sha": "137fd5ff226ac8dbc8fa90c9f44dabd23e34a542",
+          "size": 1549
+        },
+        {
+          "path": "tests/progressx-brand-contract.cjs",
+          "sha": "dd2d83434ed986cfc482f60b8c32f2380ea930af",
+          "size": 868
+        },
+        {
+          "path": "tests/pwa-install-permission-recovery-browser.cjs",
+          "sha": "a2a2afdc2d0b9dbd2363dd1200e457f3a8f15da2",
+          "size": 5078
+        },
+        {
+          "path": "tests/pwa-offline-shell-browser.cjs",
+          "sha": "dc8de7e6eab180c73b77b5bb3592df56c3bcc9c1",
+          "size": 1369
+        },
+        {
+          "path": "tests/pwa-shell-cache-contract.cjs",
+          "sha": "425beb2634317b736f5076aba45d12653901cf63",
+          "size": 2865
+        },
+        {
+          "path": "tests/pwa-update-failure-browser.cjs",
+          "sha": "5d583ecca2505d2fce160bb81ad1cc0fb18d0957",
+          "size": 5723
+        },
+        {
+          "path": "tests/release-ci-gate.cjs",
+          "sha": "e05dfeb7a8661075b0f46a3e2333feecbbaf5249",
+          "size": 2699
+        },
+        {
+          "path": "tests/release-ci-workflow-contract.cjs",
+          "sha": "f63d2ede22e59e3caba225a1eaa0e77f69228a13",
+          "size": 1529
+        },
+        {
+          "path": "tests/release-version-changelog.cjs",
+          "sha": "4921fe2b38d855e5a602fa2f55546875d14e5e56",
+          "size": 1281
+        },
+        {
+          "path": "tests/security-migration-safety.cjs",
+          "sha": "3ac0da317f06184f1fc4d6963de1c246e44530c7",
+          "size": 1176
+        },
+        {
+          "path": "tests/session-drafts-repeat-meals-browser.cjs",
+          "sha": "f39b096584e953ea1b3bcbcca387f2358c9041d8",
+          "size": 9656
+        },
+        {
+          "path": "tests/session-mixed-performance-browser.cjs",
+          "sha": "01db277a061bc7821e4b9748eeb95ef23ac9afe2",
+          "size": 5238
+        },
+        {
+          "path": "tests/settings-language-pages-browser.cjs",
+          "sha": "c218567fcdf31944dfd5605fe768b0b80327f8e5",
+          "size": 5433
+        },
+        {
+          "path": "tests/simple-insights-coaching-browser.cjs",
+          "sha": "0718b1f17676ec928e70fe780493828650e017dd",
+          "size": 7428
+        },
+        {
+          "path": "tests/snapshot-cas-contract-simulation.cjs",
+          "sha": "824f81c5e0b3dd65c0bf9614e491596aaca40c34",
+          "size": 2482
+        },
+        {
+          "path": "tests/snapshot-cas-proposal-safety.cjs",
+          "sha": "5979651fd1da692bd1ebf0e3c951d1293d5611a9",
+          "size": 808
+        },
+        {
+          "path": "tests/snapshot-cas-transition-contract.cjs",
+          "sha": "e79073ff950dae74dc67188f90b5bd2b7f7e9dca",
+          "size": 1833
+        },
+        {
+          "path": "tests/snapshot-conflict-guard-contract.cjs",
+          "sha": "bd7868cc7a40c5ddcaf40fc3a551ba28c358e330",
+          "size": 1365
+        },
+        {
+          "path": "tests/snapshot-conflict-guard-reload-contract.cjs",
+          "sha": "110e8b69b3d8bc9114ecb6ecd8577fc03bd104a7",
+          "size": 1912
+        },
+        {
+          "path": "tests/sync-commercial-release-gate.cjs",
+          "sha": "7b20464fbc69737c1c71ac439ace5083a94b6050",
+          "size": 1678
+        },
+        {
+          "path": "tests/sync-delete-conflict-preview-browser.cjs",
+          "sha": "c72426f36b4782524614f35ec8b9dcc0a51c74ca",
+          "size": 2331
+        },
+        {
+          "path": "tests/sync-delete-resolution-api-contract.cjs",
+          "sha": "a509cbf0aadcbd74b9026976e1f664724178cf54",
+          "size": 2188
+        },
+        {
+          "path": "tests/training-day-manager-browser.cjs",
+          "sha": "472ce3bd6c2e76fce590240dd8a151fdbb72d076",
+          "size": 8794
+        },
+        {
+          "path": "tests/two-account-pending-isolation-contract.cjs",
+          "sha": "490ad44ff739ad73dc0c053b863b56915c2f406f",
+          "size": 1753
+        },
+        {
+          "path": "tests/two-context-pending-recovery-browser.cjs",
+          "sha": "2edd330fb6d707f4f50f5c086414391c489e8184",
+          "size": 4064
+        },
+        {
+          "path": "tests/ui-language-catalogue.cjs",
+          "sha": "0acdaf7a603c697d4346169865fe8479e3d9d8d3",
+          "size": 1772
+        },
+        {
+          "path": "tests/v3-backup-restore-runtime.cjs",
+          "sha": "43dc6f4011d5395160a6412aea85fe282cb5a73d",
+          "size": 4186
+        },
+        {
+          "path": "tests/v3-mobile-diary-browser.cjs",
+          "sha": "e32d9608d2cd76a2544f11b539f4c4d395eec752",
+          "size": 6751
+        },
+        {
+          "path": "tests/v3-structured-session-contract.cjs",
+          "sha": "d7f5328dbb9941c29ac8340d1ffc9bbc1e50a974",
+          "size": 1905
+        },
+        {
+          "path": "tests/versioned-cas-reference-contract.cjs",
+          "sha": "a15d2cbbe7f9d2caaa023dcd6f2ddba2410858d4",
+          "size": 1471
+        },
+        {
+          "path": "tests/weekly-weight-usual-foods-browser.cjs",
+          "sha": "3285a6fbc998003cd0b5587084cd2264d137ff35",
+          "size": 10023
+        },
+        {
+          "path": "tests/weight-table-bridge.cjs",
+          "sha": "edd80554c90b1157aa2af030169b886384369717",
+          "size": 2326
+        },
+        {
+          "path": "tests/workout-chronology-deload-contract.cjs",
+          "sha": "deaeb68298be01e2b67359aa5f7826eb34509b03",
+          "size": 4923
+        },
+        {
+          "path": "tests/workout-empty-training-day.cjs",
+          "sha": "a40865a2f4e7cd7840e08473176c465fb8ff2f0b",
+          "size": 3651
+        },
+        {
+          "path": "tests/workout-history-login-regression.cjs",
+          "sha": "a27729a4047e8b166a653bd7551ef46413f58c4a",
+          "size": 1240
+        },
+        {
+          "path": "tests/workout-log-incremental-browser.cjs",
+          "sha": "e4dbe64285b50971fc649f0d367029691cc6342f",
+          "size": 3894
+        },
+        {
+          "path": "tests/workout-log-keyboard-browser.cjs",
+          "sha": "cbf71c6dd7cba518c899048d7ab52f8c00c213ac",
+          "size": 3412
+        },
+        {
+          "path": "tests/workout-schedule-table-mirror.cjs",
+          "sha": "4caf9ea8537806a13aa3113a239f49da44265290",
+          "size": 10025
+        },
+        {
+          "path": "tests/workout-supabase-table.cjs",
+          "sha": "6fd7db56eb7e11f1aff49579d8767b8c622e214b",
+          "size": 2622
+        },
+        {
+          "path": "tests/workout-sync-noop-regression.cjs",
+          "sha": "4113a2aec2e5e7c098447cff83139e34aaa91ac6",
+          "size": 889
+        }
+      ],
+      "reportedHeadSha": "6b1813e9edbe7772c4a447610ae2195bd316fa3e"
+    },
+    {
+      "repository": "3bHussein/Whoop-Intelligence-",
+      "truncated": false,
+      "files": [
+        {
+          "path": ".github/workflows/pages.yml",
+          "sha": "e224346e5a907e965cc512e3def01ad972829d12",
+          "size": 955
+        },
+        {
+          "path": ".github/workflows/verify.yml",
+          "sha": "4955b99df61667f8f22ff205f5753ec92190d4c1",
+          "size": 533
+        },
+        {
+          "path": ".gitignore",
+          "sha": "f074edbeaf523e825ad267b4b15f56b8a33ec55f",
+          "size": 47
+        },
+        {
+          "path": "README.md",
+          "sha": "6d280d6e177072559f4c28148878c334956f14a6",
+          "size": 13290
+        },
+        {
+          "path": "analysis.html",
+          "sha": "2253b1455d0ab29a742b4c05522886958762775d",
+          "size": 1673
+        },
+        {
+          "path": "assets/analytics.js",
+          "sha": "2a223e6c54f80fd79e32bef787f36c556cf8183a",
+          "size": 7821
+        },
+        {
+          "path": "assets/daily-story.js",
+          "sha": "1d68b9b61df27d177d305d471beddd4e51513aad",
+          "size": 8066
+        },
+        {
+          "path": "assets/dashboard.css",
+          "sha": "2d1f6a9d7e29c3df4f26bb9749e014cd84993f68",
+          "size": 12540
+        },
+        {
+          "path": "assets/dashboard.js",
+          "sha": "eb113ad8d4ea679df53f0eca31fe7e6785736908",
+          "size": 29800
+        },
+        {
+          "path": "assets/glossary.js",
+          "sha": "e302629d4834efdd3e75294ca16cfa0e8cddf196",
+          "size": 5650
+        },
+        {
+          "path": "assets/i18n.js",
+          "sha": "2e2ac913f3d6db0365071401a2a0ad5a5df3b034",
+          "size": 16803
+        },
+        {
+          "path": "assets/meaning.js",
+          "sha": "6f8c913993cffaa8ff339f739b3e89ae18b7810a",
+          "size": 16390
+        },
+        {
+          "path": "assets/patterns.js",
+          "sha": "060e66b13bdc1484c076f4f68c6cd59ea5346b11",
+          "size": 3174
+        },
+        {
+          "path": "assets/period-story.js",
+          "sha": "6370d762fd1a73cc0448bd3c5ff2619762d9e9cd",
+          "size": 7081
+        },
+        {
+          "path": "assets/personal-guide.js",
+          "sha": "2543942c5d8eec80c71d52ac1ca7c92077f9ccdc",
+          "size": 7010
+        },
+        {
+          "path": "assets/presentation.js",
+          "sha": "7f9593830ee3b0ac5fa220186258474a155d591d",
+          "size": 627
+        },
+        {
+          "path": "assets/reports.js",
+          "sha": "9749cfc03c7c9037d56889c698a93b234ae03312",
+          "size": 1589
+        },
+        {
+          "path": "data.html",
+          "sha": "8169d63c8d7c0a765c5499bd3695baeee692b50e",
+          "size": 6773
+        },
+        {
+          "path": "docs/ANALYTICS-ROADMAP.md",
+          "sha": "fcbda44641c32aa3cd64ef1cd09984567c856e14",
+          "size": 24881
+        },
+        {
+          "path": "docs/DEVELOPMENT-LOG.md",
+          "sha": "fe257d9f989288507633c7d944d943089ebc83e0",
+          "size": 35955
+        },
+        {
+          "path": "docs/SECURITY-REVIEW.md",
+          "sha": "47828092c0021ebf646ab4e1215cded66aa256f9",
+          "size": 3971
+        },
+        {
+          "path": "index.html",
+          "sha": "13d1eae47967ac04810c8d46f2b21039c1c6d812",
+          "size": 5647
+        },
+        {
+          "path": "package-lock.json",
+          "sha": "e2cd101882abfb2dcb84293f74dc68df739219fe",
+          "size": 2196
+        },
+        {
+          "path": "package.json",
+          "sha": "c0e3fe3e97ce51ae36c1c2a0a7ed0c7bd24dd8b1",
+          "size": 199
+        },
+        {
+          "path": "privacy.html",
+          "sha": "19f0c5674c28d022641e19068da6499c7a4d51e0",
+          "size": 6419
+        },
+        {
+          "path": "reports.html",
+          "sha": "a9f13730c0c3ede107f8879dafcdccd48927e4c2",
+          "size": 322
+        },
+        {
+          "path": "supabase/functions/_shared/protocol.js",
+          "sha": "32442259c085ecf6237095f5b70e6264cbb9142c",
+          "size": 2544
+        },
+        {
+          "path": "supabase/functions/whoop-account/index.ts",
+          "sha": "ecc490d38bd6d57de680eb05a92a5ddc1dfa1940",
+          "size": 4550
+        },
+        {
+          "path": "supabase/functions/whoop-callback/index.ts",
+          "sha": "a1f90144e3ddd8eaeb1a1fbeb9357c3b879807eb",
+          "size": 3606
+        },
+        {
+          "path": "supabase/functions/whoop-data/index.ts",
+          "sha": "f1390788bd756ebcf91ec46c156f2883e919ac22",
+          "size": 9124
+        },
+        {
+          "path": "supabase/functions/whoop-start/index.ts",
+          "sha": "ec2bf6f0384d62d54f5815ce682b776d2e3d23c4",
+          "size": 2526
+        },
+        {
+          "path": "supabase/migrations/20261018145719_whoop_sync_run_monitoring.sql",
+          "sha": "bb91bd1ae845950e3916848dd89fe49638508359",
+          "size": 781
+        },
+        {
+          "path": "tests/analytics.test.mjs",
+          "sha": "5023f840f7d42202eaf8ee90fe34a99a3980e940",
+          "size": 3714
+        },
+        {
+          "path": "tests/browser.mjs",
+          "sha": "bfe2afa46aa9a40e8183568afaf89882112e719d",
+          "size": 13929
+        },
+        {
+          "path": "tests/daily-story.test.mjs",
+          "sha": "11a1b4bfe33fd937d30f90aa75990597f87d1212",
+          "size": 3944
+        },
+        {
+          "path": "tests/edge.test.mjs",
+          "sha": "3d983d5bd0b68d5590c3ac1cb8d1a9e240fda592",
+          "size": 4373
+        },
+        {
+          "path": "tests/fixtures.mjs",
+          "sha": "e599b23faef1c8d4c31372f34d004d7de9cb302a",
+          "size": 910
+        },
+        {
+          "path": "tests/glossary.test.mjs",
+          "sha": "919f9c9a08383351a9bc5eb3ac2573d2c750434d",
+          "size": 1034
+        },
+        {
+          "path": "tests/helpers/edge.mjs",
+          "sha": "e4fce46dae80c60e6c7185c34eacc17ee1e79656",
+          "size": 778
+        },
+        {
+          "path": "tests/isolation.test.mjs",
+          "sha": "48f52b43e13c169d0707017d6e63750300d6febd",
+          "size": 7853
+        },
+        {
+          "path": "tests/meaning.test.mjs",
+          "sha": "d71a4abe114cb9b9b2063487d549de9ab5d61210",
+          "size": 3070
+        },
+        {
+          "path": "tests/patterns.test.mjs",
+          "sha": "da7ab1a62efe5ac84748e42f6c34d227e6003f3f",
+          "size": 1373
+        },
+        {
+          "path": "tests/period-story.test.mjs",
+          "sha": "3d842493174150aed770d0ccc9b382e8949f516f",
+          "size": 2968
+        },
+        {
+          "path": "tests/personal-guide.test.mjs",
+          "sha": "3104c1bc0c04d3ed69be46bce9f632dcdfd2e995",
+          "size": 2210
+        },
+        {
+          "path": "tests/presentation.test.mjs",
+          "sha": "0ef6982943824e83fb8d0b310c958ec0989ae683",
+          "size": 1650
+        },
+        {
+          "path": "tests/protocol.test.mjs",
+          "sha": "66343b7cb74efcab430b45ede76fbb0f680167d5",
+          "size": 2375
+        },
+        {
+          "path": "tests/refresh-flow.test.mjs",
+          "sha": "9030a4f8ba35fc61f127b57fa518fd6748132bcb",
+          "size": 3782
+        },
+        {
+          "path": "tests/reports.test.mjs",
+          "sha": "25a7f09827e5584aab4af1f87845ae14c5834b6f",
+          "size": 2818
+        }
+      ],
+      "reportedHeadSha": "7aa18a0b03e13a254a83e777e56d43f661c357af"
+    },
+    {
+      "repository": "3bHussein/Week-Timesheet-Manager",
+      "truncated": false,
+      "files": [
+        {
+          "path": ".github/workflows/screenshots.yml",
+          "sha": "b8073f35f003e09013887cb2bd4b5499ff416dcc",
+          "size": 1734
+        },
+        {
+          "path": "README.md",
+          "sha": "c8e8ddd0e76945da010061a74297dff8730c047f",
+          "size": 8514
+        },
+        {
+          "path": "apps-script/App.html",
+          "sha": "195f9d86cc45d3fdf0fdaeeb28cb861d459b9807",
+          "size": 93808
+        },
+        {
+          "path": "apps-script/Code.gs",
+          "sha": "2690b8f2c53b3a320317ff6d1fcf439d94529eaa",
+          "size": 8393
+        },
+        {
+          "path": "docs/V2-ACCEPTANCE-TESTS.md",
+          "sha": "62ffb0e5e334496b89890e62ba3eb92b9239e35d",
+          "size": 5087
+        },
+        {
+          "path": "docs/V2-RELEASE-HANDOVER.md",
+          "sha": "57b5910ccf36d1eb873abf6c4addb9f82501a9da",
+          "size": 2338
+        },
+        {
+          "path": "docs/preview-dashboard.svg",
+          "sha": "450713f5bca3f3c5781003ee91e2473dab2dbac3",
+          "size": 3110
+        },
+        {
+          "path": "docs/preview-tasks.svg",
+          "sha": "a10b5a5903d66349d3cfba5477243af5d4646016",
+          "size": 2520
+        },
+        {
+          "path": "index.html",
+          "sha": "8a7c2a11926452f4351ae7ea3818579254a398c1",
+          "size": 29371
+        }
+      ],
+      "reportedHeadSha": "866bc7ed024d659bca619f6ed7cc7b59502352c9"
+    },
+    {
+      "repository": "3bHussein/Project-Factory-AI",
+      "truncated": false,
+      "files": [
+        {
+          "path": ".github/ISSUE_TEMPLATE/project-request.yml",
+          "sha": "3f7e03ee917892e229ce1ffc59f3b65ef605b6ca",
+          "size": 1474
+        },
+        {
+          "path": ".github/workflows/agent-output.yml",
+          "sha": "3ac06fa24d8a1f01485fe9142cbfe698ae86d239",
+          "size": 943
+        },
+        {
+          "path": ".github/workflows/agent-readiness.yml",
+          "sha": "5b609cd55f3a9d81797efc62e6cb8d04b862cb9f",
+          "size": 821
+        },
+        {
+          "path": ".github/workflows/daily.yml",
+          "sha": "7a80a727479ce1ff3b03771745f329e28268623f",
+          "size": 1011
+        },
+        {
+          "path": ".github/workflows/generate-starter.yml",
+          "sha": "0c2dab6e145c8a4cbe95e7182b5032b7d3014dc3",
+          "size": 1599
+        },
+        {
+          "path": ".github/workflows/pages.yml",
+          "sha": "849c9c28a1fc5d4b06e4f698cfc0dc4821d3d449",
+          "size": 752
+        },
+        {
+          "path": ".github/workflows/project-requests.yml",
+          "sha": "5d5ce6253b8c67013afe32dda8e9c2b797d479a8",
+          "size": 1159
+        },
+        {
+          "path": ".github/workflows/quality.yml",
+          "sha": "9fabea341d757f9bd5be1d25c84889cda51f18e9",
+          "size": 1264
+        },
+        {
+          "path": ".github/workflows/validate-agent-jobs.yml",
+          "sha": "71dd58249796f0b74aa0f4d85b7ff14651ab1cdd",
+          "size": 910
+        },
+        {
+          "path": ".gitignore",
+          "sha": "6c1f165e22c0f202d728a8f41b02b91dda877eb2",
+          "size": 60
+        },
+        {
+          "path": "ARCHITECTURE.md",
+          "sha": "9644e8cfa8b4d301733c328a40d69eaf19a3b03f",
+          "size": 371
+        },
+        {
+          "path": "CHANGELOG.md",
+          "sha": "35f992e32de7659ba9f1e17d646108c6127a8b7e",
+          "size": 270
+        },
+        {
+          "path": "COMPATIBILITY.md",
+          "sha": "ec6495846e9abfcc0e74d557cd84784572ed3e22",
+          "size": 441
+        },
+        {
+          "path": "DECISIONS.md",
+          "sha": "bacd710efcb0e43fddceb7cd17bd2c179362cc44",
+          "size": 452
+        },
+        {
+          "path": "DEVELOPMENT-LOG.md",
+          "sha": "0b4d4faa94387592dce0d93f80fcc6274f0b08c3",
+          "size": 1250
+        },
+        {
+          "path": "HANDOVER.md",
+          "sha": "2354d9ff008da8e04c2a79d8f2125391646e5eed",
+          "size": 754
+        },
+        {
+          "path": "PROJECT-REGISTRY.json",
+          "sha": "b07d4acc860e31417bcd9bd22ddb8b6457f69c2f",
+          "size": 147
+        },
+        {
+          "path": "PROJECT-STATE.md",
+          "sha": "3836c05d1502a99b466e342c33ab7af57a631f85",
+          "size": 831
+        },
+        {
+          "path": "README.md",
+          "sha": "452be7cf72d79a8c703c664e4fc8920db732a299",
+          "size": 5603
+        },
+        {
+          "path": "TEST-REPORT.md",
+          "sha": "327780f3870a8ce85c6cbd19395b8fcf6e4bd510",
+          "size": 326
+        },
+        {
+          "path": "automation-runs/README.md",
+          "sha": "eeecdf4950cb24f6891c2855152e63816d618d79",
+          "size": 217
+        },
+        {
+          "path": "dashboard/builder.html",
+          "sha": "d68d346243d18f9410d89529361bdc07feb8aa08",
+          "size": 9787
+        },
+        {
+          "path": "dashboard/index.html",
+          "sha": "1e6eb77f6d7ae04bd22e946ceb9340c46197ac8b",
+          "size": 5920
+        },
+        {
+          "path": "docs/AUTOMATION-SETUP.md",
+          "sha": "fdd819a108afc58b95222bc2ebe1b83699e6da1e",
+          "size": 2050
+        },
+        {
+          "path": "docs/LOCAL-CODING-AGENT.md",
+          "sha": "c35085a9f15e2d5e65e6b7593d2ae40d8f62f456",
+          "size": 1418
+        },
+        {
+          "path": "docs/MILESTONE-4-AUTONOMOUS-BUILDER.md",
+          "sha": "affbd9ca091610c26429e4758fdbd63ca57dfbfd",
+          "size": 2112
+        },
+        {
+          "path": "docs/PROJECT-GENERATOR.md",
+          "sha": "975bf2a5952d2d89bb7dee3ab8dc545f257ffa4d",
+          "size": 1024
+        },
+        {
+          "path": "docs/REQUEST-A-PROJECT.md",
+          "sha": "7339955ff970476e22c32e717fa9876332814518",
+          "size": 1613
+        },
+        {
+          "path": "docs/STARTER-WORKFLOW.md",
+          "sha": "062696de2010b6c14d4bbab86fa3297980665004",
+          "size": 1150
+        },
+        {
+          "path": "ideas/backlog.json",
+          "sha": "3a05bd9ffd28a4c2c316377f1d56606f2e167e98",
+          "size": 3636
+        },
+        {
+          "path": "projects/hash-verify/API.md",
+          "sha": "08a3ef61270d3eb188100b04d07fec7c5e6c343a",
+          "size": 424
+        },
+        {
+          "path": "projects/hash-verify/ARCHITECTURE.md",
+          "sha": "df7af2645a6a32ea396f8c0d1546c0102f297efe",
+          "size": 362
+        },
+        {
+          "path": "projects/hash-verify/CHANGELOG.md",
+          "sha": "e42756a2bf638381a45d2ea6d77220a37296d41a",
+          "size": 306
+        },
+        {
+          "path": "projects/hash-verify/DEVELOPMENT-LOG.md",
+          "sha": "22d0c05127ebcb2ab7e481e29498a1007b1ba654",
+          "size": 381
+        },
+        {
+          "path": "projects/hash-verify/HANDOVER.md",
+          "sha": "3b5ac46ce64e0e02eafe02ae79f91feb5e1819cc",
+          "size": 411
+        },
+        {
+          "path": "projects/hash-verify/INSTALLATION.md",
+          "sha": "b8f628905c0a0e13712efa0ae3f487749091c021",
+          "size": 307
+        },
+        {
+          "path": "projects/hash-verify/README.md",
+          "sha": "5fc8b75df2bb9a22826a132fc3ffcfb66455ce71",
+          "size": 518
+        },
+        {
+          "path": "projects/hash-verify/SECURITY.md",
+          "sha": "715ca0be19fc98029c75c81eb53aa353c13b5443",
+          "size": 424
+        },
+        {
+          "path": "projects/hash-verify/TEST-REPORT.md",
+          "sha": "b3a70109d5b1332f8d01e17669ad0b3d8e6e7fac",
+          "size": 405
+        },
+        {
+          "path": "projects/hash-verify/USER-GUIDE.md",
+          "sha": "2d153a24eae69e8e7142741797c2522248ec0a0a",
+          "size": 431
+        },
+        {
+          "path": "projects/hash-verify/hash_verify.py",
+          "sha": "f30141bad22f9200ed41eb8e566a1d05c5bf9677",
+          "size": 2203
+        },
+        {
+          "path": "projects/hash-verify/tests/test_hash_verify.py",
+          "sha": "071bb3982708532ac5c6412a819b61170329389c",
+          "size": 1696
+        },
+        {
+          "path": "projects/log-analyzer/API.md",
+          "sha": "6156d9a0edbc6eaabc917327f8b1ca8c8639ab9a",
+          "size": 316
+        },
+        {
+          "path": "projects/log-analyzer/ARCHITECTURE.md",
+          "sha": "19892bd9aa0ccbc2f3c808c1f47a64e2d019c745",
+          "size": 315
+        },
+        {
+          "path": "projects/log-analyzer/CHANGELOG.md",
+          "sha": "f3bfb0fcc1e773a4bbc9f6ab0bc99b62de8efe9a",
+          "size": 261
+        },
+        {
+          "path": "projects/log-analyzer/DEVELOPMENT-LOG.md",
+          "sha": "41210dc9fbd7b6265b7fb76abb217819830fc581",
+          "size": 345
+        },
+        {
+          "path": "projects/log-analyzer/HANDOVER.md",
+          "sha": "d8649ab13b0bb8cf6ebb6f27010c3d870985c282",
+          "size": 389
+        },
+        {
+          "path": "projects/log-analyzer/INSTALLATION.md",
+          "sha": "43284b673db4c5f174864240263529e80a7861db",
+          "size": 267
+        },
+        {
+          "path": "projects/log-analyzer/README.md",
+          "sha": "5d614c00328346c0805c337f50c766020b12d6fd",
+          "size": 379
+        },
+        {
+          "path": "projects/log-analyzer/SECURITY.md",
+          "sha": "6a531e39e8771f07e3d5c8815ba9a16272cde35e",
+          "size": 368
+        },
+        {
+          "path": "projects/log-analyzer/TEST-REPORT.md",
+          "sha": "1259c760da4cf074d41e44c42518ed0437e5516f",
+          "size": 350
+        },
+        {
+          "path": "projects/log-analyzer/USER-GUIDE.md",
+          "sha": "7d8dff63e9e8c2517ea05c9300066853be717f4c",
+          "size": 404
+        },
+        {
+          "path": "projects/log-analyzer/log_analyzer.py",
+          "sha": "5e83d5f04ea418fec5d86b77d5fba61c6fb27566",
+          "size": 3158
+        },
+        {
+          "path": "projects/log-analyzer/tests/test_log_analyzer.py",
+          "sha": "fbad6773a8e2d07b662753f526a9f5eedffa220d",
+          "size": 1595
+        },
+        {
+          "path": "projects/port-inspector/API.md",
+          "sha": "1c656637b91730dcb2909169edb59943d7dadd89",
+          "size": 403
+        },
+        {
+          "path": "projects/port-inspector/ARCHITECTURE.md",
+          "sha": "f5744b390870243814de38dcd5e83c32397e9b17",
+          "size": 379
+        },
+        {
+          "path": "projects/port-inspector/CHANGELOG.md",
+          "sha": "119a682acaf01fefb010ce8daca0f1612228ca68",
+          "size": 317
+        },
+        {
+          "path": "projects/port-inspector/DEVELOPMENT-LOG.md",
+          "sha": "727f9e3d187878894e890a0f2e5e3f6145134fd9",
+          "size": 436
+        },
+        {
+          "path": "projects/port-inspector/HANDOVER.md",
+          "sha": "ccd1d44a810b144cf3e30767451bdb2c29c3fa27",
+          "size": 492
+        },
+        {
+          "path": "projects/port-inspector/INSTALLATION.md",
+          "sha": "fe45b434cbf7d35a7e21a92268a2cadd11de1aa8",
+          "size": 405
+        },
+        {
+          "path": "projects/port-inspector/README.md",
+          "sha": "ab13b9511902f775f5755ea3ad666af45902967e",
+          "size": 684
+        },
+        {
+          "path": "projects/port-inspector/SECURITY.md",
+          "sha": "e38d5f0dec2a3bf5793ec10f5e24d444469a257f",
+          "size": 460
+        },
+        {
+          "path": "projects/port-inspector/TEST-REPORT.md",
+          "sha": "84e43f896f0b8cad4bdb36b749851ebf9a133b97",
+          "size": 321
+        },
+        {
+          "path": "projects/port-inspector/USER-GUIDE.md",
+          "sha": "e42de374b5d8530c48bd4eeb840684048310c0b4",
+          "size": 417
+        },
+        {
+          "path": "projects/port-inspector/port_inspector.py",
+          "sha": "947dd04558a6ded41918f63c80f51eb8a2e351ad",
+          "size": 3203
+        },
+        {
+          "path": "projects/port-inspector/run-linux.sh",
+          "sha": "176dc7eae80b874a3a634ed1c953242569060a45",
+          "size": 85
+        },
+        {
+          "path": "projects/port-inspector/run-windows.bat",
+          "sha": "50d455b4175ad810cac4ba258eaa300cb3876dbf",
+          "size": 58
+        },
+        {
+          "path": "projects/port-inspector/tests/test_port_inspector.py",
+          "sha": "0cdc488cfe4663d322b9b1b64ea6501f5488ec7b",
+          "size": 1246
+        },
+        {
+          "path": "scripts/agent_job_manifest.py",
+          "sha": "e232c9b01187c81c0bb6124d06367256d425f5db",
+          "size": 1704
+        },
+        {
+          "path": "scripts/agent_output_gate.py",
+          "sha": "6c78aa243f7f61dc16847949d3353e2bbbea8e3e",
+          "size": 1563
+        },
+        {
+          "path": "scripts/daily.py",
+          "sha": "af04098d6b782a4346fb8937b55fd9cea29254ab",
+          "size": 1616
+        },
+        {
+          "path": "scripts/generate_project.py",
+          "sha": "0cd7081abc095380c8a9a26cf48bae04dab6be38",
+          "size": 6158
+        },
+        {
+          "path": "scripts/issue_to_spec.py",
+          "sha": "082672ac20d3132ec9236e52d657a4f7f19217ca",
+          "size": 2196
+        },
+        {
+          "path": "scripts/local_ollama_agent.py",
+          "sha": "af6108aea6af21019c04c7fe0868cbfd2e74060a",
+          "size": 4427
+        },
+        {
+          "path": "scripts/setup-local-agent.ps1",
+          "sha": "c4de772c407af54027e8499d7b4d56fed1e5ca00",
+          "size": 920
+        },
+        {
+          "path": "scripts/setup-local-agent.sh",
+          "sha": "6b6bcd2f2921bd7628ba72f7a56b6d4f12541d96",
+          "size": 482
+        },
+        {
+          "path": "scripts/validate_agent_job.py",
+          "sha": "92377bf1111b0470ebfe580a63232d1c0179a39b",
+          "size": 2187
+        },
+        {
+          "path": "scripts/validate_projects.py",
+          "sha": "c229d43296edabdf36d0ea24fb0fb57e6c465f35",
+          "size": 1438
+        },
+        {
+          "path": "tests/test_agent_job_manifest.py",
+          "sha": "c176f5e27c9c341e644fb41571f44e13a9ee6ffb",
+          "size": 987
+        },
+        {
+          "path": "tests/test_agent_output_gate.py",
+          "sha": "9935037f9c3a86f56a8a271756eda83104706f2d",
+          "size": 1673
+        },
+        {
+          "path": "tests/test_daily.py",
+          "sha": "8cd7a877a86afe3255b0a92c9fe1ab3d0f8c0fd0",
+          "size": 705
+        },
+        {
+          "path": "tests/test_generate_project.py",
+          "sha": "b4fa79bc07c21451966f34e1df4a420e1154df28",
+          "size": 1306
+        },
+        {
+          "path": "tests/test_issue_to_spec.py",
+          "sha": "558654e476f1b7e9294f13e202793df825d2693f",
+          "size": 995
+        },
+        {
+          "path": "tests/test_local_ollama_agent.py",
+          "sha": "54ec5028b3acfa8586f4d115354a558578623b04",
+          "size": 1386
+        },
+        {
+          "path": "tests/test_project_validation.py",
+          "sha": "e217ab45b70d6f4105970024cacad8103711003a",
+          "size": 1169
+        },
+        {
+          "path": "tests/test_validate_agent_job.py",
+          "sha": "fca67ca755470c7788461ee6c33f08ce1cf30e07",
+          "size": 1771
+        }
+      ],
+      "reportedHeadSha": "77073285a3522928f33fab0ebfe61e6080f9095b"
+    },
+    {
+      "repository": "3bHussein/Lexora-Academy",
+      "truncated": false,
+      "files": [
+        {
+          "path": ".github/workflows/check.yml",
+          "sha": "5ecf3d3e5e501bf886a258f6ffdec210b209763e",
+          "size": 3572
+        },
+        {
+          "path": ".github/workflows/generate-a2-audio.yml",
+          "sha": "f5eea93209f741b128a0a7521f195e719fc3f2a9",
+          "size": 1426
+        },
+        {
+          "path": ".github/workflows/generate-alphabet-audio.yml",
+          "sha": "67d1a7cb46ae3f2c436eb303ff4866d114d9517b",
+          "size": 1395
+        },
+        {
+          "path": ".github/workflows/generate-audio.yml",
+          "sha": "06d74d05841678362f4f90569137d8c312ecc6f1",
+          "size": 1285
+        },
+        {
+          "path": ".github/workflows/generate-curriculum-audio.yml",
+          "sha": "f230bded09e3841677a31b2e5fea4968dc87c136",
+          "size": 1594
+        },
+        {
+          "path": "B2-ROADMAP.md",
+          "sha": "6c2f990cb8ab13f9e7394c6b97f8460483d178a2",
+          "size": 3307
+        },
+        {
+          "path": "PLATFORM-PLAN.md",
+          "sha": "09609e601879a0bf1c439ebd90bd90d207cdce7f",
+          "size": 2244
+        },
+        {
+          "path": "README.md",
+          "sha": "65b7414aeb2fb428b57120ba2409a9690d6d2c86",
+          "size": 2417
+        },
+        {
+          "path": "a2-neural-audio.js",
+          "sha": "5699e0d9c3c6a4ce297c47c2761dc27c7cb56a25",
+          "size": 3376
+        },
+        {
+          "path": "academy.html",
+          "sha": "304cfc66a6f2438bfebda3a38eea7ad337f39ff8",
+          "size": 3693
+        },
+        {
+          "path": "alphabet-neural-audio.js",
+          "sha": "1a0b01e6cda34c88bc58b502037c73b0ff52b1d7",
+          "size": 1586
+        },
+        {
+          "path": "audio/neural/a1-001.mp3",
+          "sha": "44ded63361611ac5d36c721e167b4e6b465e7023",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/a1-002.mp3",
+          "sha": "d3e3bb5d758ccc37fbb3d0708e9b35ea080b9dc4",
+          "size": 12240
+        },
+        {
+          "path": "audio/neural/a1-003.mp3",
+          "sha": "0c0a3192c9f60cb6ef1f77e8cdfe9409d68a3519",
+          "size": 15264
+        },
+        {
+          "path": "audio/neural/a1-004.mp3",
+          "sha": "0f6686ea7402cda22461aa48a26cf42fd7ec8856",
+          "size": 12816
+        },
+        {
+          "path": "audio/neural/a1-005.mp3",
+          "sha": "dce62a59f1e53016150d0dcb95d45af2d75bd953",
+          "size": 11520
+        },
+        {
+          "path": "audio/neural/a1-006.mp3",
+          "sha": "5a6333560e8f7fe63241110c93ee441e6a977c78",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/a1-007.mp3",
+          "sha": "faea8fb7719ead5c65e2529a7edb5f8b7d597503",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/a1-008.mp3",
+          "sha": "ec4acb40bce83d4edbc65f803e890fd3d05e3f93",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/a1-009.mp3",
+          "sha": "d4a7da0f88bb94f895cf98a63010e3bf39ab8cb2",
+          "size": 12672
+        },
+        {
+          "path": "audio/neural/a1-010.mp3",
+          "sha": "c458c0bfe45b8584fbf76f5bd5a2526fa6c246be",
+          "size": 13536
+        },
+        {
+          "path": "audio/neural/a1-011.mp3",
+          "sha": "a1a49df84e3da3e9fc8b3714e91b654eadcf856b",
+          "size": 14112
+        },
+        {
+          "path": "audio/neural/a1-012.mp3",
+          "sha": "dad06b6f4827f0b404e6cfc2ce14fc4717eb8b48",
+          "size": 14976
+        },
+        {
+          "path": "audio/neural/a1-013.mp3",
+          "sha": "8d805801e76a271abf7e1f3558301850e742b2b7",
+          "size": 16560
+        },
+        {
+          "path": "audio/neural/a1-014.mp3",
+          "sha": "684a025a7e764d53c805cc75a9372c993417f174",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/a1-015.mp3",
+          "sha": "5c0a7936eb2d9ad35272a33d407154fe4cd8f636",
+          "size": 11376
+        },
+        {
+          "path": "audio/neural/a1-016.mp3",
+          "sha": "a58d0e2c9e9ec2b9fd4f69eafc3f50b494b810fa",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/a1-017.mp3",
+          "sha": "0fb13e1b9ce96ee284560c93d36889017d788fec",
+          "size": 13248
+        },
+        {
+          "path": "audio/neural/a1-018.mp3",
+          "sha": "d5f047dc8eedec6e850dcf39377c2ee9ec771387",
+          "size": 12672
+        },
+        {
+          "path": "audio/neural/a1-019.mp3",
+          "sha": "4104a51d53657a38ec82b022850962a2db6cae88",
+          "size": 13248
+        },
+        {
+          "path": "audio/neural/a1-020.mp3",
+          "sha": "e6774033627099e9c5743c4c58e0f928c57a2fb7",
+          "size": 11952
+        },
+        {
+          "path": "audio/neural/a1-021.mp3",
+          "sha": "23148a15b91267c613cb7cdcd78f2e6a1c1eaad5",
+          "size": 15120
+        },
+        {
+          "path": "audio/neural/a1-022.mp3",
+          "sha": "990bd30481fe8b58f643a64309c8db3d81f3475c",
+          "size": 14976
+        },
+        {
+          "path": "audio/neural/a1-023.mp3",
+          "sha": "0bd72f6aa86ab47e130f411da94415f4fbc8f349",
+          "size": 15120
+        },
+        {
+          "path": "audio/neural/a1-024.mp3",
+          "sha": "ded9c42a4f77be7a6a646466ddafa002bc276d3d",
+          "size": 11808
+        },
+        {
+          "path": "audio/neural/a2-001.mp3",
+          "sha": "06db7f515d83734ab3ba6e0f70245d7448f677c9",
+          "size": 15984
+        },
+        {
+          "path": "audio/neural/a2-002.mp3",
+          "sha": "33ef3960c6091b6582453d3734d09729cccc3f82",
+          "size": 14256
+        },
+        {
+          "path": "audio/neural/a2-003.mp3",
+          "sha": "507202eabe46edafb3c0b7e1b5b53f43ca1460e5",
+          "size": 16128
+        },
+        {
+          "path": "audio/neural/a2-004.mp3",
+          "sha": "156472e56ed35178a0183f8daa7b3c9e3e6cc65b",
+          "size": 15264
+        },
+        {
+          "path": "audio/neural/a2-005.mp3",
+          "sha": "ee1cc500e0c24831bff85a49063cf1082f9d3013",
+          "size": 14400
+        },
+        {
+          "path": "audio/neural/a2-006.mp3",
+          "sha": "ce905c0d7178671bd3df917b9de59ebf84263122",
+          "size": 15552
+        },
+        {
+          "path": "audio/neural/a2-007.mp3",
+          "sha": "2ff017a25ccded8cd7ce9591f6b9090a8022e289",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/a2-008.mp3",
+          "sha": "ce12afc7838c1d9c6da0cef3acaa6084c78ea265",
+          "size": 13680
+        },
+        {
+          "path": "audio/neural/a2-009.mp3",
+          "sha": "2a15c616ce70b3d95928ecb68719ad74e602d72a",
+          "size": 15696
+        },
+        {
+          "path": "audio/neural/a2-010.mp3",
+          "sha": "5c10995f3fc49bc30a7952bf35f97b7476f38448",
+          "size": 17712
+        },
+        {
+          "path": "audio/neural/a2-011.mp3",
+          "sha": "5379c2caa380d0c8677304088540fcf2d966e4b6",
+          "size": 14688
+        },
+        {
+          "path": "audio/neural/a2-012.mp3",
+          "sha": "7c85673dbcf7234cf7a0efbdf9afda28152e66ca",
+          "size": 13968
+        },
+        {
+          "path": "audio/neural/a2-013.mp3",
+          "sha": "0527422edeb803972bda26534e0444c43c0bdba6",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/a2-014.mp3",
+          "sha": "2f2dbb44416b59041eb016ef49e38cb3452d1100",
+          "size": 15984
+        },
+        {
+          "path": "audio/neural/a2-015.mp3",
+          "sha": "2cfdf7a51e8b574e47348e598324a58669c5b284",
+          "size": 14688
+        },
+        {
+          "path": "audio/neural/a2-016.mp3",
+          "sha": "bcd9382a1a0cdbc6f6435eb3e1224e64fdf484b4",
+          "size": 14976
+        },
+        {
+          "path": "audio/neural/a2-017.mp3",
+          "sha": "5bb29a147c7a2172cdeba10f475e01c30d4971c6",
+          "size": 15552
+        },
+        {
+          "path": "audio/neural/a2-018.mp3",
+          "sha": "93e6a64c77c76b3176268b076c55d3f4bcfed3f1",
+          "size": 17424
+        },
+        {
+          "path": "audio/neural/a2-019.mp3",
+          "sha": "e90f1c3d76978a3534a5fb8de9b01edfea1cd42e",
+          "size": 17136
+        },
+        {
+          "path": "audio/neural/a2-020.mp3",
+          "sha": "9c632923cb910fe8c346a0e9632e3ba0e26aaea9",
+          "size": 16704
+        },
+        {
+          "path": "audio/neural/a2-021.mp3",
+          "sha": "2387000312929322943da98ef2b0cc0a41637afc",
+          "size": 16128
+        },
+        {
+          "path": "audio/neural/a2-022.mp3",
+          "sha": "2a419da908edf5f53b2a29512a1877aeb1371d77",
+          "size": 15552
+        },
+        {
+          "path": "audio/neural/a2-023.mp3",
+          "sha": "a7370438089ef1debeeb65e0326da6383979cc41",
+          "size": 16128
+        },
+        {
+          "path": "audio/neural/a2-024.mp3",
+          "sha": "16c8e6ac88722e04fbbc937e7c0826350abbda0b",
+          "size": 16560
+        },
+        {
+          "path": "audio/neural/a2-025.mp3",
+          "sha": "1d2796aff7949a207bd7a6d8b0ea039fa5dccc93",
+          "size": 15120
+        },
+        {
+          "path": "audio/neural/a2-026.mp3",
+          "sha": "45032c6bc9323c99b9b6ac13ba23c6ad1c8668a1",
+          "size": 13968
+        },
+        {
+          "path": "audio/neural/a2-027.mp3",
+          "sha": "9bd1b6e404b3fe3d13293264cceb05f4332ea493",
+          "size": 17856
+        },
+        {
+          "path": "audio/neural/a2-028.mp3",
+          "sha": "d4a55ff102dadfec4dca4b94c3e60957049dcfa3",
+          "size": 16272
+        },
+        {
+          "path": "audio/neural/a2-029.mp3",
+          "sha": "d2673b002c53364b17ae17519ac595c29e91917b",
+          "size": 17280
+        },
+        {
+          "path": "audio/neural/a2-030.mp3",
+          "sha": "ae064db81895d321e92f1a4aabf40414d7c9f5c9",
+          "size": 17280
+        },
+        {
+          "path": "audio/neural/a2-031.mp3",
+          "sha": "481129933df91149cd3881a1dc375b99f92158bf",
+          "size": 18720
+        },
+        {
+          "path": "audio/neural/a2-032.mp3",
+          "sha": "a1952b1d17e956567d93a818c9b2c8c3602cd939",
+          "size": 19440
+        },
+        {
+          "path": "audio/neural/a2-033.mp3",
+          "sha": "ef1e6424a753c0adc192ab9f23455303678c4a42",
+          "size": 25776
+        },
+        {
+          "path": "audio/neural/a2-034.mp3",
+          "sha": "cf53408a235704f4aac9540bc9fbc183d30653ad",
+          "size": 17136
+        },
+        {
+          "path": "audio/neural/a2-035.mp3",
+          "sha": "4dd406099733ec3dc1b894584b44807d3c1d7c21",
+          "size": 26928
+        },
+        {
+          "path": "audio/neural/a2-036.mp3",
+          "sha": "b44ddb04455fb429ffc05860915d1fd29d186398",
+          "size": 30384
+        },
+        {
+          "path": "audio/neural/a2-037.mp3",
+          "sha": "ec739c71e6751d980d1d8b966c1b66db7c5a79c7",
+          "size": 13536
+        },
+        {
+          "path": "audio/neural/a2-038.mp3",
+          "sha": "2f7abb4062edb229eb656aa99ac457a10abc7b78",
+          "size": 16416
+        },
+        {
+          "path": "audio/neural/a2-039.mp3",
+          "sha": "8339f345364af4317a625b50002270b1740890f8",
+          "size": 27504
+        },
+        {
+          "path": "audio/neural/a2-040.mp3",
+          "sha": "651fbc689c1098c145a5860bb496c5906cbba285",
+          "size": 14400
+        },
+        {
+          "path": "audio/neural/a2-041.mp3",
+          "sha": "9d30685930add42156584803dc3689372e328f29",
+          "size": 15264
+        },
+        {
+          "path": "audio/neural/a2-042.mp3",
+          "sha": "365e6b8e3892a6622d199d6f23e3c2adebe9a410",
+          "size": 14976
+        },
+        {
+          "path": "audio/neural/a2-043.mp3",
+          "sha": "eaea4d93c1ec7253c59218c68fdbbaaf5a0aa19d",
+          "size": 22464
+        },
+        {
+          "path": "audio/neural/a2-044.mp3",
+          "sha": "c986bb9b1726369387100ddc9e10d9db50288823",
+          "size": 17136
+        },
+        {
+          "path": "audio/neural/curriculum-009ef14080fc54e3.mp3",
+          "sha": "0943432c71ce5053d68720e2dc687805633d0b92",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-00a402aa6ca08053.mp3",
+          "sha": "2e1b470f54b6b55121b1611a5a874039c6807a84",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-0157ac5c831744ed.mp3",
+          "sha": "123935b37687f23b399851c2ecb162cec49a4326",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-04899e062f181314.mp3",
+          "sha": "633135d79a6356bcd75e62c3cc5e077b70b6af5a",
+          "size": 13392
+        },
+        {
+          "path": "audio/neural/curriculum-04a1d0b61aebb9ab.mp3",
+          "sha": "86339f171a6560f449da689f7c3678423ef5335e",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-04c57372c3e183b5.mp3",
+          "sha": "29000f04bf39c472eea5a74739c193cfc16c5e6f",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/curriculum-04d57c6ab83456a3.mp3",
+          "sha": "c77e84dfd7e86ddf0713a5edb7fdcef6b7dc0f12",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-053fd620bd7a4c5a.mp3",
+          "sha": "fd6b807ae456e358a6623a07908ecd0b923b6672",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-05f6213a887e5fa7.mp3",
+          "sha": "370617257936c94484ed5a18cfab2df59b1141c7",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-0611a1b7ac680b4a.mp3",
+          "sha": "bde20aa8ee57c76fe9ebcca26f2b22f44623f8a6",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-0727ac662b89ccb9.mp3",
+          "sha": "ca5c555971d58fe2627db28e11d7f071488e2ed6",
+          "size": 14400
+        },
+        {
+          "path": "audio/neural/curriculum-077d31514cb9c3e4.mp3",
+          "sha": "25db7e063f02012b79c3c9f172c611aa4d0638bc",
+          "size": 13104
+        },
+        {
+          "path": "audio/neural/curriculum-07c473093067d1ee.mp3",
+          "sha": "56dc7901dee3c04345ba976a1509d8b284ad1af2",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-0935bde8a50d4fb3.mp3",
+          "sha": "198dbe2f3e1c56552546f5e377d1d483acf3a694",
+          "size": 11376
+        },
+        {
+          "path": "audio/neural/curriculum-09930c6ca302b4fc.mp3",
+          "sha": "6e83f0fb3c3b08aa711aa434ebec9fc4537763cd",
+          "size": 11376
+        },
+        {
+          "path": "audio/neural/curriculum-09e84f8ec2136256.mp3",
+          "sha": "7f03db53f369b2c7b9bef6037a318e395cccb91b",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-0afbccd14c334063.mp3",
+          "sha": "42a7fd4611d6e756403dd6c8008c5854e0e75fa1",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-0b33deaba2219e4e.mp3",
+          "sha": "237a9aa06ba47e3d419a84b2efc071d5caeba7ee",
+          "size": 30384
+        },
+        {
+          "path": "audio/neural/curriculum-0b4c39822aabe575.mp3",
+          "sha": "37bec65a6dd7b412c9868ccc1644274ad1bc9c30",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-0b6d9f712604a3a7.mp3",
+          "sha": "09c7df1fc80c10f46c82ce8dede5883ea6a1941f",
+          "size": 17424
+        },
+        {
+          "path": "audio/neural/curriculum-0bc47231d75ca49c.mp3",
+          "sha": "b58e079cfee6b619bd39c54e06e3107cbaf3c09d",
+          "size": 15264
+        },
+        {
+          "path": "audio/neural/curriculum-0bea65d093ce98b4.mp3",
+          "sha": "6b9057186debd7b8482d6dbb06662abd790f4fca",
+          "size": 11520
+        },
+        {
+          "path": "audio/neural/curriculum-0d75c171a961e55d.mp3",
+          "sha": "bf0c285173d9ba707e5bf77976698bffc174cb8b",
+          "size": 13680
+        },
+        {
+          "path": "audio/neural/curriculum-1082c11ceb1319a4.mp3",
+          "sha": "9b96905b80a75b819161ac59748a256d7d37efa0",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-127eee75ef5d6b65.mp3",
+          "sha": "6ea75af26d37c33b4524fc2e3b77467c261daa17",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-129dde4ecad0c02e.mp3",
+          "sha": "e51ef5e1e85faa4bc230aa668ec8fbae5042b124",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-12bb3a020eac2e15.mp3",
+          "sha": "e6d28ce2f07286d8e6a97f8660841edc12ed67ac",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/curriculum-12f9e74eadc60ccb.mp3",
+          "sha": "1f1c670b17f6f359b3fb5380a96c774e6b69cd6e",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-139269061e38f72b.mp3",
+          "sha": "f3f96be121f2ce90993963aa0ac89e68e2caf036",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-16ef55a3acfac142.mp3",
+          "sha": "01271d13b2ceee85e2cd0b596d71ac562ebc0500",
+          "size": 90144
+        },
+        {
+          "path": "audio/neural/curriculum-16f128e09febbfc2.mp3",
+          "sha": "defb055e38b4e94a9cd150d1e1ea3cffd1f2f473",
+          "size": 17712
+        },
+        {
+          "path": "audio/neural/curriculum-17921e6e3ef5d5e7.mp3",
+          "sha": "815e28abf5cb83fbbb6d54af55ee872e1c3060c3",
+          "size": 12672
+        },
+        {
+          "path": "audio/neural/curriculum-188f100a2746dfdf.mp3",
+          "sha": "0067207a341283903ccea2d4799a312e7e990da8",
+          "size": 16128
+        },
+        {
+          "path": "audio/neural/curriculum-1982634328f72de6.mp3",
+          "sha": "4ee49ed83d301b71adb9df3e98a17892cd1739d3",
+          "size": 14688
+        },
+        {
+          "path": "audio/neural/curriculum-19aee82898450420.mp3",
+          "sha": "1709d011166e7265bd367c3cf2057b2f7093e5bb",
+          "size": 14256
+        },
+        {
+          "path": "audio/neural/curriculum-1a78579c814fcd0c.mp3",
+          "sha": "4e61754550af5992902bddac6fa2b2a4abb9c8b3",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-1cde4efb0b1f6623.mp3",
+          "sha": "7195514a23f863e0822d081198a7f88264002658",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-1d198129438d33fd.mp3",
+          "sha": "50512a670b2b1c063e9a2bb4e69487376296dba8",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-1ebb4c89d3d99de7.mp3",
+          "sha": "79f033afc3175deacb57f661b2cdb9e935dd4c0c",
+          "size": 17136
+        },
+        {
+          "path": "audio/neural/curriculum-1ef43ec41d874f9d.mp3",
+          "sha": "3b7d82d7e650a4369e39abbf3c6905e8671b68c0",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-1f418d2282b5d9ac.mp3",
+          "sha": "87f61ba09e327273bb8bc7bccc16d0bd56c8db2a",
+          "size": 15408
+        },
+        {
+          "path": "audio/neural/curriculum-1f880a6dca57b607.mp3",
+          "sha": "5d226ef81c3b04e8b30c19977d750effb117e223",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-2106f97f8f16ef29.mp3",
+          "sha": "269ddeecae555b2a61dd3eafbb3139c84656e285",
+          "size": 11520
+        },
+        {
+          "path": "audio/neural/curriculum-21465eccacbbd63a.mp3",
+          "sha": "710e3011bbb9065c4d61be08f2d21acd1d11b843",
+          "size": 11808
+        },
+        {
+          "path": "audio/neural/curriculum-21bc0200c8e56c89.mp3",
+          "sha": "6c88c77f52aa1ff6a57fc5e0b3969db1d12b7222",
+          "size": 12816
+        },
+        {
+          "path": "audio/neural/curriculum-2328b06b7400c8cb.mp3",
+          "sha": "9eb7f8d0fcff449068e1a7fa4c505db04f5b5922",
+          "size": 14400
+        },
+        {
+          "path": "audio/neural/curriculum-2415daa86a0b2b64.mp3",
+          "sha": "bd0294e671243f3b0aa3c375b6b89c4f225e6127",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-24622601ff358dac.mp3",
+          "sha": "64dbdcfcd2576d5c3bcc255ba279a2c9cb5e3032",
+          "size": 11376
+        },
+        {
+          "path": "audio/neural/curriculum-266c1d1d428759a8.mp3",
+          "sha": "49e4a061b5d018638d9bc650a026269af019ae7c",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-26e03e963a14110d.mp3",
+          "sha": "708d522b5d1a1e3017195d81a28514e25a2a5faf",
+          "size": 11520
+        },
+        {
+          "path": "audio/neural/curriculum-26eb96beb736b245.mp3",
+          "sha": "53968a6cf3257faebbebb7acacace685563441df",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-275d0d96605b8dfa.mp3",
+          "sha": "d741c07217bc6a2040acd4cffd08106844c14fbd",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-27bb5c2ab59ea9e4.mp3",
+          "sha": "92b4b1694c9657cfc308170b62bbc71a68c81216",
+          "size": 13248
+        },
+        {
+          "path": "audio/neural/curriculum-286f6ab78572684d.mp3",
+          "sha": "56a39cba29e9ad33fd3859742c5f0cbf1f17898d",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-2877957d9ba3cc0c.mp3",
+          "sha": "61c3096392dc21768b51cae7e429a528033bcd3e",
+          "size": 13248
+        },
+        {
+          "path": "audio/neural/curriculum-292751580505899c.mp3",
+          "sha": "acc28c194032bcbc1e9a101467592912ef901299",
+          "size": 11952
+        },
+        {
+          "path": "audio/neural/curriculum-2969c190951a21cb.mp3",
+          "sha": "58ec97f9ea07d6a8c5ec7efe447171f5f0968e89",
+          "size": 11520
+        },
+        {
+          "path": "audio/neural/curriculum-29a33b30a32669bd.mp3",
+          "sha": "222c39444c9be8eb8d4f1b34f8525d08a0109e31",
+          "size": 14688
+        },
+        {
+          "path": "audio/neural/curriculum-2a760541ae55f84e.mp3",
+          "sha": "58157aa4f5e5ae18f8fd48462d206ff8b3e2b393",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-2a936f445edd0413.mp3",
+          "sha": "20888231ec651d6370718ba34e791179b1833ce5",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/curriculum-2afd9c9c9962a525.mp3",
+          "sha": "0266adcd7d027151fdc8dde888c2db43ba1931bb",
+          "size": 12384
+        },
+        {
+          "path": "audio/neural/curriculum-2b039c7bd69f2596.mp3",
+          "sha": "344e856c6c659171b00fa16c2d47ea4a58da9985",
+          "size": 13248
+        },
+        {
+          "path": "audio/neural/curriculum-2b3c94d36cec7b1b.mp3",
+          "sha": "1e8c0b7137bb291053204477f6ebb1bde3ea720a",
+          "size": 12816
+        },
+        {
+          "path": "audio/neural/curriculum-2c7879a3e890c26d.mp3",
+          "sha": "022c0f96c9839a147d794b2ec43caf83afc64222",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-2cac322e6c39a778.mp3",
+          "sha": "a56e11091d0e60bdc1eb08028dbeaf27d2dd8157",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-2d6411f8910088aa.mp3",
+          "sha": "0ddde2c163fcc441f06aa1c2612cc0101ba3150c",
+          "size": 12816
+        },
+        {
+          "path": "audio/neural/curriculum-2dfdfc7a50e61e02.mp3",
+          "sha": "f4c4dbe05d66e31235741a1fc76b177aecfeafea",
+          "size": 15552
+        },
+        {
+          "path": "audio/neural/curriculum-2e016aa4675b4dc7.mp3",
+          "sha": "5c830ed57b01e15b7daba70135ca6bea5284120b",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-2ebb4a55f237d605.mp3",
+          "sha": "bbeff0974cdd055d218528812125794fa9a76214",
+          "size": 15696
+        },
+        {
+          "path": "audio/neural/curriculum-2fc296ee306d0969.mp3",
+          "sha": "be33c8d2b438dff907fdaee1e960e0ebae3818d0",
+          "size": 13248
+        },
+        {
+          "path": "audio/neural/curriculum-2fe8c9cca2585062.mp3",
+          "sha": "d585e3cdabcfef5b2757f33dd0254e6dd439dd30",
+          "size": 11952
+        },
+        {
+          "path": "audio/neural/curriculum-30d9355e1a37d5fd.mp3",
+          "sha": "78a9373c7b817ee59ce3fc49d285c5c0b28a7b91",
+          "size": 13392
+        },
+        {
+          "path": "audio/neural/curriculum-310fd43fbe08a3ef.mp3",
+          "sha": "8c0b15f45c1e1e3c32ef6f8e50bcf9b2ad4ef4d7",
+          "size": 15984
+        },
+        {
+          "path": "audio/neural/curriculum-333f5c0cd9a37f9f.mp3",
+          "sha": "71c81e8241747a368b2a12c281650fac5c3e551d",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-339bf6753a79f9e3.mp3",
+          "sha": "21ecf5da7673b6126600b379b00d73f01ee885f8",
+          "size": 12960
+        },
+        {
+          "path": "audio/neural/curriculum-33b3e53a4a2af0e1.mp3",
+          "sha": "1cf1bb0132e900d1886cc5ebdfc51aabbc191581",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/curriculum-346641ff75854e87.mp3",
+          "sha": "158bde71106b98bded0aac0eeb2e8ee1c86c8bd7",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-34959f44e9ece701.mp3",
+          "sha": "6a204122123cfc19728d3b30a1edb7a4db307002",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-349a73ab3e333bcf.mp3",
+          "sha": "e0ad7a212840af55b0ba5018e6c8bb2ece747b2c",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-34fa804da20afff4.mp3",
+          "sha": "e483d5c9c4c5639ca5c7647333ad8ee61790390c",
+          "size": 12672
+        },
+        {
+          "path": "audio/neural/curriculum-35b23a80f0dd91f1.mp3",
+          "sha": "90c0cd2f1deda86670394bbd3d52d3eede83f78f",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-36cf72c1645a5808.mp3",
+          "sha": "f3ea5f8f8b0277255f6edaa59e3da3f255f3cfd7",
+          "size": 17280
+        },
+        {
+          "path": "audio/neural/curriculum-37e91cf25686199f.mp3",
+          "sha": "b9e8079520793e7a1da9f26889f2f6048261f18a",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/curriculum-37ee752d0e0f7522.mp3",
+          "sha": "105d5f9c3bcd9f9eb664383f7570bac3c49702d9",
+          "size": 13680
+        },
+        {
+          "path": "audio/neural/curriculum-38efc31fec585ffd.mp3",
+          "sha": "961ee6fbbb142f0df4edb8b07178b7e735bf0227",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-39a28526e41f5247.mp3",
+          "sha": "5dff63b7064f2f196b8dec728900d3bba17f65a5",
+          "size": 11952
+        },
+        {
+          "path": "audio/neural/curriculum-39cfa0fe52d8f189.mp3",
+          "sha": "df24aede653066672eed35f5b043becef11ba4c7",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-3b769d81f3397a24.mp3",
+          "sha": "929839ff3c2c9923a74f9761b19b2d9b3d0c7e84",
+          "size": 11520
+        },
+        {
+          "path": "audio/neural/curriculum-3c35e4850395e483.mp3",
+          "sha": "06718b917455a61e8499896ceb1bc01ff92d9191",
+          "size": 17136
+        },
+        {
+          "path": "audio/neural/curriculum-3da49574c6aa4410.mp3",
+          "sha": "8a95a327d9568a252cbcbd5c3e588c1bcd25695f",
+          "size": 17136
+        },
+        {
+          "path": "audio/neural/curriculum-3e87b340f58f10a9.mp3",
+          "sha": "18ca8b6c33a6d5de5db44ea6fa9a9301d84b420e",
+          "size": 12960
+        },
+        {
+          "path": "audio/neural/curriculum-3f1dc2e04cba4b22.mp3",
+          "sha": "e7f95748686fc8bb43f3dcb93daf5c37e859db74",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-3fc7fc5a5541dad3.mp3",
+          "sha": "12634e59e2244fb7f65b0fcdb52da35c71a352ff",
+          "size": 92592
+        },
+        {
+          "path": "audio/neural/curriculum-404be8d31a1f0746.mp3",
+          "sha": "d9348b66d75d5b562e0ca717323a1a313efab4cb",
+          "size": 64224
+        },
+        {
+          "path": "audio/neural/curriculum-413762a7316a48f1.mp3",
+          "sha": "1b637d85d5b70cd78ddffe1d4d27142d5dd27a74",
+          "size": 90000
+        },
+        {
+          "path": "audio/neural/curriculum-41bb67b6e8327360.mp3",
+          "sha": "90598a2b5660dda441e78381e25335ff59502e9c",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-4335371829a137c9.mp3",
+          "sha": "d48974fab94fa9fe576dd925fa63e1766654d360",
+          "size": 12096
+        },
+        {
+          "path": "audio/neural/curriculum-4483ed64f4ed7726.mp3",
+          "sha": "32b490b6bd17b3ba906e237d33a03fde1b23259d",
+          "size": 64512
+        },
+        {
+          "path": "audio/neural/curriculum-454236ead56f2afa.mp3",
+          "sha": "e1268db88ca1e6a28c8655a1c1a02489f8470476",
+          "size": 11952
+        },
+        {
+          "path": "audio/neural/curriculum-4546affa25dc977f.mp3",
+          "sha": "989effe732cb7b74f9650d44c7bd30acdac45370",
+          "size": 17136
+        },
+        {
+          "path": "audio/neural/curriculum-45af610cc34fb1e4.mp3",
+          "sha": "68f5768ce9f362d0ec7c67b925e1129e067307a8",
+          "size": 12816
+        },
+        {
+          "path": "audio/neural/curriculum-45ead38acb08f45d.mp3",
+          "sha": "4a1fbe768062e882531610a6231e09290c2a54d6",
+          "size": 13680
+        },
+        {
+          "path": "audio/neural/curriculum-45ee2bca7599d9cb.mp3",
+          "sha": "1f50adedad0f827d18dd41d34478e1f56ad72186",
+          "size": 25632
+        },
+        {
+          "path": "audio/neural/curriculum-48001ffec00482c7.mp3",
+          "sha": "f0ec310252ab40bc56be17c00c1dd80acb71e5b2",
+          "size": 12960
+        },
+        {
+          "path": "audio/neural/curriculum-48d7918cb145bc43.mp3",
+          "sha": "00eba710dd12f3a8ba71d290694f53438ccec204",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-4a108d280dc8a37b.mp3",
+          "sha": "f8f11a64a2f1da6909e923940ef3ba53e25c02c1",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-4a8ee8b2afd7c334.mp3",
+          "sha": "a905c76e553aef69faf7476beccf45377809e95d",
+          "size": 11376
+        },
+        {
+          "path": "audio/neural/curriculum-4b6bc99b21be97c6.mp3",
+          "sha": "e705437ccbdea0426cf4ccb5bce49c605705d3ad",
+          "size": 13392
+        },
+        {
+          "path": "audio/neural/curriculum-4c398fabd3189206.mp3",
+          "sha": "4022415510f6c91b9efbbf2e37bfcd41a2ed7f33",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-4dc0935b80f59b6a.mp3",
+          "sha": "e243a1907e7a5318ed30dc8ad40ceb4a87f904ab",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-4e8901e1591cc7a6.mp3",
+          "sha": "fb933b81aafdbbab97cf00f0768b2d6b4947f629",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-4eda9d80984bbf1e.mp3",
+          "sha": "be86cad51dc6adeb844ed0f2f2cd120bb69d4574",
+          "size": 17712
+        },
+        {
+          "path": "audio/neural/curriculum-4f53bb8bcad8702f.mp3",
+          "sha": "8ce368870548a1598cb331ad759e629b6049a91e",
+          "size": 11952
+        },
+        {
+          "path": "audio/neural/curriculum-506bbffad4dcc566.mp3",
+          "sha": "4589127fff73198b02b2a62fcb77f2ca2a1f31ca",
+          "size": 12096
+        },
+        {
+          "path": "audio/neural/curriculum-50d79d85e3fe78f8.mp3",
+          "sha": "275ab96d4172a87c6a60284f22c0327a7d2cf002",
+          "size": 14112
+        },
+        {
+          "path": "audio/neural/curriculum-51a3ca18643112e0.mp3",
+          "sha": "cf4044e308fe7dd29ea21a33b6b3257027cd5f9c",
+          "size": 11808
+        },
+        {
+          "path": "audio/neural/curriculum-522cdbbbe83a1b74.mp3",
+          "sha": "1e574078b5ea93dd857e4e753cb6bac316f131d1",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-539030a144b1e444.mp3",
+          "sha": "144c10616203d4d00dbc468ab92544ea2ac66376",
+          "size": 15120
+        },
+        {
+          "path": "audio/neural/curriculum-53934f31f2c8d53d.mp3",
+          "sha": "9a18a79965531128c40be5aeb77f7fddce43c6e0",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-54d739ed17babf56.mp3",
+          "sha": "92c5a172e84319901f8b90cecaf41bcb4f067ae3",
+          "size": 15120
+        },
+        {
+          "path": "audio/neural/curriculum-553435ea0295d383.mp3",
+          "sha": "656121a7d4515e415a10a319a4c35637f76cc77c",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-55451acbcdecd942.mp3",
+          "sha": "8a53be9b03d8ece7169d68c71c4548b7b8d6c977",
+          "size": 14400
+        },
+        {
+          "path": "audio/neural/curriculum-55b3aa700193a5f4.mp3",
+          "sha": "42784362d34eaadb9943bae2cd3e9fe7d2d5ebbc",
+          "size": 16128
+        },
+        {
+          "path": "audio/neural/curriculum-593fa496e83f0146.mp3",
+          "sha": "6046a85bc6152998e73c0ea008ef153103e02df0",
+          "size": 16128
+        },
+        {
+          "path": "audio/neural/curriculum-5943c4045eb8e766.mp3",
+          "sha": "5c0b0d5162895bfb868e25eb11ab4c6ccf6e3a65",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-59478ae7f8eb6d6f.mp3",
+          "sha": "8eb09506c8fae31c084b670b5b9ee2b12be5d2e2",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-5da07bcebbce6c4f.mp3",
+          "sha": "d749c33ee5a49b36838beab16209a3bd2fddc075",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-5f4bcc57d0fb4393.mp3",
+          "sha": "d8694eb2e0464f5fa43f3d0b8edfb20eb7cc598e",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-60083ab0545300c1.mp3",
+          "sha": "d8899c5ba6a558c7d1852f81f5c6fa13b03efae0",
+          "size": 13680
+        },
+        {
+          "path": "audio/neural/curriculum-6014af11b72fa114.mp3",
+          "sha": "c3fc748f6c7203e8dfb47a1c66697b6127c24b29",
+          "size": 13248
+        },
+        {
+          "path": "audio/neural/curriculum-60529c923bd84990.mp3",
+          "sha": "abea856fe09f3e544b5b1fc1355181f07e127687",
+          "size": 13968
+        },
+        {
+          "path": "audio/neural/curriculum-61133f6e3d97a39d.mp3",
+          "sha": "0a8ded1fc1d700782422367443e6a919460d144c",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/curriculum-6170b4891dd4c214.mp3",
+          "sha": "5aff0ad578ba73af5c7c650febe3f5b0f158f6bc",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-61eacdb87b16f10b.mp3",
+          "sha": "04b99c3b9652e2f4b09bf1b2d45200c0993ca922",
+          "size": 17424
+        },
+        {
+          "path": "audio/neural/curriculum-61f94680ed309578.mp3",
+          "sha": "630bd2992858a8d600f1d3afcfbb69c7c83be13d",
+          "size": 13248
+        },
+        {
+          "path": "audio/neural/curriculum-64db06c866e01631.mp3",
+          "sha": "f416999270fc4c29709b873e7ae82672f30fe81d",
+          "size": 27504
+        },
+        {
+          "path": "audio/neural/curriculum-674544cb10925e15.mp3",
+          "sha": "f1223779059dfafd42fdae3ee10cae9199ee2767",
+          "size": 13104
+        },
+        {
+          "path": "audio/neural/curriculum-6746bb776c9136ba.mp3",
+          "sha": "9b240f8a42d7ae58bf0c7aa16ee3d659d694c86e",
+          "size": 99216
+        },
+        {
+          "path": "audio/neural/curriculum-67a6405328bbe370.mp3",
+          "sha": "d0166337c0481b756c7a5ce94a71823a482b0b81",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-68c0a744aab90dab.mp3",
+          "sha": "34bbdd9c56351d0908653fafa9b58010af0c2093",
+          "size": 13392
+        },
+        {
+          "path": "audio/neural/curriculum-69d05a4d1d06cc07.mp3",
+          "sha": "f1f9408652d2e0e41c1d9e6b85b0e65ff4b56f27",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-6ae13c742605730f.mp3",
+          "sha": "dc1d4337790adfbf1404b08864c753466384d54a",
+          "size": 12960
+        },
+        {
+          "path": "audio/neural/curriculum-6b29eb7dec5eb76b.mp3",
+          "sha": "f8bb7d2a8025ce7ff88a904f5fa74b2aa29b2f92",
+          "size": 17280
+        },
+        {
+          "path": "audio/neural/curriculum-6b39d8910ffab93a.mp3",
+          "sha": "4ce46bae9dd11eac7cf499564ba5a584e432d1d5",
+          "size": 47952
+        },
+        {
+          "path": "audio/neural/curriculum-6c005fe8b168aa1f.mp3",
+          "sha": "5e38e995bcfecd82ede76e41f8c2ce69028e1398",
+          "size": 12672
+        },
+        {
+          "path": "audio/neural/curriculum-6d9fe30fb97bada1.mp3",
+          "sha": "5d08f32639b4c6fb5506a3dc132c3da9b348978e",
+          "size": 11952
+        },
+        {
+          "path": "audio/neural/curriculum-7089b7b3fdd5856f.mp3",
+          "sha": "e4a01751b72ffc0fb93d2fa3c51b056195ae3371",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/curriculum-709b7f0e6aa91b93.mp3",
+          "sha": "40b7c76e7fc596365bab694e13e8d09b284265e3",
+          "size": 13968
+        },
+        {
+          "path": "audio/neural/curriculum-70ed256309d93a1f.mp3",
+          "sha": "826c1b79ca285d7b733db025b29aeb9064e9b7cf",
+          "size": 58320
+        },
+        {
+          "path": "audio/neural/curriculum-720d448da7b15eff.mp3",
+          "sha": "4932a3ef4e79ce3f9a34b9aaf1e206401ab35d15",
+          "size": 11376
+        },
+        {
+          "path": "audio/neural/curriculum-73b3ecda0b1595ff.mp3",
+          "sha": "a9b0bc179e44aa8685c0e59994b86e873006ba2d",
+          "size": 15552
+        },
+        {
+          "path": "audio/neural/curriculum-74384430b852954c.mp3",
+          "sha": "9b72e40b79d636028c998c74a956e18d08f24032",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-7476a7d443bf6337.mp3",
+          "sha": "d16d9bb319fa8028db92552ca08fc44cec95fa53",
+          "size": 13248
+        },
+        {
+          "path": "audio/neural/curriculum-74a74a049b5911ad.mp3",
+          "sha": "69bf1e122e512f6fb76d2ddabb8b310fdde3da83",
+          "size": 11376
+        },
+        {
+          "path": "audio/neural/curriculum-7705ae66398d0bde.mp3",
+          "sha": "b9f112858f59af477e00d59b79f79c10bac653eb",
+          "size": 13680
+        },
+        {
+          "path": "audio/neural/curriculum-78c356aef2f71149.mp3",
+          "sha": "b5b6bf2772eb4ee3a3dfac9270935e4dc5835543",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-78cf11d67bfd8f7f.mp3",
+          "sha": "53b098b72243e92fd9a317aeb7f675a78e0f8b34",
+          "size": 16416
+        },
+        {
+          "path": "audio/neural/curriculum-790429a1e3b2aee9.mp3",
+          "sha": "ae67abb0a33741185eb368ce569bed7a0744c665",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-79e486f2f7a1e981.mp3",
+          "sha": "848b226941571dacbb956c7d39094336d32c333d",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-7bc3164b7693904c.mp3",
+          "sha": "b6892a392f7a805d1ae50291dfe69169a5af2ad2",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-7da129f15c941f96.mp3",
+          "sha": "90b5826688edd63792de0031c801a1e547028bc6",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/curriculum-81a7ef43469287d3.mp3",
+          "sha": "71e001d435d24ea34d0afb5c2d0f1f585af169ad",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/curriculum-82192f057cbb2656.mp3",
+          "sha": "cd9e3b12118802f118d3dc503b9c32edd64ba923",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/curriculum-844a50744e3bf9d0.mp3",
+          "sha": "b6cd404280ea979eac7913be71bcbfcd9659c699",
+          "size": 18720
+        },
+        {
+          "path": "audio/neural/curriculum-84a8a64adb3a5212.mp3",
+          "sha": "201d5e4b2acc73c805b5c5792bf356f92480bce3",
+          "size": 14256
+        },
+        {
+          "path": "audio/neural/curriculum-858d10c0f9231273.mp3",
+          "sha": "40796c374fc3b5578839bf084b14cdcc7d7b35f2",
+          "size": 17424
+        },
+        {
+          "path": "audio/neural/curriculum-86879b3ea456e970.mp3",
+          "sha": "8c3faa163b655a019923a83b8952103240c7b3bc",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-873fc9971a0d90de.mp3",
+          "sha": "5e81ac0f5257654e6b86e049c53316e86f3ada7c",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/curriculum-87cceae3c4eec975.mp3",
+          "sha": "17fda814833c70b1cdb382b4963cdaa672aec7d0",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-88dd4d1fa8bc0be3.mp3",
+          "sha": "5dffffb9f68e61f32aa8d8d2198b2a1dc5af3a06",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-89a88c9191a7a2bc.mp3",
+          "sha": "268b925772eb4f6d2660f5f20da5cbdd9c038909",
+          "size": 13680
+        },
+        {
+          "path": "audio/neural/curriculum-89ad85cb298df4ac.mp3",
+          "sha": "a188696f12cd36f9efd2e0988b8213afbf8a2ad2",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-89cb02b5312b9cb1.mp3",
+          "sha": "c5fbae96fa1d9b149976952e85462ce7df56709d",
+          "size": 15984
+        },
+        {
+          "path": "audio/neural/curriculum-8a03f06dbd0c1505.mp3",
+          "sha": "4266945e1cdbbf9835818e1751a2e9b296a59946",
+          "size": 14976
+        },
+        {
+          "path": "audio/neural/curriculum-8a1e748399c1e585.mp3",
+          "sha": "742c3f1c92a80edd062881545063df031208ea2c",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-8af16c2f70751ae7.mp3",
+          "sha": "576ac235b182b12d764f6bb6340528d3d9baba9a",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-8c9fd229fd55f154.mp3",
+          "sha": "c328bcc4e0ee6e44e27ff4e79549f54bb40133c6",
+          "size": 25776
+        },
+        {
+          "path": "audio/neural/curriculum-8d1d58d49719a77c.mp3",
+          "sha": "f6b9616f282eb93da3ec95a95048a7c8699abea5",
+          "size": 12672
+        },
+        {
+          "path": "audio/neural/curriculum-8d6ef0472f131175.mp3",
+          "sha": "1b167228906ff20dbc3404600b5ee6ad75911cf6",
+          "size": 13536
+        },
+        {
+          "path": "audio/neural/curriculum-8dd8bbbac22f7711.mp3",
+          "sha": "723f2fce23600c8104ce561cf88bd9098499d31e",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-8dde114e48b0b48f.mp3",
+          "sha": "d6c8f872771159d26cac8c633ea42215fbddf14b",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-8e796c381c423aa0.mp3",
+          "sha": "6220808a93c00b981a051eec42c5e6fbc468f6ad",
+          "size": 16128
+        },
+        {
+          "path": "audio/neural/curriculum-8ed76dc17a515d95.mp3",
+          "sha": "e247b047b1252c2ed9102bba300f7edb24990f8e",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-8f3ee7c683d8f552.mp3",
+          "sha": "26f7cd5459024d915e3f2faca1740b9ec4ebd41f",
+          "size": 12384
+        },
+        {
+          "path": "audio/neural/curriculum-8faf32f669661c73.mp3",
+          "sha": "5c113cdfbe386b6faefb95b42524bf6168d07de2",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-90bab2f69eb85b39.mp3",
+          "sha": "7b997c5fd54173e70347544c11e9588ef9f1c127",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/curriculum-90bbf3e65ba6faa9.mp3",
+          "sha": "cb3b9bb9ec9cbc969d07b4c28480ec2ce98dbd6e",
+          "size": 16560
+        },
+        {
+          "path": "audio/neural/curriculum-912f6273ccac9df2.mp3",
+          "sha": "67f39211c0785ef0d0396674a5465da834198529",
+          "size": 13104
+        },
+        {
+          "path": "audio/neural/curriculum-915bba572abd008a.mp3",
+          "sha": "8f029f3fc348648eeb6239a7a584f97aa36772b0",
+          "size": 14544
+        },
+        {
+          "path": "audio/neural/curriculum-91a55c62ff083265.mp3",
+          "sha": "a0b8b224767fb77f7b493870b5eb4a6e2d144dbe",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-9266dc34b14d05f1.mp3",
+          "sha": "3164807035440b77614e79ddb64712f0ebc0cc5d",
+          "size": 14400
+        },
+        {
+          "path": "audio/neural/curriculum-941c58a5f8542c9a.mp3",
+          "sha": "497b6b9785e9eec05e937858e95379d1a72821af",
+          "size": 15984
+        },
+        {
+          "path": "audio/neural/curriculum-955b6674ce7b8a02.mp3",
+          "sha": "91939948f4dcc5eeb811df1e60b1f5f776cfc695",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-95e3edac4df91897.mp3",
+          "sha": "b02ffec63fefb3d8db8333dcfb32d40d8541f8bd",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/curriculum-965d06208821fbd0.mp3",
+          "sha": "7b8f6c90c9994bd6b168a6477ec181cd3bfa71f1",
+          "size": 12960
+        },
+        {
+          "path": "audio/neural/curriculum-99be740aac8327d4.mp3",
+          "sha": "01fec13fe6f9f967892916e44e5716abaf8710a3",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-9b29d4de7a103ca5.mp3",
+          "sha": "7a3aa884a4794fca9476ab4b530bd3677a004adb",
+          "size": 27504
+        },
+        {
+          "path": "audio/neural/curriculum-9b4bb382c73d5a25.mp3",
+          "sha": "f2dad25d5dbcf99fd2a77ee8ad534b3d23deb459",
+          "size": 14112
+        },
+        {
+          "path": "audio/neural/curriculum-9c3c4b067a6aa82d.mp3",
+          "sha": "cd74950d589abea43a88df7096ee0dc195480e24",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-9c5cfa5a0012bb46.mp3",
+          "sha": "41bce7be8562e845710eb44e012285be8bc92ac6",
+          "size": 16272
+        },
+        {
+          "path": "audio/neural/curriculum-9cd4a0de277d99ce.mp3",
+          "sha": "6aadb886ba8e1cff8a67f7f10294257519fc16b6",
+          "size": 12384
+        },
+        {
+          "path": "audio/neural/curriculum-9d55471f60921fce.mp3",
+          "sha": "0e64c9e8ba2ac44cf1fd34fad06efc59755c9774",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-a01cd0c3f09d643e.mp3",
+          "sha": "fa675b876a2cfed1d823c9e963ee486b87b7306f",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-a4733c2f8090e03f.mp3",
+          "sha": "b196dfb4ac1e7571fbfffe5e8044dc69c9b70798",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-a5582d2f216404bd.mp3",
+          "sha": "835f0f3212a34cbedcf80a1b39386dd010476c05",
+          "size": 15120
+        },
+        {
+          "path": "audio/neural/curriculum-a7dcbec45aa73ecf.mp3",
+          "sha": "d61ea49243800d0600ef4419009076c6fcca3afb",
+          "size": 11520
+        },
+        {
+          "path": "audio/neural/curriculum-a8683e3b67991b98.mp3",
+          "sha": "6010d30eb5d2a315c4328e7702009ed00836ec4b",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-a89b588126c2336b.mp3",
+          "sha": "9e14c22b525caceaec1e8d9cce6f1f0d0762b9b8",
+          "size": 16560
+        },
+        {
+          "path": "audio/neural/curriculum-a938b8803bd017c7.mp3",
+          "sha": "75321eacdc664cf7c9733d824a22b57dbe29aee0",
+          "size": 16704
+        },
+        {
+          "path": "audio/neural/curriculum-aa282edb7a25dc8d.mp3",
+          "sha": "51741f19bad0c50b0911c19946daf3643787eb87",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-aa5e48e4dd0ea880.mp3",
+          "sha": "4ff9f3cbafc00627fc878a27a439380224017f74",
+          "size": 12240
+        },
+        {
+          "path": "audio/neural/curriculum-ab0e1bec1e32df65.mp3",
+          "sha": "3105d08d6ca4e85b47d0dbef3bffd1c76689b084",
+          "size": 26928
+        },
+        {
+          "path": "audio/neural/curriculum-abd18920076c974f.mp3",
+          "sha": "3373067a564c2258bd9f0d20f96a13121461266c",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-ad19ae9122d6dde9.mp3",
+          "sha": "26a3587a0b910e300b876da4584c7298dde4b0f4",
+          "size": 22464
+        },
+        {
+          "path": "audio/neural/curriculum-b00a9c4dd465c599.mp3",
+          "sha": "201e165e39fc355163fb6cdbab4cd2ae8ffc6db6",
+          "size": 15552
+        },
+        {
+          "path": "audio/neural/curriculum-b30f80c16ed7424e.mp3",
+          "sha": "e7a7978831f9f128affd62fe5bacf857cd765a01",
+          "size": 14256
+        },
+        {
+          "path": "audio/neural/curriculum-b37b813500a38719.mp3",
+          "sha": "a9a961a58d932cf415cac251fa52004501e66213",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-b5983479bff1dbf2.mp3",
+          "sha": "3e98b2a3557bc3ac4f973270bb08437276036c31",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-b69bde02040d1323.mp3",
+          "sha": "f6f198ab1eabaed66e664d0c4ebbb9dec6007bbd",
+          "size": 13248
+        },
+        {
+          "path": "audio/neural/curriculum-b71098a8afb132a3.mp3",
+          "sha": "e8a576d5412888636f384a98b2cc481f73de87df",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-b737df2bc4a734c2.mp3",
+          "sha": "aed075bdf087feb83b91eec5664f68e74ec676bd",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-b84ae0f3d80471e3.mp3",
+          "sha": "1fd53999fd974b8e8af0b5468351b45dc85d6d14",
+          "size": 14112
+        },
+        {
+          "path": "audio/neural/curriculum-b876f486dece4cae.mp3",
+          "sha": "2747e550b5537eaf54d54b48d8bcc19fd6e2db0f",
+          "size": 11520
+        },
+        {
+          "path": "audio/neural/curriculum-b90765d4aa01c328.mp3",
+          "sha": "aba1013e52877d122c43fecc3e36c7cc4f9f1c0d",
+          "size": 14400
+        },
+        {
+          "path": "audio/neural/curriculum-b960040913df77a5.mp3",
+          "sha": "3efe2d1732307e0c5bf8f0b31be269c06d0da49c",
+          "size": 12240
+        },
+        {
+          "path": "audio/neural/curriculum-ba36a11e8feea48c.mp3",
+          "sha": "1e30e4834b7bc5aafa2c1ae0a4cf69061d14ead9",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-baaa8d813b00dbdb.mp3",
+          "sha": "a0dcbded3b61d4358e08ae37652e0a4d71ac11de",
+          "size": 15408
+        },
+        {
+          "path": "audio/neural/curriculum-bab1455662051eba.mp3",
+          "sha": "bcee0ab5507bb5c1c148252e83873a4b9e99b096",
+          "size": 12240
+        },
+        {
+          "path": "audio/neural/curriculum-bb2d001745c55f13.mp3",
+          "sha": "e962319dd3c87b19ad04337e1de827def66d0854",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/curriculum-bb47528cf734d396.mp3",
+          "sha": "e61139382d1f7e148cf2e0148b4ea3dc90fa26e9",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-bbefbc21a4a178dd.mp3",
+          "sha": "9e631d5503942abb955495caf9cbc67601437e18",
+          "size": 14976
+        },
+        {
+          "path": "audio/neural/curriculum-bd6d64ef17d4be72.mp3",
+          "sha": "49aade87152a82de3b578123e7fa559ec7619bce",
+          "size": 12240
+        },
+        {
+          "path": "audio/neural/curriculum-be1529175d30a3c3.mp3",
+          "sha": "fcca20e3a3f7882286fe33f1e6ac585a311f4ba7",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-be242d3d9cd9bd5e.mp3",
+          "sha": "dbf163190cfa3c2568e1d10c37a6b3cfc96b5b86",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-c06f463da864e274.mp3",
+          "sha": "2c4b8dfc9bddc60b93550d242e1a4c75c6c0ab5c",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-c0cbec0ef9a935b0.mp3",
+          "sha": "805579dbd7c0918223c0cfc527c8ca4f875b9deb",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-c0ff0d78e7dbf290.mp3",
+          "sha": "36a28e3255bc8724029c8d0798bff2649ade6131",
+          "size": 15984
+        },
+        {
+          "path": "audio/neural/curriculum-c5cffb9e60232cdf.mp3",
+          "sha": "902564a652c7f52f072b2aa34a751e3cf3ded0cf",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-c5e3b3c07b8566d3.mp3",
+          "sha": "0cd5f07b78d470ab3ba94ed9689a605bfc218fa8",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-c65b1a8fccbf3115.mp3",
+          "sha": "d6c954efc7b2787f058de194221dd2dd416f0fd7",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-c6bdbeb042dd3ac4.mp3",
+          "sha": "f698bcdedcdc41516fa6c916a4dbbb91f31a08a8",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/curriculum-c6d1b4920020c2e7.mp3",
+          "sha": "f475216ee52b4bb446386b4bac48468af01cc1eb",
+          "size": 11376
+        },
+        {
+          "path": "audio/neural/curriculum-c9ba510f45aa93fa.mp3",
+          "sha": "ebbc73f29fd09901a27b9e4167bcbcebfa731223",
+          "size": 14832
+        },
+        {
+          "path": "audio/neural/curriculum-cac6f47bc0c9353d.mp3",
+          "sha": "84f6cd1c38b882d057d5af3cccfcb5bbb725bd9c",
+          "size": 14544
+        },
+        {
+          "path": "audio/neural/curriculum-cbac9acbaab242f5.mp3",
+          "sha": "4d3032206b0700c1280fa7268023c9d524a264f1",
+          "size": 12240
+        },
+        {
+          "path": "audio/neural/curriculum-cbbb1ed220dfbef6.mp3",
+          "sha": "7d7689d3c695a788ede2be26bcc3c062b4682a68",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-cbc0a8c8bd5c6c90.mp3",
+          "sha": "224851be4e2a5ca7b039d2c5185a003bf1007ecc",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-cc2dd2672fc88855.mp3",
+          "sha": "be56b9476f1ba04121a3308c9082bec6f91ace0e",
+          "size": 12960
+        },
+        {
+          "path": "audio/neural/curriculum-cd3d21d82fa50932.mp3",
+          "sha": "81082bd817294f2d224f332efd9d395cc46537d8",
+          "size": 12384
+        },
+        {
+          "path": "audio/neural/curriculum-cf724fba6aed2caf.mp3",
+          "sha": "e79d71e7abd89e6fc99ee39399bce1af9e31ef4e",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-d1cbf16234729e67.mp3",
+          "sha": "44c9e2b4d1eea56385c1e9bc98919b7213d85ef5",
+          "size": 98784
+        },
+        {
+          "path": "audio/neural/curriculum-d22a23dd8b6fbf66.mp3",
+          "sha": "d29f76c7760a6aa4a3842b1c85c09e3409e82428",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-d287944f0213be87.mp3",
+          "sha": "106629f2c8d1d824d605236dedf8b544ebf747ad",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/curriculum-d2a8dc30e406597d.mp3",
+          "sha": "f6fdc983946bd2451a6295c8759e390d80ee0f41",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-d2de76779d0136b7.mp3",
+          "sha": "e046852b1e77d922692abeaa4457f00cbba8b727",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/curriculum-d349dc1b21df07c9.mp3",
+          "sha": "c9108c9c4ef95c939e3cca45853443d16b5ab744",
+          "size": 14544
+        },
+        {
+          "path": "audio/neural/curriculum-d5666c66f63114a0.mp3",
+          "sha": "5255ff6af95b00b04660151d59a27f2985c13149",
+          "size": 12240
+        },
+        {
+          "path": "audio/neural/curriculum-d5771797b540568d.mp3",
+          "sha": "64e7eab4199d41f232fa0861a85305c9219cb934",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/curriculum-d612348d34128711.mp3",
+          "sha": "42ba2bdc0cbabb9fbf3a7b475fc88c9687ed6ee1",
+          "size": 16128
+        },
+        {
+          "path": "audio/neural/curriculum-d7121c802dddef5b.mp3",
+          "sha": "1e490f25df344c5279106bb1f4d3c6ae051001b4",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-d75b4db2aaa927b0.mp3",
+          "sha": "09368d48fd5c35e96fac6d2ab796481a9719b928",
+          "size": 13680
+        },
+        {
+          "path": "audio/neural/curriculum-d76dfced11026a4f.mp3",
+          "sha": "4d33b09035e17096b7999d4a534f07c2f00eccc3",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-d83a2040c10b753c.mp3",
+          "sha": "d6d1c77f2aad321830f5a7b7504cadaef234cd8f",
+          "size": 17856
+        },
+        {
+          "path": "audio/neural/curriculum-d89d5d77c243d213.mp3",
+          "sha": "8b9a3065a7593e382ab8c760346789ba86118c0c",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/curriculum-d99306448e987d2b.mp3",
+          "sha": "eee0e7f10cb394745380be9e56eff8996d60669b",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-db39853b8fbd4afd.mp3",
+          "sha": "9ad43e6e5fef4e73724e12006892695d528d2432",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/curriculum-db9a29bc54c1cfe1.mp3",
+          "sha": "3adf1573fbf1bd206ef46fb051caa2d84c9ddf44",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-dbc4a67f9604bd3c.mp3",
+          "sha": "652de8265b7ad14a525521b96fdbb4fb237d97f0",
+          "size": 12096
+        },
+        {
+          "path": "audio/neural/curriculum-dbd73054ab8313d4.mp3",
+          "sha": "372acb091b78125db222c10a48f85030b92ead93",
+          "size": 19440
+        },
+        {
+          "path": "audio/neural/curriculum-dc09df18e0cd6741.mp3",
+          "sha": "2538b9c737bf517619dd26159bc550e0e6c954c8",
+          "size": 16704
+        },
+        {
+          "path": "audio/neural/curriculum-dc2e48207d5fe80b.mp3",
+          "sha": "303c3b771e71b34de0f95af325885dda08c77304",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-dc6a257c9eb6fd9e.mp3",
+          "sha": "0fe75ef2fa5ccf8865672ceb341d0e2ba7913251",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-dcc632cd253f5ad6.mp3",
+          "sha": "0fcf1989b4e6b5c9c10941d8f55ff44eb0171b06",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-ddee7056f881bd99.mp3",
+          "sha": "9c099b766a1faa87354e16d474494ec45c70b5de",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-de742336a4d197da.mp3",
+          "sha": "4783be62881d046d10c81548b230e1be67824420",
+          "size": 13824
+        },
+        {
+          "path": "audio/neural/curriculum-dff458fe43b05714.mp3",
+          "sha": "bf8e6f1eb7e6698ee157cbc1de22917c32f4dafb",
+          "size": 15552
+        },
+        {
+          "path": "audio/neural/curriculum-e03bea27e1a0c0ba.mp3",
+          "sha": "f0906f5405646715fe5f8187f30d0dad61f33594",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-e34ceb79e2384eea.mp3",
+          "sha": "aad1a839449208fe5cf8a97d2fbfe9e081d01d6b",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/curriculum-e4124620b6ce7800.mp3",
+          "sha": "907b0f5af0a2642728000c588d006b59589ed707",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-e44f938b2d23f948.mp3",
+          "sha": "96bf52cd710f9cf2080200e2a7bd31bdc6d90fd5",
+          "size": 13104
+        },
+        {
+          "path": "audio/neural/curriculum-e49b24af4958073b.mp3",
+          "sha": "e172909db764deaba4e9c6a98ada6610bf18db53",
+          "size": 11952
+        },
+        {
+          "path": "audio/neural/curriculum-e562662fb48f6dea.mp3",
+          "sha": "34e7310fa78e0d2328574ca1788a38858ecc0017",
+          "size": 11376
+        },
+        {
+          "path": "audio/neural/curriculum-e5a7e3064c6a0467.mp3",
+          "sha": "1ab4fa8b67f097bc91c1fb0f21e5f7500a7a848c",
+          "size": 12672
+        },
+        {
+          "path": "audio/neural/curriculum-e5fdccd65aec543f.mp3",
+          "sha": "a2e15e1256023da0e3e473cc5858c9c74e77d325",
+          "size": 11952
+        },
+        {
+          "path": "audio/neural/curriculum-e72d0410e669b9d2.mp3",
+          "sha": "7ad7e3f86b7aab4f22ca0dc9b3ee88642b3cf428",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-e909bf37ebf60008.mp3",
+          "sha": "ceb1329819679d4ee898c36226d77c7e77afc4bf",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-e910dde3d1719ef3.mp3",
+          "sha": "616c8e78c61fa86f2b4c2120b3028de73d24bbab",
+          "size": 11376
+        },
+        {
+          "path": "audio/neural/curriculum-e975c7d7cd6afb00.mp3",
+          "sha": "aa0e5981012a7e29241d73a562739e1af457275c",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-e9afa938c522362b.mp3",
+          "sha": "131e56dc6b2ed6fab58aa26d07f58679482df20e",
+          "size": 11952
+        },
+        {
+          "path": "audio/neural/curriculum-eb771722573f80cc.mp3",
+          "sha": "7d55bd25c7e6f03923db35af72d637bef71efa8a",
+          "size": 14112
+        },
+        {
+          "path": "audio/neural/curriculum-eb8ab524d452e7ce.mp3",
+          "sha": "4b93f478fe017ce5bb1fa28d4458267c8692d2fc",
+          "size": 12672
+        },
+        {
+          "path": "audio/neural/curriculum-ee16a8b5a980d404.mp3",
+          "sha": "74d6fcc88fae57166d7c55f7dac86953cf05759e",
+          "size": 11952
+        },
+        {
+          "path": "audio/neural/curriculum-ef87291ca1ed2bdc.mp3",
+          "sha": "7b47b0bf58fdcdbaf5e6dc12690e47730d5c121d",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-f02b10090d53bc7b.mp3",
+          "sha": "3632d0a15c5af0c12e1b7c519112afc2d7b8b3dc",
+          "size": 13536
+        },
+        {
+          "path": "audio/neural/curriculum-f0e87d62375e7356.mp3",
+          "sha": "038ec884b7bebaf32f40b89be8192badf1fe4d1a",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-f159cc5520c17932.mp3",
+          "sha": "cd579f26a94213538226bedd1d96ebb1ff193ce8",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-f27891cdacd0de82.mp3",
+          "sha": "e0dcee456c0e01d1376d5fe4b5123cc44a6b08e6",
+          "size": 14112
+        },
+        {
+          "path": "audio/neural/curriculum-f295067392bd9630.mp3",
+          "sha": "7b33ecb939dbc92b05e8f1987c696b0d469e1704",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-f3870c2207dce00f.mp3",
+          "sha": "cff807ecaba61d10056f5a9eedf584ce958e52e9",
+          "size": 13680
+        },
+        {
+          "path": "audio/neural/curriculum-f40e535f01a5f572.mp3",
+          "sha": "aa816476f8dc73e09f79fbe04316783377a486eb",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/curriculum-f41d8e342ec89f06.mp3",
+          "sha": "173c3979082dde6508578a80d4e1acbe310f331e",
+          "size": 12672
+        },
+        {
+          "path": "audio/neural/curriculum-f48332c472920eca.mp3",
+          "sha": "60d2870bd83ef1bdfa5ab794247270887e0208aa",
+          "size": 11376
+        },
+        {
+          "path": "audio/neural/curriculum-f49ced6493c9d7ee.mp3",
+          "sha": "0fb9e3201599b7f4c76d3ad2757731c686f4bdd1",
+          "size": 13968
+        },
+        {
+          "path": "audio/neural/curriculum-f5b3d757a732cd0f.mp3",
+          "sha": "8944d3dd32ca2e6c7418f2b664b44459bc05c0e2",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-f7c27d866177304c.mp3",
+          "sha": "7adca39bfe2e377f854fb2f4d2f21176fd4a0d96",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/curriculum-f7d3f60f059c177e.mp3",
+          "sha": "06de6ba0528317ace78caff8ea85b050e07825a7",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-f81c6c78c0edced2.mp3",
+          "sha": "0b3225059d457c482a8411ab13805c159505f14a",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/curriculum-fa5763d847ce7cfb.mp3",
+          "sha": "1f710ab790a6244fe086490ad19ded1b9d4ae7a7",
+          "size": 15264
+        },
+        {
+          "path": "audio/neural/curriculum-fba272c3bf6a0eca.mp3",
+          "sha": "47817e9963bfc9d4d6928e4a68c8fe7719771f08",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-fc47858452914b33.mp3",
+          "sha": "e50fcc290aa88232fa38a26dcb510a3ec300bc4d",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/curriculum-fc717307cdcbbd49.mp3",
+          "sha": "3736d5249c48633e3d6a5fa18d862593661e065d",
+          "size": 13248
+        },
+        {
+          "path": "audio/neural/curriculum-fd4bca526fa9c822.mp3",
+          "sha": "3982da0dc3f37c6acdea41278d9118f4234a24f9",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-fda471745701ff9b.mp3",
+          "sha": "8123a3a209cdab7ddcd15c36ebce3191fc285f26",
+          "size": 14400
+        },
+        {
+          "path": "audio/neural/curriculum-fdeed57bd92e4c14.mp3",
+          "sha": "d3f526ce5a280ed43b8b2fe687f4b38b751188c0",
+          "size": 12096
+        },
+        {
+          "path": "audio/neural/curriculum-feb81fa63ac2ae52.mp3",
+          "sha": "705ea00b97b63f3f150d865841b7fad5c46ebeb0",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/curriculum-ff91987f8e97c00c.mp3",
+          "sha": "08a9c3164c809f2187b791d0f9f8e4783d0828a0",
+          "size": 14688
+        },
+        {
+          "path": "audio/neural/letter-01.mp3",
+          "sha": "055b632156b59ec5bbe3a1dea13f50a6d3835461",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/letter-02.mp3",
+          "sha": "d66287f6c8231419f6758ebd65131ef24d1d2bc8",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/letter-03.mp3",
+          "sha": "86b2f93f7adde48764e8eb5c42c4d42f04e5b476",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-04.mp3",
+          "sha": "094343d7564f7c8c311e087e3b884575e7b5f4ec",
+          "size": 11520
+        },
+        {
+          "path": "audio/neural/letter-05.mp3",
+          "sha": "2566c56972cc82dcee90e2ce2ff0b28e5b77f9f9",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-06.mp3",
+          "sha": "efc6b36122028dab776f43f0b0593620bdfe2f2e",
+          "size": 11376
+        },
+        {
+          "path": "audio/neural/letter-07.mp3",
+          "sha": "355c2e5cabbbc8d55bb80b228e3d7c73a031f62f",
+          "size": 11808
+        },
+        {
+          "path": "audio/neural/letter-08.mp3",
+          "sha": "7b1a9623f40293a9a7ccabf6b1b721a6a2792dd1",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-09.mp3",
+          "sha": "4cb2c3fd8fb3d92dd870a081dcdf302e4ced807f",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-10.mp3",
+          "sha": "5272d1bc96a6b3ad70738afb8957de6d90481337",
+          "size": 11520
+        },
+        {
+          "path": "audio/neural/letter-11.mp3",
+          "sha": "62256d9539126ff21c33cf5ae3b58ff3afd5c34d",
+          "size": 15984
+        },
+        {
+          "path": "audio/neural/letter-12.mp3",
+          "sha": "99de593890d929e0c5e2e306cfb52b81872132e0",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-13.mp3",
+          "sha": "9a8548e0dc73d7b9b9ef0dc73ec598995b2fc2f6",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/letter-14.mp3",
+          "sha": "28911a4389376244be93563d70083794ae44aa50",
+          "size": 12384
+        },
+        {
+          "path": "audio/neural/letter-15.mp3",
+          "sha": "80af7c782f3b27042ed4e1caf79433105fc8869a",
+          "size": 12384
+        },
+        {
+          "path": "audio/neural/letter-16.mp3",
+          "sha": "a30dbc32c8c4292199c245972e984510b3c26472",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/letter-17.mp3",
+          "sha": "77438b3f8ea962a6011db498d53fb8df0b33fb07",
+          "size": 12384
+        },
+        {
+          "path": "audio/neural/letter-18.mp3",
+          "sha": "836bd59a9ab5b3dc2c4a1f50b0f6237926072374",
+          "size": 12672
+        },
+        {
+          "path": "audio/neural/letter-19.mp3",
+          "sha": "3f0d10a3b5365aa1699967cd9d08a2a8fa79a0a2",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-20.mp3",
+          "sha": "202856aa3f9755d47b80a3e9a2656c4178cc3f0f",
+          "size": 11520
+        },
+        {
+          "path": "audio/neural/letter-21.mp3",
+          "sha": "a7e2bb06df1b6bacb6206b5725c81a9881cebb31",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-22.mp3",
+          "sha": "0966dddde4680f1d9a215d2b26a6645885a70fad",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/letter-23.mp3",
+          "sha": "8ef6d306ca44fe6d37112ac414fd3d6a8ffd4f2b",
+          "size": 11952
+        },
+        {
+          "path": "audio/neural/letter-24.mp3",
+          "sha": "3dd40e0ada6a15276b4b104480b089953e28466f",
+          "size": 11808
+        },
+        {
+          "path": "audio/neural/letter-25.mp3",
+          "sha": "97104e08b10bebb91cc18966eb0af598ea88ef46",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/letter-26.mp3",
+          "sha": "411a04ca5d676ba8803ac70c23ffda306b36da04",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/letter-27.mp3",
+          "sha": "c3d9bcaf25f552bbd4631332f2fe4e538102e505",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/letter-28.mp3",
+          "sha": "1cbc87a2dc841fc39bcd86030cbe00a55d829dde",
+          "size": 14256
+        },
+        {
+          "path": "audio/neural/letter-29.mp3",
+          "sha": "d8643896a3f31d90e868708f07fdddc528284843",
+          "size": 11520
+        },
+        {
+          "path": "audio/neural/letter-30.mp3",
+          "sha": "0e019728e5d73c72faefb35c937dd3fb2183452e",
+          "size": 14832
+        },
+        {
+          "path": "audio/neural/letter-31.mp3",
+          "sha": "5e9e61aaf90ee0b478b9d42b68f6db6e66960159",
+          "size": 11664
+        },
+        {
+          "path": "audio/neural/letter-32.mp3",
+          "sha": "236870bef991b81ea4eed9340876609afc1f8ce0",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-33.mp3",
+          "sha": "09a86031e8fee13d931efe0e81c2858458450fc0",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-01.mp3",
+          "sha": "7763aa3111dd53d7ae22f5fcc6dde112baa022e8",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-02.mp3",
+          "sha": "ae8167fd39941a1adb8b24a1913b57de0e48e264",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-03.mp3",
+          "sha": "b32ba29e3c770563e7c7f726c6eb43d306acfea6",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-04.mp3",
+          "sha": "1f39f599efe3666ed52a1a1507db4884448313ed",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-05.mp3",
+          "sha": "a44e12d37d89605fe53934d818553d8d0e4e00f6",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-06.mp3",
+          "sha": "8d4408637d1989101123b904aa6939c0585885e6",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-07.mp3",
+          "sha": "d4350948078bf057c6c31435847c8a60e55a14d1",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-08.mp3",
+          "sha": "bc4b6a366cd2da630a5e5ae1443bfd35053a7bf3",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-09.mp3",
+          "sha": "551f52aaee4fd5491e3f3efa575de206b7e3d2e3",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-10.mp3",
+          "sha": "605527a29e19b50d98b1aa33e91f33ba84ca3d93",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-11.mp3",
+          "sha": "4cf6972ce41898d27c28425fd64d3af8ff07afc4",
+          "size": 12240
+        },
+        {
+          "path": "audio/neural/letter-isolated-12.mp3",
+          "sha": "cd6f66bd3f2ed3b33688d62d21a28a15f2c747e2",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-13.mp3",
+          "sha": "6a437cd8e0483aaf5da9f8e75b81aa4d156208ee",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-14.mp3",
+          "sha": "7655fedab17b6156f7f4f725b98540383b6579fe",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-15.mp3",
+          "sha": "fbf42cfbb802b0f9cfd0ced1ab07975b70b2fe09",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-16.mp3",
+          "sha": "040dbb07da0d07a7ba84bfeea67736d89c6514e3",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-17.mp3",
+          "sha": "df437a0fddc17dbec60550a926d2c361456ed2f6",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-18.mp3",
+          "sha": "9427a9a7e12cdecbf94fd371f41ee51cc7947810",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-19.mp3",
+          "sha": "289a66f7f364610e4bcbfed495cfeb4b79c0bce3",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-20.mp3",
+          "sha": "9ae4ab9c297186c0dbd993046a6fb49c3fc04f45",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-21.mp3",
+          "sha": "3834a7b59b06c0bf6d0c67d5b2522fe9e09fca95",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-22.mp3",
+          "sha": "dd805277cbc2ee56a53ab6ae0a43e5b23a8ad59d",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-23.mp3",
+          "sha": "a1ab56aaf699e8387b963f6300e70ede824bb841",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-24.mp3",
+          "sha": "69f761bdf0bce66197bb37e866f2c943d6e00686",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-25.mp3",
+          "sha": "931024dec9d88fea38918851a1e23b7f2c6ca5ca",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-26.mp3",
+          "sha": "4c2625d9cfbaaf7a40a69e74924b8e27be37aa5e",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-27.mp3",
+          "sha": "6667ece35499b0df5bb1cc1e927203f1cc70c53f",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-28.mp3",
+          "sha": "b5c72c2563b487919b38f3b8f0a58a78bf7a72ad",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/letter-isolated-29.mp3",
+          "sha": "85d676f755ea3212c3c6e53a14dc985a2ffb9563",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-30.mp3",
+          "sha": "9f21d7b7a722ec6551938cc4003389b4f237e347",
+          "size": 12528
+        },
+        {
+          "path": "audio/neural/letter-isolated-31.mp3",
+          "sha": "4e5f51a50d09c01899b93095a3e733c70b40fe9b",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-32.mp3",
+          "sha": "32adef2eb4eb55d598ed2eb4044cce475f2bb5a0",
+          "size": 11232
+        },
+        {
+          "path": "audio/neural/letter-isolated-33.mp3",
+          "sha": "a64a9ed80a671a438c1eb59dff4bf919effbcb1b",
+          "size": 11232
+        },
+        {
+          "path": "curriculum-neural-audio.js",
+          "sha": "6a6f1daa0664cce314496e9f54117bd27db4ab08",
+          "size": 26266
+        },
+        {
+          "path": "curriculum/a1-alphabet.js",
+          "sha": "54123da05cce8cba3337498c98739e0832f9e6a3",
+          "size": 2387
+        },
+        {
+          "path": "curriculum/a1-english.js",
+          "sha": "4e20771ecaade3c87a07864cab9046b4b2091bfb",
+          "size": 2623
+        },
+        {
+          "path": "curriculum/a1-notes.js",
+          "sha": "259fade7b6ac74671e9cacce856f2e967a298e3f",
+          "size": 3878
+        },
+        {
+          "path": "curriculum/a1-reading.js",
+          "sha": "a16f5879a413e56ea76500cb310ecd8b6a74df14",
+          "size": 1523
+        },
+        {
+          "path": "curriculum/a2-dialogues.js",
+          "sha": "0f76274b95db1ade902dd4b5cc30de2b5eed760d",
+          "size": 2836
+        },
+        {
+          "path": "curriculum/a2-exam.js",
+          "sha": "1df6c179c7abebfd870d848e91f78ee2d8c27a99",
+          "size": 2793
+        },
+        {
+          "path": "curriculum/a2-lessons.js",
+          "sha": "ee3a6e2b66747d0046e8cabea6a32b004cf98eda",
+          "size": 13051
+        },
+        {
+          "path": "curriculum/a2-listening.js",
+          "sha": "5cce05b01560fdf18901992802d87d3fe4432253",
+          "size": 2041
+        },
+        {
+          "path": "curriculum/a2-reading.js",
+          "sha": "d46f6ba43d747b88dd37040a6e0feb644c74de0b",
+          "size": 4835
+        },
+        {
+          "path": "curriculum/english-content.js",
+          "sha": "1efd3943612bd252d89f57a0aff6b6e1bab5860a",
+          "size": 9528
+        },
+        {
+          "path": "curriculum/numbers-phrases.js",
+          "sha": "340fad14ed28cddaff118ae4d6c6dbb50f0cb2a5",
+          "size": 776
+        },
+        {
+          "path": "curriculum/russian-calendar.js",
+          "sha": "de30510a6a1a685aec43b453e338477ec61c13d4",
+          "size": 1806
+        },
+        {
+          "path": "curriculum/russian-numbers.js",
+          "sha": "9fa32163051705644e7ff98189f345902849d01c",
+          "size": 6581
+        },
+        {
+          "path": "curriculum/visual-vocabulary.js",
+          "sha": "439cdc41e1d3912c4a45c86031177b0f4b75321d",
+          "size": 3381
+        },
+        {
+          "path": "index.html",
+          "sha": "751b82991a8fb9b6228c41aab7f3606feb01e521",
+          "size": 29138
+        },
+        {
+          "path": "neural-audio.js",
+          "sha": "460769262f5ed933622705f7d139d30e944e2ebf",
+          "size": 1322
+        },
+        {
+          "path": "requirements-audio.txt",
+          "sha": "fd33f185a3150b82ed8c233d51c85b84bb14216c",
+          "size": 17
+        },
+        {
+          "path": "scripts/academy-expansion.js",
+          "sha": "d69f9d43ba801f8481c4bd6c95c9dd2d063c374f",
+          "size": 9859
+        },
+        {
+          "path": "scripts/academy-home.js",
+          "sha": "81a7542dd8ec13c834179edc6f8506568a643672",
+          "size": 29625
+        },
+        {
+          "path": "scripts/english-ui.js",
+          "sha": "3956e340230ad2b9a1de0437dcd55b274d1e9d8f",
+          "size": 7119
+        },
+        {
+          "path": "scripts/generate_a2_audio.py",
+          "sha": "d19be44b224530305083fd53847e43b78b60a29a",
+          "size": 1709
+        },
+        {
+          "path": "scripts/generate_alphabet_audio.py",
+          "sha": "b7ec9aa825857581d5f159848467815861c88457",
+          "size": 1283
+        },
+        {
+          "path": "scripts/generate_audio.py",
+          "sha": "2d53dff9324a0695944b5940ff041ba8a038e3da",
+          "size": 2197
+        },
+        {
+          "path": "scripts/generate_curriculum_audio.py",
+          "sha": "07233253e1734f1c6ef2989e89fa7be3d5561184",
+          "size": 3234
+        },
+        {
+          "path": "scripts/hub.js",
+          "sha": "d3eeb29428a55e76f756a6ad83f8c4d21cd48fcc",
+          "size": 6842
+        },
+        {
+          "path": "scripts/russian-audio.js",
+          "sha": "e888eb79f4f26ce84020e584b7826fdb29e78a77",
+          "size": 2168
+        },
+        {
+          "path": "scripts/visual-vocabulary.js",
+          "sha": "b10ba106fa5a9df731f6aa399194b093fe3eff93",
+          "size": 19649
+        },
+        {
+          "path": "styles/academy.css",
+          "sha": "63b3e153b200cd7261a1e22d26495c4cf802c5ca",
+          "size": 22738
+        },
+        {
+          "path": "styles/expansion.css",
+          "sha": "bcd4e26734af136770aaff1bfb346cc7b7d4f321",
+          "size": 889
+        },
+        {
+          "path": "styles/hub.css",
+          "sha": "7c434fbce448b75c9fd91c436569117153ed236f",
+          "size": 2242
+        },
+        {
+          "path": "tests/academy.spec.cjs",
+          "sha": "fcca9edb6f12de36b9e78942aee3fbe9ced5f92a",
+          "size": 29915
+        },
+        {
+          "path": "tests/expansion.test.cjs",
+          "sha": "a414e6b61d05d9ab58e2718806ac44b0ec88dd54",
+          "size": 2422
+        },
+        {
+          "path": "tests/hub.spec.cjs",
+          "sha": "0d5710fd380f7e0a6a1e98012289526e3a13dc68",
+          "size": 2267
+        }
+      ],
+      "reportedHeadSha": "22847d1d87a283f816ed5ac9a17c851fe70dd283"
+    },
+    {
+      "repository": "3bHussein/CloudHub",
+      "truncated": false,
+      "files": [
+        {
+          "path": ".env.example",
+          "sha": "f6f450395406974b2ce0f39aa6032336b768c52c",
+          "size": 618
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "sha": "eeb680dfa74f2834b3d0c079c380eb52ea673eea",
+          "size": 540
+        },
+        {
+          "path": ".gitignore",
+          "sha": "f2cdd87c282e60cc3c6b52ab80763c4174ced433",
+          "size": 93
+        },
+        {
+          "path": "EXPLORER-UPDATE.md",
+          "sha": "12a176bfbe4c4179c36ac70619d7f5f81eae1ca2",
+          "size": 1149
+        },
+        {
+          "path": "GOOGLE-SETUP.md",
+          "sha": "b3a336cfae950aaa17b94ec86104ba4f95b6286e",
+          "size": 2422
+        },
+        {
+          "path": "README.md",
+          "sha": "c2a9793d092632102c600ffcc46532a6554d6135",
+          "size": 10
+        },
+        {
+          "path": "RELEASE-v1.3.md",
+          "sha": "8c6291f10198c5d6122751ea29029f0073d849fd",
+          "size": 1219
+        },
+        {
+          "path": "RELEASE-v1.4.md",
+          "sha": "f29d13d6d2349bbed9cbe5fd5f84ee3a1ac5d239",
+          "size": 1647
+        },
+        {
+          "path": "RELEASE-v1.6.md",
+          "sha": "9800222f61d9efcfe1322261c92eedfe40cbc189",
+          "size": 1119
+        },
+        {
+          "path": "RELEASE-v1.7.md",
+          "sha": "67a30c66f368dca13d643ae3196a2ca42d04a4a6",
+          "size": 934
+        },
+        {
+          "path": "RELEASE-v1.8.md",
+          "sha": "688bb0c73236a083d446641fd8e98fbbe48075f8",
+          "size": 1534
+        },
+        {
+          "path": "RELEASE-v1.9.md",
+          "sha": "c73762fc5ec513af911ef75189a5458f933add09",
+          "size": 624
+        },
+        {
+          "path": "RELEASE-v2.0.md",
+          "sha": "a889965ececa6c426ef6addd86e54b462758ef34",
+          "size": 941
+        },
+        {
+          "path": "RELEASE-v2.1-GITHUB-PREP.md",
+          "sha": "8a1841aea27c7850feaddeaf3c11774dec4e2439",
+          "size": 1276
+        },
+        {
+          "path": "apps/api/package.json",
+          "sha": "d0c7346a9723a35b09b7b8d7a1685dbb83eb00d6",
+          "size": 707
+        },
+        {
+          "path": "apps/api/src/google.ts",
+          "sha": "b2c96cae0d1f321089ebc809625d991fc10d9d71",
+          "size": 13912
+        },
+        {
+          "path": "apps/api/src/main.ts",
+          "sha": "e0adbd62b9e1b5318f3103794ae930a91e23006c",
+          "size": 9028
+        },
+        {
+          "path": "apps/api/src/mega.ts",
+          "sha": "2934fab399cddb01ef2b88f7c9534e81982e5ad4",
+          "size": 6235
+        },
+        {
+          "path": "apps/api/tsconfig.json",
+          "sha": "412bf91ce866678b769e383905e233b5c42451fc",
+          "size": 375
+        },
+        {
+          "path": "apps/web/app/layout.tsx",
+          "sha": "69270e32f9fdebc60db03eaf6f6cba49d9f7c23e",
+          "size": 286
+        },
+        {
+          "path": "apps/web/app/page.tsx",
+          "sha": "3075d0ff2a94438bb4f0c19d3ad9efb35cac1839",
+          "size": 21218
+        },
+        {
+          "path": "apps/web/app/style.css",
+          "sha": "ab5f73fcde5f03e4f6d3320011b3d6ede5325fc6",
+          "size": 17327
+        },
+        {
+          "path": "apps/web/next-env.d.ts",
+          "sha": "830fb594ca2970a827555c28a253b097367e08d8",
+          "size": 262
+        },
+        {
+          "path": "apps/web/package.json",
+          "sha": "0edc2327033bdb08b301be5a0f7c369fab6f54b4",
+          "size": 434
+        },
+        {
+          "path": "apps/web/tsconfig.json",
+          "sha": "f89cdb645e37a60e4033bcae9e3c242ecfa148ca",
+          "size": 607
+        },
+        {
+          "path": "docker-compose.yml",
+          "sha": "e0dae00bdf830c23fbe34e93d69b1e74fb8f333c",
+          "size": 425
+        },
+        {
+          "path": "package-lock.json",
+          "sha": "073824b9379802f6a4e38803ba98d98fb6ea4a6b",
+          "size": 129184
+        },
+        {
+          "path": "package.json",
+          "sha": "21563678f80e4080721bf9a6ea619db5e2599f04",
+          "size": 691
+        },
+        {
+          "path": "prisma/schema.prisma",
+          "sha": "76da14ecedc1c518a2c940fdc9143185163f0d63",
+          "size": 2196
+        },
+        {
+          "path": "scripts/check-source.mjs",
+          "sha": "1ea57b995a3058b614b2a0eb46134e6f9ed9eb07",
+          "size": 677
+        }
+      ],
+      "reportedHeadSha": "037ecd8366d06d830bb0e74c4e289e6b50b83c6d"
+    },
+    {
+      "repository": "product-engineerAutomax/Autel-Code-Manager",
+      "truncated": false,
+      "files": [
+        {
+          "path": ".github/workflows/release-quality.yml",
+          "sha": "b95c093f1b2a5722067f4354007ca1e6d6f32e5d",
+          "size": 551
+        },
+        {
+          "path": ".gitignore",
+          "sha": "f479c8eab4bdda20714ab66ff2602b8067c4ce78",
+          "size": 73
+        },
+        {
+          "path": "README.md",
+          "sha": "a09aa6a7702e580da58e3cbd31739a3c0f9b6ad8",
+          "size": 9458
+        },
+        {
+          "path": "README.txt",
+          "sha": "e3cf987b8a20754d863f8a11d04a563cc2ca8575",
+          "size": 233
+        },
+        {
+          "path": "backups/.gitignore",
+          "sha": "2da460e9fa92095c88422450dd930533f39e398c",
+          "size": 147
+        },
+        {
+          "path": "backups/README.md",
+          "sha": "fdc9b050838574828aa012dc088cfb78c3bd2025",
+          "size": 1771
+        },
+        {
+          "path": "config.js",
+          "sha": "3553fd7825b00e1fcfc1e17ebbf06e4acaa2653a",
+          "size": 134
+        },
+        {
+          "path": "docs/images/audit-logs.png",
+          "sha": "f34c7f71379aba88a3831d89c9630dd0be47178c",
+          "size": 176337
+        },
+        {
+          "path": "docs/images/code-vault.png",
+          "sha": "be4c6939ef312c179284192c4827c5a47abbc13a",
+          "size": 147680
+        },
+        {
+          "path": "docs/images/security-access.png",
+          "sha": "808bae6f2c8b185e713a2e8e7f20da794c79d40f",
+          "size": 110194
+        },
+        {
+          "path": "docs/images/tracker-overview.png",
+          "sha": "6e57026469ebbfb96cf8ff5f7f31ef12808eca92",
+          "size": 189703
+        },
+        {
+          "path": "docs/images/tracker-table.png",
+          "sha": "8d47698ff0da2b18696e3a9a65233f643c98090d",
+          "size": 137357
+        },
+        {
+          "path": "index.html",
+          "sha": "6a498d16086a11d844fa054b786fc0b51e7e3e3c",
+          "size": 52375
+        },
+        {
+          "path": "maintenance/AUDIT_VERIFY_READ_ONLY.sql",
+          "sha": "d0879a84f2897df21b90287e521b8c3df474f06d",
+          "size": 1667
+        },
+        {
+          "path": "maintenance/BACKUP_AND_RESTORE.md",
+          "sha": "a106232837828b0272a91e89ad883b274e44c819",
+          "size": 3194
+        },
+        {
+          "path": "maintenance/CONFIRM_CODE_PRODUCTION_AUDIT_20261017.md",
+          "sha": "cee65fb54249677da0a4ae5cadd7c7a7fb27902c",
+          "size": 2332
+        },
+        {
+          "path": "maintenance/ENCRYPTED_SERIAL_FINAL_READ_ONLY_GATES.sql",
+          "sha": "df669247a986752c201a21073955e9038a8cb0ee",
+          "size": 2357
+        },
+        {
+          "path": "maintenance/ENCRYPTED_SERIAL_READ_ONLY_PREFLIGHT.sql",
+          "sha": "a9c894894a4c61f63bfdfeee4119e38897577875",
+          "size": 2480
+        },
+        {
+          "path": "maintenance/FINAL_DELIVERY_ACCESS.md",
+          "sha": "afb5ec9045230442c33c8f400103d7b01fcbaf13",
+          "size": 3219
+        },
+        {
+          "path": "maintenance/MARK_USED_PREDEPLOY_READ_ONLY_AUDIT_20261017.sql",
+          "sha": "4ca5064f57c34ecd1e2460ac0339cf99536de6d3",
+          "size": 3736
+        },
+        {
+          "path": "maintenance/OWNER_BACKUP_SETUP.md",
+          "sha": "9f7036e3764a157567d05c439a552cb0920b0577",
+          "size": 3628
+        },
+        {
+          "path": "maintenance/PRODUCTION_SERIAL_INDEX_AUDIT_20261017.md",
+          "sha": "bccf92aa36a7808619d69c115a63b21bc72defc5",
+          "size": 1807
+        },
+        {
+          "path": "maintenance/PRODUCTION_SERIAL_RPC_REVIEW_20261017.md",
+          "sha": "2ee0f5e1b3b1fce920dd18f280928286d9f8ea26",
+          "size": 2401
+        },
+        {
+          "path": "migrations/20261015_admin_approval_required.sql",
+          "sha": "965ba940712cc5385d987c8542021f227ad6f074",
+          "size": 2000
+        },
+        {
+          "path": "migrations/20261015_admin_code_vault.sql",
+          "sha": "f990074870e29a2b83e9c2882ad3198e5de49743",
+          "size": 4971
+        },
+        {
+          "path": "migrations/20261015_audit_code_disclosure.sql",
+          "sha": "3a1ba29aed28f9340de625d41d188a832f180fab",
+          "size": 745
+        },
+        {
+          "path": "migrations/20261015_global_serial_uniqueness.sql",
+          "sha": "bbe2d14f29af978df6973a7e711d2e027bc3c998",
+          "size": 2606
+        },
+        {
+          "path": "migrations/20261015_one_time_visibility.sql",
+          "sha": "bfa9a0bad5645c78e9e32dd0dd7bc6289bf6dae2",
+          "size": 907
+        },
+        {
+          "path": "migrations/20261015_prevent_duplicate_serial.sql",
+          "sha": "b1028d10d9d44cb5f181342a6814073aaec565de",
+          "size": 2560
+        },
+        {
+          "path": "migrations/20261015_return_reserved_codes.sql",
+          "sha": "794fd76901e33c9a365df974eeec3a0f90d094f2",
+          "size": 1637
+        },
+        {
+          "path": "migrations/20261015_staff_product_privacy.sql",
+          "sha": "277b72e5e28192144a11d7f1043343d1a7a66893",
+          "size": 1126
+        },
+        {
+          "path": "migrations/EMPLOYEE_REVEAL_ENCRYPTED_SERIAL_CHECK_REVIEW_20261017.sql",
+          "sha": "d14294cfadd0254094c48bc7f6e35f01575bf99f",
+          "size": 2043
+        },
+        {
+          "path": "migrations/ENCRYPTED_IMPORT_STAGING.sql",
+          "sha": "41ce893ac54657337008e43bc46e0aa67cd954d5",
+          "size": 778
+        },
+        {
+          "path": "migrations/ENCRYPTED_SERIAL_CROSS_TABLE_LOCK_PREPARATION.sql",
+          "sha": "a1aaee5c4c53626b7ddec7d2fef932d71c07ba1e",
+          "size": 3593
+        },
+        {
+          "path": "migrations/ENCRYPTED_SERIAL_RESERVE_CODE_REVIEW.sql",
+          "sha": "703458f618c234882b52e6d082f7d64229475d59",
+          "size": 2246
+        },
+        {
+          "path": "migrations/ENCRYPTED_SERIAL_UNIFIED_REVIEW_ONLY.sql",
+          "sha": "e153a3fe6a293d2350a0a2ba179612fa1feb1716",
+          "size": 5687
+        },
+        {
+          "path": "migrations/ENCRYPTED_STAFF_REVEAL_AUDIT.sql",
+          "sha": "99cdbcab585e5c41083023020d8d3aa54e101599",
+          "size": 354
+        },
+        {
+          "path": "migrations/ENCRYPTED_STAGING_ASSIGNMENTS.sql",
+          "sha": "ad5066a0c73d6a1cd4a25977baa96189bb2295e8",
+          "size": 2831
+        },
+        {
+          "path": "migrations/ENCRYPTED_STAGING_REVEAL_AUDIT.sql",
+          "sha": "b5f221e642db91a6d3de3b052eda7e41eaa415e6",
+          "size": 827
+        },
+        {
+          "path": "migrations/ENCRYPTED_STAGING_USAGE_PREPARATION.sql",
+          "sha": "c3b496bb5e0b5e2b58dc66d5b3dfae554fae9ddb",
+          "size": 2605
+        },
+        {
+          "path": "migrations/FINAL_01_PRECHECK.sql",
+          "sha": "b3d6ac43e19286814a50bde73b9f1c06f93c8e2d",
+          "size": 550
+        },
+        {
+          "path": "migrations/FINAL_02_ADMIN_ASSIGNMENT.sql",
+          "sha": "7469a2bb00c20e432e8b520da74019794f27c787",
+          "size": 10991
+        },
+        {
+          "path": "migrations/FINAL_03_VISIBLE_ASSIGNED_CODES.sql",
+          "sha": "742ac183754a5c20e404402c66893f4f05bb78f7",
+          "size": 4244
+        },
+        {
+          "path": "migrations/FINAL_04_ADMIN_SELF_ASSIGN.sql",
+          "sha": "334178b4130e6c9e3b3b44e344bdaef0b46676c0",
+          "size": 3752
+        },
+        {
+          "path": "migrations/FINAL_05_FIX_VISIBLE_CODE.sql",
+          "sha": "b8a7cec83ff37ab87718cb7f346dc813d1a8fd96",
+          "size": 1408
+        },
+        {
+          "path": "migrations/LEGACY_SERIAL_WRITERS_STAGING_REVIEW_20261017.sql",
+          "sha": "9d246b56a296b2d3b5a710773e9dbd70d49a2c1e",
+          "size": 5362
+        },
+        {
+          "path": "package-lock.json",
+          "sha": "c6af63d606486c0d727a3e619e2a168a52e8c492",
+          "size": 10009
+        },
+        {
+          "path": "package.json",
+          "sha": "7a06564d1b05b7960320f67bde15196686f053c0",
+          "size": 404
+        },
+        {
+          "path": "public/_headers",
+          "sha": "02036f929270c3be8f751114d008421d25c4358f",
+          "size": 537
+        },
+        {
+          "path": "public/config.js",
+          "sha": "3553fd7825b00e1fcfc1e17ebbf06e4acaa2653a",
+          "size": 134
+        },
+        {
+          "path": "public/index.html",
+          "sha": "6a498d16086a11d844fa054b786fc0b51e7e3e3c",
+          "size": 52375
+        },
+        {
+          "path": "public/vendor/LICENSE.sheetjs.txt",
+          "sha": "4bdda80385ac0fcc0dd6573e23a048175801b24f",
+          "size": 11355
+        },
+        {
+          "path": "public/vendor/LICENSE.supabase.txt",
+          "sha": "ddeba6a00ae5ec536d5429e040bc73ef2c6a07d6",
+          "size": 1065
+        },
+        {
+          "path": "public/vendor/README.md",
+          "sha": "81359c3f663c9e0370a7d3c5d7b1bc18a6d9b383",
+          "size": 823
+        },
+        {
+          "path": "public/vendor/supabase-2.57.0.min.js",
+          "sha": "01a543955cb6345d14d05eea3fb10e651bb40a9e",
+          "size": 129895
+        },
+        {
+          "path": "public/vendor/xlsx-0.20.3.min.js",
+          "sha": "21471af69ef0e4cda1613c2702c54101b92f48d2",
+          "size": 951904
+        },
+        {
+          "path": "release/ACCOUNT_CUTOVER_REVIEW.sql",
+          "sha": "5e4076f5e9fbaa9fc25c662aa1ffcf32662fdb05",
+          "size": 1348
+        },
+        {
+          "path": "release/AUDIT-OUTPUT.txt",
+          "sha": "d0ff372eee6f657277f4e8bce677fcb19ec6e370",
+          "size": 123
+        },
+        {
+          "path": "release/AUTEL_01_PREPARE.sql",
+          "sha": "5f162bb2fdf65aa47058e9e939d566614017224d",
+          "size": 26541
+        },
+        {
+          "path": "release/AUTEL_02_CUTOVER_REVIEW.sql",
+          "sha": "58386131c33049a69d95047419c61ff35607a09d",
+          "size": 3284
+        },
+        {
+          "path": "release/AUTEL_AUDIT_ACCESS_UPDATE.sql",
+          "sha": "b944ca15cda00924888313a550608727e2fa911d",
+          "size": 1537
+        },
+        {
+          "path": "release/AUTEL_AUDIT_UPDATE.sql",
+          "sha": "cd6a1a20f6421fe486141ddcd14896f801538d22",
+          "size": 6451
+        },
+        {
+          "path": "release/AUTEL_DELETE_59_LEGACY.sql",
+          "sha": "0f29fb7b169c813a6b916b62915a8169a85a985e",
+          "size": 5268
+        },
+        {
+          "path": "release/AUTEL_IMPORT_REPORTS.sql",
+          "sha": "e2b0a75c136fcce5fcb6304a578e4fb5cd5abc49",
+          "size": 6014
+        },
+        {
+          "path": "release/AUTEL_INSTALL_CODE_DELETE.sql",
+          "sha": "000b1bdadc823e69bcff22cbf6a4a5d7825a2dc5",
+          "size": 4800
+        },
+        {
+          "path": "release/AUTEL_LOGIN_AUDIT.sql",
+          "sha": "008f1379af97e676e1977e0c3314a7bb4baef63d",
+          "size": 1349
+        },
+        {
+          "path": "release/AUTEL_NABEEL_SELF_ASSIGN.sql",
+          "sha": "6a24619b2f37dd9e141410f236ba458feca7252b",
+          "size": 2977
+        },
+        {
+          "path": "release/AUTEL_PREPARE_STATUS.sql",
+          "sha": "9bf93694685177d3b6aa520a37858067a181a4bd",
+          "size": 1673
+        },
+        {
+          "path": "release/AUTEL_RENAME_HABIB.sql",
+          "sha": "c2e411848c68e11bf07e2a40d25ff8c7c0a5cda7",
+          "size": 2395
+        },
+        {
+          "path": "release/AUTEL_RENEWAL_AND_REPORTS.sql",
+          "sha": "d97ee93af1b95c625e35a51844ee3aba6ef08cb0",
+          "size": 8992
+        },
+        {
+          "path": "release/AUTEL_RENEWAL_DETAILS.sql",
+          "sha": "edfffb4775abb860c24710776ea3bc8de1069924",
+          "size": 2912
+        },
+        {
+          "path": "release/AUTEL_SOURCE_MATCHING.sql",
+          "sha": "e2b0a75c136fcce5fcb6304a578e4fb5cd5abc49",
+          "size": 6014
+        },
+        {
+          "path": "release/AUTEL_VERIFY_PREPARATION.sql",
+          "sha": "67a09fda52803d49aeec9e426842ebdf1dec8bb3",
+          "size": 5053
+        },
+        {
+          "path": "release/CHECK-OUTPUT.txt",
+          "sha": "6311e80bd6ee7209e128d517dade323995233c06",
+          "size": 175
+        },
+        {
+          "path": "release/DELIVERY.md",
+          "sha": "c71d0990de28f857889d3e208d8654144fca8286",
+          "size": 1033
+        },
+        {
+          "path": "release/ENCRYPTION-OPERATOR.md",
+          "sha": "05441dbef8c38c71f9cdd43768c612d34a09679b",
+          "size": 2323
+        },
+        {
+          "path": "release/HANDOVER.md",
+          "sha": "5e21f30dcaa662baae3ce4c31aa896d01b76dcc5",
+          "size": 21551
+        },
+        {
+          "path": "release/MANUAL_UPDATE.md",
+          "sha": "c72d8684bfbd0d2127808dcf02b69e267772e98c",
+          "size": 3469
+        },
+        {
+          "path": "release/PREFLIGHT_READ_ONLY.sql",
+          "sha": "cbd984f44c7f3008a67a94712238edb5338b091a",
+          "size": 1917
+        },
+        {
+          "path": "release/PREFLIGHT_SINGLE_RESULT.sql",
+          "sha": "f3ea090502c93ad2ad79be69d1fdea18524f9f53",
+          "size": 4080
+        },
+        {
+          "path": "release/PRODUCTION-VERIFICATION-20261017.md",
+          "sha": "6f6c253675c7a4d69a9daa9a0940831b88c6d318",
+          "size": 2266
+        },
+        {
+          "path": "release/RELEASE-NOTES.md",
+          "sha": "1abc06e2e57017e4ef541d10d81a8a95d6c41a85",
+          "size": 904
+        },
+        {
+          "path": "release/SCHEMA_REVIEW.sql",
+          "sha": "ebf76ebf5842edaa65f70fca4d45d4aa3dd09999",
+          "size": 24411
+        },
+        {
+          "path": "release/SECURITY-REVIEW.md",
+          "sha": "a6d052c8ee5fbcf9ca377926ba77b4d3b5b1d9e6",
+          "size": 4373
+        },
+        {
+          "path": "release/TEST-OUTPUT.txt",
+          "sha": "ce4e07b4b54a0908d5babebe71e741f7bc87f961",
+          "size": 8764
+        },
+        {
+          "path": "release/TEST-RESULTS.md",
+          "sha": "4b4626c32b13f3976ed18f6999dd484cedb0880e",
+          "size": 6607
+        },
+        {
+          "path": "release/VENDOR-SHA256.json",
+          "sha": "a440bcdb0336af000ba7c6bd24f50acc8316d1cf",
+          "size": 191
+        },
+        {
+          "path": "schema.sql",
+          "sha": "3713f93028161495e0b7b9beb59ebe4226c3b063",
+          "size": 6750
+        },
+        {
+          "path": "scripts/Run-Autel-Encryption.cmd",
+          "sha": "9932d73dbf55a75db508c558f9772083c6fbc1db",
+          "size": 232
+        },
+        {
+          "path": "scripts/backup-database.ps1",
+          "sha": "7e47d1c8cf431cdfdf19738a659923e585625048",
+          "size": 1537
+        },
+        {
+          "path": "scripts/browser-executable.mjs",
+          "sha": "6c67bfa0fa4dfd71f286211a5563c1733fe02af8",
+          "size": 1624
+        },
+        {
+          "path": "scripts/decrypt-backup.mjs",
+          "sha": "2201526832f926cb70fedec38c8ceefa81ce0518",
+          "size": 1270
+        },
+        {
+          "path": "scripts/legacy-encryption-wizard.mjs",
+          "sha": "d7d63d219c83049e420eecec951c7abc3657e525",
+          "size": 5766
+        },
+        {
+          "path": "scripts/legacy-encryption.mjs",
+          "sha": "7b008de0901ffb707587e93f5b8219eecd68c69b",
+          "size": 3177
+        },
+        {
+          "path": "scripts/release-preflight.mjs",
+          "sha": "75f54e4bdd34c280849fa6bacbaabdf8b67c389d",
+          "size": 1622
+        },
+        {
+          "path": "tests/api.test.mjs",
+          "sha": "72b995a630fd312facd98889ee5d14ee320bd138",
+          "size": 16038
+        },
+        {
+          "path": "tests/browser.test.mjs",
+          "sha": "736538dadae809c7437966f6457304bd8c6ac544",
+          "size": 23245
+        },
+        {
+          "path": "tests/crypto.test.mjs",
+          "sha": "17d26323277363ef9e08fae1a3570ed1a538ea15",
+          "size": 1626
+        },
+        {
+          "path": "tests/database.test.mjs",
+          "sha": "57dff1167f1a9395e534c62a60ef8e55f2c2ffdc",
+          "size": 11359
+        },
+        {
+          "path": "tests/encryption-wizard.test.mjs",
+          "sha": "6f75960bc063f7f6149bc03c15d738b600e336f2",
+          "size": 3509
+        },
+        {
+          "path": "tests/final-access.mjs",
+          "sha": "60f738ae64c1ce2b7e6b84116814d3af1792ba0d",
+          "size": 1971
+        },
+        {
+          "path": "tests/fixtures/autel-schema-20261017.json",
+          "sha": "011e46aa9de7bc56fa743b811310474b67439da5",
+          "size": 29791
+        },
+        {
+          "path": "tests/legacy-tool.test.mjs",
+          "sha": "940275e369e8b7f433db514f0a02cbba56d2c4fc",
+          "size": 3159
+        },
+        {
+          "path": "tests/production-schema.test.mjs",
+          "sha": "45a84ead3dc1a6c3b6f4e352eaa768b87236c27c",
+          "size": 17823
+        },
+        {
+          "path": "tests/release-preflight.test.mjs",
+          "sha": "6ffd4aad70fb19abe171ec7a611f0aad07eaf9a0",
+          "size": 1444
+        },
+        {
+          "path": "tools/Autel_Code_Tracker.html",
+          "sha": "4724343542f64012e4edb5602c1f0a5049b01a96",
+          "size": 984565
+        },
+        {
+          "path": "worker/backup.js",
+          "sha": "318a2ef1ace8e33c354e495df6b1a9e863ba0919",
+          "size": 15790
+        },
+        {
+          "path": "worker/crypto.mjs",
+          "sha": "29bbe210035feeb342637a192569b412acbffc13",
+          "size": 1577
+        },
+        {
+          "path": "wrangler.jsonc",
+          "sha": "70c5e71cb48de87732d668820e87809da89cd0ff",
+          "size": 429
+        }
+      ],
+      "reportedHeadSha": "044adcfd1be5a01dce4cb78e2d61ad2a2d761374"
+    }
+  ]
+}

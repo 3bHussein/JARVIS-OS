@@ -1,0 +1,40 @@
+import {chromium} from 'playwright';
+import {spawn} from 'node:child_process';
+import assert from 'node:assert/strict';
+import {mkdir} from 'node:fs/promises';
+import {makeServer} from '../apps/api/src/server.ts';
+import {hashPassword} from '../apps/api/src/auth.ts';
+const origin='http://127.0.0.1:5173';
+const server=makeServer({origin,passwordHash:hashPassword('synthetic-browser-password')});
+await new Promise(r=>server.listen(4310,'127.0.0.1',r));
+const vite=spawn(process.execPath,['node_modules/vite/bin/vite.js','--config','apps/web/vite.config.ts','--host','127.0.0.1'],{stdio:'pipe'});
+let browser;let passed=0;const errors=[];
+try{
+ for(let i=0;i<100;i++){try{const r=await fetch(origin);if(r.ok)break}catch{}if(i===99)throw Error('Vite did not start');await new Promise(r=>setTimeout(r,100))}
+ browser=await chromium.launch({headless:true,args:['--no-sandbox','--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream']});
+ const context=await browser.newContext({viewport:{width:1440,height:1060}});
+ await context.route('**/*',route=>{const u=new URL(route.request().url());return u.hostname==='127.0.0.1'?route.continue():route.abort()});
+ const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(origin);await page.getByRole('heading',{name:'Your world. One command.'}).waitFor();
+ assert.ok(await page.getByText('No verified tasks available',{exact:true}).isVisible());passed++;console.log('PASS UI-01 honest empty briefing and desktop shell');
+ await page.getByLabel('Ask JARVIS',{exact:true}).fill('What time is it?');await page.getByRole('button',{name:'Send',exact:true}).click();
+ assert.match(await page.locator('.messages .assistant').innerText(),/Africa\/Cairo/);passed++;console.log('PASS UI-02 local command router provenance');
+ await page.getByRole('button',{name:'Settings',exact:true}).click();await page.getByLabel('Local workspace password',{exact:true}).fill('synthetic-browser-password');await page.getByRole('button',{name:'Unlock local workspace',exact:true}).click();
+ await page.getByRole('button',{name:'Lock workspace',exact:true}).waitFor();passed++;console.log('PASS UI-03 local authentication through proxy');
+ await page.getByRole('button',{name:'Projects',exact:true}).click();await page.getByRole('button',{name:'Read GitHub',exact:true}).click();await page.getByText(/disconnected not_connected/).waitFor();passed++;console.log('PASS UI-04 connector disconnected state without live calls');
+ await page.getByRole('button',{name:'Voice lab',exact:true}).click();await page.getByRole('button',{name:'Start microphone test',exact:true}).click();await page.getByRole('button',{name:'Stop microphone',exact:true}).waitFor({timeout:15000});await page.getByRole('button',{name:'Stop microphone',exact:true}).click();await page.getByRole('button',{name:'Start microphone test',exact:true}).waitFor();passed++;console.log('PASS UI-05 synthetic microphone start and stop');
+ await page.getByRole('button',{name:'Settings',exact:true}).click();await page.getByRole('button',{name:'Lock workspace',exact:true}).click();await page.getByRole('button',{name:'Unlock local workspace',exact:true}).waitFor();
+ const status=await context.request.get(origin+'/api/session');assert.equal(status.status(),401);passed++;console.log('PASS UI-06 session revocation');
+ await page.getByLabel('Motion',{exact:true}).selectOption('off');await page.getByRole('button',{name:'Overview',exact:true}).click();
+ assert.equal(await page.locator('.orbit-one').evaluate(el=>getComputedStyle(el).animationName),'none');passed++;console.log('PASS UI-07 motion disabled');
+ await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'عربي',exact:true}).click();assert.equal(await page.locator('html').getAttribute('dir'),'rtl');
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await page.getByRole('heading',{name:'عالمك. في أمر واحد.'}).waitFor();
+ await page.getByRole('button',{name:'المشاريع',exact:true}).click();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);passed++;console.log('PASS UI-08 Arabic RTL mobile layout and navigation');
+ await page.getByRole('button',{name:'English',exact:true}).click();await page.getByRole('button',{name:'Overview',exact:true}).click();
+ await page.emulateMedia({reducedMotion:'reduce'});assert.equal(await page.locator('.orbit-one').evaluate(el=>getComputedStyle(el).animationName),'none');passed++;console.log('PASS UI-09 OS reduced motion');
+ await page.setViewportSize({width:1440,height:1060});await page.emulateMedia({reducedMotion:'no-preference'});await mkdir('test-results',{recursive:true});await page.screenshot({path:'test-results/overview-internal.png',fullPage:true});
+ assert.deepEqual(errors,[]);passed++;console.log('PASS UI-10 no browser runtime errors');
+ console.log(`Browser acceptance: ${passed}/10 passed. Synthetic fixtures only.`);
+}finally{
+ await browser?.close();vite.kill('SIGTERM');server.closeAllConnections();await new Promise(r=>server.close(r));
+}
