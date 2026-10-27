@@ -5,7 +5,11 @@ export interface ConnectorManifest {
   authentication: string; permissions: readonly string[]; writes: false;
   maxAgeMs: number; audit: readonly string[]; limitation: string; launchUrl?: string;
 }
-export interface ConnectorResult<T> { status: ConnectorStatus; source: Source; data: T | null; error?: 'not_connected' | 'unauthorized' | 'rate_limited' | 'upstream_unavailable' | 'invalid_response'; }
+export interface ConnectorResult<T> { status: ConnectorStatus; source: Source; data: T | null; error?: 'not_connected' | 'unauthorized' | 'rate_limited' | 'upstream_unavailable' | 'invalid_response'; retryAt?:string; cache?:'hit'|'miss'|'revalidated'; }
+export interface ConnectorView extends ConnectorManifest {
+  status:ConnectorStatus|'configured'|'stale';lastSuccessfulSync:string|null;
+  freshness:'current'|'stale'|'unavailable';lastError:ConnectorResult<unknown>['error']|null;
+}
 export interface ReadConnector<T> { manifest: ConnectorManifest; health(): Promise<ConnectorStatus>; read(): Promise<ConnectorResult<T>>; }
 export const manifests: ConnectorManifest[] = [
   {id:'github',name:'GitHub',domain:'personal',capabilities:['repositories','pull_requests','issues','actions'],authentication:'Server-side selected-repository fine-grained token; OAuth app planned',permissions:['metadata:read','contents:read','pull_requests:read','issues:read','actions:read'],writes:false,maxAgeMs:300000,audit:['connector.read','connector.failure'],limitation:'Configured server credential required. Source text is untrusted.',launchUrl:'https://github.com/3bHussein'},

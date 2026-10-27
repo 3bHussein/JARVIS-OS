@@ -1,6 +1,6 @@
 import { createServer, type IncomingMessage } from 'node:http';
 import { Sessions, checkPassword } from './auth.ts';
-import { readGitHub } from '../../../packages/connectors/src/github.ts';
+import {GitHubReader} from '../../../packages/connectors/src/github-reader.ts';
 import type { Resource } from '../../../packages/connectors/src/github.ts';
 import { manifests } from '../../../packages/connectors/src/contracts.ts';
 import { authorizeTool, redact } from '../../../packages/core/src/index.ts';
@@ -15,6 +15,8 @@ export function makeServer(config:Config){
   const origin=new URL(config.origin);
   if(origin.protocol!=='http:'||!['127.0.0.1','localhost'].includes(origin.hostname))throw new Error('Local development origin required');
   const sessions=new Sessions();let attempts:number[]=[];let reads:number[]=[];
+  const readers=new WeakMap<object,GitHubReader>();
+  const readerFor=(session:object)=>{let reader=readers.get(session);if(!reader){reader=new GitHubReader(config.githubToken,config.transport);readers.set(session,reader);}return reader;};
   const audit=(type:string,metadata:unknown={})=>config.audit?.({at:new Date().toISOString(),type,metadata:redact(metadata)});
   return createServer(async(req,res)=>{
     res.setHeader('Content-Type','application/json; charset=utf-8');res.setHeader('Cache-Control','no-store');
@@ -49,12 +51,14 @@ export function makeServer(config:Config){
       if(path==='/api/logout'&&method==='POST'){
         sessions.revoke(token);res.setHeader('Set-Cookie','jarvis_session=; HttpOnly; SameSite=Strict; Path=/api; Max-Age=0');audit('auth.revoked');return reply(200,{ok:true});
       }
-      if(path==='/api/connectors'&&method==='GET')return reply(200,{connectors:manifests.map(m=>({...m,status:m.id==='github'&&config.githubToken?'configured':'disconnected',lastSuccessfulSync:null}))});
+      if(path==='/api/connectors'&&method==='GET')return reply(200,{connectors:manifests.map(m=>({...m,...(m.id==='github'?readerFor(session).status():{status:m.domain==='corporate'?'blocked':'disconnected',lastSuccessfulSync:null,freshness:'unavailable',lastError:null})}))});
       if(path==='/api/github'&&method==='GET'){
         if(!authorizeTool({id:'github.read',operation:'read',domain:'personal'},{authenticated:true,domains:['personal']}))return reply(403,{error:'denied'});
         const now=Date.now();reads=reads.filter(t=>now-t<60000);if(reads.length>=30)return reply(429,{error:'rate_limited'});reads.push(now);
         const repo=url.searchParams.get('repo')||'3bHussein/ProgressXX-Web',resource=(url.searchParams.get('resource')||'repository') as Resource;
-        const result=await readGitHub(repo,resource,config.githubToken,config.transport);audit('connector.read',{ready:result.status==='ready'});return reply(200,result);
+        const result=await readerFor(session).read(repo,resource,url.searchParams.get('refresh')==='1');
+        if(!sessions.get(token))return reply(401,{error:'authentication_required'});
+        audit('connector.read',{ready:result.status==='ready'});return reply(200,result);
       }
       if(path==='/api/tools'&&method==='POST'){audit('tool.denied');return reply(403,{error:'writes_disabled'});}
       return reply(404,{error:'not_found'});

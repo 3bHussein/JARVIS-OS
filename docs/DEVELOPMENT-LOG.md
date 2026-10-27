@@ -98,3 +98,41 @@ Restored .env.example, .gitignore and .github/workflows/ci.yml. 40 pre-existing 
 Repository: https://github.com/3bHussein/JARVIS-OS (public at inspection). Repository-access blocker K-001 and ADR-013 are resolved for this supplied repository. Private visibility has not been established. No PR, deployment, production DB change or other project write occurred.
 
 The documentation-only follow-up records this result using a [skip ci] commit because it does not change runtime, tests, dependencies or CI configuration. It does not claim a separate CI execution for its own SHA. Next actions: continue connector freshness/configuration and production identity work with synthetic data; actual STT and Windows delivery remain pending.
+
+## Session 003 — workspace state and preference persistence — 2026-10-27T20:20:21+03:00
+
+Milestones: M1/M2 IN PROGRESS. User requested continued development. Starting remote/local source: b6d781a04c7226c61f5c81870b840aae570dc5a6. Reviewed current source, roadmap and handoff; git fetch/fast-forward confirmed no incoming changes. No external app repository was modified.
+
+### Requested / attempted / completed
+
+Implemented authenticated connector metadata in the interface instead of constant disconnected labels; configured credentials are distinct from successful authorized reads. GitHub status includes last successful observation, freshness and normalized last error. Corporate Autel status remains blocked. Added JARVIS-OS to the fixed personal repository allowlist.
+
+Implemented per-session in-memory GitHub readers with 30-second response cache, same-resource in-flight deduplication, serialized provider requests, ETag/If-None-Match and 304 revalidation. Source freshness budget remains five minutes. A successful conditional response updates the successful validation time; failures never advance it. 401 clears cached data; 403/429 establish a conservative Retry-After/reset cooldown across resources with no hidden retries. Results remain limited to ten and explicitly say so; full pagination is still TODO. Redirects remain rejected because only fixed allowlisted targets may receive the server token.
+
+Implemented validated device-local language/timezone/motion/silent-start preferences plus Reset preferences. Only those four non-sensitive values are persisted. Chat, auth, source responses, tokens, health data and user tasks are not persisted. Storage failure falls back to defaults and shows a notice.
+
+Implemented offline indicator and session revalidation on window focus/every minute while authenticated. Logout/401 clears source results, chat, input and microphone state. Session-generation guards discard delayed browser requests. Server checks session validity again after provider reads, so a revoked in-flight read cannot return data. No new write tools enabled.
+
+### Architecture decisions
+
+ADR-014: session-owned cache through a WeakMap keyed by server session, not global shared repository results. ADR-015: non-sensitive device preferences are separate from user/AI memory. ADR-016: session epoch and post-provider revocation checks prevent stale-response restoration. No dependency changes.
+
+### Errors found and resolved
+
+Initial patch batch failed validation because it targeted the GitHub file twice; no mutation was applied by that failed batch. Revised patches were applied sequentially. First runtime test attempt found that TypeScript parameter properties are unsupported by Node's strip-only execution, despite typechecking. Replaced parameter properties with explicit fields and enabled erasableSyntaxOnly in tsconfig to prevent recurrence. Browser runtime binaries were absent after inactivity; Playwright browser installation recovered via the fallback mirror after primary downloads were truncated.
+
+### Commands / tests
+
+Commands: git fetch origin main; git status/log; git merge --ff-only origin/main; source and docs reads via cat/sed/rg; apply_patch and Python targeted source/test/docs edits; npm run typecheck; npm test; npm run check; npx playwright install chromium --only-shell; npm run build; npm run test:e2e; git diff --stat/check; TZ=Africa/Cairo date. No migration, deployment, credential rotation or live-account test.
+
+TypeScript/unit/build acceptance: PASS, 21/21 tests. Evidence: docs/evidence/workspace-check.txt and workspace-build.txt. Browser final result is recorded in a subsequent entry after the expanded revocation test finishes. Existing 12 browser scenarios passed before that test was added. All provider requests in tests use synthetic transports; real GitHub access for the running app still requires a separately configured server token.
+
+### Files / delivery / next actions
+
+Files changed/created: apps/api/src/server.ts; apps/web/src/main.tsx/style.css; packages/connectors/src/contracts.ts/github.ts/github-reader.ts; packages/core/src/preferences.ts; tsconfig.json; tests/browser.mjs/status-api.test.ts/workspace.test.ts; tracking docs and new evidence files. Exact Git diff records the delivered set.
+
+Commit SHA/PR/CI: pending publication after final acceptance; previous remote CI remains run 40495860032. Deployment: not deployed. No PR created; direct main update follows authorized progressive work in this new repository. Remaining risks: single-owner loopback auth, no production identity/vault, no actual health/task delegates, first-ten GitHub results, no STT/AI/native installer, physical-device acceptance pending. Next: publish tested code, inspect exact-commit CI, record result; then local AI/voice provider work and production identity design with synthetic data.
+
+### Final local workspace acceptance — 2026-10-27T20:20:48+03:00
+
+21/21 unit/HTTP tests PASS, TypeScript/build PASS, and 13/13 Chromium browser checks PASS, including server-side revocation on focus. Evidence: workspace-check.txt, workspace-build.txt and workspace-browser.txt. No live-account/physical-device acceptance implied. Ready for exact-commit remote CI; no deployment.

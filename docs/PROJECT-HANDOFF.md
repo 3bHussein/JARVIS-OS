@@ -72,3 +72,15 @@ Restored .env.example, .gitignore and .github/workflows/ci.yml. 40 pre-existing 
 Repository: https://github.com/3bHussein/JARVIS-OS (public at inspection). Repository-access blocker K-001 and ADR-013 are resolved for this supplied repository. Private visibility has not been established. No PR, deployment, production DB change or other project write occurred.
 
 The documentation-only follow-up records this result using a [skip ci] commit because it does not change runtime, tests, dependencies or CI configuration. It does not claim a separate CI execution for its own SHA. Next actions: continue connector freshness/configuration and production identity work with synthetic data; actual STT and Windows delivery remain pending.
+
+## Current workspace continuation — 2026-10-27T20:20:21+03:00
+
+This entry supersedes earlier static connector/session-only preference descriptions. GitHub readers now use isolated session caches, ETags, provider cooldowns and accurate status metadata. Preferences persist on the device without chat/tokens/source data. Focus/minute revalidation and request-generation guards clear/reject stale private results after revocation. Backend post-read session check is mandatory. No runtime dependency changed.
+
+Current tests: 21 unit/HTTP tests pass; expanded browser result follows. Use docs/evidence/workspace-* for this batch, not the original 15/10 reports. GitHub publication/CI evidence for this batch will be appended after push.
+
+Next: finish current exact-commit CI; then implement a provider-agnostic optional local Ollama adapter with explicit configuration and synthetic tests. Do not claim a model is connected just because configuration exists. Continue voice STT/VAD correction tests and production identity design; no health/corporate data or existing project mutations without separate scope.
+
+### Final local workspace acceptance — 2026-10-27T20:20:48+03:00
+
+21/21 unit/HTTP tests PASS, TypeScript/build PASS, and 13/13 Chromium browser checks PASS, including server-side revocation on focus. Evidence: workspace-check.txt, workspace-build.txt and workspace-browser.txt. No live-account/physical-device acceptance implied. Ready for exact-commit remote CI; no deployment.

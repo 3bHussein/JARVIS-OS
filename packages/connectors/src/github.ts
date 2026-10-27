@@ -1,15 +1,25 @@
 import type { ConnectorResult } from './contracts.ts';
-export const repositories = ['3bHussein/ProgressXX-Web','3bHussein/Whoop-Intelligence-','3bHussein/Week-Timesheet-Manager','3bHussein/Project-Factory-AI','3bHussein/Lexora-Academy','3bHussein/CloudHub'] as const;
+export const repositories = ['3bHussein/ProgressXX-Web','3bHussein/Whoop-Intelligence-','3bHussein/Week-Timesheet-Manager','3bHussein/Project-Factory-AI','3bHussein/Lexora-Academy','3bHussein/CloudHub','3bHussein/JARVIS-OS'] as const;
 export type Resource = 'repository' | 'pulls' | 'issues' | 'actions';
 export interface GitHubSummary { repository: string; resource: Resource; items: { title: string; url: string; state: string }[]; }
 const suffix: Record<Resource,string> = {repository:'',pulls:'/pulls?state=open&per_page=10',issues:'/issues?state=open&per_page=10',actions:'/actions/runs?per_page=10'};
-export async function readGitHub(repo: string, resource: Resource, token: string | undefined, transport: typeof fetch = fetch, now = new Date()): Promise<ConnectorResult<GitHubSummary>> {
+export async function readGitHub(repo: string, resource: Resource, token: string | undefined, transport: typeof fetch = fetch, now = new Date(), options: {etag?:string;previous?:ConnectorResult<GitHubSummary>;onEtag?:(value:string)=>void} = {}): Promise<ConnectorResult<GitHubSummary>> {
   const source = {connector:'github',observedAt:null as string|null,maxAgeMs:300000};
   if (!(repositories as readonly string[]).includes(repo) || !Object.hasOwn(suffix,resource)) throw new Error('Resource not allowlisted');
   if (!token) return {status:'disconnected',source,data:null,error:'not_connected'};
   try {
-    const response = await transport(`https://api.github.com/repos/${repo}${suffix[resource]}`,{headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${token}`,'X-GitHub-Api-Version':'2022-11-28'},signal:AbortSignal.timeout(10000),redirect:'error'});
-    if (!response.ok) return {status:'error',source,data:null,error:response.status===401?'unauthorized':response.status===429||(response.status===403&&response.headers.get('x-ratelimit-remaining')==='0')?'rate_limited':'upstream_unavailable'};
+    const response = await transport(`https://api.github.com/repos/${repo}${suffix[resource]}`,{headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${token}`,'X-GitHub-Api-Version':'2022-11-28',...(options.etag?{'If-None-Match':options.etag}:{})},signal:AbortSignal.timeout(10000),redirect:'error'});
+    if(response.status===304&&options.previous?.data)return {...options.previous,source:{...source,observedAt:now.toISOString()},cache:'revalidated'};
+    if (!response.ok) {
+      const limited=response.status===429||response.status===403;
+      let retryAt:string|undefined;
+      if(limited){
+        const raw=response.headers.get('retry-after');
+        const retry=raw&&/^\d+$/.test(raw)?now.getTime()+Number(raw)*1000:raw?Date.parse(raw):Number(response.headers.get('x-ratelimit-reset'))*1000;
+        retryAt=new Date(Math.max(now.getTime()+60000,Number.isFinite(retry)&&retry<8640000000000000?retry:0)).toISOString();
+      }
+      return {status:'error',source,data:null,error:response.status===401?'unauthorized':limited?'rate_limited':'upstream_unavailable',retryAt};
+    }
     if(Number(response.headers.get('content-length'))>2000000||!response.body) throw new Error('Oversized or empty response');
     const reader=response.body.getReader(), chunks:Uint8Array[]=[];let bytes=0;
     try { while(true){const {done,value}=await reader.read();if(done)break;bytes+=value.byteLength;if(bytes>2000000){await reader.cancel();throw new Error('Oversized response');}chunks.push(value);} } finally {reader.releaseLock();}
@@ -25,6 +35,7 @@ export async function readGitHub(repo: string, resource: Resource, token: string
       if (typeof title!=='string') throw new Error('Invalid title');
       return {title:title.slice(0,200),url:url.href,state:String(r.conclusion??r.status??r.state??'available').slice(0,40)};
     });
-    return {status:'ready',source:{...source,observedAt:now.toISOString()},data:{repository:repo,resource,items}};
+    const etag=response.headers.get('etag');if(etag&&etag.length<256)options.onEtag?.(etag);
+    return {status:'ready',cache:'miss',source:{...source,observedAt:now.toISOString()},data:{repository:repo,resource,items}};
   } catch { return {status:'error',source,data:null,error:'invalid_response'}; }
 }

@@ -34,3 +34,9 @@ K-015 is superseded: response bytes are now bounded during stream reading and Co
 ## Repository blocker correction — 2026-10-27T14:25:50+03:00
 
 K-001 is superseded: the user supplied JARVIS-OS, missing setup files were restored, and exact-commit CI passed (59e0bc4655cca1e4181532afe2a38931d8c977e3; run 40495860032). Status: VERIFIED for repository access and the recorded workflow only. No deployment.
+
+## Workspace status correction — 2026-10-27T20:20:21+03:00
+
+K-011 is superseded for preference persistence: locale/zone/motion/quiet now survive reload and can be reset. Automatic spoken greeting remains pending. K-012 is superseded for implemented connector status: authenticated metadata and last read/freshness are displayed, with configured versus ready separated. Non-GitHub sources remain disconnected/blocked. K-009 remains open for pagination and richer project health; session memory cache, ETags and cooldowns are implemented. No persistent source cache is desired in this slice.
+
+Scope limitation: provider cooldown and serialization are per session; coordinating global credential rate budgets requires a later backend service design. This remains single-owner development auth, not a multi-user deployment.

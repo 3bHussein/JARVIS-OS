@@ -36,13 +36,14 @@ Optionally configure `GITHUB_TOKEN` in `.env`, restricted to the selected person
 - Original navy/cyan responsive command center and animated core.
 - Actual IANA-zone clock, time-sensitive greeting and Cairo DST support.
 - English/Arabic interface direction, simple navigation, explicit disconnected states.
-- Full/reduced/off motion; OS reduced-motion preference is respected.
+- Full/reduced/off motion; OS reduced-motion preference is respected. Language/timezone/motion/silent-start preferences persist locally and can be reset.
 - Honest task briefing with zero invented tasks and freshness utilities.
 - Local deterministic commands for time and source availability, visibly labelled as not an AI model.
-- Optional authenticated read-only GitHub repository/PR/Issue/Actions views.
+- Optional authenticated read-only GitHub repository/PR/Issue/Actions views, session-owned cache, ETag revalidation, cooldowns and real last-read/status metadata. Views explicitly stop at ten results.
 - Microphone activity test with echo cancellation requested, RMS visualization, stop/cleanup and no recording/upload.
 - System speech test with available browser voices. This is not evaluated neural TTS or audio-synchronized animation.
 - Locked write tools and local-agent launch policy prototype with **no OS execution**.
+- Offline indicator; focus/minute session revalidation and protection against delayed results after logout.
 
 ## Validation
 

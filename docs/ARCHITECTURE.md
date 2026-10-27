@@ -57,3 +57,13 @@ CSS/SVG-free circular core, no WebGL/particle runtime. Desktop sidebar and compa
 - https://github.com/OHF-Voice/piper1-gpl — local TTS candidate; review GPL distribution and individual voice-model licenses before shipping.
 
 Supabase changelog markdown retrieval was attempted but the search fetcher rejected its content type. No new Supabase feature or schema was implemented, and this failure is not a security certification.
+
+## Workspace state refinement — 2026-10-27
+
+GitHubReader is owned by one authenticated session via server WeakMap, caches at most 28 fixed repository/resource combinations (seven repositories by four resources), and never persists source payloads. Same-key requests share an in-flight promise; other requests are serialized to reduce secondary rate-limit pressure. Cache hits retain original observation time; ETag 304 responses are successful revalidations and advance validation time. HTTP 401 invalidates cache and success history. Other failures retain historical success time but return no new data. Cooldown applies to all resources in that session; provider credential-wide budgets across sessions remain a future scalability item.
+
+GET /api/connectors exposes authenticated metadata only. Configured is not healthy/ready. UI updates metadata after reads and checks session on focus/minutely; this polls only the local backend, not GitHub. UI computes stale display against the actual current clock. A missed network refresh shows unavailable status feedback rather than claiming a successful sync.
+
+Preferences use a single versioned device-local key, validated into exactly locale/zone/motion/quiet. Corrupt storage, blocked storage and invalid timezone are handled. They are not account memory. Chat/auth/source responses are session memory only. A browser session epoch prevents stale responses after logout; the server also rechecks revocation after awaiting GitHub.
+
+Primary reference reviewed: https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api (conditional requests, serial requests, rate-limit response handling). Pagination remains deliberately bounded to the first ten results; no complete-inventory claim.

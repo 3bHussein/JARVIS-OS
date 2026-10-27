@@ -58,3 +58,24 @@ Restored .env.example, .gitignore and .github/workflows/ci.yml. 40 pre-existing 
 Repository: https://github.com/3bHussein/JARVIS-OS (public at inspection). Repository-access blocker K-001 and ADR-013 are resolved for this supplied repository. Private visibility has not been established. No PR, deployment, production DB change or other project write occurred.
 
 The documentation-only follow-up records this result using a [skip ci] commit because it does not change runtime, tests, dependencies or CI configuration. It does not claim a separate CI execution for its own SHA. Next actions: continue connector freshness/configuration and production identity work with synthetic data; actual STT and Windows delivery remain pending.
+
+## Workspace batch — 2026-10-27T20:20:21+03:00
+
+21 unit/HTTP tests PASS, TypeScript PASS, build PASS (workspace-check.txt). New coverage:
+
+| Requirement | Evidence | Scope |
+| --- | --- | --- |
+| Validated non-sensitive persistent preferences | PREF-01 | Corruption/invalid values/storage denial/private-field projection |
+| Accurate configured/ready/stale metadata | CACHE-01, STATUS-01 | No fake success timestamp; time-driven stale status |
+| Same-session cache/dedup/ETag | CACHE-01 | One upstream call for concurrent equal reads; TTL and 304 revalidation |
+| Session isolation and failures | CACHE-02, CACHE-04 | No shared cache; historical timestamp on outage; cleared data after 401 |
+| Provider cooldown | CACHE-03 | Retry-After respected across resources, including a two-hour window; no hidden retries |
+| Authentication after async read | STATUS-01 | Revoked in-flight provider result returns 401 and cannot expose data |
+| Device preferences and offline UI | UI-11, UI-12 | Chromium synthetic; final full browser report follows |
+| Cross-context server session revocation | UI-13 | Added to browser acceptance; result follows |
+
+No actual GitHub/user data, paid provider, STT or production database was tested. No dependency versions changed. Browser request fixtures explicitly substitute a synthetic GitHub token/transport; they do not inherit the ChatGPT GitHub connection.
+
+### Final local workspace acceptance — 2026-10-27T20:20:48+03:00
+
+21/21 unit/HTTP tests PASS, TypeScript/build PASS, and 13/13 Chromium browser checks PASS, including server-side revocation on focus. Evidence: workspace-check.txt, workspace-build.txt and workspace-browser.txt. No live-account/physical-device acceptance implied. Ready for exact-commit remote CI; no deployment.

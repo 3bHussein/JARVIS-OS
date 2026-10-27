@@ -1,0 +1,19 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 test:e2e
+> node tests/browser.mjs
+
+PASS UI-01 honest empty briefing and desktop shell
+PASS UI-02 local command router provenance
+PASS UI-03 local authentication through proxy
+PASS UI-04 authenticated source status, cache and ETag revalidation (synthetic)
+PASS UI-05 synthetic microphone start and stop
+PASS UI-06 session revocation
+PASS UI-07 motion disabled
+PASS UI-08 Arabic RTL mobile layout and navigation
+PASS UI-09 OS reduced motion
+PASS UI-10 no browser runtime errors
+PASS UI-11 non-sensitive preferences survive reload
+PASS UI-12 offline state is explicit
+PASS UI-13 server-side session revocation clears workspace on focus
+Browser acceptance: 13/13 passed. Synthetic fixtures only.

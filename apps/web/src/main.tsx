@@ -1,9 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import {briefing, clock, type CoreState, type Locale} from '../../../packages/core/src/index.ts';
+import {briefing, clock, freshness, type CoreState, type Locale} from '../../../packages/core/src/index.ts';
 import {manifests} from '../../../packages/connectors/src/contracts.ts';
 import {repositories, type GitHubSummary, type Resource} from '../../../packages/connectors/src/github.ts';
-import type {ConnectorResult} from '../../../packages/connectors/src/contracts.ts';
+import type {ConnectorResult,ConnectorView} from '../../../packages/connectors/src/contracts.ts';
+import {readPreferences,savePreferences,defaultPreferences} from '../../../packages/core/src/preferences.ts';
 import './style.css';
 const words = {
  en:{overview:'Overview',projects:'Projects',voice:'Voice lab',settings:'Settings',briefing:'YOUR DAY, IN FOCUS',welcome:'Your world. One command.',intro:'A quieter way to stay connected to everything that matters.',ask:'Ask JARVIS',placeholder:'Ask about time, connections, or project access…',sources:'Connected intelligence',noTasks:'No verified tasks available',noTasksText:'Connect a trusted task source to build your daily briefing.',launch:'Open app',disconnected:'Not connected',signin:'Unlock local workspace',password:'Local workspace password',logout:'Lock workspace',privacy:'Private by design',mode:'Foundation preview · read-only',listen:'Start microphone test',stop:'Stop microphone',clear:'Clear conversation',quiet:'Silent startup',motion:'Motion',language:'Language',zone:'Timezone',send:'Send',working:'Working',status:'Awaiting connections',auth:'Personal local authentication',mic:'Audio remains in this browser session. No recording is saved or uploaded. No speech recognition engine is connected yet.',voiceTitle:'Make yourself heard.',voiceSub:'Test microphone activity and system speech separately. Accuracy and voice quality have not been evaluated.',speak:'Test system voice',cancel:'Stop speaking',notAI:'Local command router · AI provider not connected',security:'Write actions and Windows operations are disabled.',today:'Today',close:'Dismiss',refresh:'Read GitHub',loading:'Reading source…'},
@@ -11,21 +12,52 @@ const words = {
 };
 type Tab = 'overview'|'projects'|'voice'|'settings';
 type ChatMessage={role:'user'|'assistant';text:string};
+function devicePreferences(){try{return readPreferences(localStorage);}catch{return {...defaultPreferences};}}
 function App(){
- const [locale,setLocale]=useState<Locale>('en'),[zone,setZone]=useState('Africa/Cairo'),[now,setNow]=useState(new Date());
- const [tab,setTab]=useState<Tab>('overview'),[core,setCore]=useState<CoreState>('booting'),[motion,setMotion]=useState('full');
- const [quiet,setQuiet]=useState(true),[notice,setNotice]=useState(''),[password,setPassword]=useState(''),[authenticated,setAuthenticated]=useState(false);
+ const [initialPreferences]=useState(devicePreferences);
+ const [locale,setLocale]=useState<Locale>(initialPreferences.locale),[zone,setZone]=useState(initialPreferences.zone),[now,setNow]=useState(new Date());
+ const [tab,setTab]=useState<Tab>('overview'),[core,setCore]=useState<CoreState>('booting'),[motion,setMotion]=useState<string>(initialPreferences.motion);
+ const [quiet,setQuiet]=useState(initialPreferences.quiet),[notice,setNotice]=useState(''),[password,setPassword]=useState(''),[authenticated,setAuthenticated]=useState(false);
  const [health,setHealth]=useState(''),[busy,setBusy]=useState(false),[chat,setChat]=useState<ChatMessage[]>([]),[input,setInput]=useState('');
  const [repo,setRepo]=useState<string>(repositories[0]),[resource,setResource]=useState<Resource>('repository'),[github,setGithub]=useState<ConnectorResult<GitHubSummary>|null>(null);
  const [micOn,setMicOn]=useState(false),[level,setLevel]=useState(0),[voiceName,setVoiceName]=useState(''),[voices,setVoices]=useState<SpeechSynthesisVoice[]>([]);
  const audio=useRef<{stream:MediaStream;ctx:AudioContext;frame:number}|null>(null),mounted=useRef(true),micPending=useRef(false),micGeneration=useRef(0),csrf=useRef('');
+ const [sources,setSources]=useState<ConnectorView[]>([]),[sourceError,setSourceError]=useState(false),[online,setOnline]=useState(navigator.onLine);
+ const sessionEpoch=useRef(0);
  const t=words[locale],c=clock(now,zone,locale),b=briefing([],now,zone,locale);
  useEffect(()=>{const timer=setInterval(()=>setNow(new Date()),1000);const boot=setTimeout(()=>setCore('idle'),1100);return()=>{clearInterval(timer);clearTimeout(boot)}},[]);
  useEffect(()=>{document.documentElement.lang=locale;document.documentElement.dir=locale==='ar'?'rtl':'ltr'},[locale]);
+ useEffect(()=>{let ok=false;try{ok=savePreferences(localStorage,{locale,zone,motion,quiet});}catch{}if(!ok)setNotice(locale==='ar'?'تعذّر حفظ الإعدادات على الجهاز.':'Device preferences could not be saved.');},[locale,zone,motion,quiet]);
+ useEffect(()=>{const update=()=>setOnline(navigator.onLine);window.addEventListener('online',update);window.addEventListener('offline',update);return()=>{window.removeEventListener('online',update);window.removeEventListener('offline',update);};},[]);
  useEffect(()=>{
-  let active=true;
+  if(!authenticated){setSources([]);return;}
+  const refresh=()=>{void updateSources();};refresh();
+  const timer=setInterval(refresh,60000);window.addEventListener('focus',refresh);
+  return()=>{clearInterval(timer);window.removeEventListener('focus',refresh);};
+ },[authenticated]);
+ async function updateSources(){
+  const epoch=sessionEpoch.current;
+  try{const r=await fetch('/api/connectors');if(epoch!==sessionEpoch.current)return;
+   if(r.status===401){clearWorkspace();setNotice(locale==='ar'?'الجلسة انتهت. سجّل دخول تاني.':'Session expired. Sign in again.');return;}
+   if(!r.ok)throw Error();const data=await r.json();if(epoch!==sessionEpoch.current)return;
+   if(!Array.isArray(data.connectors))throw Error();setSources(data.connectors);setSourceError(false);
+  }catch{if(epoch===sessionEpoch.current)setSourceError(true);}
+ }
+ function clearWorkspace(){
+  sessionEpoch.current++;csrf.current='';setAuthenticated(false);setGithub(null);setSources([]);setChat([]);setPassword('');setInput('');stopMic();if('speechSynthesis'in window)window.speechSynthesis.cancel();setCore('idle');setBusy(false);
+ }
+ function statusLabel(id:string){
+  const source=sources.find(s=>s.id===id);
+  const state=source?.status==='ready'&&freshness({connector:id,observedAt:source.lastSuccessfulSync,maxAgeMs:source.maxAgeMs},now)==='stale'?'stale':source?.status||(id==='autel'?'blocked':!authenticated?'locked':'unavailable');
+  const labels:Record<string,[string,string]>={ready:['Connected','متصل'],configured:['Configured · not read yet','مُعدّ · لسه ما اتقراش'],stale:['Stale data','بيانات قديمة'],error:['Read failed','القراءة فشلت'],disconnected:['Not connected','غير متصل'],blocked:['Blocked','محظور'],locked:['Sign in to check','سجّل دخول علشان تفحص'],unavailable:['Status unavailable','الحالة غير متاحة']};
+  return labels[state]?.[locale==='ar'?1:0]||state;
+ }
+ function sourceTime(id:string){const at=sources.find(s=>s.id===id)?.lastSuccessfulSync;return at?new Intl.DateTimeFormat(locale==='ar'?'ar-EG':'en-GB',{timeZone:zone,dateStyle:'short',timeStyle:'short'}).format(new Date(at)):'—';}
+
+ useEffect(()=>{
+  let active=true;const epoch=sessionEpoch.current;
   fetch('/api/health').then(r=>r.ok?r.json():Promise.reject()).then(d=>{if(active)setHealth(d.configured?'ready':'setup')}).catch(()=>{if(active)setHealth('offline')});
-  fetch('/api/session').then(async r=>{if(r.ok){const d=await r.json();if(active){csrf.current=d.csrf;setAuthenticated(true)}}}).catch(()=>{});
+  fetch('/api/session').then(async r=>{if(r.ok){const d=await r.json();if(active&&epoch===sessionEpoch.current){sessionEpoch.current++;csrf.current=d.csrf;setAuthenticated(true)}}}).catch(()=>{});
   return()=>{active=false};
  },[]);
  useEffect(()=>{
@@ -62,23 +94,29 @@ function App(){
  }
  async function login(event:React.FormEvent){event.preventDefault();setBusy(true);try{
   const r=await fetch('/api/session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password})});setPassword('');
-  const d=await r.json();if(!r.ok)throw Error(d.error);csrf.current=d.csrf;setAuthenticated(true);setNotice('Local workspace unlocked.');
+  const d=await r.json();if(!r.ok)throw Error(d.error);sessionEpoch.current++;csrf.current=d.csrf;setAuthenticated(true);setNotice('Local workspace unlocked.');
  }catch(e){setNotice(e instanceof Error?e.message:'Unable to sign in')}finally{setBusy(false)}}
  async function logout(){stopMic();if('speechSynthesis'in window)window.speechSynthesis.cancel();try{
   const r=await fetch('/api/logout',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrf.current},body:'{}'});
   if(!r.ok&&r.status!==401)throw Error();
-  csrf.current='';setAuthenticated(false);setGithub(null);setChat([]);setCore('idle');setNotice(locale==='ar'?'مساحة العمل اتقفلت.':'Local workspace locked.');
+  clearWorkspace();setNotice(locale==='ar'?'مساحة العمل اتقفلت.':'Local workspace locked.');
  }catch{setNotice('Could not revoke server session. Retry locking the workspace.')}}
- async function readProject(){if(!authenticated){setNotice(t.signin);return}setBusy(true);setCore('thinking');try{
-  const r=await fetch(`/api/github?repo=${encodeURIComponent(repo)}&resource=${resource}`);
-  if(r.status===401){setAuthenticated(false);setGithub(null);throw Error('Session expired. Sign in again.');}
-  if(!r.ok)throw Error('Source unavailable');setGithub(await r.json());
- }catch(e){setGithub(null);setNotice(e instanceof Error?e.message:'Read failed')}finally{setBusy(false);setCore('idle')}}
+ async function readProject(refresh=false){
+  if(!authenticated){setNotice(t.signin);return;}const epoch=sessionEpoch.current;setBusy(true);setCore('thinking');
+  try{
+   const r=await fetch(`/api/github?repo=${encodeURIComponent(repo)}&resource=${resource}${refresh?'&refresh=1':''}`);
+   if(epoch!==sessionEpoch.current)return;
+   if(r.status===401){clearWorkspace();throw Error('Session expired. Sign in again.');}
+   if(!r.ok)throw Error('Source unavailable');const result=await r.json();
+   if(epoch!==sessionEpoch.current)return;setGithub(result);await updateSources();
+  }catch(e){if(epoch===sessionEpoch.current){setGithub(null);setNotice(e instanceof Error?e.message:'Read failed');}}
+  finally{if(epoch===sessionEpoch.current){setBusy(false);setCore('idle');}}
+ }
  function command(event:React.FormEvent){event.preventDefault();const text=input.trim();if(!text)return;setInput('');
   let answer=locale==='ar'?'المساعد الذكي لسه غير متصل. أقدر أقولك الوقت أو أوضح حالة الربط؛ مش هنفّذ أي تعديل.':'AI is not connected yet. I can report time or connection availability; no write actions are enabled.';
   if(/time|الوقت|الساعه|الساعة/i.test(text))answer=`${c.greeting} · ${c.time} · ${zone}`;
   else if(/today|النهارده|النهاردة|tasks|مهام/i.test(text))answer=b.message;
-  else if(/connect|ربط|متصل/i.test(text))answer=locale==='ar'?'مصادر البيانات الشخصية غير متصلة. قارئ GitHub محتاج مصادقة وإعداد على الخادم.':'Personal sources are not connected. GitHub reads require sign-in and server configuration.';
+  else if(/connect|ربط|متصل/i.test(text))answer=authenticated?sources.map(source=>`${source.name}: ${statusLabel(source.id)}`).join(' · '):(locale==='ar'?'سجّل دخول علشان نفحص حالة المصادر.':'Sign in to check source status.');
   setChat(previous=>[...previous,{role:'user' as const,text},{role:'assistant' as const,text:answer}].slice(-20));
  }
  const icon:Record<Tab,string>={overview:'◈',projects:'▦',voice:'◉',settings:'⌘'};
@@ -91,24 +129,25 @@ function App(){
   <main>
    <header><div className="breadcrumb">WORKSPACE <span>/</span> {t[tab].toUpperCase()}</div><div className="header-tools"><span className="local-time">{c.time}<small>{zone}</small></span><button className="language" onClick={()=>setLocale(locale==='en'?'ar':'en')}>{locale==='en'?'عربي':'English'}</button><span className="avatar" aria-label="Personal workspace">H</span></div></header>
    {notice&&<div className="notice" role="status">{notice}<button aria-label={t.close} onClick={()=>setNotice('')}>×</button></div>}
+   {!online&&<div className="offline-banner" role="status">{locale==='ar'?'إنت غير متصل بالإنترنت. وقت الجهاز والإعدادات متاحين؛ البيانات المتصلة ممكن تبقى قديمة.':'You are offline. Device time and preferences remain available; connected data may be stale.'}</div>}
    <section key={tab} className="page">
     {tab==='overview'&&<>
      <div className="eyebrow"><span className="status-dot"/>{t.briefing}<span className="date">{c.date}</span></div>
      <div className="hero"><div className="hero-copy"><p className="greeting">{c.greeting}, Hussein.</p><h1>{t.welcome}</h1><p>{t.intro}</p><div className="hero-actions"><button className="primary" onClick={()=>document.getElementById('command')?.focus()}>{t.ask} <span>↗</span></button><button className="secondary" onClick={()=>setTab('voice')}>◉ {t.voice}</button></div><span className="readonly"><span/> {t.mode}</span></div>
       <div className="core-stage"><div className={`core ${core}`} style={{'--level':level} as React.CSSProperties} aria-label={`JARVIS core: ${core}`}><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="core-ring"/><div className="core-inner"><span>J</span><small>J.A.R.V.I.S.</small></div><div className="core-point"/></div><span className="core-label">{core.toUpperCase()}<span>●</span><small>{t.status}</small></span></div>
      </div>
-     <div className="section-heading"><h2>{t.today}</h2><span>{t.sources} / 00</span></div>
+     <div className="section-heading"><h2>{t.today}</h2><span>{t.sources} / {String(sources.filter(s=>s.status==='ready').length).padStart(2,'0')}</span></div>
      <div className="day-panel"><div className="day-symbol">◎</div><div><h3>{t.noTasks}</h3><p>{t.noTasksText}</p><span className="source-note">SOURCE: NONE · LAST SUCCESSFUL SYNC: —</span></div><button className="text-button" onClick={()=>setTab('projects')}>{t.projects} ↗</button></div>
      <div className="section-heading"><h2>{t.projects}</h2><button className="text-button" onClick={()=>setTab('projects')}>{locale==='en'?'View all':'عرض الكل'} ↗</button></div>
-     <div className="quick-apps">{manifests.filter(m=>['progressxx','whoop','factory','lexora'].includes(m.id)).map((m,i)=><a className="quick-app" key={m.id} href={m.launchUrl} target="_blank" rel="noopener noreferrer"><span className={`app-icon app-${i}`}>{['P','W','⌁','L'][i]}</span><span><strong>{m.name}</strong><small>{t.launch} · {t.disconnected}</small></span><span className="launch-arrow">↗</span></a>)}</div>
+     <div className="quick-apps">{manifests.filter(m=>['progressxx','whoop','factory','lexora'].includes(m.id)).map((m,i)=><a className="quick-app" key={m.id} href={m.launchUrl} target="_blank" rel="noopener noreferrer"><span className={`app-icon app-${i}`}>{['P','W','⌁','L'][i]}</span><span><strong>{m.name}</strong><small>{t.launch} · {statusLabel(m.id)}</small></span><span className="launch-arrow">↗</span></a>)}</div>
      <section className="chat-section" aria-label="Local assistant"><div className="chat-heading"><span className="mini-core">◈</span><strong>JARVIS</strong><small>{t.notAI}</small>{chat.length>0&&<button className="text-button" onClick={()=>setChat([])}>{t.clear}</button>}</div>
       <div className="messages" aria-live="polite">{chat.map((m,i)=><p key={i} className={m.role}><small>{m.role==='user'?'YOU':'JARVIS'}</small>{m.text}</p>)}</div><form className="command" onSubmit={command}><span>✧</span><input id="command" aria-label={t.ask} placeholder={t.placeholder} value={input} maxLength={1000} onChange={e=>setInput(e.target.value)}/><button type="submit" aria-label={t.send}>↑</button></form></section>
     </>}
-    {tab==='projects'&&<><div className="eyebrow">CONNECTED WORKSPACE</div><h1>{t.sources}</h1><p className="lead">{locale==='en'?'Launch your existing apps. Connected summaries appear only after authorized reads.':'افتح برامجك الأصلية. الملخصات هتظهر بعد ربط وقراءة مُصرّح بيهم.'}</p><div className="integration-grid">{manifests.map(m=><article className="integration" key={m.id}><div className="integration-top"><span className="app-icon">{m.name.slice(0,1)}</span><span className="badge">{m.domain}</span></div><h3>{m.name}</h3><span className="connection-state">{t.disconnected}</span><p>{m.limitation}</p><small>LAST SUCCESSFUL SYNC: —</small>{m.launchUrl&&<a href={m.launchUrl} rel="noopener noreferrer" target="_blank">{t.launch} ↗</a>}</article>)}</div>
-      <section className="panel github-panel"><h2>GitHub · read-only</h2><div className="controls"><label>Repository<select disabled={busy} value={repo} onChange={e=>{setRepo(e.target.value);setGithub(null)}}>{repositories.map(r=><option key={r}>{r}</option>)}</select></label><label>Resource<select disabled={busy} value={resource} onChange={e=>{setResource(e.target.value as Resource);setGithub(null)}}>{(['repository','pulls','issues','actions'] as Resource[]).map(r=><option key={r}>{r}</option>)}</select></label><button className="primary" disabled={busy||!authenticated} onClick={readProject}>{busy?t.loading:t.refresh}</button></div>{!authenticated&&<p>{t.signin} → {t.settings}</p>}{github&&<div role="status"><p>{github.status} {github.error||''} · {github.source.observedAt||'No successful read'}</p>{github.data?.items.map((item,i)=><p key={i}><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a> · {item.state}</p>)}</div>}</section>
+    {tab==='projects'&&<><div className="eyebrow">CONNECTED WORKSPACE</div><h1>{t.sources}</h1><p className="lead">{locale==='en'?'Launch your existing apps. Connected summaries appear only after authorized reads.':'افتح برامجك الأصلية. الملخصات هتظهر بعد ربط وقراءة مُصرّح بيهم.'}</p><div className="integration-grid">{manifests.map(m=><article className="integration" key={m.id}><div className="integration-top"><span className="app-icon">{m.name.slice(0,1)}</span><span className="badge">{m.domain}</span></div><h3>{m.name}</h3><span className="connection-state" data-connector={m.id}>{statusLabel(m.id)}</span><p>{m.limitation}</p><small>{locale==='ar'?'آخر قراءة ناجحة':'LAST SUCCESSFUL READ'}: {sourceTime(m.id)}</small>{sources.find(s=>s.id===m.id)?.lastError&&<small className="source-error">{sources.find(s=>s.id===m.id)?.lastError}</small>}{m.launchUrl&&<a href={m.launchUrl} rel="noopener noreferrer" target="_blank">{t.launch} ↗</a>}</article>)}</div>
+      <section className="panel github-panel"><h2>GitHub · read-only</h2><p className="source-summary">{statusLabel('github')} · {locale==='ar'?'آخر نجاح':'Last success'}: {sourceTime('github')}</p>{sourceError&&<p role="status">{locale==='ar'?'تعذّر تحديث حالة المصادر.':'Unable to refresh source status.'}</p>}<div className="controls"><label>Repository<select disabled={busy} value={repo} onChange={e=>{setRepo(e.target.value);setGithub(null)}}>{repositories.map(r=><option key={r}>{r}</option>)}</select></label><label>Resource<select disabled={busy} value={resource} onChange={e=>{setResource(e.target.value as Resource);setGithub(null)}}>{(['repository','pulls','issues','actions'] as Resource[]).map(r=><option key={r}>{r}</option>)}</select></label><button className="primary" disabled={busy||!authenticated} onClick={()=>readProject()}>{busy?t.loading:t.refresh}</button><button className="secondary" disabled={busy||!authenticated} onClick={()=>readProject(true)}>{locale==='ar'?'تحقق من المصدر':'Revalidate source'}</button></div>{!authenticated&&<p>{t.signin} → {t.settings}</p>}{github&&<div role="status"><p>{github.status} {github.error||''} · {github.source.observedAt||'No successful read'} · {github.cache||''}{github.retryAt&&` · Retry after ${github.retryAt}`} · {locale==='ar'?'لحد ١٠ نتائج؛ دي مش القائمة الكاملة':'Up to 10 results; not a complete inventory'}</p>{github.data?.items.map((item,i)=><p key={i}><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a> · {item.state}</p>)}</div>}</section>
     </>}
     {tab==='voice'&&<><div className="eyebrow">VOICE / EXPERIMENTAL</div><h1>{t.voiceTitle}</h1><p className="lead">{t.voiceSub}</p><section className="voice-workbench panel"><div className={`core ${core}`} style={{'--level':level} as React.CSSProperties}><div className="orbit orbit-one"/><div className="core-ring"/><div className="core-inner"><span>J</span><small>{core.toUpperCase()}</small></div></div><meter aria-label="Microphone activity" min="0" max="1" value={level}/><p>{t.mic}</p><div className="controls"><button className={micOn?'danger':'primary'} onClick={microphone}>{micOn?t.stop:t.listen}</button><button className="secondary" onClick={speak}>{t.speak}</button><button className="secondary" onClick={()=>{window.speechSynthesis?.cancel();setCore('idle')}}>{t.cancel}</button></div><label>System voice<select value={voiceName} onChange={e=>setVoiceName(e.target.value)}><option value="">System default</option>{voices.map((v,i)=><option key={i} value={v.name}>{v.name} · {v.lang}</option>)}</select></label><small>Waveform: microphone RMS. Speaking state: system speech events, not audio-synchronized lip/waveform output.</small></section></>}
-    {tab==='settings'&&<><div className="eyebrow">YOUR SPACE / YOUR RULES</div><h1>{t.settings}</h1><div className="settings-grid"><section className="panel"><h2>{t.auth}</h2><p>API: {health||'checking'} · {authenticated?'Signed in':'Locked'}</p>{authenticated?<button className="secondary" onClick={logout}>{t.logout}</button>:<form onSubmit={login}><label>{t.password}<input type="password" autoComplete="current-password" required maxLength={256} value={password} onChange={e=>setPassword(e.target.value)}/></label><button className="primary" disabled={busy}>{t.signin}</button></form>}<p className="muted">Local development only. Multi-user and production identity are pending.</p></section><section className="panel"><h2>Preferences</h2><label>{t.language}<select aria-label={t.language} value={locale} onChange={e=>setLocale(e.target.value as Locale)}><option value="en">English</option><option value="ar">العربية</option></select></label><label>{t.zone}<select aria-label={t.zone} value={zone} onChange={e=>setZone(e.target.value)}>{['Africa/Cairo','Asia/Dubai','Asia/Riyadh','Europe/London','America/New_York','Etc/UTC'].map(z=><option key={z}>{z}</option>)}</select></label><label>{t.motion}<select aria-label={t.motion} value={motion} onChange={e=>setMotion(e.target.value)}><option value="full">Full</option><option value="reduced">Reduced</option><option value="off">Off</option></select></label><label className="checkbox"><input type="checkbox" checked={quiet} onChange={e=>setQuiet(e.target.checked)}/>{t.quiet}</label><p className="muted">{quiet?'Startup is silent.':'Automatic greeting is planned; use the explicit voice test for now.'} Preferences are session-only.</p></section></div></>}
+    {tab==='settings'&&<><div className="eyebrow">YOUR SPACE / YOUR RULES</div><h1>{t.settings}</h1><div className="settings-grid"><section className="panel"><h2>{t.auth}</h2><p>API: {health||'checking'} · {authenticated?'Signed in':'Locked'}</p>{authenticated?<button className="secondary" onClick={logout}>{t.logout}</button>:<form onSubmit={login}><label>{t.password}<input type="password" autoComplete="current-password" required maxLength={256} value={password} onChange={e=>setPassword(e.target.value)}/></label><button className="primary" disabled={busy}>{t.signin}</button></form>}<p className="muted">Local development only. Multi-user and production identity are pending.</p></section><section className="panel"><h2>Preferences</h2><label>{t.language}<select aria-label={t.language} value={locale} onChange={e=>setLocale(e.target.value as Locale)}><option value="en">English</option><option value="ar">العربية</option></select></label><label>{t.zone}<select aria-label={t.zone} value={zone} onChange={e=>setZone(e.target.value)}>{['Africa/Cairo','Asia/Dubai','Asia/Riyadh','Europe/London','America/New_York','Etc/UTC'].map(z=><option key={z}>{z}</option>)}</select></label><label>{t.motion}<select aria-label={t.motion} value={motion} onChange={e=>setMotion(e.target.value)}><option value="full">Full</option><option value="reduced">Reduced</option><option value="off">Off</option></select></label><label className="checkbox"><input type="checkbox" checked={quiet} onChange={e=>setQuiet(e.target.checked)}/>{t.quiet}</label><p className="muted">{quiet?'Startup is silent.':'Automatic greeting is planned; use the explicit voice test for now.'} {locale==='ar'?'الإعدادات دي محفوظة على الجهاز فقط.':'These preferences are saved on this device only.'}</p><button className="secondary" onClick={()=>{setLocale(defaultPreferences.locale);setZone(defaultPreferences.zone);setMotion(defaultPreferences.motion);setQuiet(defaultPreferences.quiet);}}>{locale==='ar'?'استعادة الإعدادات الافتراضية':'Reset preferences'}</button></section></div></>}
    </section><footer><span>JARVIS OS <span className="footer-dot">/</span> PERSONAL INTELLIGENCE</span><span>{t.mode}</span></footer>
   </main>
  </div>

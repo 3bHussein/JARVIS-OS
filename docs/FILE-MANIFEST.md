@@ -49,3 +49,13 @@ All listed files were created in the independent project. Generated dependencies
 ## Repository publication addition
 
 - `docs/evidence/github-foundation-ci.json` — exact-commit remote workflow evidence.
+
+## Workspace batch additions
+
+- `packages/core/src/preferences.ts`
+- `packages/connectors/src/github-reader.ts`
+- `tests/workspace.test.ts`
+- `tests/status-api.test.ts`
+- `docs/evidence/workspace-check.txt`
+- `docs/evidence/workspace-build.txt`
+- `docs/evidence/workspace-browser.txt`
