@@ -157,3 +157,13 @@ Local automated results: 42 unit/HTTP tests PASS; typecheck/build PASS; launcher
 | Partial/final/review/no auto-send | UI-19 | TESTED synthetic recognizer, not accuracy |
 | Browser speech upload consent | UI-20 | TESTED gating, not provider retention |
 | Voice/model quality and latency | No real corpus | TODO |
+
+## Session 006 exact-source remote acceptance — 2026-10-30T08:07:19+02:00
+
+Source commit: `3c4f53f40b375ddcee2d5d3a7d5c405f9b01063a` (`feat: add private local AI, reviewed speech and ProgressXX snapshots`). GitHub Actions https://github.com/3bHussein/JARVIS-OS/actions/runs/41012100198 completed SUCCESS on its first remote attempt. Both Linux foundation and Windows launcher jobs passed: per platform 42 unit/HTTP tests, typecheck, build and one launcher lifecycle smoke. Windows BAT help checks passed. Linux additionally passed all 20 Chromium scenarios. Evidence: docs/evidence/assistant-github-ci.json. Status: VERIFIED only for these synthetic automated checks; no actual Ollama inference, real voice accuracy, owner health record or physical Windows acceptance. No PR/deployment/release.
+
+Local source was stashed with a named session checkpoint and fast-forwarded to the connector-created commit. Internal synthetic mobile screenshot was inspected; screenshots remain excluded from Git and are not deliverables. This follow-up documentation-only [skip ci] commit records source acceptance without claiming a separate CI run.
+
+Run: update repository while preserving private .env/encrypted data and original local password; restart Start-JARVIS.bat. Profile/home still works without a model. ProgressXX snapshot: original app full JSON v3 → Overview import. Local AI: follow ASSISTANT-ENGINES.md, disable Ollama cloud in the engine itself and configure an already installed model, then explicitly choose context. Voice: local recognition requires browser/pack support; review transcript before Send. Network speech/voices have separate privacy limitations.
+
+Next implementation: local STT/VAD/TTS sidecar with measured Egyptian Arabic/English corpus; native Tauri host/runtime packaging and Windows acceptance. Automatic ProgressXX and other source-side delegates require separate approval before modifying original repositories. Production account/database/deployment changes remain unapproved. Never mark M3/M4/M5/M6/M8 or v1.0 complete based on this slice.

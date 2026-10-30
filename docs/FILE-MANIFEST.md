@@ -89,3 +89,5 @@ All listed files were created in the independent project. Generated dependencies
 ## Assistant and snapshot slice — 2026-10-30T08:04:54+02:00
 
 packages/ai/src/ollama.ts; packages/connectors/src/progress-backup.ts; apps/web/src/AIChat.tsx, ProgressImport.tsx, SpeechInput.tsx; tests/ai.test.ts, progress-backup.test.ts; docs/ASSISTANT-ENGINES.md, PROGRESSXX-IMPORT.md; docs/evidence/assistant-check.txt, assistant-browser.txt, assistant-launcher.txt, progress-backup-contract.json.
+
+- `docs/evidence/assistant-github-ci.json` — exact-source successful Linux/Windows acceptance for 3c4f53f.
