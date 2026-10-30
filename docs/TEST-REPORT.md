@@ -179,3 +179,11 @@ Local speech slice: 45 Node tests + typecheck/build PASS; Python 4/4 PASS; Chrom
 | Auth/CSRF/exclusivity/cancel/privacy | LOCAL-STT-HTTP-01 | TESTED injected worker, audit excludes content |
 | Review before model submission | UI-21 | TESTED fake microphone + real PCM/HTTP + synthetic transcript |
 | Model/VAD/Arabic accuracy and speed | Not executed | TODO, no scores claimed |
+
+## Session 007 exact-source remote acceptance — 2026-10-30T10:06:54+02:00
+
+Source `a60f4afbb2977e9772fea9a9b1e5df036436c649` (`feat: add bounded offline speech worker and private audio capture`). GitHub Actions https://github.com/3bHussein/JARVIS-OS/actions/runs/41024098898 completed SUCCESS on its first remote attempt. Both Linux foundation and Windows launcher passed: per platform Python 3.12 worker contract 4/4, Node 45/45, typecheck/build and launcher lifecycle 1/1. Windows BAT help passed. Linux Chromium 21/21 passed. Evidence local-speech-github-ci.json. VERIFIED for this synthetic automated scope only; no actual faster-whisper dependency/model/VAD inference or physical-device/real-voice accuracy acceptance. No deployment/PR/release.
+
+Local source was preserved in a named stash and fast-forwarded to origin/main. A documentation-only [skip ci] follow-up records this exact acceptance; no new runtime or distinct CI execution is claimed. User setup is docs/LOCAL-SPEECH.md: optional dedicated Python environment, complete local multilingual converted model, absolute .env paths, restart launcher, unlock, Voice lab → Local Whisper. Voice records remain ephemeral and reviewed before Send. Existing startup still works without optional Python/STT.
+
+Next: perform explicitly scoped real-model/voice acceptance on an appropriate local machine; continue native Tauri host and runtime packaging, OS credential vault/Agent pairing and remaining safe delegated integrations. No permission to change existing project repos, production databases or deploy has been inferred. M5/M6/M8 remain incomplete.
