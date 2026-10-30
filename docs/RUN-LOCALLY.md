@@ -83,3 +83,7 @@ Follow [LOCAL-SPEECH.md](LOCAL-SPEECH.md) for absolute Python/model configuratio
 ## Compiled local runtime
 
 Run `npm run build` after source updates, then Start-JARVIS-Built.bat or `npm run start:built`. Same URL/password/vault, without Vite. Do not run both launchers together. Node 24/API source required; dist generated locally. [Details](BUILT-RUNTIME.md).
+
+## Daily-preview update — 2026-10-30T15:09:36+02:00
+
+The ready-built Personal Preview artifact now uses Setup-JARVIS-Preview.bat then Start-JARVIS-Built.bat, with Node24 installed and no npm install/build in the artifact. Follow USER-ACCEPTANCE.md for one combined trial. Source checkouts still need ordinary setup and npm run build.

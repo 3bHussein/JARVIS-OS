@@ -62,3 +62,7 @@ Offline worker code is wired but optional dependencies/model were not installed 
 ## Built-runtime slice — 2026-10-30T11:06:04+02:00
 
 Built mode requires npm run build after updates and restart. Generated dist is absent from Git/source ZIP. Runtime still needs Node 24 and API/shared source. Entry allowlist does not support arbitrary lazy chunks/fonts/icons yet. File-symlink fixture skips on Windows where unprivileged support varies. Tauri installer, physical Windows/default-browser and production identity are not certified.
+
+## Daily-workspace preview — 2026-10-30T15:09:36+02:00
+
+Daily preview is local/single-owner. Imports and unsaved drafts do not survive page reload/lock. Undo is only the latest deletion in that page session. Agenda groups entries by start date; midnight-spanning reservations still participate in overlap warnings. Changing timezone resets wall-time editor fields to avoid reinterpreting an old local time. AI health context excludes selected file nutrition. Preview needs Node24; no models or native installer bundled. Actual model/health/device/accessibility/performance acceptance and automatic integrations remain open.

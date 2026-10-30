@@ -21,7 +21,7 @@ export function validateData(input:unknown):PersonalData {
   const days=v.days.map((item:unknown)=>{const d=object(item),date=text(d.date,10);if(!validDate(date)||dates.has(date)||typeof d.foodComplete!=='boolean'||typeof d.scheduleComplete!=='boolean')throw Error('Invalid day');dates.add(date);
     return {date,sleepHours:nullable(d.sleepHours,0,24),foodKcal:nullable(d.foodKcal,0,20000),foodComplete:d.foodComplete,scheduleComplete:d.scheduleComplete};});
   const notes=v.notes.map((item:unknown)=>{const n=object(item),id=text(n.id,80);if(!/^[\w-]+$/.test(id)||ids.has(id)||!['note','task','workout'].includes(n.kind)||typeof n.done!=='boolean')throw Error('Invalid note');ids.add(id);
-    const at=n.at===null?null:text(n.at,40);if(at!==null&&!/^\d{4}-\d{2}-\d{2}T.*Z$/.test(at)||at!==null&&!Number.isFinite(Date.parse(at)))throw Error('Invalid timestamp');
+    const at=n.at===null?null:text(n.at,40);if(at!==null&&(!/^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d{1,3})?)?Z$/.test(at)||!validDate(at.slice(0,10)))||at!==null&&!Number.isFinite(Date.parse(at)))throw Error('Invalid timestamp');
     if(n.kind!=='note'&&at===null)throw Error('Task time required');
     const body=text(n.text,400);if(!body)throw Error('Empty note');
     return {id,text:body,kind:n.kind,at,minutes:number(n.minutes,1,600),done:n.done} as PersonalNote;});

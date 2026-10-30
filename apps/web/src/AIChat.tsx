@@ -1,11 +1,11 @@
-import React,{useEffect,useRef,useState} from 'react';
+import React,{useEffect,useLayoutEffect,useRef,useState} from 'react';
 import type {Locale,CoreState} from '../../../packages/core/src/index.ts';
 type Entry={role:'user'|'assistant';text:string;sources?:{id:string;observedAt:string;description:string}[]};
-export function AIChat({locale,zone,csrf,onExpired,onState,localAnswer,draft,onSpeak}:{locale:Locale;zone:string;csrf:()=>string;onExpired:()=>void;onState:(s:CoreState)=>void;localAnswer:(s:string)=>string;draft:string;onSpeak:(text:string)=>void}){
+export function AIChat({locale,zone,csrf,onExpired,onState,localAnswer,draft,draftKey,onSpeak}:{locale:Locale;zone:string;csrf:()=>string;onExpired:()=>void;onState:(s:CoreState)=>void;localAnswer:(s:string)=>string;draft:string;draftKey:number;onSpeak:(text:string)=>void}){
   const ar=locale==='ar',pick=(en:string,arabic:string)=>ar?arabic:en;
   const [configured,setConfigured]=useState(false),[enabled,setEnabled]=useState(false),[personal,setPersonal]=useState(false),[health,setHealth]=useState(false),[messages,setMessages]=useState<Entry[]>([]),[input,setInput]=useState(draft),[busy,setBusy]=useState(false),[error,setError]=useState(''),[changing,setChanging]=useState(false);
   const generation=useRef(0),alive=useRef(true),abort=useRef<AbortController|null>(null),scope=useRef(`${locale}/${zone}`);
-  useEffect(()=>{if(draft)setInput(draft);},[draft]);
+  useLayoutEffect(()=>{if(draft)setInput(draft);},[draft,draftKey]);
   async function api(path:string,body:unknown){const r=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrf()},body:JSON.stringify(body)});if(r.status===401){onExpired();throw Error('authentication_required');}if(!r.ok)throw Error((await r.json()).error||'request_failed');return r.json();}
   async function clear(){generation.current++;abort.current?.abort();setBusy(false);onState('idle');try{await api('/api/chat/clear',{});if(alive.current){setMessages([]);setError('');return true;}}catch{if(alive.current)setError(pick('Could not confirm server history was cleared. Lock the workspace to revoke the session.','مقدرتش أأكد مسح سجل السيرفر. اقفل مساحة العمل لإلغاء الجلسة.'));}return false;}
   useEffect(()=>{alive.current=true;void fetch('/api/ai').then(r=>r.ok?r.json():null).then(d=>{if(alive.current)setConfigured(Boolean(d?.configured));}).catch(()=>{});void clear();return()=>{alive.current=false;generation.current++;abort.current?.abort();};},[]);

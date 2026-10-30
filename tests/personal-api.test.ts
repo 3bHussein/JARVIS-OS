@@ -30,3 +30,10 @@ test('PERSON-HTTP-01 encrypted consent, revision guards, health consent/isolatio
     assert.ok(!JSON.stringify(audit).includes('PRIVATE_PROFILE_NAME'));assert.ok(!JSON.stringify(audit).includes('synthetic-whoop-password'));assert.ok(!JSON.stringify(audit).includes('PRIVATE_HEALTH_TOKEN'));
   }finally{server.closeAllConnections();await new Promise<void>(r=>server.close(()=>r()));await rm(directory,{recursive:true,force:true});}
 });
+
+test('PERSON-HTTP-02 full multilingual note capacity survives encrypted save and reauthentication',async()=>{
+ const directory=await mkdtemp(join(tmpdir(),'jarvis capacity ')),origin='http://127.0.0.1:5173',password='synthetic-capacity-password';const server=makeServer({origin,passwordHash:hashPassword(password),vaultDirectory:directory});await new Promise<void>(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${(server.address() as any).port}`;
+ const login=async()=>{const r=await fetch(base+'/api/session',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({password})}),d=await r.json();assert.equal(r.status,200);return {Origin:origin,'Content-Type':'application/json',Cookie:r.headers.get('set-cookie')!.split(';')[0],'X-CSRF-Token':d.csrf};};
+ try{const a=await login(),data={profile:null,days:[],notes:Array.from({length:200},(_,i)=>({id:'capacity-'+i,text:'界'.repeat(400),kind:'note',at:null,minutes:30,done:false}))},body=JSON.stringify({operation:'save',remember:true,revision:0,data});assert.ok(Buffer.byteLength(body)>131072);assert.equal((await fetch(base+'/api/personal',{method:'POST',headers:a,body})).status,200);const raw=await readFile(join(directory,'personal.enc.json'),'utf8');assert.ok(raw.length>300000);assert.ok(!raw.includes('界'));const b=await login(),read=await (await fetch(base+'/api/personal',{headers:b})).json();assert.equal(read.locked,false);assert.equal(read.data.notes.length,200);assert.equal(read.data.notes[199].text.length,400);
+ }finally{server.closeAllConnections();await new Promise<void>(r=>server.close(()=>r()));await rm(directory,{recursive:true,force:true});}
+});

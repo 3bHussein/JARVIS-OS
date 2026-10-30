@@ -207,3 +207,23 @@ Source 6ee1eb7902ff0a9e69938bb7df27362f4d34c1a2 (`feat: serve built UI and API t
 Local source preserved in a named stash and fast-forwarded to origin/main. This documentation-only [skip ci] follow-up records exact-source acceptance and does not claim a separate CI run. Run after setup: npm run build, then Start-JARVIS-Built.bat or npm run start:built; Node 24/API source still needed. Preserve .env/.jarvis-data/original password. Default development launcher remains unchanged.
 
 Next: Tauri native host and runtime packaging with least-privilege capabilities, OS secret storage/Agent pairing and real Windows acceptance; voice/model benchmarks and source-approved delegated integrations remain open. No permission to modify original repos, production databases or deploy is inferred. M6 and v1.0 remain incomplete.
+
+## Daily-workspace preview — 2026-10-30T15:09:36+02:00
+
+Personal-preview local results: Node 56/56, typecheck/build PASS; three real-process launcher smokes PASS; development Chromium 29/29 + built Chromium 29/29 PASS. Package staging succeeds. Evidence daily-check.txt, daily-launcher.txt, daily-browser.txt, daily-built-browser.txt, daily-package.txt. Providers/audio/records synthetic.
+
+| Requirement | Evidence | Scope |
+| --- | --- | --- |
+| Date/overlap/completion, immutable source view | PLAN-01..05 | TESTED pure synthetic notes/UTC/date data |
+| 200 multilingual notes save and reopen encrypted | PERSON-HTTP-02 | TESTED real AES persistence, synthetic maximum data |
+| Artifact omits secrets and preserves old installations | PREVIEW-01/02 | TESTED private fixture exclusion/SHA/new dirs |
+| Ready-built preview setup/login without npm deps | START-05 | TESTED actual packaged child process |
+| Planner full record lifecycle | UI-22 | TESTED edit/complete/reopen/snooze/delete/undo |
+| Historical journal and retained date drafts | UI-23 | TESTED no overwrite of today |
+| Selected imported Home nutrition | UI-24 | TESTED client-only, no manual mutation |
+| Navigation/repeated prompt drafts | UI-25 | TESTED no auto submit |
+| Explicit persistence/lock/restore | UI-26 | TESTED real encrypted file + synthetic owner |
+| Arabic/mobile daily UI | UI-27 | TESTED viewport overflow/screenshots |
+| Search/status/all-record pagination | UI-28 | TESTED 12 synthetic filtered results |
+| Concurrent record changes | UI-29 | TESTED failed stale save, draft preserved, stale editor rejected |
+| Real voice/model/owner health/physical Windows | Not executed | TODO |

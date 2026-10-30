@@ -103,3 +103,7 @@ apps/voice-worker/{worker.py,test_worker.py,requirements.txt}; apps/api/src/loca
 Start-JARVIS-Built.bat; scripts/serve-built.mjs; apps/api/src/web-bundle.ts; tests/web-bundle.test.ts; docs/BUILT-RUNTIME.md; docs/evidence/built-check.txt, built-launcher.txt, built-dev-browser.txt, built-browser.txt.
 
 - docs/evidence/built-github-ci.json — successful exact-source Linux/Windows built-runtime acceptance.
+
+## Daily-workspace preview — 2026-10-30T15:09:36+02:00
+
+apps/web/src/{DayJournal,NotePlanner}.tsx; packages/personal/src/planner.ts; Setup-JARVIS-Preview.bat; scripts/package-preview.mjs/.d.mts; tests/planner.test.ts, preview.test.ts; docs/DAILY-WORKSPACE.md, USER-ACCEPTANCE.md; daily-check/launcher/browser/built-browser/package evidence.

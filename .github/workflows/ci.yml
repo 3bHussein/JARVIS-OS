@@ -45,4 +45,14 @@ jobs:
           call Setup-JARVIS.bat --help
           call Start-JARVIS.bat --help
           call Start-JARVIS-Built.bat --help
+          call Setup-JARVIS-Preview.bat --help
       - run: npm run test:launcher
+
+      - name: Prepare clean personal preview
+        run: npm run package:preview
+      - uses: actions/upload-artifact@v4
+        with:
+          name: JARVIS-OS-Personal-Preview
+          path: test-results/JARVIS-OS-Personal-Preview-*
+          if-no-files-found: error
+          retention-days: 14

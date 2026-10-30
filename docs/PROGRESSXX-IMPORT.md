@@ -15,3 +15,7 @@ Weight shows the last seven calendar dates through today and the preceding seven
 Evidence: the existing production root `index.html` at ProgressXX commit `26f96d24045a896688c69e7acc3083013d97dc9f`, `buildFullBackup` at lines 5941–5985; food totals at 7224. Re-read on 2026-10-30. No source repo modifications or database calls. See evidence/progress-backup-contract.json.
 
 A future automatic bridge needs the source application's owner-approved delegated summary and merge contract spanning visible snapshot state, confirmed rows, pending edits/tombstones and device drafts. Direct privileged database access is not an acceptable substitute.
+
+## Daily-preview update — 2026-10-30T15:09:36+02:00
+
+The latest daily-workspace preview keeps the imported projection across main-tab navigation. An explicit recent-file nutrition selector can drive Home only; it never alters saved manual data or model context. Clear/lock/reload forget it. This supersedes the earlier navigation-clears-import and never-used-on-Home statements.

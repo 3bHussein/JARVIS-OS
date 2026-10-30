@@ -73,3 +73,7 @@ Added optional faster-whisper 1.2.1 subprocess integration using primary source 
 ## Built-runtime slice — 2026-10-30T11:06:04+02:00
 
 No integration endpoints/permissions changed. Built runtime uses the same local origin/password/vault. Frontend served via explicit index/hashed-entry allowlist; connectors retain existing auth/consent. No deployment or original-project mutation.
+
+## Daily-workspace preview — 2026-10-30T15:09:36+02:00
+
+ProgressXX file can now supply an explicitly selected transient nutrition view on Home. Manual data/profile targets remain unchanged; file is excluded from model context and persists only during unlocked page navigation. WHOOP read/link APIs unchanged; credential drafts clear on leaving their section. No source repository, OAuth flow or production DB changed. Corporate reads/writes still blocked.

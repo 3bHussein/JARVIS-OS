@@ -22,7 +22,8 @@
     "start": "node scripts/start.mjs",
     "test:launcher": "node --test tests/launcher-smoke.mjs",
     "start:built": "node scripts/serve-built.mjs",
-    "test:e2e:built": "node tests/browser.mjs --built"
+    "test:e2e:built": "node tests/browser.mjs --built",
+    "package:preview": "node scripts/package-preview.mjs"
   },
   "dependencies": {
     "react": "19.1.1",

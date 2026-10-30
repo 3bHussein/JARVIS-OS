@@ -36,3 +36,7 @@ Local synthetic slice: [x] fixed local AI endpoint/scope isolation/CSRF/cancella
 ## Built-runtime slice — 2026-10-30T11:06:04+02:00
 
 [x] built UI/API startup without Vite/node_modules (current runtime); [x] allowlist/CSP/private-path/auth tests; [x] local development/built browser scenarios. [ ] Tauri installer/runtime bundling; [ ] OS vault/Agent; [ ] real device/voice/model acceptance; [ ] production identity/PWA/release gates. Not RELEASED.
+
+## Daily-workspace preview — 2026-10-30T15:09:36+02:00
+
+Personal-preview gate: [x] daily management/source/lock/conflict workflows locally; [x] 200-note multilingual encrypted roundtrip; [x] clean artifact privacy/hashes and actual packaged startup; [x] development/built browser journeys. [ ] exact-source CI/artifact evidence (append on completion); [ ] one combined user trial. Production/Tauri/model/device/multi-user/PWA gates remain unchecked. No RELEASED/v1.0 claim.

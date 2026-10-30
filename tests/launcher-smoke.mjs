@@ -1,3 +1,4 @@
+import {packagePreview} from '../scripts/package-preview.mjs';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {mkdtemp,cp,symlink,writeFile,readFile,rm} from 'node:fs/promises';
@@ -56,4 +57,11 @@ test('START-04 built UI/API runs without node_modules, refuses occupied port and
     const login=await fetch('http://127.0.0.1:5173/api/session',{method:'POST',headers:{Origin:'http://127.0.0.1:5173','Content-Type':'application/json'},body:JSON.stringify({password:'synthetic-built-password'})});assert.equal(login.status,200);
     child.send('stop');assert.equal(await closedPromise,0);await assertFreePort(5173);assert.ok(!output.includes('synthetic-built-password'));
   }finally{if(child&&!closed){if(child.connected)child.send('stop');else child.kill();if(closedPromise)await closedPromise;}await rm(root,{recursive:true,force:true,maxRetries:5,retryDelay:200});}
+});
+
+
+test('START-05 packaged personal preview prepares without npm dependencies and serves authenticated UI',{timeout:60000},async()=>{
+ await assertFreePort(5173);const out=await mkdtemp(join(tmpdir(),'jarvis packaged trial '));let child,closed=false,closedPromise;
+ try{const root=await packagePreview(source,out),env=`JARVIS_PASSWORD_HASH=${hashPassword('synthetic-preview-password')}\n`;await writeFile(join(root,'.env'),env,{mode:0o600});const setup=await run('setup.mjs',root,['--built-only']);assert.equal(setup.code,0,setup.output);assert.equal(await readFile(join(root,'.env'),'utf8'),env);let output='';child=spawn(process.execPath,[join(root,'scripts/serve-built.mjs'),'--no-browser'],{cwd:root,stdio:['ignore','pipe','pipe','ipc']});closedPromise=once(child,'exit').then(([code])=>{closed=true;return code;});child.stdout.on('data',x=>output+=x);child.stderr.on('data',x=>output+=x);const end=Date.now()+40000;while(!closed&&!output.includes('JARVIS_BUILT_READY')&&Date.now()<end)await new Promise(r=>setTimeout(r,100));assert.ok(output.includes('JARVIS_BUILT_READY'),output);assert.equal((await fetch('http://127.0.0.1:5173/')).status,200);const r=await fetch('http://127.0.0.1:5173/api/session',{method:'POST',headers:{Origin:'http://127.0.0.1:5173','Content-Type':'application/json'},body:JSON.stringify({password:'synthetic-preview-password'})});assert.equal(r.status,200);child.send('stop');assert.equal(await closedPromise,0);await assertFreePort(5173);
+ }finally{if(child&&!closed){if(child.connected)child.send('stop');else child.kill();if(closedPromise)await closedPromise;}await rm(out,{recursive:true,force:true,maxRetries:5,retryDelay:200});}
 });

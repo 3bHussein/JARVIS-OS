@@ -2,13 +2,15 @@
 
 An original personal AI command center, built as a separate hybrid application.
 
-**Current release: local foundation 0.1.0, not production-ready.** Repository discovery is documented; the React interface, local-development authentication and read-only GitHub adapter are implemented. AI, speech recognition, automatic ProgressXX integration, installable PWA and Windows packaging remain pending. A session-only WHOOP saved-record bridge and optional private local profile/notes are available for local acceptance.
+**Current status: personal preview 0.1.0 — not a production release.** A bilingual daily workspace combines a source-labelled briefing, planner, journal, optional WHOOP saved-record reads and a transient ProgressXX backup view. Optional Ollama conversation and reviewed speech are wired; real model/voice/device acceptance, automatic delegated integrations, PWA and Tauri remain open.
 
-## Windows quick start
+## Try one complete preview
 
-Install Node.js 24 LTS, download/extract this repository, run **Setup-JARVIS.bat** once, then **Start-JARVIS.bat**. Setup asks for a hidden local password; the launcher opens http://127.0.0.1:5173 when ready. Unlock from Settings. Keep its window open; Ctrl+C stops both services. This is the local browser foundation, not the Tauri installer.
+Download **JARVIS-OS-Personal-Preview** from the latest successful [Actions run](https://github.com/3bHussein/JARVIS-OS/actions), extract into a new folder, install Node.js 24+ if needed, then run **Setup-JARVIS-Preview.bat** and **Start-JARVIS-Built.bat**. The artifact needs no npm install or build. Unlock from Settings with the local password you chose. No account credentials, models or personal data are bundled.
 
-Full walkthrough and troubleshooting: [Run locally](docs/RUN-LOCALLY.md). Terminal alternative: `npm run setup`, then `npm start`.
+Follow the [single combined acceptance journey](docs/USER-ACCEPTANCE.md). This is a local browser preview, not an EXE/Tauri installer. Keep the launcher open; Ctrl+C stops it. Preserve an older installation's private config/data/password instead of overwriting it.
+
+From a source checkout: run Setup-JARVIS.bat, `npm run build`, then Start-JARVIS-Built.bat. The original Start-JARVIS.bat remains the development launcher. [Run guide](docs/RUN-LOCALLY.md).
 
 ## Run the foundation
 
@@ -39,17 +41,16 @@ Optionally configure `GITHUB_TOKEN` in `.env`, restricted to the selected person
 
 ## Available now
 
-- Original navy/cyan responsive command center and animated core.
-- Actual IANA-zone clock, time-sensitive greeting and Cairo DST support.
-- English/Arabic interface direction, simple navigation, explicit disconnected states.
-- Full/reduced/off motion; OS reduced-motion preference is respected. Language/timezone/motion/silent-start preferences persist locally and can be reset.
-- Honest task briefing with zero invented tasks and freshness utilities.
-- Local deterministic commands for time and source availability, visibly labelled as not an AI model.
-- Optional authenticated read-only GitHub repository/PR/Issue/Actions views, session-owned cache, ETag revalidation, cooldowns and real last-read/status metadata. Views explicitly stop at ten results.
-- Microphone activity test with echo cancellation requested, RMS visualization, stop/cleanup and no recording/upload.
-- System speech test with available browser voices. This is not evaluated neural TTS or audio-synchronized animation.
-- Locked write tools and local-agent launch policy prototype with **no OS execution**.
-- Offline indicator; focus/minute session revalidation and protection against delayed results after logout.
+- Original navy/cyan interface, animated core, Arabic RTL/English LTR, IANA-zone clock and reduced/off motion.
+- Five daily sections: Today, Planner, Check-in, Sources, and profile/privacy. Core facts remain deterministic and source-labelled.
+- Create/edit/complete/reopen/snooze notes, tasks and workouts; dated agenda, overlap warnings, all-record search/filter/pagination and confirmed delete with session undo.
+- Date-specific manual journal with retained unsaved date drafts and a seven-day coverage view. Missing values stay unknown.
+- Optional encrypted local profile/notes/manual entries; visible save status, revision conflicts and explicit erase. Personal UI clears on lock.
+- Separate WHOOP Intelligence session link using existing saved records, and local ProgressXX v3 file preview. Imported nutrition can be selected on Home without replacing manual data or entering AI context. No new source-app sync or database writes.
+- Optional local Ollama conversation with separate context scopes; session history/drafts survive navigation. Quick prompts and reviewed voice text are drafts until Send.
+- On-device-first browser transcription, optional bounded offline faster-whisper worker, review/correction and system speech. Actual accuracy/latency is unmeasured.
+- Authenticated read-only GitHub repository/PR/Issue/Actions views with bounded results/cache/provenance. Corporate data and external writes remain blocked.
+- Built UI/API local runtime, clean preview packaging and lifecycle/browser/permission tests. Node 24 is still required.
 
 ## Validation
 
@@ -57,6 +58,9 @@ Optionally configure `GITHUB_TOKEN` in `.env`, restricted to the selected person
 npm run check
 npx playwright install chromium --only-shell
 npm run test:e2e
+npm run test:e2e:built
+npm run test:launcher
+npm run package:preview
 npm audit
 ```
 

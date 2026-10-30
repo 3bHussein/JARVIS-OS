@@ -49,3 +49,7 @@ Primary implementation references reviewed:
 ## 2026-10-30 offline STT addition
 
 A separate optional faster-whisper/VAD one-shot worker and local microphone capture are now wired. This supersedes the earlier statement that no local STT worker exists, while retaining the limitation that no actual engine/model/accuracy acceptance has run. Browser recognition and system TTS remain available. See [LOCAL-SPEECH.md](LOCAL-SPEECH.md).
+
+## Daily-preview update — 2026-10-30T15:09:36+02:00
+
+Conversation/history/typed draft now survive main-tab navigation in the unlocked page. Repeated voice/quick prompts reseed a draft, never auto-send. Clear/scope/language/timezone/lock still clear history. Selected imported Home nutrition remains excluded from AI; model health context is server-owned manual/WHOOP data. This supersedes the earlier navigate-back-clears-conversation behavior.

@@ -91,3 +91,7 @@ Optional offline STT uses a fixed one-shot Python subprocess behind authenticate
 ## Built-runtime slice — 2026-10-30T11:06:04+02:00
 
 Built runtime serves compiled UI and API from one loopback service with a supervising launcher. Only preloaded index/hashed JS/CSS entries are public; no filesystem web root. API boundaries unchanged. Node 24 and API source still required. See BUILT-RUNTIME.md.
+
+## Daily-workspace preview — 2026-10-30T15:09:36+02:00
+
+Added daily planner/journal components and pure date/agenda/transient-nutrition helpers. Overview remains mounted while hidden across main navigation; lock removes it. Import state stays client-only; server health/model context remains separate. Personal writes use existing revision guards plus editor fingerprint/UI write guard. Clean preview packaging creates new directories, selected runtime files and validated bundle only. No source-app coupling/production schema change. See DAILY-WORKSPACE.md.

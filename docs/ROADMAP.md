@@ -59,3 +59,7 @@ M5 offline STT adapter/capture/review/cancel IMPLEMENTED and synthetic contract 
 ## Built-runtime slice — 2026-10-30T11:06:04+02:00
 
 Built frontend/API local runtime and no-node_modules lifecycle IMPLEMENTED/TESTED. M6 Tauri host, runtime bundling/installer, tray/shortcuts/startup, credential vault and scoped Agent remain TODO. Production identity/PWA and real voice/integration acceptance remain open.
+
+## Daily-workspace preview — 2026-10-30T15:09:36+02:00
+
+Large personal-preview batch IMPLEMENTED/TESTED locally: daily hub, planner/journal lifecycle, transient source selection, navigation context and ready-built packaging. One combined user trial follows exact-source CI. M3 automatic delegated sync, M4 real model/tool acceptance, M5 actual speech/VAD/latency, M6 Tauri/Agent and M8 production gates remain TODO/IN PROGRESS.

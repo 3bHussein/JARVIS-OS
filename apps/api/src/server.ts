@@ -77,7 +77,7 @@ export function makeServer(config:Config){
       }
       if(path==='/api/personal'&&method==='POST'){
         const ctx=personal.get(session);if(!ctx)return reply(409,{error:'reauthenticate'});
-        const input=await json(req,131072);
+        const input=await json(req,524288);
         try{
           if(input.operation==='erase'){
             if(input.confirmation!=='DELETE PERSONAL DATA')return reply(403,{error:'confirmation_required'});

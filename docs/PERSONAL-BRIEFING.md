@@ -52,3 +52,7 @@ Reviewed WHOOP Intelligence main at `22f16886dc3fca87220fcc8ee11352deb5a3bd33`. 
 Supabase Auth password documentation and current changelog were reviewed. The markdown changelog endpoint rejected its content type; the HTML changelog was inspected instead, including the announced TLS cipher deprecation. This Node 24 HTTPS client does not opt into obsolete CBC ciphers. No schema/config migration was made.
 
 All acceptance tests use synthetic credentials, provider transports and records. Live sign-in and correctness with your real account still require your local acceptance; no one should paste credentials into this chat.
+
+## Daily-preview update — 2026-10-30T15:09:36+02:00
+
+Today can explicitly display a recent imported ProgressXX food/target snapshot without replacing the manual journal. Source label/export time and diary uncertainty remain visible. This client-only view is excluded from AI context; explicit read-aloud/local commands describe it with its source. Planner/journal/privacy now have their own daily sections. No automatic source synchronization is introduced.

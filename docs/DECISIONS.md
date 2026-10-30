@@ -59,3 +59,7 @@ ADR-009: use a bounded one-shot offline Python worker with strict PCM input inst
 ## Built-runtime slice — 2026-10-30T11:06:04+02:00
 
 ADR-010: keep development startup intact; add explicit build + single-service local runtime. Use an in-memory entry allowlist, not repository-directory serving or Vite preview. No implicit rebuild or private API caching. Future chunks/assets require a tested manifest extension.
+
+## Daily-workspace preview — 2026-10-30T15:09:36+02:00
+
+ADR-011: deliver a coherent daily workflow and one combined trial. Keep management forms in five daily sections and preserve unlocked drafts across navigation. ADR-012: imported nutrition is an explicit transient Home view, never a silent merge or AI context. ADR-013: publish a clean built preview artifact with built-only first-run setup; no runtime npm installation, models or credentials bundled, no reuse/deletion of an older preview directory. Preserve revision checks and reject stale editors even after reload.
