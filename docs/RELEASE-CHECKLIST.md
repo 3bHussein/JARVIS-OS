@@ -40,3 +40,7 @@ Local synthetic slice: [x] fixed local AI endpoint/scope isolation/CSRF/cancella
 ## Daily-workspace preview — 2026-10-30T15:09:36+02:00
 
 Personal-preview gate: [x] daily management/source/lock/conflict workflows locally; [x] 200-note multilingual encrypted roundtrip; [x] clean artifact privacy/hashes and actual packaged startup; [x] development/built browser journeys. [ ] exact-source CI/artifact evidence (append on completion); [ ] one combined user trial. Production/Tauri/model/device/multi-user/PWA gates remain unchecked. No RELEASED/v1.0 claim.
+
+## Personal Preview accepted for one combined trial — 2026-10-30T15:30:04+02:00
+
+[x] Exact-source Linux/Windows CI and final artifact downloaded/manifest/runtime checked (07514b6, run41063204345, artifact12981051866). [ ] User combined acceptance. Production/native/model/device/release gates remain open; this is not RELEASED v1.0.

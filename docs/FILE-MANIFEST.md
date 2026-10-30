@@ -109,3 +109,5 @@ Start-JARVIS-Built.bat; scripts/serve-built.mjs; apps/api/src/web-bundle.ts; tes
 apps/web/src/{DayJournal,NotePlanner}.tsx; packages/personal/src/planner.ts; Setup-JARVIS-Preview.bat; scripts/package-preview.mjs/.d.mts; tests/planner.test.ts, preview.test.ts; docs/DAILY-WORKSPACE.md, USER-ACCEPTANCE.md; daily-check/launcher/browser/built-browser/package evidence.
 
 - docs/evidence/daily-artifact-pre-tts.json — downloaded corrected prior-build archive hash/manifest/runtime checkpoint; final TTS privacy candidate recorded separately.
+
+- docs/evidence/daily-github-ci.json and daily-downloaded-preview.json — final exact-source CI, artifact digest/per-file integrity and downloaded-runtime smoke.
