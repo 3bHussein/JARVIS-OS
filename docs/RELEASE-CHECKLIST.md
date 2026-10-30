@@ -28,3 +28,7 @@ All unchecked gates are required before a production v1.0. Current slice is not 
 ## Assistant and snapshot slice — 2026-10-30T08:04:54+02:00
 
 Local synthetic slice: [x] fixed local AI endpoint/scope isolation/CSRF/cancellation tests; [x] ProgressXX v3 read preview and unknown freshness labels; [x] transcript partial/final/correction/explicit draft-submit flows. Still [ ] actual model acceptance; [ ] Egyptian Arabic/English/code-switching WER and latency; [ ] physical Windows/browser language-pack tests; [ ] automatic delegated integration acceptance; [ ] native installer/Agent security; [ ] production identity/OS secret storage; [ ] release approval. No v1.0 RELEASED claim.
+
+## Offline speech slice — 2026-10-30T10:01:35+02:00
+
+[x] bounded local PCM/auth/CSRF/cancel contract and synthetic microphone flow; [x] Python worker protocol tests authored for both CI platforms. [ ] actual offline model load/inference; [ ] measured Egyptian-Arabic/English/code-switching WER; [ ] real latency/CPU/device cancellation; [ ] locked optional dependencies; [ ] local TTS; [ ] native installer/Agent and production acceptance. No RELEASED claim.

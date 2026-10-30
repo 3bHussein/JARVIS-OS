@@ -8,3 +8,7 @@ test-results/
 target/
 
 .jarvis-data/
+.venv/
+__pycache__/
+*.pyc
+models/

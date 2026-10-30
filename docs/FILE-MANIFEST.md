@@ -91,3 +91,7 @@ All listed files were created in the independent project. Generated dependencies
 packages/ai/src/ollama.ts; packages/connectors/src/progress-backup.ts; apps/web/src/AIChat.tsx, ProgressImport.tsx, SpeechInput.tsx; tests/ai.test.ts, progress-backup.test.ts; docs/ASSISTANT-ENGINES.md, PROGRESSXX-IMPORT.md; docs/evidence/assistant-check.txt, assistant-browser.txt, assistant-launcher.txt, progress-backup-contract.json.
 
 - `docs/evidence/assistant-github-ci.json` — exact-source successful Linux/Windows acceptance for 3c4f53f.
+
+## Offline speech slice — 2026-10-30T10:01:35+02:00
+
+apps/voice-worker/{worker.py,test_worker.py,requirements.txt}; apps/api/src/local-speech.ts; apps/web/src/LocalSpeechInput.tsx; packages/voice/src/audio.ts; tests/local-speech.test.ts; docs/LOCAL-SPEECH.md; docs/evidence/local-speech-{check,python,browser,launcher}.txt.

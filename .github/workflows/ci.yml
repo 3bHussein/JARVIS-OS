@@ -14,6 +14,10 @@ jobs:
         with:
           node-version: 24
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s apps/voice-worker -p test_worker.py
       - run: npm ci --ignore-scripts
       - run: npm run check
       - run: npm run test:launcher
@@ -28,6 +32,10 @@ jobs:
         with:
           node-version: 24
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s apps/voice-worker -p test_worker.py
       - run: npm ci --ignore-scripts
       - run: npm run check
       - name: Check Windows batch entry points

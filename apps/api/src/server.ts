@@ -1,3 +1,4 @@
+import {speechInput,type SpeechProvider} from './local-speech.ts';
 import {clock} from '../../../packages/core/src/index.ts';
 import {personalBriefing,science} from '../../../packages/personal/src/briefing.ts';
 import {assistantPolicy,chatInput,type AIProvider,type ModelMessage} from '../../../packages/ai/src/ollama.ts';
@@ -9,7 +10,7 @@ import {GitHubReader} from '../../../packages/connectors/src/github-reader.ts';
 import type { Resource } from '../../../packages/connectors/src/github.ts';
 import { manifests } from '../../../packages/connectors/src/contracts.ts';
 import { authorizeTool, redact } from '../../../packages/core/src/index.ts';
-export interface Config {origin:string;passwordHash:string;githubToken?:string;transport?:typeof fetch; audit?:(event:unknown)=>void;vaultDirectory?:string;whoopTransport?:typeof fetch;aiProvider?:AIProvider;}
+export interface Config {origin:string;passwordHash:string;githubToken?:string;transport?:typeof fetch; audit?:(event:unknown)=>void;vaultDirectory?:string;whoopTransport?:typeof fetch;aiProvider?:AIProvider;speechProvider?:SpeechProvider;}
 async function json(req:IncomingMessage,limit=8192){
   const chunks:Buffer[]=[];let bytes=0;
   for await(const chunk of req){bytes+=chunk.length;if(bytes>limit)throw new Error('Body too large');chunks.push(chunk);}
@@ -23,7 +24,7 @@ export function makeServer(config:Config){
   const personalStore=new PersonalStore(config.vaultDirectory),personal=new WeakMap<object,PersonalContext>(),whoop=new WeakMap<object,WhoopConnection>();
   let whoopAttempts:number[]=[],whoopReads:number[]=[];
   const chats=new WeakMap<object,{scope:string;messages:ModelMessage[];generation:number;busy:boolean;attempts:number[];abort?:AbortController}>();
-  let modelRequests=0;
+  let modelRequests=0,speechBusy=false;const speechRuns=new WeakMap<object,AbortController>(),speechAttempts=new WeakMap<object,number[]>();
   const chatFor=(session:object)=>{let state=chats.get(session);if(!state){state={scope:'',messages:[],generation:0,busy:false,attempts:[]};chats.set(session,state);}return state;};
   const readers=new WeakMap<object,GitHubReader>();
   const readerFor=(session:object)=>{let reader=readers.get(session);if(!reader){reader=new GitHubReader(config.githubToken,config.transport);readers.set(session,reader);}return reader;};
@@ -59,7 +60,7 @@ export function makeServer(config:Config){
       if(method==='POST'&&req.headers['x-csrf-token']!==session.csrf)return reply(403,{error:'csrf_required'});
       if(path==='/api/session'&&method==='GET')return reply(200,{user:{id:'local-owner',role:'owner'},csrf:session.csrf});
       if(path==='/api/logout'&&method==='POST'){
-        const ctx=personal.get(session);if(ctx)personalStore.forget(ctx);whoop.delete(session);chatFor(session).abort?.abort();chats.delete(session);sessions.revoke(token);res.setHeader('Set-Cookie','jarvis_session=; HttpOnly; SameSite=Strict; Path=/api; Max-Age=0');audit('auth.revoked');return reply(200,{ok:true});
+        const ctx=personal.get(session);if(ctx)personalStore.forget(ctx);whoop.delete(session);chatFor(session).abort?.abort();chats.delete(session);speechRuns.get(session)?.abort();speechRuns.delete(session);sessions.revoke(token);res.setHeader('Set-Cookie','jarvis_session=; HttpOnly; SameSite=Strict; Path=/api; Max-Age=0');audit('auth.revoked');return reply(200,{ok:true});
       }
       if(path==='/api/personal'&&method==='GET'){
         const ctx=personal.get(session);if(!ctx)return reply(409,{error:'reauthenticate'});
@@ -71,7 +72,7 @@ export function makeServer(config:Config){
         try{
           if(input.operation==='erase'){
             if(input.confirmation!=='DELETE PERSONAL DATA')return reply(403,{error:'confirmation_required'});
-            personalStore.erase(ctx);whoop.delete(session);chatFor(session).abort?.abort();chats.delete(session);sessions.revoke(token);res.setHeader('Set-Cookie','jarvis_session=; HttpOnly; SameSite=Strict; Path=/api; Max-Age=0');audit('personal.erased');return reply(200,{ok:true,reauthenticate:true});
+            personalStore.erase(ctx);whoop.delete(session);chatFor(session).abort?.abort();chats.delete(session);speechRuns.get(session)?.abort();speechRuns.delete(session);sessions.revoke(token);res.setHeader('Set-Cookie','jarvis_session=; HttpOnly; SameSite=Strict; Path=/api; Max-Age=0');audit('personal.erased');return reply(200,{ok:true,reauthenticate:true});
           }
           if(input.operation!=='save'||typeof input.remember!=='boolean')return reply(400,{error:'invalid_request'});
           const result=personalStore.save(ctx,input.data,input.revision,input.remember);audit('personal.saved',{persistent:input.remember});return reply(200,result);
@@ -95,6 +96,24 @@ export function makeServer(config:Config){
           if(!sessions.get(token))return reply(401,{error:'authentication_required'});
           const facts=whoopFacts(connection,url.searchParams.get('zone')||'Africa/Cairo');audit('whoop.read');return reply(200,{status:connection.connected?'ready':'not_linked',facts});
         }catch(e){const code=e instanceof Error?e.message:'';if(code==='whoop_session_expired')whoop.delete(session);return reply(200,{status:'error',error:code==='whoop_session_expired'?code:'whoop_read_failed',facts:null});}
+      }
+      if(path==='/api/speech'&&method==='GET')return reply(200,{configured:Boolean(config.speechProvider),engine:config.speechProvider?'faster-whisper-local':null,maxSeconds:30,streaming:false});
+      if(path==='/api/speech/cancel'&&method==='POST'){speechRuns.get(session)?.abort();return reply(200,{ok:true});}
+      if(path==='/api/speech'&&method==='POST'){
+        if(!config.speechProvider)return reply(503,{error:'speech_not_configured'});
+        const input=speechInput(await json(req,1300000));
+        const attempts=(speechAttempts.get(session)||[]).filter(t=>Date.now()-t<60000);
+        if(speechBusy||attempts.length>=3)return reply(429,{error:'speech_busy_or_rate_limited'});
+        attempts.push(Date.now());speechAttempts.set(session,attempts);
+        const controller=new AbortController();speechRuns.set(session,controller);speechBusy=true;
+        const closed=()=>controller.abort();res.once('close',closed);
+        try{
+          const result=await config.speechProvider.transcribe(input,controller.signal);
+          if(!sessions.get(token))return reply(401,{error:'authentication_required'});
+          if(controller.signal.aborted)return reply(409,{error:'speech_cancelled'});
+          audit('speech.completed',{empty:!result.text});return reply(200,result);
+        }catch{audit('speech.failed');return reply(502,{error:'local_transcription_failed'});}
+        finally{res.off('close',closed);speechRuns.delete(session);speechBusy=false;}
       }
       if(path==='/api/ai'&&method==='GET')return reply(200,{configured:Boolean(config.aiProvider),provider:config.aiProvider?'ollama-local':null,tools:false});
       if(path==='/api/chat/clear'&&method==='POST'){

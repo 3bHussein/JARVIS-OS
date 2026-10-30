@@ -65,3 +65,7 @@ Source reviewed at 22f16886dc3fca87220fcc8ee11352deb5a3bd33; exact blobs in evid
 ## Assistant and snapshot slice — 2026-10-30T08:04:54+02:00
 
 ProgressXX production root re-read at 26f96d24045a896688c69e7acc3083013d97dc9f (backup contract evidence JSON). Added existing-backup-v3 read preview only; no automatic table reader, source edits or DB calls. Local queue acknowledgement is absent from the backup, so sync is always unknown. Ollama adapter targets fixed 127.0.0.1:11434; engine must separately disable cloud routing. Browser speech service can send audio externally only after explicit in-app consent; default processLocally=true does not fall back.
+
+## Offline speech slice — 2026-10-30T10:01:35+02:00
+
+Added optional faster-whisper 1.2.1 subprocess integration using primary source API. Fixed local model path, offline flags and no-shell isolated process. No cloud speech account, external data integration or existing source repo changed. Real engine/model acceptance is still pending; unit tests inject engine output.

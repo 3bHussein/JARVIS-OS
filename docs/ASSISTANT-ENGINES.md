@@ -45,3 +45,7 @@ Primary implementation references reviewed:
 - https://github.com/ollama/ollama/blob/main/docs/faq.mdx (cloud-disable configuration)
 - https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
 - https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/processLocally
+
+## 2026-10-30 offline STT addition
+
+A separate optional faster-whisper/VAD one-shot worker and local microphone capture are now wired. This supersedes the earlier statement that no local STT worker exists, while retaining the limitation that no actual engine/model/accuracy acceptance has run. Browser recognition and system TTS remain available. See [LOCAL-SPEECH.md](LOCAL-SPEECH.md).

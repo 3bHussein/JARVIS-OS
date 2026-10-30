@@ -54,3 +54,7 @@ Persistence is single-owner, local password-derived encryption. Losing/changing 
 ## Assistant and snapshot slice — 2026-10-30T08:04:54+02:00
 
 ProgressXX preview is manual and disappears on navigation/lock; automatic fresh sync still unavailable. Backups containing incomplete legacy records can be rejected wholesale. No automatic import-to-home merging. Ollama is not bundled; engine unavailable/slow/model missing fails visibly and preserves draft. Cloud-disabled engine operation, actual model usefulness and Arabic quality require local acceptance. Browser local speech support and Arabic packs vary; remote fallback requires consent and has provider-specific privacy. No actual WER/latency/device results. Browser transcript/voice support is not a Tauri installer. Imported files are excluded from AI. Speech output can use a network voice unless a device voice is selected.
+
+## Offline speech slice — 2026-10-30T10:01:35+02:00
+
+Offline worker code is wired but optional dependencies/model were not installed or used in acceptance. No Egyptian Arabic WER or inference latency exists yet. Loading CPU model per recording may be slow. Transitive Python dependencies are not fully locked. Browser ScriptProcessorNode is deprecated and main-thread scheduling can drop audio under load. Linear resampling has no quality benchmark. Local STT is final-only and 30 seconds maximum. Cancellation and memory privacy require physical Windows/OS acceptance beyond synthetic fixtures.

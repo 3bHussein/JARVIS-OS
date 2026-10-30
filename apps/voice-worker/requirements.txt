@@ -1,0 +1,2 @@
+# Optional worker only. Transitive packages are not a fully locked distribution yet.
+faster-whisper==1.2.1

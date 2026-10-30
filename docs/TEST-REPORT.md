@@ -167,3 +167,15 @@ Local source was stashed with a named session checkpoint and fast-forwarded to t
 Run: update repository while preserving private .env/encrypted data and original local password; restart Start-JARVIS.bat. Profile/home still works without a model. ProgressXX snapshot: original app full JSON v3 → Overview import. Local AI: follow ASSISTANT-ENGINES.md, disable Ollama cloud in the engine itself and configure an already installed model, then explicitly choose context. Voice: local recognition requires browser/pack support; review transcript before Send. Network speech/voices have separate privacy limitations.
 
 Next implementation: local STT/VAD/TTS sidecar with measured Egyptian Arabic/English corpus; native Tauri host/runtime packaging and Windows acceptance. Automatic ProgressXX and other source-side delegates require separate approval before modifying original repositories. Production account/database/deployment changes remain unapproved. Never mark M3/M4/M5/M6/M8 or v1.0 complete based on this slice.
+
+## Offline speech slice — 2026-10-30T10:01:35+02:00
+
+Local speech slice: 45 Node tests + typecheck/build PASS; Python 4/4 PASS; Chromium 21/21 PASS; launcher 1/1 PASS. Evidence local-speech-check.txt, local-speech-python.txt, local-speech-browser.txt, local-speech-launcher.txt.
+
+| Requirement | Test | Scope |
+| --- | --- | --- |
+| Bounded microphone PCM and validation | LOCAL-STT-01 | TESTED synthetic samples, invalid/rate/header/base64 limits |
+| Worker process error/abort boundary | LOCAL-STT-02; Python CLI test | TESTED real failure subprocess, no live model |
+| Auth/CSRF/exclusivity/cancel/privacy | LOCAL-STT-HTTP-01 | TESTED injected worker, audit excludes content |
+| Review before model submission | UI-21 | TESTED fake microphone + real PCM/HTTP + synthetic transcript |
+| Model/VAD/Arabic accuracy and speed | Not executed | TODO, no scores claimed |

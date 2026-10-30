@@ -83,3 +83,7 @@ Personal briefing rules, provenance, freshness, local time handling and encrypti
 ## Assistant and snapshot slice — 2026-10-30T08:04:54+02:00
 
 Added AIProvider interface, fixed loopback Ollama completion adapter and authenticated chat endpoints. Server owns context and four-turn history; no client system prompt/history/tools. Context permissions default off and scope changes clear history. No model has a tool executor. ProgressXX v3 backup projection stays in browser memory, separate from vault/home totals/model context. Speech recognition is browser-selected with local-only default and separate consent for browser-service routing; supported local languages depend on installed browser packs. See ASSISTANT-ENGINES.md and PROGRESSXX-IMPORT.md for exact boundaries.
+
+## Offline speech slice — 2026-10-30T10:01:35+02:00
+
+Optional offline STT uses a fixed one-shot Python subprocess behind authenticated CSRF API, not a public sidecar port. Browser records bounded mono PCM; configured absolute executable/model paths are server-owned. Worker excludes unrelated environment credentials and forces local-only model load. CPU int8/VAD produces final text requiring review. No audio persistence or automatic model submission. See LOCAL-SPEECH.md.

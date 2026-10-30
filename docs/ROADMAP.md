@@ -51,3 +51,7 @@ Editable profile, private notes/check-ins, contextual home and session-only WHOO
 ## Assistant and snapshot slice — 2026-10-30T08:04:54+02:00
 
 M3: read-only ProgressXX full-backup preview IMPLEMENTED/TESTED; automatic sync remains TODO. M4: optional local Ollama conversation, scoped context and bounded editable/deletable session history IMPLEMENTED/TESTED; actual model quality and tool orchestration remain TODO. M5: browser on-device-first transcript review and speech output IMPLEMENTED/TESTED with synthetic events; local STT/VAD/TTS engines, accuracy/latency and device acceptance remain TODO. M6/M8 remain IN PROGRESS/TODO, not RELEASED.
+
+## Offline speech slice — 2026-10-30T10:01:35+02:00
+
+M5 offline STT adapter/capture/review/cancel IMPLEMENTED and synthetic contract TESTED. Actual faster-whisper dependency/model inference, VAD/Arabic quality, latency/CPU and physical device acceptance remain TODO. Local neural TTS, native Tauri/Agent/installer and automatic delegated integrations remain TODO.
