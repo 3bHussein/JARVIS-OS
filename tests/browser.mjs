@@ -1,18 +1,20 @@
+import {loadWebBundle} from '../apps/api/src/web-bundle.ts';
+import {fileURLToPath} from 'node:url';
 import {chromium} from 'playwright';
 import {spawn} from 'node:child_process';
 import assert from 'node:assert/strict';
 import {mkdir} from 'node:fs/promises';
 import {makeServer} from '../apps/api/src/server.ts';
 import {hashPassword} from '../apps/api/src/auth.ts';
-const origin='http://127.0.0.1:5173';
+const origin='http://127.0.0.1:5173',built=process.argv.includes('--built');
 let githubCalls=0;const aiCalls=[];
-const server=makeServer({speechProvider:{transcribe:async input=>{assert.equal(input.language,'ar');return {text:'Synthetic local speech',final:true,language:'ar',durationSeconds:1,engine:'faster-whisper-local',reviewRequired:true};}},aiProvider:{complete:async messages=>{aiCalls.push(structuredClone(messages));return 'Synthetic model reply';}},origin,passwordHash:hashPassword('synthetic-browser-password'),githubToken:'SYNTHETIC_BROWSER_TOKEN',whoopTransport:async(url)=>String(url).includes('/auth/v1/')?Response.json({access_token:'SYNTHETIC_HEALTH_TOKEN',expires_in:3600,user:{factors:[]}}):Response.json({connected:true,records:{sleep:[],recovery:[]},sync_history:[{status:'complete',finished_at:new Date().toISOString()}]}),transport:async(_url,init)=>{
+const server=makeServer({webBundle:built?loadWebBundle(fileURLToPath(new URL('../apps/web/dist/',import.meta.url))):undefined,speechProvider:{transcribe:async input=>{assert.equal(input.language,'ar');return {text:'Synthetic local speech',final:true,language:'ar',durationSeconds:1,engine:'faster-whisper-local',reviewRequired:true};}},aiProvider:{complete:async messages=>{aiCalls.push(structuredClone(messages));return 'Synthetic model reply';}},origin,passwordHash:hashPassword('synthetic-browser-password'),githubToken:'SYNTHETIC_BROWSER_TOKEN',whoopTransport:async(url)=>String(url).includes('/auth/v1/')?Response.json({access_token:'SYNTHETIC_HEALTH_TOKEN',expires_in:3600,user:{factors:[]}}):Response.json({connected:true,records:{sleep:[],recovery:[]},sync_history:[{status:'complete',finished_at:new Date().toISOString()}]}),transport:async(_url,init)=>{
  githubCalls++;
  if(new Headers(init?.headers).has('if-none-match'))return new Response(null,{status:304});
  return Response.json({name:'Synthetic ProgressXX',html_url:'https://github.com/3bHussein/ProgressXX-Web',body:'NEVER_SHOW_PRIVATE_BODY'},{headers:{etag:'"synthetic"'}});
 }});
-await new Promise(r=>server.listen(4310,'127.0.0.1',r));
-const vite=spawn(process.execPath,['node_modules/vite/bin/vite.js','--config','apps/web/vite.config.ts','--host','127.0.0.1'],{stdio:'pipe'});
+await new Promise(r=>server.listen(built?5173:4310,'127.0.0.1',r));
+const vite=built?null:spawn(process.execPath,['node_modules/vite/bin/vite.js','--config','apps/web/vite.config.ts','--host','127.0.0.1'],{stdio:'pipe'});
 let browser;let passed=0;const errors=[];
 try{
  for(let i=0;i<100;i++){try{const r=await fetch(origin);if(r.ok)break}catch{}if(i===99)throw Error('Vite did not start');await new Promise(r=>setTimeout(r,100))}
@@ -84,7 +86,7 @@ try{
  await page.getByRole('button',{name:'Overview',exact:true}).click();
  await page.locator('.personal-home details').evaluateAll(nodes=>nodes.forEach(node=>node.open=false));
  await page.screenshot({path:'test-results/personal-mobile-internal.png',fullPage:true});await page.setViewportSize({width:1440,height:1060});await page.screenshot({path:'test-results/personal-desktop-internal.png',fullPage:true});
- assert.deepEqual(errors,[]);console.log(`Browser acceptance: ${passed}/21 passed. Synthetic fixtures only.`);
+ assert.deepEqual(errors,[]);console.log(`Browser acceptance (${built?'built bundle':'development'}): ${passed}/21 passed. Synthetic fixtures only.`);
 }finally{
- await browser?.close();vite.kill('SIGTERM');server.closeAllConnections();await new Promise(r=>server.close(r));
+ await browser?.close();vite?.kill('SIGTERM');server.closeAllConnections();await new Promise(r=>server.close(r));
 }

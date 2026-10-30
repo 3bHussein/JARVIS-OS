@@ -20,7 +20,9 @@
     "check": "npm run typecheck && npm test && npm run build",
     "setup": "node scripts/setup.mjs",
     "start": "node scripts/start.mjs",
-    "test:launcher": "node --test tests/launcher-smoke.mjs"
+    "test:launcher": "node --test tests/launcher-smoke.mjs",
+    "start:built": "node scripts/serve-built.mjs",
+    "test:e2e:built": "node tests/browser.mjs --built"
   },
   "dependencies": {
     "react": "19.1.1",

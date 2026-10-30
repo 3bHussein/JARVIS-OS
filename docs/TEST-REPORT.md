@@ -187,3 +187,15 @@ Source `a60f4afbb2977e9772fea9a9b1e5df036436c649` (`feat: add bounded offline sp
 Local source was preserved in a named stash and fast-forwarded to origin/main. A documentation-only [skip ci] follow-up records this exact acceptance; no new runtime or distinct CI execution is claimed. User setup is docs/LOCAL-SPEECH.md: optional dedicated Python environment, complete local multilingual converted model, absolute .env paths, restart launcher, unlock, Voice lab → Local Whisper. Voice records remain ephemeral and reviewed before Send. Existing startup still works without optional Python/STT.
 
 Next: perform explicitly scoped real-model/voice acceptance on an appropriate local machine; continue native Tauri host and runtime packaging, OS credential vault/Agent pairing and remaining safe delegated integrations. No permission to change existing project repos, production databases or deploy has been inferred. M5/M6/M8 remain incomplete.
+
+## Built-runtime slice — 2026-10-30T11:06:04+02:00
+
+Built-runtime local acceptance: 48/48 Node tests, typecheck/build PASS, launcher 2/2 PASS, development Chromium 21/21 and built Chromium 21/21 PASS. Evidence built-check.txt, built-launcher.txt, built-dev-browser.txt, built-browser.txt.
+
+| Requirement | Evidence | Scope |
+| --- | --- | --- |
+| Do not serve repository/private files | BUNDLE-01/02/HTTP-01 | TESTED allowlist/invalid paths/symlink (Linux) |
+| Built browser security/cache/auth | BUNDLE-HTTP-01 + built E2E | TESTED synthetic sessions/CSP |
+| No dev-server/npm runtime dependency | START-04 | TESTED copy without node_modules |
+| Preserve development workflow | START-03 + dev E2E | TESTED |
+| Native packaged Windows application | No installer test | TODO |

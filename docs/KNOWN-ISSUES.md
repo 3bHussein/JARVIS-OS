@@ -58,3 +58,7 @@ ProgressXX preview is manual and disappears on navigation/lock; automatic fresh 
 ## Offline speech slice — 2026-10-30T10:01:35+02:00
 
 Offline worker code is wired but optional dependencies/model were not installed or used in acceptance. No Egyptian Arabic WER or inference latency exists yet. Loading CPU model per recording may be slow. Transitive Python dependencies are not fully locked. Browser ScriptProcessorNode is deprecated and main-thread scheduling can drop audio under load. Linear resampling has no quality benchmark. Local STT is final-only and 30 seconds maximum. Cancellation and memory privacy require physical Windows/OS acceptance beyond synthetic fixtures.
+
+## Built-runtime slice — 2026-10-30T11:06:04+02:00
+
+Built mode requires npm run build after updates and restart. Generated dist is absent from Git/source ZIP. Runtime still needs Node 24 and API/shared source. Entry allowlist does not support arbitrary lazy chunks/fonts/icons yet. File-symlink fixture skips on Windows where unprivileged support varies. Tauri installer, physical Windows/default-browser and production identity are not certified.

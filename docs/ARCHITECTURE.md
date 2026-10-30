@@ -87,3 +87,7 @@ Added AIProvider interface, fixed loopback Ollama completion adapter and authent
 ## Offline speech slice — 2026-10-30T10:01:35+02:00
 
 Optional offline STT uses a fixed one-shot Python subprocess behind authenticated CSRF API, not a public sidecar port. Browser records bounded mono PCM; configured absolute executable/model paths are server-owned. Worker excludes unrelated environment credentials and forces local-only model load. CPU int8/VAD produces final text requiring review. No audio persistence or automatic model submission. See LOCAL-SPEECH.md.
+
+## Built-runtime slice — 2026-10-30T11:06:04+02:00
+
+Built runtime serves compiled UI and API from one loopback service with a supervising launcher. Only preloaded index/hashed JS/CSS entries are public; no filesystem web root. API boundaries unchanged. Node 24 and API source still required. See BUILT-RUNTIME.md.

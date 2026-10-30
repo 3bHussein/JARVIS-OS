@@ -1,0 +1,15 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 test:launcher
+> node --test tests/launcher-smoke.mjs
+
+✔ START-03 setup preserves config and one-window launcher starts/authenticates/stops from a path with spaces (731.253268ms)
+✔ START-04 built UI/API runs without node_modules, refuses occupied port and stops owned process (587.365397ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1441.339723

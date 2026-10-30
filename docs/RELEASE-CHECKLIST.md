@@ -32,3 +32,7 @@ Local synthetic slice: [x] fixed local AI endpoint/scope isolation/CSRF/cancella
 ## Offline speech slice — 2026-10-30T10:01:35+02:00
 
 [x] bounded local PCM/auth/CSRF/cancel contract and synthetic microphone flow; [x] Python worker protocol tests authored for both CI platforms. [ ] actual offline model load/inference; [ ] measured Egyptian-Arabic/English/code-switching WER; [ ] real latency/CPU/device cancellation; [ ] locked optional dependencies; [ ] local TTS; [ ] native installer/Agent and production acceptance. No RELEASED claim.
+
+## Built-runtime slice — 2026-10-30T11:06:04+02:00
+
+[x] built UI/API startup without Vite/node_modules (current runtime); [x] allowlist/CSP/private-path/auth tests; [x] local development/built browser scenarios. [ ] Tauri installer/runtime bundling; [ ] OS vault/Agent; [ ] real device/voice/model acceptance; [ ] production identity/PWA/release gates. Not RELEASED.

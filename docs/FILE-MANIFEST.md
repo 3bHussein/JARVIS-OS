@@ -97,3 +97,7 @@ packages/ai/src/ollama.ts; packages/connectors/src/progress-backup.ts; apps/web/
 apps/voice-worker/{worker.py,test_worker.py,requirements.txt}; apps/api/src/local-speech.ts; apps/web/src/LocalSpeechInput.tsx; packages/voice/src/audio.ts; tests/local-speech.test.ts; docs/LOCAL-SPEECH.md; docs/evidence/local-speech-{check,python,browser,launcher}.txt.
 
 - docs/evidence/local-speech-github-ci.json — exact-source Linux/Windows successful offline-STT contract acceptance.
+
+## Built-runtime slice — 2026-10-30T11:06:04+02:00
+
+Start-JARVIS-Built.bat; scripts/serve-built.mjs; apps/api/src/web-bundle.ts; tests/web-bundle.test.ts; docs/BUILT-RUNTIME.md; docs/evidence/built-check.txt, built-launcher.txt, built-dev-browser.txt, built-browser.txt.

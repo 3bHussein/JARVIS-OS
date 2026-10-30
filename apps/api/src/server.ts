@@ -1,3 +1,4 @@
+import {webCsp,type WebBundle} from './web-bundle.ts';
 import {speechInput,type SpeechProvider} from './local-speech.ts';
 import {clock} from '../../../packages/core/src/index.ts';
 import {personalBriefing,science} from '../../../packages/personal/src/briefing.ts';
@@ -10,7 +11,7 @@ import {GitHubReader} from '../../../packages/connectors/src/github-reader.ts';
 import type { Resource } from '../../../packages/connectors/src/github.ts';
 import { manifests } from '../../../packages/connectors/src/contracts.ts';
 import { authorizeTool, redact } from '../../../packages/core/src/index.ts';
-export interface Config {origin:string;passwordHash:string;githubToken?:string;transport?:typeof fetch; audit?:(event:unknown)=>void;vaultDirectory?:string;whoopTransport?:typeof fetch;aiProvider?:AIProvider;speechProvider?:SpeechProvider;}
+export interface Config {origin:string;passwordHash:string;githubToken?:string;transport?:typeof fetch; audit?:(event:unknown)=>void;vaultDirectory?:string;whoopTransport?:typeof fetch;aiProvider?:AIProvider;speechProvider?:SpeechProvider;webBundle?:WebBundle;}
 async function json(req:IncomingMessage,limit=8192){
   const chunks:Buffer[]=[];let bytes=0;
   for await(const chunk of req){bytes+=chunk.length;if(bytes>limit)throw new Error('Body too large');chunks.push(chunk);}
@@ -42,9 +43,17 @@ export function makeServer(config:Config){
       if(req.headers['sec-fetch-site']==='cross-site')return reply(403,{error:'cross_site_denied'});
       const url=new URL(req.url||'/',config.origin),path=url.pathname;
       const method=req.method||'GET';
+      if(config.webBundle&&!path.startsWith('/api/')){
+        if(method!=='GET'&&method!=='HEAD')return reply(405,{error:'method_not_allowed'});
+        const asset=config.webBundle.get(path);if(!asset)return reply(404,{error:'not_found'});
+        res.setHeader('Content-Type',asset.type);res.setHeader('Content-Length',asset.body.length);
+        res.setHeader('Cache-Control',asset.immutable?'public, max-age=31536000, immutable':'no-store');res.setHeader('Content-Security-Policy',webCsp);
+        res.setHeader('Permissions-Policy','camera=(), geolocation=(), microphone=(self)');
+        res.statusCode=200;res.end(method==='HEAD'?undefined:asset.body);return;
+      }
       if(method!=='GET'&&method!=='POST')return reply(405,{error:'method_not_allowed'});
       if(method==='POST'&&(req.headers.origin!==config.origin||!req.headers['content-type']?.startsWith('application/json')))return reply(403,{error:'invalid_request'});
-      if(path==='/api/health'&&method==='GET')return reply(200,{ok:true,mode:'local-development',configured:Boolean(config.passwordHash)});
+      if(path==='/api/health'&&method==='GET')return reply(200,{ok:true,mode:config.webBundle?'local-built':'local-development',configured:Boolean(config.passwordHash)});
       if(path==='/api/session'&&method==='POST'){
         if(!config.passwordHash)return reply(503,{error:'authentication_not_configured'});
         const now=Date.now();attempts=attempts.filter(t=>now-t<60000);

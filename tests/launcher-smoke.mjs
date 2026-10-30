@@ -43,3 +43,17 @@ test('START-03 setup preserves config and one-window launcher starts/authenticat
     await rm(root,{recursive:true,force:true,maxRetries:5,retryDelay:200});
   }
 });
+
+test('START-04 built UI/API runs without node_modules, refuses occupied port and stops owned process',{timeout:60000},async()=>{
+  await assertFreePort(5173);const root=await mkdtemp(join(tmpdir(),'jarvis built '));let child,closed=false,closedPromise;
+  try{
+    for(const dir of ['scripts','apps','packages'])await cp(join(source,dir),join(root,dir),{recursive:true});await cp(join(source,'package.json'),join(root,'package.json'));
+    await writeFile(join(root,'.env'),`JARVIS_PASSWORD_HASH=${hashPassword('synthetic-built-password')}\n`,{mode:0o600});
+    let output='';child=spawn(process.execPath,[join(root,'scripts/serve-built.mjs'),'--no-browser'],{cwd:root,stdio:['ignore','pipe','pipe','ipc']});closedPromise=once(child,'exit').then(([code])=>{closed=true;return code;});child.stdout.on('data',x=>output+=x);child.stderr.on('data',x=>output+=x);
+    const end=Date.now()+40000;while(!closed&&!output.includes('JARVIS_BUILT_READY')&&Date.now()<end)await new Promise(r=>setTimeout(r,100));assert.ok(output.includes('JARVIS_BUILT_READY'),output);
+    const r=await fetch('http://127.0.0.1:5173/');assert.equal(r.status,200);const html=await r.text(),asset=html.match(/src="(\/assets\/[^\"]+\.js)"/)?.[1];assert.ok(asset);assert.equal((await fetch('http://127.0.0.1:5173'+asset)).status,200);
+    assert.equal((await fetch('http://127.0.0.1:5173/.env')).status,404);const second=await run('serve-built.mjs',root,['--no-browser']);assert.equal(second.code,1);assert.match(second.output,/in use/);
+    const login=await fetch('http://127.0.0.1:5173/api/session',{method:'POST',headers:{Origin:'http://127.0.0.1:5173','Content-Type':'application/json'},body:JSON.stringify({password:'synthetic-built-password'})});assert.equal(login.status,200);
+    child.send('stop');assert.equal(await closedPromise,0);await assertFreePort(5173);assert.ok(!output.includes('synthetic-built-password'));
+  }finally{if(child&&!closed){if(child.connected)child.send('stop');else child.kill();if(closedPromise)await closedPromise;}await rm(root,{recursive:true,force:true,maxRetries:5,retryDelay:200});}
+});

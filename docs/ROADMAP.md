@@ -55,3 +55,7 @@ M3: read-only ProgressXX full-backup preview IMPLEMENTED/TESTED; automatic sync 
 ## Offline speech slice — 2026-10-30T10:01:35+02:00
 
 M5 offline STT adapter/capture/review/cancel IMPLEMENTED and synthetic contract TESTED. Actual faster-whisper dependency/model inference, VAD/Arabic quality, latency/CPU and physical device acceptance remain TODO. Local neural TTS, native Tauri/Agent/installer and automatic delegated integrations remain TODO.
+
+## Built-runtime slice — 2026-10-30T11:06:04+02:00
+
+Built frontend/API local runtime and no-node_modules lifecycle IMPLEMENTED/TESTED. M6 Tauri host, runtime bundling/installer, tray/shortcuts/startup, credential vault and scoped Agent remain TODO. Production identity/PWA and real voice/integration acceptance remain open.

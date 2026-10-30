@@ -55,3 +55,7 @@ ADR-006: prefer a clearly labelled owner-selected ProgressXX snapshot over guess
 ## Offline speech slice — 2026-10-30T10:01:35+02:00
 
 ADR-009: use a bounded one-shot offline Python worker with strict PCM input instead of opening an unauthenticated inference port. Require an existing converted local model and explicit optional installation. Favor final-only review for this first worker; no fake streaming partials. ScriptProcessorNode is a measured-fixture fallback, not the final audio architecture; AudioWorklet and real-device DSP/latency acceptance remain TODO.
+
+## Built-runtime slice — 2026-10-30T11:06:04+02:00
+
+ADR-010: keep development startup intact; add explicit build + single-service local runtime. Use an in-memory entry allowlist, not repository-directory serving or Vite preview. No implicit rebuild or private API caching. Future chunks/assets require a tested manifest extension.

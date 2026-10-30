@@ -69,3 +69,7 @@ ProgressXX production root re-read at 26f96d24045a896688c69e7acc3083013d97dc9f (
 ## Offline speech slice — 2026-10-30T10:01:35+02:00
 
 Added optional faster-whisper 1.2.1 subprocess integration using primary source API. Fixed local model path, offline flags and no-shell isolated process. No cloud speech account, external data integration or existing source repo changed. Real engine/model acceptance is still pending; unit tests inject engine output.
+
+## Built-runtime slice — 2026-10-30T11:06:04+02:00
+
+No integration endpoints/permissions changed. Built runtime uses the same local origin/password/vault. Frontend served via explicit index/hashed-entry allowlist; connectors retain existing auth/consent. No deployment or original-project mutation.

@@ -88,3 +88,7 @@ The current development build includes optional local Ollama conversation with s
 See [Assistant engines](docs/ASSISTANT-ENGINES.md) and [ProgressXX import](docs/PROGRESSXX-IMPORT.md). Keep the existing local password and encrypted data when updating; restart Start-JARVIS.bat after updating source.
 
 Optional offline recording/STT worker: [Local speech setup and acceptance limits](docs/LOCAL-SPEECH.md). It requires a separately installed Python environment and local multilingual model; no automatic download or measured accuracy is claimed.
+
+## Run the compiled local app
+
+After setup, run `npm run build`, then `Start-JARVIS-Built.bat` (or `npm run start:built`). UI/API share one loopback service without Vite. Node 24 and API source still required; not an EXE. [Built runtime](docs/BUILT-RUNTIME.md). Existing Start-JARVIS.bat remains the development launcher.

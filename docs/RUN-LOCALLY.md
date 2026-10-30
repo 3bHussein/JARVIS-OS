@@ -79,3 +79,7 @@ The authenticated home now has profile setup, notes, manual food/schedule check-
 ## Optional offline STT
 
 Follow [LOCAL-SPEECH.md](LOCAL-SPEECH.md) for absolute Python/model configuration. Restart the launcher, unlock, and choose Voice lab → Local Whisper. Record/Stop, correct the transcript, then move it to a draft and Send separately. This is optional and does not change normal startup requirements.
+
+## Compiled local runtime
+
+Run `npm run build` after source updates, then Start-JARVIS-Built.bat or `npm run start:built`. Same URL/password/vault, without Vite. Do not run both launchers together. Node 24/API source required; dist generated locally. [Details](BUILT-RUNTIME.md).
