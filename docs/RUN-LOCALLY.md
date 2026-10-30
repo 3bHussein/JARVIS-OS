@@ -68,3 +68,10 @@ Automated result recorded on 2026-10-28: [Windows and Linux launcher CI passed](
 ## Personal home update
 
 The authenticated home now has profile setup, notes, manual food/schedule check-ins and a WHOOP Intelligence saved-record connection. Follow PERSONAL-BRIEFING.md. If retaining personal notes across sessions, opt in to encrypted saves and keep the original local password and private data directory during code updates. Resetting the login password does not decrypt old personal data; do not discard the original password expecting recovery automatically.
+
+## Optional new capabilities — 2026-10-30
+
+- Overview → Read a ProgressXX backup accepts the original app's full JSON backup v3. File preview stays in the current tab; no automatic sync or record changes. [Contract and limits](PROGRESSXX-IMPORT.md).
+- Conversation defaults to local commands. To opt into a separately installed local Ollama model and configure its cloud-disable setting, follow [Assistant engines](ASSISTANT-ENGINES.md). No model is bundled or downloaded automatically. Personal and health context default off.
+- Voice lab → Start transcription uses on-device recognition when supported. Correct the final text and choose Use reviewed text before Send. Browser-service mode requires separate consent and may upload audio. Actual accuracy remains unmeasured.
+- Read reply aloud uses a system voice; device/network voices are labelled. No secret should be sent to a network voice.

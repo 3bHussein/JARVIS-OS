@@ -85,3 +85,7 @@ All listed files were created in the independent project. Generated dependencies
 - `docs/evidence/personal-check.txt`, `docs/evidence/personal-launcher.txt`, `docs/evidence/personal-browser.txt`, `docs/evidence/whoop-read-contract.json`
 
 - `docs/evidence/personal-github-ci.json` — successful personal-briefing Linux/Windows CI.
+
+## Assistant and snapshot slice — 2026-10-30T08:04:54+02:00
+
+packages/ai/src/ollama.ts; packages/connectors/src/progress-backup.ts; apps/web/src/AIChat.tsx, ProgressImport.tsx, SpeechInput.tsx; tests/ai.test.ts, progress-backup.test.ts; docs/ASSISTANT-ENGINES.md, PROGRESSXX-IMPORT.md; docs/evidence/assistant-check.txt, assistant-browser.txt, assistant-launcher.txt, progress-backup-contract.json.

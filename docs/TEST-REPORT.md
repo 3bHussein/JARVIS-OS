@@ -142,3 +142,18 @@ Local source changes were preserved in a named stash before fast-forward alignme
 User acceptance: restart Start-JARVIS after updating source; unlock, complete Overview profile, explicitly choose encrypted persistence if desired, then connect the existing WHOOP Intelligence account through the health-consent form. Do not paste credentials into chat. Today’s nutrition/scheduled workouts remain clearly labelled manual until ProgressXX's safe delegated summary exists. Timed notes are shown in-app, not while the program is closed.
 
 Next: implement safe ProgressXX read aggregation respecting its snapshot/confirmed-row/pending state, then optional local AI and speech adapters; curated book/video recommendations require preferences and source-backed retrieval. Existing app repositories and production databases remain unchanged.
+
+## Assistant and snapshot slice — 2026-10-30T08:04:54+02:00
+
+Local automated results: 42 unit/HTTP tests PASS; typecheck/build PASS; launcher lifecycle 1/1 PASS; Chromium 20/20 scenarios PASS. Evidence: assistant-check.txt, assistant-launcher.txt, assistant-browser.txt. AI, speech and provider tests are synthetic; no actual model/voice/owner-account acceptance. Earlier attempts failed on controlled checkbox timing, accessible labels and reviewed-draft initialization; final rerun after fixes passed.
+
+| Requirement | Evidence | Status / limit |
+| --- | --- | --- |
+| Scoped optional AI context, isolated memory and CSRF | AI-HTTP-01 | TESTED synthetic sessions, personal/health separated |
+| Clear/revocation cannot restore stale replies | AI-HTTP-02 | TESTED abort + generation guard |
+| Fixed model endpoint/size/tool boundary | AI-01/02 | TESTED injected transport, no live engine |
+| Read original app exports without mutation | PROGRESS-01..03, UI-17 | TESTED synthetic existing v3 contract |
+| Explicit AI consent | UI-18 | TESTED browser + synthetic provider |
+| Partial/final/review/no auto-send | UI-19 | TESTED synthetic recognizer, not accuracy |
+| Browser speech upload consent | UI-20 | TESTED gating, not provider retention |
+| Voice/model quality and latency | No real corpus | TODO |

@@ -5,8 +5,8 @@ import {mkdir} from 'node:fs/promises';
 import {makeServer} from '../apps/api/src/server.ts';
 import {hashPassword} from '../apps/api/src/auth.ts';
 const origin='http://127.0.0.1:5173';
-let githubCalls=0;
-const server=makeServer({origin,passwordHash:hashPassword('synthetic-browser-password'),githubToken:'SYNTHETIC_BROWSER_TOKEN',whoopTransport:async(url)=>String(url).includes('/auth/v1/')?Response.json({access_token:'SYNTHETIC_HEALTH_TOKEN',expires_in:3600,user:{factors:[]}}):Response.json({connected:true,records:{sleep:[],recovery:[]},sync_history:[{status:'complete',finished_at:new Date().toISOString()}]}),transport:async(_url,init)=>{
+let githubCalls=0;const aiCalls=[];
+const server=makeServer({aiProvider:{complete:async messages=>{aiCalls.push(structuredClone(messages));return 'Synthetic model reply';}},origin,passwordHash:hashPassword('synthetic-browser-password'),githubToken:'SYNTHETIC_BROWSER_TOKEN',whoopTransport:async(url)=>String(url).includes('/auth/v1/')?Response.json({access_token:'SYNTHETIC_HEALTH_TOKEN',expires_in:3600,user:{factors:[]}}):Response.json({connected:true,records:{sleep:[],recovery:[]},sync_history:[{status:'complete',finished_at:new Date().toISOString()}]}),transport:async(_url,init)=>{
  githubCalls++;
  if(new Headers(init?.headers).has('if-none-match'))return new Response(null,{status:304});
  return Response.json({name:'Synthetic ProgressXX',html_url:'https://github.com/3bHussein/ProgressXX-Web',body:'NEVER_SHOW_PRIVATE_BODY'},{headers:{etag:'"synthetic"'}});
@@ -19,7 +19,8 @@ try{
  browser=await chromium.launch({headless:true,args:['--no-sandbox','--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream']});
  const context=await browser.newContext({viewport:{width:1440,height:1060}});
  await context.route('**/*',route=>{const u=new URL(route.request().url());return u.hostname==='127.0.0.1'?route.continue():route.abort()});
- const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
+ await context.addInitScript(()=>{class SyntheticRecognition{processLocally=false;lang='';continuous=false;interimResults=false;maxAlternatives=1;onresult=null;onerror=null;onend=null;onstart=null;start(){window.__speech=this;this.onstart?.();}stop(){this.onend?.();}abort(){this.onend?.();}}window.SpeechRecognition=SyntheticRecognition;});
+ const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));
  await page.goto(origin);await page.getByRole('heading',{name:'Your world. One command.'}).waitFor();
  assert.ok(await page.getByText('No verified tasks available',{exact:true}).isVisible());passed++;console.log('PASS UI-01 honest empty briefing and desktop shell');
  await page.getByLabel('Ask JARVIS',{exact:true}).fill('What time is it?');await page.getByRole('button',{name:'Send',exact:true}).click();
@@ -64,9 +65,22 @@ try{
  await page.getByLabel('WHOOP Intelligence email',{exact:true}).fill('synthetic@example.invalid');await page.getByLabel('WHOOP Intelligence password',{exact:true}).fill('synthetic-whoop-password');assert.equal(await page.getByRole('button',{name:'Connect account',exact:true}).isDisabled(),true);
  await page.getByLabel('Allow read-only health data for this JARVIS session',{exact:true}).setChecked(true);await page.getByRole('button',{name:'Connect account',exact:true}).click();await page.getByText('WHOOP: ready',{exact:true}).waitFor();assert.equal(await page.getByLabel('WHOOP Intelligence password',{exact:true}).inputValue(),'');
  const privateStorage=await page.evaluate(()=>JSON.stringify(localStorage));assert.ok(!privateStorage.includes('SYNTHETIC_HEALTH_TOKEN'));assert.ok(!privateStorage.includes('synthetic-whoop-password'));passed++;console.log('PASS UI-16 explicit WHOOP consent, synthetic link and credential clearing');
+ await page.locator('summary').filter({hasText:'Read a ProgressXX backup'}).click();
+ const backup={app:'ProgressX',backup_version:3,exported_at:new Date().toISOString(),food_log:[{id:'f',date:new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Dubai'}).format(new Date()),calories:1500,protein:100,carbs:170,fat:47}],workouts:[],progress_photos:[],nutrition_targets:{calories:2500},workout_schedule:{}};
+ await page.getByLabel('ProgressXX full backup JSON',{exact:true}).setInputFiles({name:'synthetic-backup.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(backup))});
+ await page.locator('.progress-result').getByText('1000 kcal',{exact:true}).waitFor();assert.match(await page.locator('.progress-result').innerText(),/Cloud sync: unknown/);await page.getByRole('button',{name:'Clear imported snapshot',exact:true}).click();assert.equal(await page.locator('.progress-result').count(),0);passed++;console.log('PASS UI-17 ProgressXX file preview and forget without upload');
+ await page.locator('.ai-chat summary').click();await page.getByLabel('Use local AI for messages',{exact:true}).check();await page.getByLabel('Use local AI for messages',{exact:true}).waitFor();
+ await page.getByLabel('Ask JARVIS',{exact:true}).fill('Synthetic hello');await page.getByRole('button',{name:'Send',exact:true}).click();await page.locator('.ai-chat .assistant').filter({hasText:'Synthetic model reply'}).waitFor();assert.ok(!JSON.stringify(aiCalls.at(-1)).includes('Synthetic Owner'));
+ await page.getByLabel('Include my profile and open notes',{exact:true}).check();await page.getByLabel('Ask JARVIS',{exact:true}).fill('Summarize my notes');await page.getByRole('button',{name:'Send',exact:true}).click();await page.locator('.ai-chat .assistant').filter({hasText:'Synthetic model reply'}).waitFor();assert.ok(JSON.stringify(aiCalls.at(-1)).includes('Synthetic Owner'));assert.ok(!JSON.stringify(aiCalls.at(-1)).includes('1400'));passed++;console.log('PASS UI-18 optional model and separated context consent');
+ await page.getByRole('button',{name:'Voice lab',exact:true}).click();await page.getByRole('button',{name:'Start transcription',exact:true}).click();
+ await page.evaluate(()=>{const r=window.__speech;window.__speechSettings={lang:r.lang,local:r.processLocally};r.onresult({results:[Object.assign([{transcript:'draft text'}],{isFinal:false})]});});await page.getByText('Partial (not final): draft text',{exact:true}).waitFor();
+ await page.evaluate(()=>window.__speech.onresult({results:[Object.assign([{transcript:'Recognized synthetic text'}],{isFinal:true})]}));await page.getByRole('button',{name:'Stop transcription',exact:true}).click();await page.getByLabel('Review final transcript',{exact:true}).fill('Corrected synthetic text');assert.equal((await page.evaluate(()=>window.__speechSettings)).local,true);const before=aiCalls.length;
+ await page.getByRole('button',{name:'Use reviewed text in chat',exact:true}).click();assert.equal(await page.getByLabel('Ask JARVIS',{exact:true}).inputValue(),'Corrected synthetic text');assert.equal(aiCalls.length,before);passed++;console.log('PASS UI-19 synthetic partial/final speech, correction and no automatic send');
+ await page.getByRole('button',{name:'Voice lab',exact:true}).click();await page.getByLabel('Recognition engine',{exact:true}).selectOption('browser');assert.equal(await page.getByRole('button',{name:'Start transcription',exact:true}).isDisabled(),true);await page.getByLabel('I allow browser-service speech processing for this session',{exact:true}).check();assert.equal(await page.getByRole('button',{name:'Start transcription',exact:true}).isEnabled(),true);passed++;console.log('PASS UI-20 browser service requires explicit consent');
+ await page.getByRole('button',{name:'Overview',exact:true}).click();
  await page.locator('.personal-home details').evaluateAll(nodes=>nodes.forEach(node=>node.open=false));
  await page.screenshot({path:'test-results/personal-mobile-internal.png',fullPage:true});await page.setViewportSize({width:1440,height:1060});await page.screenshot({path:'test-results/personal-desktop-internal.png',fullPage:true});
- assert.deepEqual(errors,[]);console.log(`Browser acceptance: ${passed}/16 passed. Synthetic fixtures only.`);
+ assert.deepEqual(errors,[]);console.log(`Browser acceptance: ${passed}/20 passed. Synthetic fixtures only.`);
 }finally{
  await browser?.close();vite.kill('SIGTERM');server.closeAllConnections();await new Promise(r=>server.close(r));
 }

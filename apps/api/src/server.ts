@@ -1,3 +1,6 @@
+import {clock} from '../../../packages/core/src/index.ts';
+import {personalBriefing,science} from '../../../packages/personal/src/briefing.ts';
+import {assistantPolicy,chatInput,type AIProvider,type ModelMessage} from '../../../packages/ai/src/ollama.ts';
 import { createServer, type IncomingMessage } from 'node:http';
 import { Sessions, checkPassword } from './auth.ts';
 import {PersonalStore,type PersonalContext} from './personal-store.ts';
@@ -6,7 +9,7 @@ import {GitHubReader} from '../../../packages/connectors/src/github-reader.ts';
 import type { Resource } from '../../../packages/connectors/src/github.ts';
 import { manifests } from '../../../packages/connectors/src/contracts.ts';
 import { authorizeTool, redact } from '../../../packages/core/src/index.ts';
-export interface Config {origin:string;passwordHash:string;githubToken?:string;transport?:typeof fetch; audit?:(event:unknown)=>void;vaultDirectory?:string;whoopTransport?:typeof fetch;}
+export interface Config {origin:string;passwordHash:string;githubToken?:string;transport?:typeof fetch; audit?:(event:unknown)=>void;vaultDirectory?:string;whoopTransport?:typeof fetch;aiProvider?:AIProvider;}
 async function json(req:IncomingMessage,limit=8192){
   const chunks:Buffer[]=[];let bytes=0;
   for await(const chunk of req){bytes+=chunk.length;if(bytes>limit)throw new Error('Body too large');chunks.push(chunk);}
@@ -19,6 +22,9 @@ export function makeServer(config:Config){
   const sessions=new Sessions();let attempts:number[]=[];let reads:number[]=[];
   const personalStore=new PersonalStore(config.vaultDirectory),personal=new WeakMap<object,PersonalContext>(),whoop=new WeakMap<object,WhoopConnection>();
   let whoopAttempts:number[]=[],whoopReads:number[]=[];
+  const chats=new WeakMap<object,{scope:string;messages:ModelMessage[];generation:number;busy:boolean;attempts:number[];abort?:AbortController}>();
+  let modelRequests=0;
+  const chatFor=(session:object)=>{let state=chats.get(session);if(!state){state={scope:'',messages:[],generation:0,busy:false,attempts:[]};chats.set(session,state);}return state;};
   const readers=new WeakMap<object,GitHubReader>();
   const readerFor=(session:object)=>{let reader=readers.get(session);if(!reader){reader=new GitHubReader(config.githubToken,config.transport);readers.set(session,reader);}return reader;};
   const audit=(type:string,metadata:unknown={})=>config.audit?.({at:new Date().toISOString(),type,metadata:redact(metadata)});
@@ -53,7 +59,7 @@ export function makeServer(config:Config){
       if(method==='POST'&&req.headers['x-csrf-token']!==session.csrf)return reply(403,{error:'csrf_required'});
       if(path==='/api/session'&&method==='GET')return reply(200,{user:{id:'local-owner',role:'owner'},csrf:session.csrf});
       if(path==='/api/logout'&&method==='POST'){
-        const ctx=personal.get(session);if(ctx)personalStore.forget(ctx);whoop.delete(session);sessions.revoke(token);res.setHeader('Set-Cookie','jarvis_session=; HttpOnly; SameSite=Strict; Path=/api; Max-Age=0');audit('auth.revoked');return reply(200,{ok:true});
+        const ctx=personal.get(session);if(ctx)personalStore.forget(ctx);whoop.delete(session);chatFor(session).abort?.abort();chats.delete(session);sessions.revoke(token);res.setHeader('Set-Cookie','jarvis_session=; HttpOnly; SameSite=Strict; Path=/api; Max-Age=0');audit('auth.revoked');return reply(200,{ok:true});
       }
       if(path==='/api/personal'&&method==='GET'){
         const ctx=personal.get(session);if(!ctx)return reply(409,{error:'reauthenticate'});
@@ -65,7 +71,7 @@ export function makeServer(config:Config){
         try{
           if(input.operation==='erase'){
             if(input.confirmation!=='DELETE PERSONAL DATA')return reply(403,{error:'confirmation_required'});
-            personalStore.erase(ctx);whoop.delete(session);sessions.revoke(token);res.setHeader('Set-Cookie','jarvis_session=; HttpOnly; SameSite=Strict; Path=/api; Max-Age=0');audit('personal.erased');return reply(200,{ok:true,reauthenticate:true});
+            personalStore.erase(ctx);whoop.delete(session);chatFor(session).abort?.abort();chats.delete(session);sessions.revoke(token);res.setHeader('Set-Cookie','jarvis_session=; HttpOnly; SameSite=Strict; Path=/api; Max-Age=0');audit('personal.erased');return reply(200,{ok:true,reauthenticate:true});
           }
           if(input.operation!=='save'||typeof input.remember!=='boolean')return reply(400,{error:'invalid_request'});
           const result=personalStore.save(ctx,input.data,input.revision,input.remember);audit('personal.saved',{persistent:input.remember});return reply(200,result);
@@ -89,6 +95,42 @@ export function makeServer(config:Config){
           if(!sessions.get(token))return reply(401,{error:'authentication_required'});
           const facts=whoopFacts(connection,url.searchParams.get('zone')||'Africa/Cairo');audit('whoop.read');return reply(200,{status:connection.connected?'ready':'not_linked',facts});
         }catch(e){const code=e instanceof Error?e.message:'';if(code==='whoop_session_expired')whoop.delete(session);return reply(200,{status:'error',error:code==='whoop_session_expired'?code:'whoop_read_failed',facts:null});}
+      }
+      if(path==='/api/ai'&&method==='GET')return reply(200,{configured:Boolean(config.aiProvider),provider:config.aiProvider?'ollama-local':null,tools:false});
+      if(path==='/api/chat/clear'&&method==='POST'){
+        const state=chatFor(session);state.generation++;state.abort?.abort();state.messages=[];audit('chat.cleared');return reply(200,{ok:true});
+      }
+      if(path==='/api/chat'&&method==='POST'){
+        if(!config.aiProvider)return reply(503,{error:'ai_not_configured'});
+        const input=chatInput(await json(req)),state=chatFor(session),stamp=Date.now();
+        state.attempts=state.attempts.filter(t=>stamp-t<60000);
+        if(state.busy||modelRequests>=2||state.attempts.length>=6)return reply(429,{error:'chat_busy_or_rate_limited'});
+        const scope=JSON.stringify([input.personal,input.health,input.locale,input.zone]);
+        if(state.scope!==scope){state.messages=[];state.scope=scope;state.generation++;}
+        const generation=state.generation,now=new Date(),context:Record<string,unknown>={clock:clock(now,input.zone,input.locale),zone:input.zone};
+        const sources:{id:string;observedAt:string;description:string}[]=[];
+        if(input.personal||input.health){
+          const ctx=personal.get(session);if(!ctx)return reply(409,{error:'reauthenticate'});
+          const view=personalStore.read(ctx);if(view.locked)return reply(409,{error:'personal_locked'});
+          const data=view.data;
+          if(input.personal){context.profile=data.profile?{name:data.profile.name,goal:data.profile.goal,interests:data.profile.interests}:null;context.notes=data.notes.filter(n=>!n.done).slice(-30);sources.push({id:'personal',observedAt:now.toISOString(),description:'Owner-entered profile and up to 30 open notes; current session view, not cloud sync.'});}
+          if(input.health){
+            const connection=whoop.get(session),facts=connection&&connection.expiresAt>+now?whoopFacts(connection,input.zone):null;
+            const b=personalBriefing({...data,notes:[]},now,input.zone,input.locale,facts);
+            context.health={sleep:b.sleep,sleepSource:b.sleepSource,sleepTarget:b.sleepTarget,sleepTargetSource:b.sleepTargetSource,food:b.food,target:b.target,remaining:b.remaining,foodComplete:b.foodComplete,training:b.training,whoopCurrent:b.whoopCurrent,whoopObservedAt:facts?.observedAt??null,whoopLastSync:facts?.lastSync??null,science};
+            sources.push({id:'health',observedAt:now.toISOString(),description:'Labelled manual check-in and only already-read WHOOP sleep when current; no new provider fetch.'});
+          }
+        }
+        const controller=new AbortController();state.abort=controller;state.busy=true;state.attempts.push(stamp);modelRequests++;
+        const closed=()=>controller.abort();res.once('close',closed);
+        try{
+          const answer=await config.aiProvider.complete([{role:'system',content:assistantPolicy+`\nRequested language: ${input.locale}.\nCONTEXT DATA: `+JSON.stringify(context)},...state.messages,{role:'user',content:input.text}],controller.signal);
+          if(!sessions.get(token))return reply(401,{error:'authentication_required'});
+          if(generation!==state.generation||controller.signal.aborted)return reply(409,{error:'chat_cancelled'});
+          state.messages=[...state.messages,{role:'user' as const,content:input.text},{role:'assistant' as const,content:answer}].slice(-8);
+          audit('chat.completed',{personal:input.personal,health:input.health});return reply(200,{answer,provider:'ollama-local',sources,generatedAt:new Date().toISOString(),verified:false});
+        }catch{audit('chat.failed');return reply(502,{error:controller.signal.aborted?'chat_cancelled':'local_model_failed'});}
+        finally{res.off('close',closed);state.busy=false;state.abort=undefined;modelRequests--;}
       }
       if(path==='/api/connectors'&&method==='GET')return reply(200,{connectors:manifests.map(m=>({...m,...(m.id==='github'?readerFor(session).status():m.id==='whoop'&&whoop.get(session)&&whoop.get(session)!.expiresAt>Date.now()?{status:whoop.get(session)!.observedAt?(whoop.get(session)!.connected?'ready':'disconnected'):'configured',lastSuccessfulSync:whoop.get(session)!.observedAt,freshness:whoop.get(session)!.observedAt&&Date.now()-Date.parse(whoop.get(session)!.observedAt!)<=900000?'current':'unavailable',lastError:null}:{status:m.domain==='corporate'?'blocked':'disconnected',lastSuccessfulSync:null,freshness:'unavailable',lastError:null})}))});
       if(path==='/api/github'&&method==='GET'){

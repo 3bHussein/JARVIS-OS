@@ -61,3 +61,7 @@ Use `https://github.com/OWNER/REPO/blob/COMMIT/PATH` with exact pins above. Prim
 ## 2026-10-28 WHOOP contract follow-up
 
 Source reviewed at 22f16886dc3fca87220fcc8ee11352deb5a3bd33; exact blobs in evidence/whoop-read-contract.json. WHOOP read bridge now uses session-only existing account password sign-in and the existing whoop-data read action. No new WHOOP OAuth, vendor refresh/sync, service-role credential or source repo change. Synthetic acceptance only; actual owner account still needs local sign-in/validation. ProgressXX remains launch/manual bridge until a safe unified delegated summary is available.
+
+## Assistant and snapshot slice — 2026-10-30T08:04:54+02:00
+
+ProgressXX production root re-read at 26f96d24045a896688c69e7acc3083013d97dc9f (backup contract evidence JSON). Added existing-backup-v3 read preview only; no automatic table reader, source edits or DB calls. Local queue acknowledgement is absent from the backup, so sync is always unknown. Ollama adapter targets fixed 127.0.0.1:11434; engine must separately disable cloud routing. Browser speech service can send audio externally only after explicit in-app consent; default processLocally=true does not fall back.

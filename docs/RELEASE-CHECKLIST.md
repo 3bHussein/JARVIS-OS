@@ -24,3 +24,7 @@ All unchecked gates are required before a production v1.0. Current slice is not 
 - [ ] Measured animation CPU/frame budget and reduced-motion usability.
 - [ ] Privacy policy, backup/recovery, incident process and support documentation.
 - [ ] Explicit user approval for deployment and consequential actions.
+
+## Assistant and snapshot slice — 2026-10-30T08:04:54+02:00
+
+Local synthetic slice: [x] fixed local AI endpoint/scope isolation/CSRF/cancellation tests; [x] ProgressXX v3 read preview and unknown freshness labels; [x] transcript partial/final/correction/explicit draft-submit flows. Still [ ] actual model acceptance; [ ] Egyptian Arabic/English/code-switching WER and latency; [ ] physical Windows/browser language-pack tests; [ ] automatic delegated integration acceptance; [ ] native installer/Agent security; [ ] production identity/OS secret storage; [ ] release approval. No v1.0 RELEASED claim.

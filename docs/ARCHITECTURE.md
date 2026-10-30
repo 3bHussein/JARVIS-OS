@@ -79,3 +79,7 @@ PersonalData is schema-projected, bounded, date-validated and independent of con
 WHOOP connection state is a separate WeakMap keyed by JARVIS session. Credentials go to the fixed existing project Auth endpoint; only access token and bounded sleep/recovery records remain transiently. read mode calls the existing user-authorized Edge Function, not direct privileged database access. No health records enter personal persistence or an AI prompt. POST personal edits are intentionally scoped user-owned records; external tool writes remain denied.
 
 Personal briefing rules, provenance, freshness, local time handling and encryption/recovery limitations are specified in PERSONAL-BRIEFING.md.
+
+## Assistant and snapshot slice — 2026-10-30T08:04:54+02:00
+
+Added AIProvider interface, fixed loopback Ollama completion adapter and authenticated chat endpoints. Server owns context and four-turn history; no client system prompt/history/tools. Context permissions default off and scope changes clear history. No model has a tool executor. ProgressXX v3 backup projection stays in browser memory, separate from vault/home totals/model context. Speech recognition is browser-selected with local-only default and separate consent for browser-service routing; supported local languages depend on installed browser packs. See ASSISTANT-ENGINES.md and PROGRESSXX-IMPORT.md for exact boundaries.

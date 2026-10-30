@@ -47,3 +47,7 @@ One-window local startup and first-run setup implemented and tested on Linux. Wi
 ## Personal home milestone — 2026-10-28
 
 Editable profile, private notes/check-ins, contextual home and session-only WHOOP saved-record reader implemented with synthetic acceptance. Automatic ProgressXX, task-service delegates, true live-account acceptance, background reminders, model-based personalization and sourced content recommendations remain TODO. No health data will be silently sent to future AI adapters.
+
+## Assistant and snapshot slice — 2026-10-30T08:04:54+02:00
+
+M3: read-only ProgressXX full-backup preview IMPLEMENTED/TESTED; automatic sync remains TODO. M4: optional local Ollama conversation, scoped context and bounded editable/deletable session history IMPLEMENTED/TESTED; actual model quality and tool orchestration remain TODO. M5: browser on-device-first transcript review and speech output IMPLEMENTED/TESTED with synthetic events; local STT/VAD/TTS engines, accuracy/latency and device acceptance remain TODO. M6/M8 remain IN PROGRESS/TODO, not RELEASED.

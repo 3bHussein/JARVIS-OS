@@ -80,3 +80,9 @@ No production database, application repository or external deployment was modifi
 ## Personal daily home
 
 After local sign-in, complete the editable profile on Overview. Choose optional encrypted persistence in the privacy controls, add timed notes/tasks, and connect the existing WHOOP Intelligence account with explicit health-read consent. Food and workout schedule input is currently manual and labelled; no ProgressXX sync is implied. See [Personal briefing](docs/PERSONAL-BRIEFING.md) for calculations, sources, privacy and limitations.
+
+## Optional conversation, speech and ProgressXX snapshot
+
+The current development build includes optional local Ollama conversation with separate personal/health context consent, reviewed speech transcription where the browser supports it, system-voice replies, and a read-only ProgressXX full-backup preview. These are not automatic ProgressXX sync, measured Egyptian-Arabic accuracy, or a finished Windows installer.
+
+See [Assistant engines](docs/ASSISTANT-ENGINES.md) and [ProgressXX import](docs/PROGRESSXX-IMPORT.md). Keep the existing local password and encrypted data when updating; restart Start-JARVIS.bat after updating source.
