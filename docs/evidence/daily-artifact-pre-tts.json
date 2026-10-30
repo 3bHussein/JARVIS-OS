@@ -1,0 +1,21 @@
+{
+  "source": "6a532c8b2482363b995939a829d24545167e17a6",
+  "artifact_id": 12978848387,
+  "archive_sha256": "0f9fba1e741cce0011ebc16e5c554f613df14daab428aaefc7b453534232a7fa",
+  "manifest_files": 36,
+  "private_files_in_archive": false,
+  "all_manifest_hashes": "PASS",
+  "unlisted_files": false,
+  "zip_root_layout": "one_preview_folder",
+  "downloaded_archive_runtime": {
+    "platform": "linux",
+    "setup": "PASS",
+    "ui": "PASS",
+    "authentication": "PASS",
+    "empty_owner_data": true,
+    "private_config_url": 404,
+    "owned_shutdown": "PASS",
+    "runtime_npm_dependencies": false,
+    "physical_windows_tested": false
+  }
+}

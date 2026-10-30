@@ -23,3 +23,5 @@ If using the source repository instead: run Setup-JARVIS.bat and npm run build f
 Send one grouped report: what made the daily briefing useful or confusing; any wrong data/source/date; steps for any save/edit problem; and one screenshot of a layout issue after removing private data. Do not send passwords, tokens, real health exports or recordings into chat.
 
 The daily interface is original and bilingual, with reduced-motion support. Remaining product gates include automatic delegated integrations, actual model/voice/device benchmarks, Tauri/installer/Agent, multi-user production identity and PWA release. No v1.0 or deployment is claimed.
+
+Read-aloud privacy update: JARVIS now selects only voices reported local by default and does not use an unspecified system default. Remote/unknown voices require explicit network-speech consent in Voice lab for the unlocked session; lock resets it. If no suitable device voice exists, no text is submitted. Voice metadata is not an OS traffic sandbox or a quality guarantee. Reference: https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService.

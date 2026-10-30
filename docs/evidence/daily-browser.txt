@@ -32,4 +32,5 @@ PASS UI-26 explicit encrypted save, lock clears private UI, reauthentication res
 PASS UI-27 Arabic daily home/planner mobile navigation and no horizontal page overflow
 PASS UI-28 all-record search, status filter and pagination retain every entry
 PASS UI-29 concurrent save conflict preserves local draft and refuses stale editor overwrite after reload
-Browser acceptance (development): 29/29 passed. Synthetic fixtures only.
+PASS UI-30 read-aloud uses reported device voice by default and blocks network speech until explicit consent
+Browser acceptance (development): 30/30 passed. Synthetic fixtures only.

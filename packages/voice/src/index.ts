@@ -14,3 +14,12 @@ export function normalizedWordErrorRate(reference: string, hypothesis: string) {
   for(let i=1;i<=a.length;i++){const next=[i];for(let j=1;j<=b.length;j++)next[j]=Math.min(next[j-1]+1,row[j]+1,row[j-1]+(a[i-1]===b[j-1]?0:1));row=next;}
   return row[b.length]/a.length;
 }
+export interface VoiceMetadata {name:string;lang:string;localService?:boolean;}
+/** Never delegate an unknown/default voice to a network service without opt-in. */
+export function chooseSpeechVoice<T extends VoiceMetadata>(voices:T[],preferred:string,language:string,allowNetwork=false):T|null {
+  const chosen=preferred?voices.find(v=>v.name===preferred):undefined;
+  if(chosen)return chosen.localService===true||allowNetwork?chosen:null;
+  if(preferred)return null;
+  const matches=(v:T)=>v.lang.toLowerCase().split('-')[0]===language.toLowerCase().split('-')[0];
+  return voices.find(v=>v.localService===true&&matches(v))||(allowNetwork?voices.find(matches):undefined)||null;
+}

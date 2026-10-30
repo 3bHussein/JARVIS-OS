@@ -107,3 +107,5 @@ Start-JARVIS-Built.bat; scripts/serve-built.mjs; apps/api/src/web-bundle.ts; tes
 ## Daily-workspace preview — 2026-10-30T15:09:36+02:00
 
 apps/web/src/{DayJournal,NotePlanner}.tsx; packages/personal/src/planner.ts; Setup-JARVIS-Preview.bat; scripts/package-preview.mjs/.d.mts; tests/planner.test.ts, preview.test.ts; docs/DAILY-WORKSPACE.md, USER-ACCEPTANCE.md; daily-check/launcher/browser/built-browser/package evidence.
+
+- docs/evidence/daily-artifact-pre-tts.json — downloaded corrected prior-build archive hash/manifest/runtime checkpoint; final TTS privacy candidate recorded separately.

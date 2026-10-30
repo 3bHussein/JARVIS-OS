@@ -33,7 +33,7 @@ Voice lab provides click-to-start/click-to-stop, partial/final text and correcti
 
 On-device recognition is the default and requires `processLocally` support and an already installed language pack. Unsupported language/device fails without switching to a remote service. Arabic availability varies; no language-pack download is triggered. Browser-service mode requires separate explicit consent and may upload audio to the browser's provider; it is unsuitable for health/corporate/secrets without a separately assessed authorization. JARVIS does not record audio or choose that provider's retention policy. Language is selected explicitly; code-switching accuracy is not guaranteed.
 
-Read reply aloud uses the selected system speech voice. Voice options label device versus network voices; system default may use a network provider. Choose a device voice for sensitive speech. Speaking animation follows speech events, not sampled audio. Listening animation indicates recognizer state; the separate microphone RMS test measures amplitude only. Neither establishes recognition accuracy. No Piper/Whisper local sidecar or measured neural-voice quality is claimed.
+Read reply aloud uses only an explicitly selected/reported-local suitable voice by default. Device versus network voices are labelled; remote/unknown voices require separate unlocked-session network-speech consent. If no suitable voice is available, no text is submitted. Speaking animation follows speech events, not sampled audio. Listening animation indicates recognizer state; the separate microphone RMS test measures amplitude only. Neither establishes recognition accuracy. No Piper/Whisper local sidecar or measured neural-voice quality is claimed.
 
 ## Manual acceptance still required
 
@@ -53,3 +53,5 @@ A separate optional faster-whisper/VAD one-shot worker and local microphone capt
 ## Daily-preview update — 2026-10-30T15:09:36+02:00
 
 Conversation/history/typed draft now survive main-tab navigation in the unlocked page. Repeated voice/quick prompts reseed a draft, never auto-send. Clear/scope/language/timezone/lock still clear history. Selected imported Home nutrition remains excluded from AI; model health context is server-owned manual/WHOOP data. This supersedes the earlier navigate-back-clears-conversation behavior.
+
+Read-aloud privacy update: JARVIS now selects only voices reported local by default and does not use an unspecified system default. Remote/unknown voices require explicit network-speech consent in Voice lab for the unlocked session; lock resets it. If no suitable device voice exists, no text is submitted. Voice metadata is not an OS traffic sandbox or a quality guarantee. Reference: https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService.

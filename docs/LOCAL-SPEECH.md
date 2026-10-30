@@ -56,3 +56,5 @@ Primary references reviewed on 2026-10-30:
 - https://github.com/SYSTRAN/faster-whisper/blob/master/README.md
 - https://github.com/SYSTRAN/faster-whisper/blob/master/faster_whisper/transcribe.py
 - https://pypi.org/project/faster-whisper/1.2.1/
+
+Read-aloud privacy update: JARVIS now selects only voices reported local by default and does not use an unspecified system default. Remote/unknown voices require explicit network-speech consent in Voice lab for the unlocked session; lock resets it. If no suitable device voice exists, no text is submitted. Voice metadata is not an OS traffic sandbox or a quality guarantee. Reference: https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService.

@@ -1,3 +1,4 @@
+import {chooseSpeechVoice} from '../packages/voice/src/index.ts';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {agenda,shiftDay,localDateTime,nutritionView,journalCoverage} from '../packages/personal/src/planner.ts';
@@ -20,4 +21,8 @@ test('PLAN-04 selected nutrition snapshot cannot overwrite manual data or silent
 });
 test('PLAN-05 invalid note calendar/time cannot roll into a different day',()=>{
  for(const at of ['2026-02-30T10:00:00Z','2026-10-30T24:00:00Z','2026-10-30T10:60:00Z'])assert.throws(()=>validateData({...data(),notes:[note('bad',at)]}));assert.doesNotThrow(()=>validateData({...data(),notes:[note('valid','2026-10-30T10:00:00Z')]}));
+});
+
+test('VOICE-02 default/read-aloud selects reported local voices and blocks remote/unknown metadata without consent',()=>{
+ const remote={name:'Remote',lang:'en-US',localService:false},local={name:'Local',lang:'en-GB',localService:true},unknown={name:'Unknown',lang:'en-US'};assert.equal(chooseSpeechVoice([remote,unknown],'','en-US'),null);assert.equal(chooseSpeechVoice([remote,local],'','en-US'),local);assert.equal(chooseSpeechVoice([remote,local],'Remote','en-US'),null);assert.equal(chooseSpeechVoice([remote],'Remote','en-US',true),remote);assert.equal(chooseSpeechVoice([local],'','ar-EG'),null);
 });

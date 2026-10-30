@@ -227,3 +227,7 @@ Personal-preview local results: Node 56/56, typecheck/build PASS; three real-pro
 | Search/status/all-record pagination | UI-28 | TESTED 12 synthetic filtered results |
 | Concurrent record changes | UI-29 | TESTED failed stale save, draft preserved, stale editor rejected |
 | Real voice/model/owner health/physical Windows | Not executed | TODO |
+
+## Session 009 final local acceptance — 2026-10-30T15:25:36+02:00
+
+After TTS privacy hardening: Node 57/57, typecheck/build PASS; launcher 3/3 PASS; development 30/30 and built 30/30 browser scenarios PASS. VOICE-02 verifies local/default selection and unknown/remote rejection without consent; UI-30 mocks TTS metadata/events to prove no speak call before authorization and reported-local priority. These are privacy/control tests, not real voice quality or OS network-traffic certification. Final candidate publication and new archive verification are pending; older 6a532c8 artifact remains a verified prior-build checkpoint, not the final trial candidate.
