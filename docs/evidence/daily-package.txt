@@ -3,4 +3,4 @@ npm warn Unknown env config "http-proxy". This will stop working in the next maj
 > jarvis-os@0.1.0 package:preview
 > node scripts/package-preview.mjs
 
-Personal preview prepared: test-results/JARVIS-OS-Personal-Preview-fooqEU
+Personal preview prepared: test-results/JARVIS-OS-Personal-Preview-TJ5DER
