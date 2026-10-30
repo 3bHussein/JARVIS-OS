@@ -199,3 +199,11 @@ Built-runtime local acceptance: 48/48 Node tests, typecheck/build PASS, launcher
 | No dev-server/npm runtime dependency | START-04 | TESTED copy without node_modules |
 | Preserve development workflow | START-03 + dev E2E | TESTED |
 | Native packaged Windows application | No installer test | TODO |
+
+## Session 008 exact-source remote acceptance — 2026-10-30T11:09:02+02:00
+
+Source 6ee1eb7902ff0a9e69938bb7df27362f4d34c1a2 (`feat: serve built UI and API through a restricted local runtime`). GitHub Actions https://github.com/3bHussein/JARVIS-OS/actions/runs/41031031707 completed SUCCESS on its first remote attempt. Both Linux foundation and Windows launcher succeeded: Node typecheck/build, 48 registered unit/HTTP cases (Linux 48 pass; Windows explicitly skips the unprivileged file-symlink fixture), Python worker contract 4/4 and both launcher lifecycle cases. Windows BAT help includes the new built launcher. Linux additionally passed all 21 development and all 21 built-browser scenarios. Evidence: built-github-ci.json. VERIFIED for this automated synthetic scope only, not native/physical Windows or real integration/model acceptance. No PR/deployment/release.
+
+Local source preserved in a named stash and fast-forwarded to origin/main. This documentation-only [skip ci] follow-up records exact-source acceptance and does not claim a separate CI run. Run after setup: npm run build, then Start-JARVIS-Built.bat or npm run start:built; Node 24/API source still needed. Preserve .env/.jarvis-data/original password. Default development launcher remains unchanged.
+
+Next: Tauri native host and runtime packaging with least-privilege capabilities, OS secret storage/Agent pairing and real Windows acceptance; voice/model benchmarks and source-approved delegated integrations remain open. No permission to modify original repos, production databases or deploy is inferred. M6 and v1.0 remain incomplete.

@@ -101,3 +101,5 @@ apps/voice-worker/{worker.py,test_worker.py,requirements.txt}; apps/api/src/loca
 ## Built-runtime slice — 2026-10-30T11:06:04+02:00
 
 Start-JARVIS-Built.bat; scripts/serve-built.mjs; apps/api/src/web-bundle.ts; tests/web-bundle.test.ts; docs/BUILT-RUNTIME.md; docs/evidence/built-check.txt, built-launcher.txt, built-dev-browser.txt, built-browser.txt.
+
+- docs/evidence/built-github-ci.json — successful exact-source Linux/Windows built-runtime acceptance.
