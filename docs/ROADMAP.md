@@ -63,3 +63,8 @@ Built frontend/API local runtime and no-node_modules lifecycle IMPLEMENTED/TESTE
 ## Daily-workspace preview — 2026-10-30T15:09:36+02:00
 
 Large personal-preview batch IMPLEMENTED/TESTED locally: daily hub, planner/journal lifecycle, transient source selection, navigation context and ready-built packaging. One combined user trial follows exact-source CI. M3 automatic delegated sync, M4 real model/tool acceptance, M5 actual speech/VAD/latency, M6 Tauri/Agent and M8 production gates remain TODO/IN PROGRESS.
+
+
+## Session 010 — 2026-10-31T15:01:58+02:00
+
+IMPLEMENTED portable personal backup/restore. TESTED pure crypto roundtrip/tamper/bounds/capacity and development UI journey. M1/M3 overall IN PROGRESS; native packaging, real source integration/voice acceptance and multi-user production remain TODO.

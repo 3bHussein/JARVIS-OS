@@ -1,0 +1,10 @@
+✔ PREVIEW-01 clean artifact omits private files, contains runtime bundle and valid hashes (43.524225ms)
+✔ PREVIEW-02 packaging creates a new directory and never deletes an existing preview config (48.441342ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 197.950295

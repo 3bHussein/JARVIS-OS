@@ -27,3 +27,8 @@ The daily interface is original and bilingual, with reduced-motion support. Rema
 Read-aloud privacy update: JARVIS now selects only voices reported local by default and does not use an unspecified system default. Remote/unknown voices require explicit network-speech consent in Voice lab for the unlocked session; lock resets it. If no suitable device voice exists, no text is submitted. Voice metadata is not an OS traffic sandbox or a quality guarantee. Reference: https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService.
 
 Tested download: https://github.com/3bHussein/JARVIS-OS/actions/runs/41063204345#artifacts → JARVIS-OS-Personal-Preview (artifact12981051866, retained until 13 November 2026). Source07514b6. Downloaded ZIP integrity and Linux runtime were checked; physical Windows/manual voice/account acceptance is this trial, not a pre-existing verification.
+
+
+## Optional recovery step in the combined trial
+
+After adding synthetic practice notes, use You & privacy → Encrypted backup & restore. Export with an independent password, verify the downloaded file exists, unlock its preview, cancel replacement once, then confirm with RESTORE. Do not experiment on irreplaceable records without a separate current backup. See PORTABLE-BACKUP.md.

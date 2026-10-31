@@ -298,3 +298,23 @@ Final artifact: JARVIS-OS-Personal-Preview, ID12981051866, 156807 bytes, expires
 User receives ONE combined trial: download this specific artifact, extract into a new folder, Node24+, Setup-JARVIS-Preview.bat once, Start-JARVIS-Built.bat, unlock. USER-ACCEPTANCE.md covers profile/privacy, daily journal, planner lifecycle, optional real source linking/import, briefing/chat/voice and lock/restore. User preference persists: substantial batches and consolidated feedback, not an acceptance request per small change. Do not overwrite older private config/data or rotate the original password.
 
 No deployment, GitHub Release, installer, production DB change, source-app mutation or real user credential/voice recording used. Local source aligned through named stashes/fast-forward commits. Follow-up documentation-only [skip ci] commit records this exact source/run/artifact, with no distinct runtime/CI claim. Next development after grouped feedback: remaining delegated live links, actual voice/model acceptance, native Tauri/Agent/OS vault/installer and production/PWA gates. Personal Preview is not v1.0; overall M3–M8 remain incomplete.
+
+
+## Session 010 — portable personal recovery — 2026-10-31T15:01:58+02:00
+
+Milestone M1/M3 stabilization; IN PROGRESS overall. User requested continued development in substantial batches. Starting SHA a2f96a9240b93039810d4dec08b64fb7426c6893. IMPLEMENTED browser-local encrypted portable backup and reviewed replacement flow. Independent password, fixed bounded PBKDF2-SHA256/AES256GCM format, randomized salt/IV, strict personal-field reconstruction, 1MiB cap, no imported/WHOOP/chat/credential export. Preview counts/date/name, typed RESTORE, current storage choice and revision checks, no merge. Password/pending-operation cleanup on navigation; restored forms reset. No existing repository, production DB, actual owner data or deployment touched.
+
+Created: packages/personal/src/backup.ts, apps/web/src/PersonalBackup.tsx, tests/backup.test.ts, docs/PORTABLE-BACKUP.md. Modified: PersonalHome.tsx, tests/browser.mjs, preview packager documentation list and tracking/acceptance docs. Commands: git status/log/remote; rg/cat; Python/heredoc edits; npm run check/test:e2e/test:e2e:built/test:launcher; pinned Playwright headless-shell reinstall from previously observed Microsoft mirror; GitHub read/publication tools. Initial browser attempt BLOCKED by missing cached Chromium; reinstalled before acceptance. No dependency versions changed.
+
+Tests: Node60/60 and typecheck/build PASS; development Chromium31/31 PASS; final built browser/launcher pending at this entry. BACKUP01..03 and UI31 use only synthetic data; no actual owner backup/device or independent security review claimed. Evidence will be recorded after final checks. Commit/PR/CI pending; deployment NOT DEPLOYED; release NOT RELEASED. Exact next: complete built acceptance, publish JARVIS-only batch, inspect exact-source CI, append evidence and align checkout. Do not ask the user to perform another tiny trial. Automatic integrations, native Windows, real voice/model and production gates remain open.
+
+
+### Session 010 final local acceptance
+
+TESTED: Node60/60, typecheck/build PASS; development31/31 and built31/31 Chromium PASS; launcher3/3 PASS; preview packaging2/2 PASS after documentation inclusion. Evidence docs/evidence/backup-*.txt. Synthetic fixtures only. Initial missing browser was corrected. No physical Windows, real account/model/voice or independent crypto review claim. Remote publication/CI pending. No PR/deployment/release.
+
+
+Session 010 explicit correction: the previous packaging2/2 statement was premature: adding the backup guide to the package required updating the synthetic fixture list. That attempt failed ENOENT for the new guide. Updated the fixture; re-run acceptance is recorded below. No user artifact was handed off from that failure.
+
+
+Session 010 corrected local acceptance: full check60/60 with typecheck/build PASS, packaging2/2 PASS after fixture correction. Launcher3/3 and dev/built31/31 previously passed for the same runtime implementation; guide/fixture inclusion only changed afterward. Evidence refreshed. Remote SHA/CI pending.

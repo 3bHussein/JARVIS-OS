@@ -95,3 +95,8 @@ Built runtime serves compiled UI and API from one loopback service with a superv
 ## Daily-workspace preview — 2026-10-30T15:09:36+02:00
 
 Added daily planner/journal components and pure date/agenda/transient-nutrition helpers. Overview remains mounted while hidden across main navigation; lock removes it. Import state stays client-only; server health/model context remains separate. Personal writes use existing revision guards plus editor fingerprint/UI write guard. Clean preview packaging creates new directories, selected runtime files and validated bundle only. No source-app coupling/production schema change. See DAILY-WORKSPACE.md.
+
+
+## Session 010 — 2026-10-31T15:01:58+02:00
+
+Portable backup is a browser-local boundary separate from the API vault. Fixed KDF parameters and bounded authenticated envelopes; validated owner-entered personal fields only. Restore uses the existing authenticated CSRF/revision-checked personal save route. No new endpoint or network provider.

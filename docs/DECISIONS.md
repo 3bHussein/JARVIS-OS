@@ -63,3 +63,8 @@ ADR-010: keep development startup intact; add explicit build + single-service lo
 ## Daily-workspace preview — 2026-10-30T15:09:36+02:00
 
 ADR-011: deliver a coherent daily workflow and one combined trial. Keep management forms in five daily sections and preserve unlocked drafts across navigation. ADR-012: imported nutrition is an explicit transient Home view, never a silent merge or AI context. ADR-013: publish a clean built preview artifact with built-only first-run setup; no runtime npm installation, models or credentials bundled, no reuse/deletion of an older preview directory. Preserve revision checks and reject stale editors even after reload.
+
+
+## Session 010 — 2026-10-31T15:01:58+02:00
+
+ADR: independent portable password and versioned Web Crypto envelope instead of copying the server vault or exporting plaintext. Explicit replacement rather than implicit merge. Reported timestamp is metadata, not source authentication. No secret recovery claim.

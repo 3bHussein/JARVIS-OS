@@ -44,3 +44,8 @@ Personal-preview gate: [x] daily management/source/lock/conflict workflows local
 ## Personal Preview accepted for one combined trial — 2026-10-30T15:30:04+02:00
 
 [x] Exact-source Linux/Windows CI and final artifact downloaded/manifest/runtime checked (07514b6, run41063204345, artifact12981051866). [ ] User combined acceptance. Production/native/model/device/release gates remain open; this is not RELEASED v1.0.
+
+
+## Session 010 — 2026-10-31T15:01:58+02:00
+
+TODO physical Windows/browser encrypted export/restore acceptance; independent security review; backup/password handling documentation review. Portable recovery does not make this a signed installer or v1.0 release.

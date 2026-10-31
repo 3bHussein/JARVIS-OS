@@ -66,3 +66,8 @@ Built mode requires npm run build after updates and restart. Generated dist is a
 ## Daily-workspace preview — 2026-10-30T15:09:36+02:00
 
 Daily preview is local/single-owner. Imports and unsaved drafts do not survive page reload/lock. Undo is only the latest deletion in that page session. Agenda groups entries by start date; midnight-spanning reservations still participate in overlap warnings. Changing timezone resets wall-time editor fields to avoid reinterpreting an old local time. AI health context excludes selected file nutrition. Preview needs Node24; no models or native installer bundled. Actual model/health/device/accessibility/performance acceptance and automatic integrations remain open.
+
+
+## Session 010 — 2026-10-31T15:01:58+02:00
+
+Portable backup requires its independent password; no reset. Browser memory/OS device compromise and completed-download persistence are outside automated guarantees. No merge or automatic backup schedule. Physical Windows restore and independent crypto review remain TODO.

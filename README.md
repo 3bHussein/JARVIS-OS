@@ -96,3 +96,5 @@ Optional offline recording/STT worker: [Local speech setup and acceptance limits
 ## Run the compiled local app
 
 After setup, run `npm run build`, then `Start-JARVIS-Built.bat` (or `npm run start:built`). UI/API share one loopback service without Vite. Node 24 and API source still required; not an EXE. [Built runtime](docs/BUILT-RUNTIME.md). Existing Start-JARVIS.bat remains the development launcher.
+
+Portable recovery: [Encrypted personal backups](docs/PORTABLE-BACKUP.md) includes independent-password export and reviewed replacement. Preview only; real-device acceptance remains open.
