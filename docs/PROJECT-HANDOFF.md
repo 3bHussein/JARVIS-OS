@@ -318,3 +318,12 @@ Session 010 explicit correction: the previous packaging2/2 statement was prematu
 
 
 Session 010 corrected local acceptance: full check60/60 with typecheck/build PASS, packaging2/2 PASS after fixture correction. Launcher3/3 and dev/built31/31 previously passed for the same runtime implementation; guide/fixture inclusion only changed afterward. Evidence refreshed. Remote SHA/CI pending.
+
+
+## Session 010 exact-source remote acceptance — 2026-10-31T15:05:15+02:00
+
+Source 8989161cbe95685a9387eecbe04ac5e8db0167aa (`feat: add encrypted portable personal backup and reviewed restore`), tree dc4398aecb6582a841047715f21531d608274b4c. CI https://github.com/3bHussein/JARVIS-OS/actions/runs/41203794986 SUCCESS: Linux foundation and Windows launcher both passed. Node60 registered (Windows intentionally skips only unprivileged file-symlink fixture), typecheck/build, Python4/4, launcher3/3; Linux browser31/31 development and31/31 built. Windows prepared/uploaded personal preview. Evidence backup-github-ci.json. VERIFIED only for this automated synthetic scope.
+
+Downloaded artifact13044150185, JARVIS-OS-Personal-Preview,163339bytes, expires2026-11-14T13:03:40Z. Archive SHA256561b3b79233eeea864b6080c86c3e1a8526f2a115584f0c39de3894cbe65d591 matched GitHub metadata. All38 manifest-listed files matched; no unlisted/hidden files, owner records or bundled models/dependencies. Source metadata matched8989161. Extracted archive passed actual Linux built-only setup/UI/authentication/private .env URL denial/owned shutdown without npm dependencies. Synthetic config was created only after manifest verification in a temporary extracted copy. Evidence backup-downloaded-preview.json. No signed temporary URLs retained. No physical Windows, actual health/model/voice or independent crypto audit claim.
+
+Source checkout aligned through named stash and fast-forward. This docs-only [skip ci] follow-up updates the current download/evidence; it does not claim a separate runtime CI. PR none; deployment NOT DEPLOYED; release NOT RELEASED. User preference: no new small-feature test request; include recovery in a future combined trial. Exact next large batch: delegated live integration capabilities where existing backend contracts permit, then actual voice/model acceptance and native Tauri/Windows packaging; no authorization to change original repos/DBs/deploy inferred. Preserve owner .env/vault/original password and independent backup password.

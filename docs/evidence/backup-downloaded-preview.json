@@ -1,0 +1,20 @@
+{
+  "source": "8989161cbe95685a9387eecbe04ac5e8db0167aa",
+  "artifact": 13044150185,
+  "run": 41203794986,
+  "sha256": "561b3b79233eeea864b6080c86c3e1a8526f2a115584f0c39de3894cbe65d591",
+  "archiveBytes": 163339,
+  "manifestFiles": 38,
+  "allHashesMatch": true,
+  "noUnlistedFiles": true,
+  "noHiddenFiles": true,
+  "scope": "Downloaded CI artifact, no owner data; not physical Windows acceptance",
+  "extractedLinuxRuntime": {
+    "setupWithoutNpm": true,
+    "ui": true,
+    "authentication": true,
+    "privatePathDenied": true,
+    "ownedShutdown": true,
+    "syntheticConfigOnly": true
+  }
+}

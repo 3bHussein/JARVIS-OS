@@ -6,7 +6,7 @@ An original personal AI command center, built as a separate hybrid application.
 
 ## Try one complete preview
 
-Download **JARVIS-OS-Personal-Preview** from the [tested preview download](https://github.com/3bHussein/JARVIS-OS/actions/runs/41063204345#artifacts), extract into a new folder, install Node.js 24+ if needed, then run **Setup-JARVIS-Preview.bat** and **Start-JARVIS-Built.bat**. The artifact needs no npm install or build. Unlock from Settings with the local password you chose. No account credentials, models or personal data are bundled.
+Download **JARVIS-OS-Personal-Preview** from the [tested preview download](https://github.com/3bHussein/JARVIS-OS/actions/runs/41203794986#artifacts), extract into a new folder, install Node.js 24+ if needed, then run **Setup-JARVIS-Preview.bat** and **Start-JARVIS-Built.bat**. The artifact needs no npm install or build. Unlock from Settings with the local password you chose. No account credentials, models or personal data are bundled.
 
 Follow the [single combined acceptance journey](docs/USER-ACCEPTANCE.md). This is a local browser preview, not an EXE/Tauri installer. Keep the launcher open; Ctrl+C stops it. Preserve an older installation's private config/data/password instead of overwriting it.
 
