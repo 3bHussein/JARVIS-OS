@@ -1,0 +1,26 @@
+{
+  "source": "381b1783fe368463cf405e7a5c4711df00ccdf2c",
+  "run": 41322087913,
+  "artifact": 13089900144,
+  "archiveBytes": 170952,
+  "sha256": "7c458926847d7590151c134086576c2ca10c438c2b199f058996777ebc032edc",
+  "manifestFiles": 39,
+  "allHashesMatch": true,
+  "noUnlistedFiles": true,
+  "noHiddenFiles": true,
+  "quickstartIncluded": true,
+  "realAccountAcceptance": false,
+  "physicalWindowsAcceptance": false,
+  "extractedLinuxRuntime": {
+    "setupWithoutNpm": true,
+    "uiAuthentication": true,
+    "profileSave": true,
+    "honestWhoopNotConnected": true,
+    "localProgressImportAndHomeBudget": true,
+    "homeNoteCapture": true,
+    "privatePathDenied": true,
+    "ownedShutdown": true,
+    "syntheticOnly": true,
+    "browserAutomationProvidedExternallyToArtifact": true
+  }
+}
