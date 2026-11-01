@@ -44,3 +44,8 @@ Setup-JARVIS-Preview.bat uses the existing hidden-password setup in built-only m
 No real owner health account, voice/model quality, physical Windows or clinician validation is inferred from synthetic checks. See TEST-REPORT.md and the one combined trial in USER-ACCEPTANCE.md.
 
 Read-aloud privacy update: JARVIS now selects only voices reported local by default and does not use an unspecified system default. Remote/unknown voices require explicit network-speech consent in Voice lab for the unlocked session; lock resets it. If no suitable device voice exists, no text is submitted. Voice metadata is not an OS traffic sandbox or a quality guarantee. Reference: https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService.
+
+
+## Connected daily-context update — 2026-11-01
+
+Home now includes a compact WHOOP source view with recovery/open-cycle energy/strain and expandable sleep/heart/steps/completed-workout fields. Stale source reads are hidden instead of presented as current. Physiological cycle values are separate from calendar-day nutrition. ProgressXX file exercise history, macros, weekday label and weight coverage are available here without sending the file to AI. Latest three untimed notes can be reviewed from Home and read in the explicit spoken briefing. See DAILY-QUICKSTART.md for actual setup and limitations.

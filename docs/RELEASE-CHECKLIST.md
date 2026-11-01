@@ -49,3 +49,8 @@ Personal-preview gate: [x] daily management/source/lock/conflict workflows local
 ## Session 010 — 2026-10-31T15:01:58+02:00
 
 TODO physical Windows/browser encrypted export/restore acceptance; independent security review; backup/password handling documentation review. Portable recovery does not make this a signed installer or v1.0 release.
+
+
+## Session 011 — 2026-11-01T17:32:39+02:00
+
+TODO actual owner WHOOP Intelligence local sign-in/read and source-field comparison; ProgressXX own-file compatibility; physical Windows combined daily workflow. Automated device estimates/data projections do not certify medical accuracy. Confirm DAILY-QUICKSTART included in downloaded archive. No release/deployment authorization inferred.

@@ -71,3 +71,8 @@ Daily preview is local/single-owner. Imports and unsaved drafts do not survive p
 ## Session 010 — 2026-10-31T15:01:58+02:00
 
 Portable backup requires its independent password; no reset. Browser memory/OS device compromise and completed-download persistence are outside automated guarantees. No merge or automatic backup schedule. Physical Windows restore and independent crypto review remain TODO.
+
+
+## Session 011 — 2026-11-01T17:32:39+02:00
+
+WHOOP open-cycle-only display can intentionally show unknown for closed cycles, cycles older than72h, unscored/missing records or stale sync; device energy is not a food target. HRV/RHR are displayed without personalized interpretation/baseline. Real source account acceptance still TODO. ProgressXX requires refreshed manual file import; no appointment time/session count/deload inferred. Real speech quality/native installer remain TODO.

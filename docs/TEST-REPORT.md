@@ -273,3 +273,25 @@ Source 8989161cbe95685a9387eecbe04ac5e8db0167aa (`feat: add encrypted portable p
 Downloaded artifact13044150185, JARVIS-OS-Personal-Preview,163339bytes, expires2026-11-14T13:03:40Z. Archive SHA256561b3b79233eeea864b6080c86c3e1a8526f2a115584f0c39de3894cbe65d591 matched GitHub metadata. All38 manifest-listed files matched; no unlisted/hidden files, owner records or bundled models/dependencies. Source metadata matched8989161. Extracted archive passed actual Linux built-only setup/UI/authentication/private .env URL denial/owned shutdown without npm dependencies. Synthetic config was created only after manifest verification in a temporary extracted copy. Evidence backup-downloaded-preview.json. No signed temporary URLs retained. No physical Windows, actual health/model/voice or independent crypto audit claim.
 
 Source checkout aligned through named stash and fast-forward. This docs-only [skip ci] follow-up updates the current download/evidence; it does not claim a separate runtime CI. PR none; deployment NOT DEPLOYED; release NOT RELEASED. User preference: no new small-feature test request; include recovery in a future combined trial. Exact next large batch: delegated live integration capabilities where existing backend contracts permit, then actual voice/model acceptance and native Tauri/Windows packaging; no authorization to change original repos/DBs/deploy inferred. Preserve owner .env/vault/original password and independent backup password.
+
+
+## Session 011 — 2026-11-01T17:32:39+02:00
+
+| Requirement | Test IDs | Scope |
+|---|---|---|
+| Recovery/heart/sleep/cycle/workout source projection | WHOOP-04 | Synthetic source fields and unit conversion |
+| Latest pending versions and closed/old/missing cycle handling | WHOOP-05 | Synthetic malformed/incomplete data |
+| Bounded four-collection retention/no secret projection | WHOOP-06 | Synthetic transport |
+| Completed events release confirmed free time | PERSON-06 | Unit regression |
+| Fresh/stale Home metrics and food/energy separation | UI-32 | Browser synthetic source |
+| Training/macros, spoken source label, note review and Arabic bounds | UI-33 | Browser synthetic source |
+
+Core64/64/typecheck/build PASS; final UI/launcher/remote results pending at this entry.
+
+
+Session011 traceability addition: UI-34 asserts disconnect invalidates an already-read delayed WHOOP response. Intermediate browser fixture/disclosure failures were corrected; only final complete runs count as acceptance.
+
+
+### Session 011 final local acceptance
+
+TESTED: full typecheck/build and Node64/64 PASS; development34/34 and built34/34 Chromium PASS; launcher3/3 PASS; Python worker4/4 PASS. Runtime edits ceased before the final complete browser runs. Internal synthetic Arabic mobile screenshot inspected; no horizontal overflow. UI34 waits for a captured already-read response to be released after disconnect, proving UI invalidation. All source/provider/voice fixtures synthetic; no actual owner account, physical Windows or engine quality acceptance. Evidence daily-sources-check/browser/built-browser/launcher/worker.txt. Docs/package guide included in fixture and packaged lifecycle test. Source publication/remote CI/archive audit pending. PR/deployment/release none.

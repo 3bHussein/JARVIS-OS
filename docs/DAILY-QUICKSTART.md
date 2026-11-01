@@ -1,0 +1,46 @@
+# Start using the personal preview
+
+This is the local personal preview. It is not the complete hybrid desktop/cloud release.
+
+## First opening
+
+1. Download `JARVIS-OS-Personal-Preview` from the tested Actions run linked in the repository README. Extract into a **new** folder. Keep any older installation and its private files intact.
+2. Install Node.js 24 or later if unavailable. Run `Setup-JARVIS-Preview.bat`, choose your own local password, then run `Start-JARVIS-Built.bat`. Keep the terminal open. No npm install or build is required in this download.
+3. In the browser, open Settings, unlock with that password and select Arabic/English plus your IANA timezone. Overview opens your private daily workspace.
+4. Enter your profile. In You & privacy, choose encrypted local storage and press Save current data if you want it after closing. Otherwise edits are session-only. Keep the original local password; changing it does not decrypt an older vault.
+
+## Make Home useful
+
+| Information | Where to provide it | What Home actually knows |
+|---|---|---|
+| Sleep and recovery | Sources → Connect WHOOP Intelligence | Your existing account's saved records, after explicit session consent; no new WHOOP OAuth or provider sync |
+| Food, macros, exercise history, weekday training label and weight | Export a full JSON v3 backup from ProgressXX, then import it in Sources | A local file snapshot; automatic ProgressXX sync is not connected |
+| Home food budget | Explicitly select recent imported nutrition, or enter food/target manually | Entered target minus logged food only; expenditure is kept separate |
+| Workout appointment and tasks | Planner | Only the times and durations you record; a weekday training label has no appointment time |
+| Notes to revisit | Planner → note without time | Latest three open untimed notes appear on Home and in explicit read-aloud; review them or use All notes |
+| Unknown/missing source data | No input needed | A dash or explanation, never sample personal readings |
+
+For WHOOP, use the account you use to sign in to **WHOOP Intelligence**, not the WHOOP vendor password. Enter credentials only in the local application's form. Sessions are temporary, so reconnect after expiry. If source sync is old, synchronize through the original WHOOP Intelligence app first, then choose Read saved records in JARVIS. This action does not trigger vendor sync.
+
+WHOOP energy/strain refer to its physiological cycle. JARVIS shows an eligible open scored cycle, not a claimed midnight-to-midnight total. Missing/old data is not replaced with yesterday's score. Heart/sleep readings are device estimates, not a diagnosis or an exercise prescription. ProgressXX file data does not enter AI context and is forgotten on lock/reload; reimport when needed.
+
+## Everyday flow
+
+Open Start-JARVIS-Built.bat → unlock → Overview. Review sleep/food, current WHOOP metrics and upcoming real appointments. Use Planner to add a task or workout time, Check-in to record manual values, and Sources to reconnect or replace a file. Details stay collapsed until requested. Notes remain until you review them. Read my briefing needs a suitable device voice, or your separate explicit permission for network speech voices. Silent startup is available.
+
+Chat and speech engines are separate optional configuration, not prerequisites for the daily workspace. See ASSISTANT-ENGINES.md and LOCAL-SPEECH.md. Their real Egyptian-Arabic accuracy, latency and quality remain untested. Voice review never sends a recognized command automatically. There is no wake word or native Windows automation in this preview.
+
+## Preserve your work
+
+Save with encrypted local storage before closing. Export an independently password-protected portable backup from You & privacy when needed; see PORTABLE-BACKUP.md. Keep its password separately. It includes personal profile, manual entries and notes, not WHOOP/imported files/chat/tokens. Restore previews the data and requires typing RESTORE before replacement. Never overwrite `.env` or `.jarvis-data` in an old installation while updating. A backup download request is not proof of completed disk storage; check Downloads.
+
+## If a feature is unavailable
+
+- Server does not start: close an earlier JARVIS instance, verify Node24+, read the terminal error. Do not expose port5173 outside loopback.
+- WHOOP sign-in fails: verify the existing Intelligence account; accounts requiring MFA are not supported by this linking flow. No bypass is provided.
+- No current WHOOP values: source/observation freshness, matching scored sleep/recovery and eligible cycle may be absent. Open details for limitations; do not interpret a dash as zero.
+- ProgressXX file rejected: use the existing full v3 export. Invalid/incomplete legacy fields can reject the file. Do not edit irreplaceable backups to satisfy a parser.
+- New preview folder is empty: each installation has its own local config/vault. Keep the old installation, or use an encrypted portable export/restore. There is no automatic migration.
+- Browser on phone cannot reach the app: this loopback-only preview is not yet a hosted/mobile deployment.
+
+Use USER-ACCEPTANCE.md only for one combined review when ready. No real account, physical Windows device, voice engine or medical recommendation has been certified by synthetic CI.

@@ -62,3 +62,8 @@ test('VAULT-02 session-only edits can later be persisted without hiding a real c
     assert.throws(()=>store.save(b,b.state.data,1,true),/personal_conflict/);
   }finally{await rm(directory,{recursive:true,force:true});}
 });
+
+test('PERSON-06 completed commitments do not reserve free time after explicit schedule confirmation',()=>{
+ const note={id:'done',text:'Finished synthetic task',kind:'task' as const,at:'2026-10-28T09:00:00Z',minutes:60,done:true};
+ const data={profile,days:[{date:'2026-10-28',sleepHours:null,foodKcal:null,foodComplete:false,scheduleComplete:true}],notes:[note]};assert.equal(personalBriefing(data,now,'Africa/Cairo','en').freeSlot?.at,now.toISOString());
+});

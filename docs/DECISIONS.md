@@ -68,3 +68,8 @@ ADR-011: deliver a coherent daily workflow and one combined trial. Keep manageme
 ## Session 010 — 2026-10-31T15:01:58+02:00
 
 ADR: independent portable password and versioned Web Crypto envelope instead of copying the server vault or exporting plaintext. Explicit replacement rather than implicit merge. Reported timestamp is metadata, not source authentication. No secret recovery claim.
+
+
+## Session 011 — 2026-11-01T17:32:39+02:00
+
+ADR: show actual source fields with compact details instead of inferring prescriptions from recovery. Open WHOOP physiological cycle is labelled as such; no calendar-day or cumulative workout-energy claim. Missing data stays unknown. Deduplicate source IDs before status filtering to avoid using obsolete scored versions. Untimed notes remain owner-authored notes, not invented appointments.

@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {connectWhoop,readWhoop,whoopFacts,type WhoopConnection} from '../packages/connectors/src/whoop.ts';
 const now=new Date('2026-10-28T10:00:00Z');
-function fixture():WhoopConnection{return {accessToken:'SYNTHETIC_ACCESS_TOKEN',expiresAt:+now+3600000,records:{sleep:[{id:'sleep-1',nap:false,score_state:'SCORED',start:'2026-10-27T23:00:00Z',end:'2026-10-28T07:00:00Z',updated_at:'2026-10-28T07:10:00Z',score:{stage_summary:{total_light_sleep_time_milli:3*3600000,total_slow_wave_sleep_time_milli:3600000,total_rem_sleep_time_milli:2*3600000,total_awake_time_milli:2*3600000},sleep_needed:{baseline_milli:8*3600000,need_from_sleep_debt_milli:3600000,need_from_recent_strain_milli:0,need_from_recent_nap_milli:-3600000}}}],recovery:[{sleep_id:'sleep-1',score_state:'SCORED',score:{recovery_score:42}}]},observedAt:now.toISOString(),lastSync:now.toISOString(),connected:true};}
+function fixture():WhoopConnection{return {accessToken:'SYNTHETIC_ACCESS_TOKEN',expiresAt:+now+3600000,records:{sleep:[{id:'sleep-1',nap:false,score_state:'SCORED',start:'2026-10-27T23:00:00Z',end:'2026-10-28T07:00:00Z',updated_at:'2026-10-28T07:10:00Z',score:{stage_summary:{total_light_sleep_time_milli:3*3600000,total_slow_wave_sleep_time_milli:3600000,total_rem_sleep_time_milli:2*3600000,total_awake_time_milli:2*3600000},sleep_needed:{baseline_milli:8*3600000,need_from_sleep_debt_milli:3600000,need_from_recent_strain_milli:0,need_from_recent_nap_milli:-3600000}}}],recovery:[{cycle_id:1,sleep_id:'sleep-1',score_state:'SCORED',score:{recovery_score:42}}]},observedAt:now.toISOString(),lastSync:now.toISOString(),connected:true};}
 test('WHOOP-01 time asleep excludes awake time; need uses signed nap adjustment; no prior-day substitution',()=>{
   const c=fixture(),v=whoopFacts(c,'Africa/Cairo',now);assert.equal(v.sleepHours,6);assert.equal(v.sleepNeedHours,8);assert.equal(v.recovery,42);
   assert.equal(whoopFacts(c,'Africa/Cairo',new Date('2026-10-29T10:00:00Z')).sleepHours,null);
@@ -19,4 +19,21 @@ test('WHOOP-03 read mode never syncs; short-lived cache and source sync timestam
   const transport:typeof fetch=async(url,init)=>{calls++;assert.ok(String(url).endsWith('/whoop-data'));assert.deepEqual(JSON.parse(String(init?.body)),{action:'read'});assert.equal(new Headers(init?.headers).get('authorization'),'Bearer SYNTHETIC_ACCESS_TOKEN');return Response.json({connected:true,records:fixture().records,sync_history:[{status:'complete',finished_at:'2026-10-28T09:00:00Z'}]});};
   await readWhoop(c,transport,now);assert.equal(c.lastSync,'2026-10-28T09:00:00Z');await readWhoop(c,transport,now);assert.equal(calls,1);
   await assert.rejects(readWhoop(c,transport,new Date(c.expiresAt)),/expired/);
+});
+
+test('WHOOP-04 exact recovery metrics, open physiological cycle energy and completed date-scoped workouts',()=>{
+ const c=fixture();c.records.recovery[0].score={recovery_score:42,hrv_rmssd_milli:35.5,resting_heart_rate:58,user_calibrating:false};
+ c.records.sleep[0].score.sleep_performance_percentage=75;c.records.sleep[0].score.sleep_efficiency_percentage=80;
+ c.records.cycle=[{id:1,start:'2026-10-27T23:00:00Z',end:null,updated_at:'2026-10-28T09:55:00Z',score_state:'SCORED',score:{strain:9.5,kilojoule:4184},step_count:6000}];
+ c.records.workout=[{id:'one',start:'2026-10-28T08:00:00Z',end:'2026-10-28T09:00:00Z',score_state:'SCORED',sport_name:'Synthetic training',score:{strain:7}},{id:'future',start:'2026-10-28T11:00:00Z',end:'2026-10-28T12:00:00Z',score_state:'SCORED',score:{strain:10}}];
+ const d=whoopFacts(c,'Africa/Cairo',now).details!;assert.equal(d.hrv,35.5);assert.equal(d.rhr,58);assert.equal(d.sleepPerformance,75);assert.equal(d.sleepEfficiency,80);assert.equal(d.calibrating,false);assert.equal(d.cycle?.energyKcal,1000);assert.equal(d.cycle?.strain,9.5);assert.equal(d.cycle?.steps,6000);assert.equal(d.workouts.length,1);assert.equal(d.workouts[0].minutes,60);
+});
+test('WHOOP-05 newer pending versions suppress obsolete scores; closed/old cycles and absent values are unknown',()=>{
+ const c=fixture();c.records.sleep.push({...c.records.sleep[0],updated_at:'2026-10-28T08:00:00Z',score_state:'PENDING_SCORE'});assert.equal(whoopFacts(c,'Africa/Cairo',now).sleepHours,null);
+ c.records.cycle=[{id:1,start:'2026-10-27T23:00:00Z',end:'2026-10-28T08:00:00Z',score_state:'SCORED',score:{strain:10,kilojoule:4184}},{id:2,start:'2026-10-20T23:00:00Z',end:null,score_state:'SCORED',score:{strain:10,kilojoule:4184}}];assert.equal(whoopFacts(c,'Africa/Cairo',now).details?.cycle,null);
+ c.records.sleep=fixture().records.sleep;c.records.recovery[0].score={hrv_rmssd_milli:-5,resting_heart_rate:0};const d=whoopFacts(c,'Africa/Cairo',now).details!;assert.equal(d.hrv,null);assert.equal(d.rhr,null);assert.equal(d.sleepPerformance,null);assert.equal(d.calibrating,null);
+});
+test('WHOOP-06 read retains only four bounded health collections and never leaks raw extras through facts',async()=>{
+ const c=fixture();c.observedAt=null;await readWhoop(c,async()=>Response.json({connected:true,records:{...fixture().records,cycle:[],workout:[],private_other:[{secret:'DO_NOT_RETAIN'}]},sync_history:[]}),now);assert.ok(!JSON.stringify(c.records).includes('DO_NOT_RETAIN'));assert.deepEqual(Object.keys(c.records),['sleep','recovery','cycle','workout']);assert.ok(!JSON.stringify(whoopFacts(c,'Africa/Cairo',now)).includes('SYNTHETIC_ACCESS_TOKEN'));
+ c.observedAt=null;await assert.rejects(readWhoop(c,async()=>Response.json({connected:true,records:{cycle:new Array(5001).fill({})}}),now),/response_too_large/);
 });

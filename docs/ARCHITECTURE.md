@@ -100,3 +100,8 @@ Added daily planner/journal components and pure date/agenda/transient-nutrition 
 ## Session 010 — 2026-10-31T15:01:58+02:00
 
 Portable backup is a browser-local boundary separate from the API vault. Fixed KDF parameters and bounded authenticated envelopes; validated owner-entered personal fields only. Restore uses the existing authenticated CSRF/revision-checked personal save route. No new endpoint or network provider.
+
+
+## Session 011 — 2026-11-01T17:32:39+02:00
+
+Home health projection consumes the existing read response, retaining four bounded collections server-session-only. Latest versions are deduplicated before SCORED filtering. WHOOP details use current observation/upstream freshness gating; only open scored cycles <=72h old contribute cycle values. Expenditure remains separate from diet arithmetic. New health details and ProgressXX snapshots are not added to AI context.

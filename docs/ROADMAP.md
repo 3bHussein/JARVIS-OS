@@ -68,3 +68,8 @@ Large personal-preview batch IMPLEMENTED/TESTED locally: daily hub, planner/jour
 ## Session 010 — 2026-10-31T15:01:58+02:00
 
 IMPLEMENTED portable personal backup/restore. TESTED pure crypto roundtrip/tamper/bounds/capacity and development UI journey. M1/M3 overall IN PROGRESS; native packaging, real source integration/voice acceptance and multi-user production remain TODO.
+
+
+## Session 011 — 2026-11-01T17:32:39+02:00
+
+IMPLEMENTED Home WHOOP/ProgressXX daily source details and reviewable untimed notes/read-aloud. Local core64/64 TESTED; browser/remote verification pending at this entry. M3 remains IN PROGRESS: automatic delegated ProgressXX/Timesheet integration is still TODO. Native Windows/voice/model/production gates remain open.

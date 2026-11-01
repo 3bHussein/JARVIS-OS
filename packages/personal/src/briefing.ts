@@ -1,6 +1,7 @@
 import {clock,type Locale} from '../../core/src/index.ts';
 import {localInstant,type PersonalData} from './model.ts';
-export interface WhoopFacts {sleepHours:number|null;sleepNeedHours:number|null;recovery:number|null;observedAt:string|null;lastSync:string|null;date:string;}
+export interface WhoopDetails {hrv:number|null;rhr:number|null;sleepPerformance:number|null;sleepEfficiency:number|null;calibrating:boolean|null;sleepStart:string|null;sleepEnd:string|null;cycle:{start:string;updatedAt:string|null;strain:number|null;energyKcal:number|null;steps:number|null}|null;workouts:{start:string;end:string;minutes:number;name:string|null;strain:number|null}[];}
+export interface WhoopFacts {details?:WhoopDetails;sleepHours:number|null;sleepNeedHours:number|null;recovery:number|null;observedAt:string|null;lastSync:string|null;date:string;}
 export const science={sleep:'https://www.cdc.gov/sleep/about/index.html',recovery:'https://pubmed.ncbi.nlm.nih.gov/28247026/',sodium:'https://www.ausport.gov.au/ais/nutrition/supplements/group_a/sports-foods2/electrolyte-supplement2/how-and-when-do-i-use-it'};
 export function personalBriefing(data:PersonalData,now:Date,zone:string,locale:Locale,whoop:WhoopFacts|null=null){
   const c=clock(now,zone,locale),day=data.days.find(d=>d.date===c.date),ar=locale==='ar';
@@ -22,7 +23,7 @@ export function personalBriefing(data:PersonalData,now:Date,zone:string,locale:L
   if(day?.scheduleComplete&&data.profile){
     try{let start=Math.max(+now,Date.parse(localInstant(`${c.date}T${data.profile.dayStart}`,zone))),end=Date.parse(localInstant(`${c.date}T${data.profile.dayEnd}`,zone));
       start=Math.ceil(start/900000)*900000;
-      const busy=data.notes.filter(n=>n.at&&n.kind!=='note').map(n=>({start:Date.parse(n.at!),end:Date.parse(n.at!)+n.minutes*60000})).sort((a,b)=>a.start-b.start);
+      const busy=data.notes.filter(n=>!n.done&&n.at&&n.kind!=='note').map(n=>({start:Date.parse(n.at!),end:Date.parse(n.at!)+n.minutes*60000})).sort((a,b)=>a.start-b.start);
       for(const b of busy){if(b.end<=start||b.start>=end)continue;if(b.start-start>=900000){end=Math.min(end,b.start);break;}start=Math.max(start,b.end);}
       if(end-start>=900000)freeSlot={at:new Date(start).toISOString(),minutes:Math.min(30,Math.floor((end-start)/60000))};
     }catch{}

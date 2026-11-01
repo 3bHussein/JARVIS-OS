@@ -1,0 +1,24 @@
+{
+  "reviewedOn": "2026-11-01",
+  "repository": "3bHussein/Whoop-Intelligence-",
+  "head": "22f16886dc3fca87220fcc8ee11352deb5a3bd33",
+  "blobs": {
+    "supabase/functions/whoop-data/index.ts": "f1390788bd756ebcf91ec46c156f2883e919ac22",
+    "assets/daily-home.js": "ba220ae17686c2c5ae435eb2037c153e06a24952"
+  },
+  "officialReferences": [
+    "https://developer.whoop.com/docs/developing/user-data/cycle/",
+    "https://developer.whoop.com/docs/developing/user-data/recovery/",
+    "https://supabase.com/changelog",
+    "https://supabase.com/docs/guides/functions/auth"
+  ],
+  "change": "JARVIS-only display projection of existing read payload; no auth or source backend change",
+  "productionQueries": false,
+  "realAccountAcceptance": false,
+  "notes": [
+    "Fixed existing read action, no vendor sync",
+    "No service-role credential in JARVIS",
+    "Physiological cycle is not a calendar-day energy total",
+    "Supabase markdown docs fetch unsupported; HTML fallback reviewed"
+  ]
+}
