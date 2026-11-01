@@ -27,3 +27,8 @@ Primary platform references reviewed 2026-11-01:
 - https://developer.mozilla.org/en-US/docs/Web/API/Notification/silent
 - https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService
 - https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/speak
+
+
+## Exact-source automated acceptance — 2026-11-01
+
+Source44803d8 passed Linux/Windows CI41331314833:67 registered Node cases and36/36 development plus36/36 built-browser journeys on Linux. Downloaded archive hashes and actual extracted Linux setup/browser controls passed with synthetic TTS/Notification objects. This supersedes the initial pending-acceptance status for automated scope only. Physical speaker/notification quality remains TODO.
