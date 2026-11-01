@@ -26,7 +26,7 @@ WHOOP energy/strain refer to its physiological cycle. JARVIS shows an eligible o
 
 ## Everyday flow
 
-Open Start-JARVIS-Built.bat → unlock → Overview. Review sleep/food, current WHOOP metrics and upcoming real appointments. Use Planner to add a task or workout time, Check-in to record manual values, and Sources to reconnect or replace a file. Details stay collapsed until requested. Notes remain until you review them. Read my briefing needs a suitable device voice, or your separate explicit permission for network speech voices. Silent startup is available.
+Open Start-JARVIS-Built.bat → unlock → Overview. Review sleep/food, current WHOOP metrics and upcoming real appointments. Use Planner to add a task or workout time, Check-in to record manual values, and Sources to reconnect or replace a file. Details stay collapsed until requested. Notes remain until you review them. Read my briefing needs a suitable device voice, or your separate explicit permission for network speech voices. Silent startup is on by default. Uncheck it before the next unlock to opt into a once-per-unlock greeting with a suitable reported device voice. Open the session-only reminders control to opt in; desktop delivery needs a separate permission click. Closing/locking or browser suspension can stop reminders. See WELCOME-AND-REMINDERS.md.
 
 Chat and speech engines are separate optional configuration, not prerequisites for the daily workspace. See ASSISTANT-ENGINES.md and LOCAL-SPEECH.md. Their real Egyptian-Arabic accuracy, latency and quality remain untested. Voice review never sends a recognized command automatically. There is no wake word or native Windows automation in this preview.
 

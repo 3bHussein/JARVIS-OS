@@ -54,3 +54,8 @@ TODO physical Windows/browser encrypted export/restore acceptance; independent s
 ## Session 011 — 2026-11-01T17:32:39+02:00
 
 TODO actual owner WHOOP Intelligence local sign-in/read and source-field comparison; ProgressXX own-file compatibility; physical Windows combined daily workflow. Automated device estimates/data projections do not certify medical accuracy. Confirm DAILY-QUICKSTART included in downloaded archive. No release/deployment authorization inferred.
+
+
+## Session 012 — 2026-11-01T19:22:58+02:00
+
+TODO physical Windows browser permission/notification click/close/silent behavior and real Arabic/English welcome voice acceptance. Verify no task/health text in OS notifications. Confirm open-workspace reminder limits and quiet default in combined user review. No closed-app alarms or signed native release claim.

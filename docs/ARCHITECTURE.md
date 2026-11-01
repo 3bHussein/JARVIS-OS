@@ -105,3 +105,8 @@ Portable backup is a browser-local boundary separate from the API vault. Fixed K
 ## Session 011 — 2026-11-01T17:32:39+02:00
 
 Home health projection consumes the existing read response, retaining four bounded collections server-session-only. Latest versions are deduplicated before SCORED filtering. WHOOP details use current observation/upstream freshness gating; only open scored cycles <=72h old contribute cycle values. Expenditure remains separate from diet arithmetic. New health details and ProgressXX snapshots are not added to AI context.
+
+
+## Session 012 — 2026-11-01T19:22:58+02:00
+
+Voice welcome is a client session gate over validated personal briefing readiness, document visibility, active tab and reported-local voice selection. Quiet by default; user interaction/manual synthesis consumes the gate. Reminders are an opt-in client-session poll with occurrence receipts, separate browser notification permission and generic payload. No persistent/background delivery service or new backend endpoint.

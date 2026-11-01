@@ -32,3 +32,8 @@ Tested download: https://github.com/3bHussein/JARVIS-OS/actions/runs/41063204345
 ## Optional recovery step in the combined trial
 
 After adding synthetic practice notes, use You & privacy → Encrypted backup & restore. Export with an independent password, verify the downloaded file exists, unlock its preview, cancel replacement once, then confirm with RESTORE. Do not experiment on irreplaceable records without a separate current backup. See PORTABLE-BACKUP.md.
+
+
+## Optional assistant experience in the combined review
+
+Uncheck Silent startup before the next unlock; with a suitable local voice, open Overview and listen for one real briefing. Refresh/tab changes must not repeat it. Reminders are separately off by default: enable while the workspace stays open, record a future task time, optionally grant generic desktop delivery and inspect its privacy. Turn delivery off/lock afterward. No background/closed-app guarantee; see WELCOME-AND-REMINDERS.md.

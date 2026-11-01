@@ -100,3 +100,5 @@ After setup, run `npm run build`, then `Start-JARVIS-Built.bat` (or `npm run sta
 Portable recovery: [Encrypted personal backups](docs/PORTABLE-BACKUP.md) includes independent-password export and reviewed replacement. Preview only; real-device acceptance remains open.
 
 For daily setup and source limitations: [Daily quickstart](docs/DAILY-QUICKSTART.md). Home now includes recorded WHOOP cycle/recovery details, ProgressXX file context and untimed-note review. Automatic ProgressXX sync remains unconnected.
+
+Assistant experience: [Voice welcome and recorded reminders](docs/WELCOME-AND-REMINDERS.md). Optional device-voice greeting and session-only reminders; no closed-app/native scheduler claim.

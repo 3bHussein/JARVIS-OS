@@ -87,3 +87,8 @@ No integration endpoint/auth change. Portable backup excludes WHOOP and transien
 ## Session 011 — 2026-11-01T17:32:39+02:00
 
 WHOOP source re-read on2026-11-01: main22f16886dc3fca87220fcc8ee11352deb5a3bd33 unchanged; whoop-data blob f1390788bd756ebcf91ec46c156f2883e919ac22, daily-home blob ba220ae17686c2c5ae435eb2037c153e06a24952. Read already exposes cycle/workout; JARVIS now projects safe bounded display fields. Same original session consent/short-lived token/fixed read endpoint; no service credentials/new OAuth/vendor sync. No original repo/DB changes. WHOOP official cycle/recovery docs and Supabase auth/changelog reviewed. No actual owner-health read. ProgressXX remains local full-backup-v3 projection only.
+
+
+## Session 012 — 2026-11-01T19:22:58+02:00
+
+No external connector/auth/source endpoint changes. Reminder events use saved JARVIS owner entries only. Welcome uses already-read labelled briefing; no provider fetch or new health scope. Desktop payload has generic title/body only, no note or health fields. No changes to original repositories or production DB.

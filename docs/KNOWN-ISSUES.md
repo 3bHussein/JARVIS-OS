@@ -76,3 +76,8 @@ Portable backup requires its independent password; no reset. Browser memory/OS d
 ## Session 011 — 2026-11-01T17:32:39+02:00
 
 WHOOP open-cycle-only display can intentionally show unknown for closed cycles, cycles older than72h, unscored/missing records or stale sync; device energy is not a food target. HRV/RHR are displayed without personalized interpretation/baseline. Real source account acceptance still TODO. ProgressXX requires refreshed manual file import; no appointment time/session count/deload inferred. Real speech quality/native installer remain TODO.
+
+
+## Session 012 — 2026-11-01T19:22:58+02:00
+
+Browser timer throttling/suspension and app closure/lock prevent guaranteed reminder delivery. No service-worker/native scheduler. Desktop Notification constructor/silent support and actual audio playback vary; unsupported native delivery leaves in-app notices. A reported-local voice is metadata, not OS network attestation. Welcome may be blocked by autoplay or absent device voice; explicit Read my briefing remains available. Server expiry cleanup occurs when detected by existing session checks, not an OS-level immediate lock.

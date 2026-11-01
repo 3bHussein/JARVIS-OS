@@ -306,3 +306,20 @@ Downloaded artifact13089900144 JARVIS-OS-Personal-Preview,170952bytes, expires20
 Checkout aligned through named stash and fast-forward. Tool upload preparation initially exceeded output cap for all files together; split independent file reads and uploaded complete parsed content. This docs-only [skip ci] follow-up records evidence and updates the current download link, no separate runtime CI claim. PR none; deployment NOT DEPLOYED; release NOT RELEASED. User can begin daily personal use using DAILY-QUICKSTART; WHOOP local sign-in/ProgressXX own-file import require owner action in local UI, never credentials in chat. No extra small-feature trial requested.
 
 Exact next substantial work: source-approved delegated ProgressXX/Timesheet live-summary contract, real voice/model tests, native Tauri/Windows/OS-vault packaging and mobile/production gates. Original repositories/DBs/deployment remain outside mutation authorization. Preserve personal vault/original password and independent portable-backup password. Overall M3–M8 incomplete; do not call this v1.0 or automatic all-app integration.
+
+
+## Session 012 — 2026-11-01T19:22:58+02:00
+
+| Requirement | Evidence | Scope |
+|---|---|---|
+| Opt-in/reminder grace/completion/occurrence deduplication | REMIND-01 | Synthetic time/notes |
+| Welcome readiness/quiet/visibility/local voice/interaction/session gate | WELCOME-01/02 | Pure session gate |
+| Permission-only-on-click, generic silent desktop payload, once delivery and Planner navigation | UI-35 | Virtual clock + synthetic Notification |
+| Ready-context once-per-unlock device greeting and lock resets | UI-36 | Synthetic speech objects |
+
+Local Node67/67/typecheck/build and development36/36 PASS at entry; built/launcher/remote pending. No real voice/physical Windows acceptance.
+
+
+### Session012 final local acceptance
+
+TESTED:67/67 Node cases/typecheck/build PASS;36/36 development and36/36 built-browser scenarios PASS; launcher3/3 PASS; Python worker4/4 PASS. Notification/TTS are synthetic, timing is a virtual browser clock, and records are synthetic. They do not establish physical Windows notification delivery, OS sound policy, voice quality or closed-app scheduling. Evidence assistant-daily-*.txt. No runtime edits during the final serial browser runs. Exact-source remote CI/archive verification pending. No PR/deployment/release.

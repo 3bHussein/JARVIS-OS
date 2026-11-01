@@ -73,3 +73,8 @@ IMPLEMENTED portable personal backup/restore. TESTED pure crypto roundtrip/tampe
 ## Session 011 — 2026-11-01T17:32:39+02:00
 
 IMPLEMENTED Home WHOOP/ProgressXX daily source details and reviewable untimed notes/read-aloud. Local core64/64 TESTED; browser/remote verification pending at this entry. M3 remains IN PROGRESS: automatic delegated ProgressXX/Timesheet integration is still TODO. Native Windows/voice/model/production gates remain open.
+
+
+## Session 012 — 2026-11-01T19:22:58+02:00
+
+IMPLEMENTED optional one-shot voice welcome and session-only in-app/desktop-generic reminders. TESTED Node67/67 and dev36/36 at this entry; final built/remote evidence pending. M5/M6 remain IN PROGRESS: actual speech quality, native scheduling/tray/startup/installer and closed-app notification acceptance are TODO.
