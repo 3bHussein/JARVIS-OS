@@ -98,3 +98,8 @@ ADR: expose clear save-versus-session choice instead of silently enabling storag
 ## Session016 — 2026-11-02T14:45:01.942826+00:00
 
 ADR016: use a no-IPC fixed-origin Tauri2 host first, preserving the tested Node runtime and encrypted file format. This reduces native surface but requires step02 and separate WebView login; external app launches are blocked in the native preview. No installation/signing/tray/Agent claims. Direct Rust crates pinned; generated transitive lock must be captured and committed after bootstrap CI.
+
+
+## Session016 final status — 2026-11-02T14:57:03.396000+00:00
+
+ADR016 acceptance: the fixed-origin no-IPC host compiled and passed Rust/EXE probes on Windows CI. Retain separately owned Node runtime for this preview; add sidecar lifecycle/secure Agent only with dedicated tests. Windows checkout CRLF is normalized only when comparing lock to Git source; archive manifest hashes remain byte-exact. See TEST-REPORT.md and docs/evidence/desktop-final-ci.json.

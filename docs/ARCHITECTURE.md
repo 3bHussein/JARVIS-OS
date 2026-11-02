@@ -130,3 +130,8 @@ First-use presentation derives only from validated data and existing fresh Home 
 ## Session016 — 2026-11-02T14:45:01.942826+00:00
 
 M6 IMPLEMENTED source: optional Tauri2 host restricted to127.0.0.1:5173 and static help. No renderer IPC/capabilities/plugins. Native menu only; existing Node runtime remains independently owned by step02. WebView storage differs from browser. No sidecar, Agent, OS vault or native scheduler yet. See DESKTOP-PREVIEW.md.
+
+
+## Session016 final status — 2026-11-02T14:57:03.396000+00:00
+
+M6 optional fixed-origin Tauri host now has compiled Windows x64 evidence and a committed crates.io dependency lock. Existing Node/API/vault architecture and browser mode unchanged. No renderer IPC, plugins or OS action permissions introduced; no bundled runtime/installer. See TEST-REPORT.md and docs/evidence/desktop-final-ci.json.

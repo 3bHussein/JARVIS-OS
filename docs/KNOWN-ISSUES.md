@@ -101,3 +101,8 @@ First-use progress counts recorded choices, not integration completeness or heal
 ## Session016 — 2026-11-02T14:45:01.942826+00:00
 
 M6 native host requires existing02 runtime, Node24 and Windows WebView2; no automatic runtime lifecycle. Browser and native sessions/preferences differ. Save encrypted records before switching. External/new-window launches denied. GUI/microphone/TTS/downloads/notifications untested in WebView2. Initial Rust graph/CI build pending; no local Rust toolchain. Not an installer.
+
+
+## Session016 final status — 2026-11-02T14:57:03.396000+00:00
+
+Final automated build/package gates passed; initial missing local Rust is covered by exact-source Windows CI, not local native execution. Initial archive lock byte difference was Windows CRLF only, with identical normalized source/graph. Physical WebView2 GUI/audio/download/notification acceptance remains TODO. Host requires02 and separate unlock, blocks external windows and does not auto-lock or own runtime. See TEST-REPORT.md and docs/evidence/desktop-final-ci.json.

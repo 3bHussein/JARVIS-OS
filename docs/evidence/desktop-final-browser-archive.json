@@ -1,0 +1,12 @@
+{
+  "source": "674106f360a944821e5f84e4a029fcd575f52d49",
+  "sha256": "ed4a8bef1d9f066c37c2afa608ad0f8a0cd5c1dbcdda7334d87747c8357331ea",
+  "archiveBytes": 193534,
+  "manifestFiles": 53,
+  "allHashesMatch": true,
+  "noUnlistedFiles": true,
+  "noHiddenFiles": true,
+  "native": false,
+  "physicalWindowsGuiAcceptance": false,
+  "ownerDataUsed": false
+}

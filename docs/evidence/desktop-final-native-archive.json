@@ -1,0 +1,15 @@
+{
+  "source": "674106f360a944821e5f84e4a029fcd575f52d49",
+  "sha256": "a237591f9ac652262a9cf78f3c6c2b289bbc1d8a4ae66b3b836c5a7660744083",
+  "archiveBytes": 2975842,
+  "manifestFiles": 58,
+  "allHashesMatch": true,
+  "noUnlistedFiles": true,
+  "noHiddenFiles": true,
+  "native": true,
+  "physicalWindowsGuiAcceptance": false,
+  "ownerDataUsed": false,
+  "peMachine": "x86_64",
+  "lockMatchesCommittedSourceAfterCheckoutNewlineNormalization": true,
+  "checkoutCrLfNotDependencyChange": true
+}

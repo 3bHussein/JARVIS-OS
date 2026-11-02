@@ -2,17 +2,17 @@
 
 An original personal AI command center, built as a separate hybrid application.
 
-**Current status: personal preview 0.1.0 — not a production release.** A bilingual daily workspace combines a source-labelled briefing, planner, journal, optional WHOOP saved-record reads and a transient ProgressXX backup view. Optional Ollama conversation and reviewed speech are wired; real model/voice/device acceptance, automatic delegated integrations, PWA and full native/device acceptance remain open. An optional Tauri window host is under CI acceptance; it requires the existing step02 runtime.
+**Current status: personal preview 0.1.0 — not a production release.** A bilingual daily workspace combines a source-labelled briefing, planner, journal, optional WHOOP saved-record reads and a transient ProgressXX backup view. Optional Ollama conversation and reviewed speech are wired; real model/voice/device acceptance, automatic delegated integrations, PWA and full native/device acceptance remain open. An optional Tauri window host passed Windows build/CLI acceptance; actual WebView2 GUI/device acceptance remains open and it requires the existing step02 runtime.
 
 ## Try one complete preview
 
-Download **JARVIS-OS-Personal-Preview** from the [tested preview download](https://github.com/3bHussein/JARVIS-OS/actions/runs/41440593912#artifacts), extract into a new folder, install Node.js 24+ if needed, then read **00-READ-FIRST.md**, run **01-Setup-JARVIS.bat**, then **02-Start-JARVIS.bat**. Optional AI/voice setup is **03-Configure-AI-Voice.bat**. The artifact needs no npm install or build. Unlock from Settings with the local password you chose. No account credentials, models or personal data are bundled.
+Download **JARVIS-OS-Personal-Preview** from the [tested preview download](https://github.com/3bHussein/JARVIS-OS/actions/runs/41465987871#artifacts), extract into a new folder, install Node.js 24+ if needed, then read **00-READ-FIRST.md**, run **01-Setup-JARVIS.bat**, then **02-Start-JARVIS.bat**. Optional AI/voice setup is **03-Configure-AI-Voice.bat**. The artifact needs no npm install or build. Unlock from Settings with the local password you chose. No account credentials, models or personal data are bundled.
 
 Follow the [single combined acceptance journey](docs/USER-ACCEPTANCE.md). This is a local browser preview, not an EXE/Tauri installer. Keep the launcher open; Ctrl+C stops it. Preserve an older installation's private config/data/password instead of overwriting it.
 
 From a fresh source checkout or Code → Download ZIP: run **01-Setup-JARVIS.bat**; it detects the missing compiled web folder, installs locked dependencies and builds it. Then run **02-Start-JARVIS.bat**. A source setup needs Internet/npm on the first run. Legacy Setup-JARVIS-Preview.bat now also handles a complete source copy instead of exposing a raw ENOENT. The original Start-JARVIS.bat remains the development launcher. [Run guide](docs/RUN-LOCALLY.md).
 
-Optional Windows native host: see [desktop preview scope and steps](docs/DESKTOP-PREVIEW.md). It requires the separate Windows Desktop Preview artifact, WebView2 and the existing step02 runtime; it is not an installer. Browser sessions do not migrate automatically.
+Optional Windows native host: download **JARVIS-OS-Windows-Desktop-Preview** from the [tested Windows build](https://github.com/3bHussein/JARVIS-OS/actions/runs/41465987871#artifacts), then see [desktop preview scope and steps](docs/DESKTOP-PREVIEW.md). It requires the separate Windows Desktop Preview artifact, WebView2 and the existing step02 runtime; it is not an installer. Browser sessions do not migrate automatically.
 
 ## Run the foundation
 

@@ -98,3 +98,8 @@ IMPLEMENTED first-use recorded-input checklist/storage choice and reviewed local
 ## Session016 — 2026-11-02T14:45:01.942826+00:00
 
 M6 IN PROGRESS: native-host source, bilingual help, policy tests and Windows CI packaging implemented. TODO: exact native compilation/probe acceptance, committed Cargo.lock, physical WebView2 GUI/device tests; later owned runtime, installer/signing, tray and allowlisted Windows Agent.
+
+
+## Session016 final status — 2026-11-02T14:57:03.396000+00:00
+
+M6 IN PROGRESS: Windows native build, Rust3/3, EXE CLI5/5 and downloaded58-file artifact audit TESTED on exact source674106f. Physical GUI/device, owned runtime, installer/signature, tray/autostart and Agent remain TODO. M8 not released. See TEST-REPORT.md and docs/evidence/desktop-final-ci.json.

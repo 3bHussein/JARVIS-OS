@@ -79,3 +79,8 @@ TODO owner combined first-use/storage/quick-entry acceptance and actual local vo
 ## Session016 — 2026-11-02T14:45:01.942826+00:00
 
 M6 native preview gates: [ ] Windows Rust compilation/tests; [ ] committed Cargo.lock/exact-source rerun; [ ] EXE CLI/API synthetic smoke; [ ] downloaded manifest/provenance inspection; [ ] physical Windows GUI/WebView2 and device acceptance. Installer/signature/tray/autostart/Agent remain TODO. No deployment/release authorized.
+
+
+## Session016 final status — 2026-11-02T14:57:03.396000+00:00
+
+M6 automated gates VERIFIED: committed lock, exact-source three-job CI, native Rust3/3/EXE CLI5/5, archive manifest/AMD64/provenance. Physical WebView2 GUI/voice/session/file acceptance remains unchecked. No installer/signature/deployment/release. See TEST-REPORT.md and docs/evidence/desktop-final-ci.json.

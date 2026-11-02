@@ -1,0 +1,17 @@
+{
+  "source": "674106f360a944821e5f84e4a029fcd575f52d49",
+  "artifact": 13153235836,
+  "platform": "linux",
+  "checks": {
+    "noDependencies": true,
+    "setupBuiltOnly": true,
+    "actualExtractedRuntimeReady": true,
+    "uiServed": true,
+    "privateEndpointRejectsUnauthenticated": true,
+    "syntheticOwnerLogin": true,
+    "ownedShutdown": true
+  },
+  "syntheticOnly": true,
+  "nativeExeExecutedOnLinux": false,
+  "guiDeviceAcceptance": false
+}
