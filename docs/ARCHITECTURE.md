@@ -120,3 +120,8 @@ Local engine configuration stays outside the browser/API write surface. Terminal
 ## Session014 — 2026-11-02T13:31:37+02:00
 
 Installation preflight separates valid compiled preview, complete source with missing web bundle and incomplete copy. Complete source fallback uses locked npm installation and local pinned Vite CLI, not another app or arbitrary remote code. Preview runtime remains Node24 with selected source modules/no npm dependencies. Built launcher validates the same bounded bundle reader before spawning the service.
+
+
+## Session015 — 2026-11-02T13:54:55+02:00
+
+First-use presentation derives only from validated data and existing fresh Home values. Persistence promotion passes remember=true explicitly on the existing owner save request; no new endpoint. Session acknowledgement stays in React memory. Quick capture stages one PersonalNote with revision and requires explicit confirmation; current API validation/limits/CSRF/conflict rules remain authoritative.

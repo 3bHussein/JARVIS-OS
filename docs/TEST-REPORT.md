@@ -384,3 +384,14 @@ Source e54ccde49dd8d572cc03cd431fe89e2ac9e29fa4 (`fix: prepare source ZIP builds
 Downloaded artifact13137022030 JARVIS-OS-Personal-Preview,188026bytes, expires2026-11-16T11:33:10Z. ZIP SHA256586601e9f77778ec0e3f00e12468dcd78a585c1699b6bead70c4ab12b2c3d53f matched metadata. All51 manifest files matched; no unlisted/hidden/private data/dependencies/models. Numbered files, installation helper and actual web build included. Extracted into repeated JARVIS-OS-main folders under a path with spaces. Actual Linux setup called from parent CWD passed without npm dependencies, preserved synthetic config, served UI/auth and shut down owned process. Then removed only the disposable test extraction's web bundle: setup rejected incomplete preview with clear recovery guidance/no raw ENOENT and preserved config. Evidence numbered-setup-downloaded.json. Config was created only after archive hash audit; no original/private owner files touched or signed URLs retained.
 
 Source aligned through named stash/fast-forward. Docs-only [skip ci] follow-up records evidence and current link, no separate runtime CI claim. PR none; deployment NOT DEPLOYED; release NOT RELEASED. User instruction: download complete updated package, keep older private installation, read00, run01 once,02 daily,03 optional. A source ZIP is now supported through step01 but requires initial npm/Internet; a complete ready-built artifact does not. Don't copy only a new BAT into an old folder because its helper/scripts must accompany it. Next: owner startup acceptance, remaining automatic integrations/native/voice/production gates. Overall project incomplete.
+
+
+## Session015 — 2026-11-02T13:54:55+02:00
+
+| Requirement | Evidence | Scope |
+|---|---|---|
+| Actual recorded choices, no fabricated values, zero distinct from missing | FIRST-01/02 | Synthetic unit data |
+| Quick preview no write, confirm once, stale revision block and draft retention | UI-38 | Real local API + synthetic owner records |
+| Explicit persistence promotion and correct state/Arabic bounds | UI-39 | Real encrypted store + synthetic records |
+
+Final local72/72/typecheck/build, dev39/39, built39/39 and launcher5/5 PASS. Initial auth-limit/mount/label attempts failed and were corrected before final acceptance. No real accounts/model/physical device certification.

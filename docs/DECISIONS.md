@@ -88,3 +88,8 @@ ADR: use a local terminal wizard rather than add an HTTP endpoint that writes .e
 ## Session014 — 2026-11-02T13:31:37+02:00
 
 ADR: preserve legacy filenames and add ordered aliases rather than break existing shortcuts. Repair complete source downloads through the same preview setup; fail with extraction guidance when source/build inputs are incomplete. Normalize missing-dist errors before password/setup or API spawn. Repeated nested folder names are supported; do not tell users to delete private files to repair a missing build.
+
+
+## Session015 — 2026-11-02T13:54:55+02:00
+
+ADR: expose clear save-versus-session choice instead of silently enabling storage. Five recorded-input steps are not readiness/health scoring. Quick capture uses explicit form fields and review, not guessed natural-language dates or model writes. Stale local previews require another review even if only another field changed.

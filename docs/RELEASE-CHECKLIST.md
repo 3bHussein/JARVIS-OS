@@ -69,3 +69,8 @@ TODO physical Windows engine wizard, existing real model/STT setup and quality a
 ## Session014 — 2026-11-02T13:31:37+02:00
 
 Check START06/07 on Windows CI, numbered BAT help from nested path, packaged setup without dependencies and friendly incomplete-copy instructions. Confirm numbered guide/aliases/helper in manifest. Preserve original owner env/vault/password. No signed EXE/native release claim.
+
+
+## Session015 — 2026-11-02T13:54:55+02:00
+
+TODO owner combined first-use/storage/quick-entry acceptance and actual local voice/model/source validation. Confirm no write on preview, one on confirmation, persisted current records and no invented appointments. Preserve session records via encrypted saving/portable backup before changing installations. No release/native installer claim.

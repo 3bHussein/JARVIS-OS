@@ -104,3 +104,5 @@ For daily setup and source limitations: [Daily quickstart](docs/DAILY-QUICKSTART
 Assistant experience: [Voice welcome and recorded reminders](docs/WELCOME-AND-REMINDERS.md). Optional device-voice greeting and session-only reminders; no closed-app/native scheduler claim.
 
 Run Configure-JARVIS.bat for local engine selection without editing .env. [Engine setup](docs/ENGINE-SETUP.md) preserves your password and requires restart. Settings shows configuration flags, not inference certification.
+
+Home [first-use guidance and reviewed quick capture](docs/FIRST-USE.md) makes storage choices explicit and saves local notes/tasks only after preview and confirmation. No external action or automatic integration is implied.

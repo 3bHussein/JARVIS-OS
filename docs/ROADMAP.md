@@ -88,3 +88,8 @@ IMPLEMENTED local engine wizard and Settings configuration-readiness panel. Core
 ## Session014 — 2026-11-02T13:31:37+02:00
 
 IMPLEMENTED numbered setup/start/configuration sequence and source-ZIP missing-dist recovery. Local70/70 core/build and5/5 launcher TESTED; exact-source Windows and archive audit pending. Native installer/voice/automatic integration milestones unchanged.
+
+
+## Session015 — 2026-11-02T13:54:55+02:00
+
+IMPLEMENTED first-use recorded-input checklist/storage choice and reviewed local Home capture. Local72/72 core,39/39 dev+39/39 built and5/5 launchers TESTED. Exact-source remote/archive verification pending. M3/M4/native/voice/production completion is not inferred.

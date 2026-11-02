@@ -7,7 +7,7 @@ This is the local personal preview. It is not the complete hybrid desktop/cloud 
 1. Download `JARVIS-OS-Personal-Preview` from the tested Actions run linked in the repository README. Extract into a **new** folder. Keep any older installation and its private files intact.
 2. Install Node.js 24 or later if unavailable. Read `00-READ-FIRST.md`. Run `01-Setup-JARVIS.bat`, choose your own local password, then run `02-Start-JARVIS.bat`. Keep the terminal open. No npm install or build is required in this download.
 3. In the browser, open Settings, unlock with that password and select Arabic/English plus your IANA timezone. Overview opens your private daily workspace.
-4. Enter your profile. In You & privacy, choose encrypted local storage and press Save current data if you want it after closing. Otherwise edits are session-only. Keep the original local password; changing it does not decrypt an older vault.
+4. Enter your profile. Use Save current data encrypted on the session-only Home banner, or choose encrypted local storage in You & privacy and press Save current data, if you want it after closing. Otherwise edits are session-only. Keep the original local password; changing it does not decrypt an older vault.
 
 ## Make Home useful
 
@@ -47,3 +47,5 @@ Use USER-ACCEPTANCE.md only for one combined review when ready. No real account,
 
 
 Source ZIP note: missing apps/web/dist is expected in a fresh source download. Step01 builds it from the complete source and lockfile. A ready-built preview already includes it. An incomplete preview cannot build itself without source; re-extract the complete artifact into a new folder. Existing private config/data must be preserved.
+
+Home quick capture lets you preview and explicitly confirm a note/task/workout without leaving Home. Confirmed entries appear in Planner; no model executes the save. See FIRST-USE.md.

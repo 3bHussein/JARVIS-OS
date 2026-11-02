@@ -102,3 +102,8 @@ No connector/auth/backend/source repo changes. Wizard reads only fixed localhost
 ## Session014 — 2026-11-02T13:31:37+02:00
 
 No connector, source app, API auth or production DB changes. Source preparation only operates in the selected JARVIS installation root; ready-built preview requires no dependency install/build. No private records/config are packaged or deleted.
+
+
+## Session015 — 2026-11-02T13:54:55+02:00
+
+No connector, source-app/auth or production DB changes. WHOOP/file freshness feeds existing Home values before checklist; imported data still excluded from personal storage/model context. New confirmed entries are JARVIS owner notes only, not ProgressXX workouts or external tasks. Existing personal AI-context opt-in remains unchanged.

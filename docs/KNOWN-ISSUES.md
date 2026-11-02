@@ -91,3 +91,8 @@ Wizard checks model-name metadata/file presence, not real inference/dependencies
 ## Session014 — 2026-11-02T13:31:37+02:00
 
 Fresh GitHub source ZIPs exclude ignored apps/web/dist by design. Numbered setup now builds missing assets for a complete source copy; Internet/npm needed unless dependencies are already present. Incomplete preview without source cannot self-repair and requires full re-extraction. Local test uses installed dependencies, not a live npm download. Existing source edits with valid old dist still require an explicit rebuild. Owner D drive and physical Windows not accessed.
+
+
+## Session015 — 2026-11-02T13:54:55+02:00
+
+First-use progress counts recorded choices, not integration completeness or health quality. Session-only acknowledgement resets on reload/lock and does not erase older encrypted data. Encrypted save excludes unsaved form drafts. Quick capture needs explicit dates/times; no natural-language scheduling. Failed/stale previews retain drafts, but lock/reload clears them. No owner screenshot data used for synthetic acceptance.

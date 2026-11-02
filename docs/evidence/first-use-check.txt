@@ -1,0 +1,109 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 check
+> npm run typecheck && npm test && npm run build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 typecheck
+> tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 test
+> node --test tests/*.test.ts
+
+✔ AI-01 fixed loopback non-streaming adapter and tool-call rejection (7.142327ms)
+✔ AI-02 rejects invalid input, oversized responses, redirects/errors and incomplete results (19.038092ms)
+✔ AI-HTTP-01 authentication, CSRF, scope separation, follow-ups, clear and no sensitive audit strings (266.357044ms)
+✔ AI-HTTP-02 clear aborts pending work and prevents stale completion from restoring memory (120.083007ms)
+✔ AUTH-01 salted hash, bounded input, expiring revocable session (139.413162ms)
+✔ AUTH-02 HTTP auth, CSRF, origin, redacted audit, writes and logout (207.221702ms)
+✔ AUTH-03 unconfigured auth fails closed and login rate limited (281.51821ms)
+✔ BACKUP-01 authenticated portable encryption, random salt/IV, multilingual roundtrip and exclusion (582.381972ms)
+✔ BACKUP-02 rejects oversized, unknown KDF/version and invalid passwords before expensive work (1.291775ms)
+✔ BACKUP-03 maximum multilingual note capacity stays within the portable bound (322.104441ms)
+✔ TIME-01 greeting boundaries use configured timezone (20.452642ms)
+✔ TIME-02 Cairo DST and local date rollover (0.918967ms)
+✔ DATA-01 no invented tasks and stale/future source excluded (0.523403ms)
+✔ SEC-01 writes and corporate tools fail closed (0.218898ms)
+✔ SEC-02 nested redaction excludes free-text secrets (0.448531ms)
+✔ VOICE-01 uncertainty requires review; bilingual WER metric (0.932817ms)
+✔ AGENT-01 unknown application and absent approval denied (0.250896ms)
+✔ CONFIG-01 append-only overrides preserve credentials/comments/unknown values and Windows paths roundtrip (2.408307ms)
+✔ CONFIG-02 fixed-loopback discovery bounds and excludes remote/unsafe names without inference (5.578485ms)
+✔ CONFIG-03 validated paths and conflict-safe save preserve changed configuration (20.345532ms)
+✔ FIRST-01 empty context stays unknown and storage choice does not invent health or entries (1.105616ms)
+✔ FIRST-02 recorded zero is known; only actual profile/entry/persistence complete their steps (0.237115ms)
+✔ GH-01 disconnected never calls upstream (1.548109ms)
+✔ GH-02 arbitrary repository or prototype resource denied (0.477315ms)
+✔ GH-03 safe projection and bounded source provenance (8.617486ms)
+✔ GH-04 unauthorized, rate-limited, outage and malformed response (1.28881ms)
+✔ GH-05 upstream response byte limit fails closed (5.939265ms)
+✔ START-01 runtime and configuration fail safely without revealing secrets (11.095587ms)
+✔ START-02 occupied port is rejected without terminating its owner (10.253817ms)
+✔ LOCAL-STT-01 PCM bounds, resampling, malformed headers and strict base64 (4.572158ms)
+✔ LOCAL-STT-02 actual subprocess launch failure is normalized; pre-abort avoids spawning (9.466187ms)
+✔ LOCAL-STT-HTTP-01 auth, CSRF, no unconsented upload, exclusive worker, cancellation and safe audit (165.347613ms)
+✔ PERSON-HTTP-01 encrypted consent, revision guards, health consent/isolation and explicit erase (366.384482ms)
+✔ PERSON-HTTP-02 full multilingual note capacity survives encrypted save and reauthentication (263.066073ms)
+✔ PERSON-01 strict profile, dates, duplicates and unknown-vs-zero validation (3.62542ms)
+✔ PERSON-02 timezone scheduling rejects DST gaps and repeated hours (18.979906ms)
+✔ PERSON-03 calorie arithmetic is only target minus recorded food; unknown is not zero (1.383482ms)
+✔ PERSON-04 dated WHOOP freshness prevents old observations driving advice (0.476244ms)
+✔ PERSON-05 reminders are not silently discarded; free time requires explicit schedule completeness (1.039076ms)
+✔ VAULT-01 optional persistence is encrypted, survives restart and rejects stale revisions/wrong passwords (199.612471ms)
+✔ VAULT-02 session-only edits can later be persisted without hiding a real concurrent conflict (92.326085ms)
+✔ PERSON-06 completed commitments do not reserve free time after explicit schedule confirmation (0.912807ms)
+✔ PLAN-01 timezone agenda, due and overlap boundaries include cross-midnight reservations (21.984565ms)
+✔ PLAN-02 completed entries stay visible but do not reserve/conflict or become due (1.833186ms)
+✔ PLAN-03 calendar movement and local edit roundtrip are date-specific (1.246247ms)
+✔ PLAN-04 selected nutrition snapshot cannot overwrite manual data or silently use stale values (0.588752ms)
+✔ PLAN-05 invalid note calendar/time cannot roll into a different day (1.075841ms)
+✔ VOICE-02 default/read-aloud selects reported local voices and blocks remote/unknown metadata without consent (0.348852ms)
+✔ PREVIEW-01 clean artifact omits private files, contains runtime bundle and valid hashes (119.522958ms)
+✔ PREVIEW-02 packaging creates a new directory and never deletes an existing preview config (155.177016ms)
+✔ PROGRESS-01 v3 file projection, real arithmetic, schedule labels and no sensitive extras (1.981106ms)
+✔ PROGRESS-02 unknown versus zero, incomplete/duplicate/unsupported records fail closed (1.065896ms)
+✔ PROGRESS-03 equal weighting per measured day, future exclusion and explicit stale snapshot (0.357966ms)
+✔ REMIND-01 explicit arming, grace boundary, completion and once-per-occurrence delivery (3.130608ms)
+✔ WELCOME-01 ready/visible/device-voice gate fires once and does not interrupt interaction (0.452838ms)
+✔ WELCOME-02 quiet and explicit speech consume the session; locked sessions never greet (0.172809ms)
+✔ STATUS-01 authenticated provenance, per-session cache, blocked corporate and revoked in-flight read (179.845973ms)
+✔ BUNDLE-01 immutable in-memory allowlist excludes private files and requires valid hashed entries (13.245884ms)
+✔ BUNDLE-02 symlink assets cannot expose outside bundle (8.625626ms)
+✔ BUNDLE-HTTP-01 public built UI, cache/CSP, denied private paths and preserved API auth/origin (101.289416ms)
+✔ WHOOP-01 time asleep excludes awake time; need uses signed nap adjustment; no prior-day substitution (23.238386ms)
+✔ WHOOP-02 credentials go only to fixed auth host and no refresh/OAuth token is retained (5.726995ms)
+✔ WHOOP-03 read mode never syncs; short-lived cache and source sync timestamps are distinct (2.155017ms)
+✔ WHOOP-04 exact recovery metrics, open physiological cycle energy and completed date-scoped workouts (0.917063ms)
+✔ WHOOP-05 newer pending versions suppress obsolete scores; closed/old cycles and absent values are unknown (0.932406ms)
+✔ WHOOP-06 read retains only four bounded health collections and never leaks raw extras through facts (1.808448ms)
+✔ PREF-01 validate stored settings and exclude private data (18.235255ms)
+✔ CACHE-01 configured is not ready; dedup, cache TTL and ETag revalidation (6.988223ms)
+✔ CACHE-02 sessions do not share results and failure preserves accurate history (3.875563ms)
+✔ CACHE-03 honor Retry-After across resources without hidden retries (0.829402ms)
+✔ CACHE-04 unauthorized discards cached metadata and configured token does not leak (0.785205ms)
+✔ CACHE-05 permission denial is not falsely labelled rate limiting (1.321649ms)
+ℹ tests 72
+ℹ suites 0
+ℹ pass 72
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1160.380002
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> jarvis-os@0.1.0 build
+> vite build --config apps/web/vite.config.ts
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 55 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:   0.30 kB
+dist/assets/index-BLIdjRvU.css   28.18 kB │ gzip:   7.18 kB
+dist/assets/index-DLVHFUKB.js   326.16 kB │ gzip: 104.31 kB
+✓ built in 982ms
