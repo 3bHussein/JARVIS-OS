@@ -10,7 +10,7 @@ Without an AI model the conversation supports local time, connected-source avail
 
 1. Install Ollama separately from https://ollama.com/ and select an already installed local model with `ollama list`. JARVIS never pulls or installs models automatically. Model size, hardware, Arabic quality and licensing require your own choice and acceptance.
 2. Disable Ollama cloud features in the **Ollama service's** environment using `OLLAMA_NO_CLOUD=1`, then restart Ollama. Alternatively merge `"disable_ollama_cloud": true` into its existing `~/.ollama/server.json` and restart; preserve any other settings. Setting this variable only in JARVIS's `.env` does not configure a separately running Ollama service. Confirm Ollama's log says cloud is disabled.
-3. Put `JARVIS_OLLAMA_MODEL=your-installed-model-name` in the local JARVIS `.env`. Do not use a cloud model. Restart Start-JARVIS.bat (or npm start). Leave the setting empty to disable the adapter.
+3. Run `Configure-JARVIS.bat` and select an existing local model (see ENGINE-SETUP.md), or manually put `JARVIS_OLLAMA_MODEL=your-installed-model-name` in the local JARVIS `.env`. Do not use a cloud model. Restart Start-JARVIS.bat (or npm start). Leave the setting empty to disable the adapter.
 4. Unlock JARVIS, open Overview → Assistant engine and privacy → Use local AI for messages.
 5. Profile/notes and sleep/food have **separate unchecked consent controls**. Enable only the context you want. Your typed message is always sent to the selected engine; never type passwords or corporate records.
 

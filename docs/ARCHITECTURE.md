@@ -110,3 +110,8 @@ Home health projection consumes the existing read response, retaining four bound
 ## Session 012 — 2026-11-01T19:22:58+02:00
 
 Voice welcome is a client session gate over validated personal briefing readiness, document visibility, active tab and reported-local voice selection. Quiet by default; user interaction/manual synthesis consumes the gate. Reminders are an opt-in client-session poll with occurrence receipts, separate browser notification permission and generic payload. No persistent/background delivery service or new backend endpoint.
+
+
+## Session013 — 2026-11-02T08:33:21+02:00
+
+Local engine configuration stays outside the browser/API write surface. Terminal wizard permits only three engine keys, fixed loopback installed-model read and existing path validation, then explicit SAVE and restart. Current runtime configuration remains immutable during a running process. Settings reads existing authenticated flags only; no inference readiness claim.

@@ -78,3 +78,8 @@ ADR: show actual source fields with compact details instead of inferring prescri
 ## Session 012 — 2026-11-01T19:22:58+02:00
 
 ADR: implement open-workspace reminders rather than claim a closed-app scheduler before native/PWA infrastructure. Default off, five-minute lateness limit and no pre-arming replay. Desktop payload is generic and silent-requested; privacy takes priority over displaying note text on the lock screen. Automatic welcome uses only reported device-local voices even if explicit speech has network consent.
+
+
+## Session013 — 2026-11-02T08:33:21+02:00
+
+ADR: use a local terminal wizard rather than add an HTTP endpoint that writes .env or starts arbitrary executables. Append validated overrides to preserve owner text/unknown credentials; reject unsafe env quoting and detected concurrent changes. No automatic model pull, Python execution or global Ollama setting mutation.

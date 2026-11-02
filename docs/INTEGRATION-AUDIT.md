@@ -92,3 +92,8 @@ WHOOP source re-read on2026-11-01: main22f16886dc3fca87220fcc8ee11352deb5a3bd33 
 ## Session 012 — 2026-11-01T19:22:58+02:00
 
 No external connector/auth/source endpoint changes. Reminder events use saved JARVIS owner entries only. Welcome uses already-read labelled briefing; no provider fetch or new health scope. Desktop payload has generic title/body only, no note or health fields. No changes to original repositories or production DB.
+
+
+## Session013 — 2026-11-02T08:33:21+02:00
+
+No connector/auth/backend/source repo changes. Wizard reads only fixed localhost Ollama /api/tags metadata and changes local JARVIS engine selections after explicit SAVE. No personal or health prompt is sent, model installed or engine executed. Existing cloud-disable requirement remains owner-configured in Ollama itself.

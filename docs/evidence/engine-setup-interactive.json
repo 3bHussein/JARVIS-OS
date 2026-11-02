@@ -1,0 +1,10 @@
+{
+  "platform": "Linux",
+  "scope": "Actual PTY wizard with synthetic temporary config",
+  "action": "Disable AI, typed SAVE",
+  "changedEngineSetting": true,
+  "preservedPasswordHash": true,
+  "preservedUnrelatedSetting": true,
+  "realEngineTest": false,
+  "physicalWindowsTest": false
+}

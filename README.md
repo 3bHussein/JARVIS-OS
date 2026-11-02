@@ -102,3 +102,5 @@ Portable recovery: [Encrypted personal backups](docs/PORTABLE-BACKUP.md) include
 For daily setup and source limitations: [Daily quickstart](docs/DAILY-QUICKSTART.md). Home now includes recorded WHOOP cycle/recovery details, ProgressXX file context and untimed-note review. Automatic ProgressXX sync remains unconnected.
 
 Assistant experience: [Voice welcome and recorded reminders](docs/WELCOME-AND-REMINDERS.md). Optional device-voice greeting and session-only reminders; no closed-app/native scheduler claim.
+
+Run Configure-JARVIS.bat for local engine selection without editing .env. [Engine setup](docs/ENGINE-SETUP.md) preserves your password and requires restart. Settings shows configuration flags, not inference certification.

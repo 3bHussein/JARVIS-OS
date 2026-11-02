@@ -78,3 +78,8 @@ IMPLEMENTED Home WHOOP/ProgressXX daily source details and reviewable untimed no
 ## Session 012 — 2026-11-01T19:22:58+02:00
 
 IMPLEMENTED optional one-shot voice welcome and session-only in-app/desktop-generic reminders. TESTED Node67/67 and dev36/36 at this entry; final built/remote evidence pending. M5/M6 remain IN PROGRESS: actual speech quality, native scheduling/tray/startup/installer and closed-app notification acceptance are TODO.
+
+
+## Session013 — 2026-11-02T08:33:21+02:00
+
+IMPLEMENTED local engine wizard and Settings configuration-readiness panel. Core70/70 and development37/37 TESTED at entry; remote acceptance pending. Actual engine/voice quality, native installer and delegated live integration milestones remain open.

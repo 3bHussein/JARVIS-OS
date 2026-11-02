@@ -46,6 +46,7 @@ jobs:
           call Start-JARVIS.bat --help
           call Start-JARVIS-Built.bat --help
           call Setup-JARVIS-Preview.bat --help
+          call Configure-JARVIS.bat --help
       - run: npm run test:launcher
 
       - name: Prepare clean personal preview

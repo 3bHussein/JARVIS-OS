@@ -81,3 +81,8 @@ WHOOP open-cycle-only display can intentionally show unknown for closed cycles, 
 ## Session 012 — 2026-11-01T19:22:58+02:00
 
 Browser timer throttling/suspension and app closure/lock prevent guaranteed reminder delivery. No service-worker/native scheduler. Desktop Notification constructor/silent support and actual audio playback vary; unsupported native delivery leaves in-app notices. A reported-local voice is metadata, not OS network attestation. Welcome may be blocked by autoplay or absent device voice; explicit Read my briefing remains available. Server expiry cleanup occurs when detected by existing session checks, not an OS-level immediate lock.
+
+
+## Session013 — 2026-11-02T08:33:21+02:00
+
+Wizard checks model-name metadata/file presence, not real inference/dependencies/voice quality. Cloud disable must be configured separately in Ollama and is not attested by JARVIS. Config changes require restarting JARVIS. Append-only overrides are bounded to256KiB; same-OS-user malicious races/power-loss leftovers are outside compare-before-rename guarantee. Unrepresentable quotes/control chars fail without save. Physical Windows interactive setup remains TODO.

@@ -332,3 +332,25 @@ Source44803d8f6bf96c9e87bb10946abfd1969b7c67b8 (`feat: add opt-in device voice w
 Downloaded artifact13093182921 JARVIS-OS-Personal-Preview,176978bytes, expires2026-11-15T17:25:15Z. ZIP SHA2568e0888a35656d3e73c245e9aa3bb95eb14dab987334623a0946b7a5a458af1ed matched metadata; all42 manifest files matched, no unlisted/hidden/private data/dependencies/models. Correct source and welcome/reminder guide included. Actual extracted Linux runtime passed built-only setup without npm dependencies, browser authentication, once-only synthetic reported-local welcome after Overview/context, profile save, reminders default-off/explicit permission click, lock clears private UI, .env URL denial and owned shutdown. Synthetic config created only after manifest audit; browser automation supplied externally. Evidence assistant-daily-downloaded.json. No actual owner data, real voice, physical Windows notification or OS sound behavior tested. Signed temporary URLs not retained.
 
 Checkout preserved through named stash and fast-forward. Docs-only [skip ci] follow-up records this source/run/archive and current link; no separate runtime CI claim. PR none; deployment NOT DEPLOYED; release NOT RELEASED. One combined trial remains the user preference; no separate tiny test requested. Next large scope: delegated live integration contracts requiring original-source authorization, actual voice/model/device acceptance, native Tauri/Agent/OS vault/installer and mobile/production gates. Overall project remains incomplete. Preserve original personal vault/password and independent backup password when updating.
+
+
+## Session013 — 2026-11-02T08:33:21+02:00
+
+| Requirement | Evidence | Scope |
+|---|---|---|
+| Preserve env/password, safe Windows quoting and restrict keys | CONFIG-01 | Synthetic env |
+| Fixed bounded local model discovery/no inference | CONFIG-02 | Synthetic transport |
+| Existing paths and stale-config refusal | CONFIG-03 | Temporary synthetic files |
+| Read-only wizard check in real packaged runtime | START-05 extension | Child process without npm dependencies |
+| Readiness labels/refresh without model request | UI-37 | Synthetic provider flags |
+| Actual terminal save keeps hash/unknown setting | engine-setup-interactive.json | Linux PTY, disposable synthetic config |
+
+Core70/70/typecheck/build and dev37/37 PASS at entry; final built/lifecycle/CI pending.
+
+
+Session013 intermediate correction: a built-browser WHOOP assertion exposed a synthetic fixture race: its finished_at used Date.now after readWhoop captured now, so a 1ms future timestamp was correctly rejected by production freshness rules. Moved the synthetic successful-sync time one second before the fixture clock; no production freshness relaxation. That failed run is not acceptance. Re-run both browser modes with the corrected fixture.
+
+
+### Session013 final local acceptance
+
+TESTED:70/70 Node cases/typecheck/build PASS; development37/37 and built37/37 Chromium PASS with corrected non-future synthetic sync time; launcher3/3 PASS including packaged wizard read-only check. Actual Linux PTY preservation check PASS. Evidence engine-setup-*.txt and engine-setup-interactive.json. No real Ollama/faster-whisper inference, physical Windows interactive or voice quality acceptance. Remote publication/CI/download audit pending. No PR/deployment/release.

@@ -59,3 +59,8 @@ TODO actual owner WHOOP Intelligence local sign-in/read and source-field compari
 ## Session 012 — 2026-11-01T19:22:58+02:00
 
 TODO physical Windows browser permission/notification click/close/silent behavior and real Arabic/English welcome voice acceptance. Verify no task/health text in OS notifications. Confirm open-workspace reminder limits and quiet default in combined user review. No closed-app alarms or signed native release claim.
+
+
+## Session013 — 2026-11-02T08:33:21+02:00
+
+TODO physical Windows engine wizard, existing real model/STT setup and quality acceptance. Verify current password/vault remain usable after local configuration. Configured flags are not ready/verified inference. No new engine installation, signed native installer or production release claim.
