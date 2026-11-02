@@ -1,0 +1,24 @@
+{
+  "source": "e54ccde49dd8d572cc03cd431fe89e2ac9e29fa4",
+  "run": 41437621873,
+  "artifact": 13137022030,
+  "archiveBytes": 188026,
+  "sha256": "586601e9f77778ec0e3f00e12468dcd78a585c1699b6bead70c4ab12b2c3d53f",
+  "manifestFiles": 51,
+  "allHashesMatch": true,
+  "noUnlistedFiles": true,
+  "noHiddenFiles": true,
+  "numberedFilesAndBuildIncluded": true,
+  "ownerDDriveAccessed": false,
+  "extractedLinuxRuntime": {
+    "nestedRepeatedFolderWithSpaces": true,
+    "calledFromParentCwd": true,
+    "builtSetupWithoutNpm": true,
+    "preservedConfig": true,
+    "uiAndAuthentication": true,
+    "ownedShutdown": true,
+    "removedTestBundleFriendlyRecovery": true,
+    "noRawEnoent": true,
+    "syntheticOnly": true
+  }
+}
