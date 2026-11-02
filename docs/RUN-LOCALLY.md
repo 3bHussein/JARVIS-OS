@@ -87,3 +87,8 @@ Run `npm run build` after source updates, then Start-JARVIS-Built.bat or `npm ru
 ## Daily-preview update — 2026-10-30T15:09:36+02:00
 
 The ready-built Personal Preview artifact now uses Setup-JARVIS-Preview.bat then Start-JARVIS-Built.bat, with Node24 installed and no npm install/build in the artifact. Follow USER-ACCEPTANCE.md for one combined trial. Source checkouts still need ordinary setup and npm run build.
+
+
+## Session016 current native-host correction
+
+The optional Tauri2 host now has source and a separate Windows CI artifact. Follow DESKTOP-PREVIEW.md; start02 before04. Source/browser-only archives omit the EXE. This does not replace the Node runtime or certify WebView2/device behavior. Earlier statements above describing all integrations/AI as absent are historical foundation notes; the later guides/hand-off entries describe current implemented preview scope.

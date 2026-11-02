@@ -16,7 +16,7 @@ No registered renderer commands, no shell/filesystem/HTTP/opener plugins, no glo
 
 ## Build and evidence
 
-Pinned direct crates: tauri2.12.5, tauri-build2.7.4, serde_json1.0.145. `node scripts/desktop-icon.mjs` generates the original geometric icon without downloaded assets. On a Windows Rust/MSVC/WebView2 build environment, run cargo test/build with `--manifest-path apps/desktop/src-tauri/Cargo.toml --release --locked`, then node tests/desktop-smoke.mjs and node scripts/package-desktop.mjs. The first CI bootstrap generates Cargo.lock for review; commit that captured graph before the final candidate. Subsequent runs use the committed lock.
+Pinned direct crates: tauri2.12.5, tauri-build2.7.4, serde_json1.0.145. `node scripts/desktop-icon.mjs` generates the original geometric icon without downloaded assets. On a Windows Rust/MSVC/WebView2 build environment, run cargo test/build with `--manifest-path apps/desktop/src-tauri/Cargo.toml --release --locked`, then node tests/desktop-smoke.mjs and node scripts/package-desktop.mjs. The successful bootstrap captured Cargo.lock; the reviewed408-package crates.io-only graph is committed. CI requires that file and both cargo commands use --locked.
 
 Native tests cover health response validation, bounded loopback request and navigation origin restrictions. Compiled EXE smoke checks fixed-endpoint behavior against the actual local Node API without creating a window. Native GUI/physical Windows/device acceptance remains TODO. No signature, installer, autostart, tray, OS credential vault, native notification scheduler or bundled Node runtime is claimed. Build artifacts are previews, not a deployment or GitHub Release.
 

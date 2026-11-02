@@ -11,3 +11,5 @@ If setup reports an incomplete copy, re-extract the complete preview download in
 Source downloaded with GitHub's Code → Download ZIP requires the build in step01. The JARVIS-OS-Personal-Preview artifact includes the build already. Setup-JARVIS-Preview.bat remains a compatible alias that can also prepare a complete source download. Other legacy filenames are retained for existing users.
 
 More: docs/DAILY-QUICKSTART.md, docs/ENGINE-SETUP.md, docs/USER-ACCEPTANCE.md. This is a personal preview, not the final native Windows installer.
+
+Optional desktop host: only the JARVIS-OS-Windows-Desktop-Preview artifact includes JARVIS-OS-Desktop.exe and04-Open-Desktop.bat. Read DESKTOP-README.md there, start02 first, then04. Source/browser-only copies do not include the native EXE. Save records encrypted before switching; browser and WebView sessions differ. The host is not a bundled installer.

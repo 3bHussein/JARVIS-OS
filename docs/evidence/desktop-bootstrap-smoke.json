@@ -1,0 +1,12 @@
+{
+  "platform": "win32",
+  "source": "29eaed7f2d6088b8362176af1b51639dfaa081cb",
+  "checks": {
+    "version": true,
+    "rejectCustomUrl": true,
+    "offlineProbeFails": true,
+    "builtApiProbeSucceeds": true,
+    "closedApiProbeFails": true
+  },
+  "scope": "Compiled Windows EXE CLI against actual loopback API. No WebView window, owner data, microphone, speaker or OS notification tested."
+}

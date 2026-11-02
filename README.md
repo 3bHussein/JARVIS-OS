@@ -2,7 +2,7 @@
 
 An original personal AI command center, built as a separate hybrid application.
 
-**Current status: personal preview 0.1.0 — not a production release.** A bilingual daily workspace combines a source-labelled briefing, planner, journal, optional WHOOP saved-record reads and a transient ProgressXX backup view. Optional Ollama conversation and reviewed speech are wired; real model/voice/device acceptance, automatic delegated integrations, PWA and Tauri remain open.
+**Current status: personal preview 0.1.0 — not a production release.** A bilingual daily workspace combines a source-labelled briefing, planner, journal, optional WHOOP saved-record reads and a transient ProgressXX backup view. Optional Ollama conversation and reviewed speech are wired; real model/voice/device acceptance, automatic delegated integrations, PWA and full native/device acceptance remain open. An optional Tauri window host is under CI acceptance; it requires the existing step02 runtime.
 
 ## Try one complete preview
 
@@ -11,6 +11,8 @@ Download **JARVIS-OS-Personal-Preview** from the [tested preview download](https
 Follow the [single combined acceptance journey](docs/USER-ACCEPTANCE.md). This is a local browser preview, not an EXE/Tauri installer. Keep the launcher open; Ctrl+C stops it. Preserve an older installation's private config/data/password instead of overwriting it.
 
 From a fresh source checkout or Code → Download ZIP: run **01-Setup-JARVIS.bat**; it detects the missing compiled web folder, installs locked dependencies and builds it. Then run **02-Start-JARVIS.bat**. A source setup needs Internet/npm on the first run. Legacy Setup-JARVIS-Preview.bat now also handles a complete source copy instead of exposing a raw ENOENT. The original Start-JARVIS.bat remains the development launcher. [Run guide](docs/RUN-LOCALLY.md).
+
+Optional Windows native host: see [desktop preview scope and steps](docs/DESKTOP-PREVIEW.md). It requires the separate Windows Desktop Preview artifact, WebView2 and the existing step02 runtime; it is not an installer. Browser sessions do not migrate automatically.
 
 ## Run the foundation
 

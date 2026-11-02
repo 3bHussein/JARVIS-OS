@@ -409,3 +409,26 @@ Checkout preserved/aligned via named stash/fast-forward. Docs-only [skip ci] fol
 ## Session016 — 2026-11-02T14:45:01.942826+00:00
 
 Session016 local TESTED: npm run check passed typecheck,73/73 Node cases and web build. DESKTOP-POLICY-01 checks no global bridge/capabilities/plugin scope in config. Native traceability: NATIVE01 malformed/unconfigured/non-built health rejection; NATIVE02 origin/navigation restrictions; NATIVE03 bounded local socket probe; Windows EXE smoke version/custom-URL rejection/offline/actual built API/shutdown probes (5). Native tests pending Windows CI; static policy is not proof of GUI/IPC runtime acceptance. No real credentials/data/device used.
+
+
+### Session016 local follow-up — 2026-11-02T14:48:00Z
+
+TESTED local final check75/75 Node/typecheck/build, launcher5/5, built Chromium39/39. Initial browser launch failed because the pinned Playwright executable was absent; reinstalled the pinned headless browser and reran successfully. DESKTOP-PACK01/02 verify complete manifest/provenance/lock/native payload without private files, unchanged private source config and rejection before staging malformed binary. Synthetic MZ fixture is not an executable/native acceptance. Corrected native artifact README to identify04 and runtime dependency. Bootstrap source29eaed7f2d6088b8362176af1b51639dfaa081cb, run41464993640: Linux foundation and Windows launcher SUCCESS; native compilation still pending at this entry. No GUI/device claim.
+
+### M6 requirement-to-test traceability
+
+| Requirement | Evidence case | Current limit |
+| --- | --- | --- |
+| No web renderer OS permissions | DESKTOP-POLICY-01 | Config regression, no actual WebView exploit test |
+| Recognize only configured built runtime | Rust NATIVE01, compiled EXE probe smoke | Fixed unauthenticated health shape; not cryptographic identity |
+| Bound navigation and deny foreign origins | Rust NATIVE02; new-window deny source | Actual WebView2 navigation acceptance TODO |
+| Native fixed HTTP probe | Rust NATIVE03; compiled EXE offline/live/stopped checks | No owner/session data |
+| Clean native distribution | DESKTOP-PACK01/02 and downloaded manifest audit | MZ fixture only in packaging tests; native build separately required |
+| Working native desktop GUI/voice | TODO physical Windows acceptance | Not certified by browser tests or CLI probe |
+
+
+### Session016 native bootstrap acceptance — 2026-11-02T14:51:30Z
+
+Source29eaed7f2d6088b8362176af1b51639dfaa081cb, run https://github.com/3bHussein/JARVIS-OS/actions/runs/41464993640 SUCCESS: Linux foundation, Windows launcher and desktop-windows all passed. Native Rust3/3 tests passed; actual compiled Windows EXE5/5 CLI/API checks passed. Bootstrap evidence artifact13151366307 ZIP SHA25665499552f7408106ce66063897dc08ba034bec813078c6ce863c8bfeb8903680 verified before extracting lock/smoke. Reviewed408 lock packages: registry sources exclusively crates.io with64-character checksums; only local root has no registry source. No claim of transitive vulnerability clearance. Committing generated lock; CI now fails if it is missing and uses --locked. Native archive/packaging final rerun pending. Internal Chromium screenshot of static bilingual startup help at1000x720: no horizontal overflow, no script elements; this is not WebView2 GUI acceptance.
+
+Fixed native README ambiguity, added DESKTOP-PACK01/02 and source guide distinction. Final local75/75/typecheck/build, launcher5/5 and built39/39. Local initial missing Playwright browser recovered via pinned install. PR none, deployment NOT DEPLOYED, release NOT RELEASED. Next: publish locked candidate, inspect exact-source three-job CI, verify downloaded native and browser archive manifests/provenance. Then append exact outcome; real Windows GUI/voice/device acceptance remains TODO.

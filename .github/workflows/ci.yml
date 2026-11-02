@@ -86,13 +86,10 @@ jobs:
             ~/.cargo/git
             apps/desktop/src-tauri/target
           key: windows-jarvis-desktop-${{ hashFiles('apps/desktop/src-tauri/Cargo.toml') }}
-      - name: Resolve pinned native dependency graph
+      - name: Require committed native dependency lock
         shell: pwsh
         run: |
-          if (!(Test-Path apps/desktop/src-tauri/Cargo.lock)) {
-            cargo generate-lockfile --manifest-path apps/desktop/src-tauri/Cargo.toml
-            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          }
+          if (!(Test-Path apps/desktop/src-tauri/Cargo.lock)) { throw "Committed Cargo.lock is required" }
       - name: Test native policy and bounded probe
         run: cargo test --manifest-path apps/desktop/src-tauri/Cargo.toml --release --locked
         env:
