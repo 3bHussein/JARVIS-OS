@@ -1,0 +1,27 @@
+{
+  "source": "b4315b05414d6c8b845df8dc0aa5ade9a5d593a4",
+  "run": 41440593912,
+  "artifact": 13140145322,
+  "archiveBytes": 193375,
+  "sha256": "a4c82c132d50cce2ed65c60ee933a50d18d74903e694b7829464127a89ea5912",
+  "manifestFiles": 53,
+  "allHashesMatch": true,
+  "noUnlistedFiles": true,
+  "noHiddenFiles": true,
+  "guideIncluded": true,
+  "realOwnerDataUsed": false,
+  "physicalWindowsAcceptance": false,
+  "extractedLinuxRuntime": {
+    "setupWithoutNpm": true,
+    "uiAuthentication": true,
+    "profileSave": true,
+    "previewNoWrite": true,
+    "confirmedQuickEntryOnce": true,
+    "explicitEncryptedSave": true,
+    "noPlaintextInVault": true,
+    "lockAndReauthenticationRestoresNote": true,
+    "ownedShutdown": true,
+    "syntheticOnly": true,
+    "browserToolingExternalToArtifact": true
+  }
+}
