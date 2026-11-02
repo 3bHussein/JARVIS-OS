@@ -83,3 +83,8 @@ IMPLEMENTED optional one-shot voice welcome and session-only in-app/desktop-gene
 ## Session013 — 2026-11-02T08:33:21+02:00
 
 IMPLEMENTED local engine wizard and Settings configuration-readiness panel. Core70/70 and development37/37 TESTED at entry; remote acceptance pending. Actual engine/voice quality, native installer and delegated live integration milestones remain open.
+
+
+## Session014 — 2026-11-02T13:31:37+02:00
+
+IMPLEMENTED numbered setup/start/configuration sequence and source-ZIP missing-dist recovery. Local70/70 core/build and5/5 launcher TESTED; exact-source Windows and archive audit pending. Native installer/voice/automatic integration milestones unchanged.

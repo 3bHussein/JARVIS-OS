@@ -64,3 +64,8 @@ TODO physical Windows browser permission/notification click/close/silent behavio
 ## Session013 — 2026-11-02T08:33:21+02:00
 
 TODO physical Windows engine wizard, existing real model/STT setup and quality acceptance. Verify current password/vault remain usable after local configuration. Configured flags are not ready/verified inference. No new engine installation, signed native installer or production release claim.
+
+
+## Session014 — 2026-11-02T13:31:37+02:00
+
+Check START06/07 on Windows CI, numbered BAT help from nested path, packaged setup without dependencies and friendly incomplete-copy instructions. Confirm numbered guide/aliases/helper in manifest. Preserve original owner env/vault/password. No signed EXE/native release claim.

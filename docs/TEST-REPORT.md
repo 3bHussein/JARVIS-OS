@@ -363,3 +363,15 @@ Source ccb87a4da37793369913831f83d0a05b612f707c (`feat: add safe local engine se
 Downloaded artifact13121740021 JARVIS-OS-Personal-Preview,184470bytes, expires2026-11-16T06:36:15Z. ZIP SHA256bea43074792a6959bad58ca5637d52eca204749a29ab47164d685d1959e501de matched metadata. All46 manifest files matched; no unlisted/hidden/private data, dependencies or models. Correct source metadata and wizard/BAT/helper/guide included. Actual extracted Linux runtime passed --check/built-only setup without npm dependencies, actual helper save+disable while retaining hash/unknown value, browser auth/honest unconfigured flags, refresh without inference, private .env URL denial, lock clears panel and owned shutdown. Synthetic config created only after manifest verification; browser tooling supplied externally. Evidence engine-setup-downloaded.json. No real Ollama/Python inference, physical Windows interactive setup or voice quality test; no signed URL retained.
 
 Named stash/fast-forward aligned checkout. Docs-only [skip ci] follow-up records exact-source acceptance and current artifact link, with no separate runtime CI claim. PR none; deployment NOT DEPLOYED; release NOT RELEASED. No repeated small user trial requested. Exact next substantial scope: actual owner device/engine acceptance, native Tauri/runtime/OS vault packaging, delegated live integration source-approved contracts and production/mobile gates. User must configure cloud disable in Ollama itself; wizard cannot attest routing or engine quality. Preserve original vault/local password and independent backup password. Overall project incomplete.
+
+
+## Session014 — 2026-11-02T13:31:37+02:00
+
+| Requirement | Evidence | Scope |
+|---|---|---|
+| Source download with absent dist repairs through legacy preview setup | START-06 | Real Vite build, installed dependency junction, repeated nested path |
+| Numbered BATs tolerate nested/space-containing path | START-06 Windows branch + CI help | Windows runner, not owner D drive |
+| Incomplete copy fails safely without raw ENOENT or config writes | START-07 | Child-process setup/start |
+| Complete packaged preview retains dependency-free runtime | START-05 | Actual staged app |
+
+Local70/70 core/typecheck/build and5/5 launcher PASS. UI unchanged; local browser not re-run. Full remote CI/archive audit pending.

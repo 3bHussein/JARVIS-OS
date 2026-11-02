@@ -97,3 +97,8 @@ No external connector/auth/source endpoint changes. Reminder events use saved JA
 ## Session013 — 2026-11-02T08:33:21+02:00
 
 No connector/auth/backend/source repo changes. Wizard reads only fixed localhost Ollama /api/tags metadata and changes local JARVIS engine selections after explicit SAVE. No personal or health prompt is sent, model installed or engine executed. Existing cloud-disable requirement remains owner-configured in Ollama itself.
+
+
+## Session014 — 2026-11-02T13:31:37+02:00
+
+No connector, source app, API auth or production DB changes. Source preparation only operates in the selected JARVIS installation root; ready-built preview requires no dependency install/build. No private records/config are packaged or deleted.

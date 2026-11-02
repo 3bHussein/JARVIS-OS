@@ -83,3 +83,8 @@ ADR: implement open-workspace reminders rather than claim a closed-app scheduler
 ## Session013 — 2026-11-02T08:33:21+02:00
 
 ADR: use a local terminal wizard rather than add an HTTP endpoint that writes .env or starts arbitrary executables. Append validated overrides to preserve owner text/unknown credentials; reject unsafe env quoting and detected concurrent changes. No automatic model pull, Python execution or global Ollama setting mutation.
+
+
+## Session014 — 2026-11-02T13:31:37+02:00
+
+ADR: preserve legacy filenames and add ordered aliases rather than break existing shortcuts. Repair complete source downloads through the same preview setup; fail with extraction guidance when source/build inputs are incomplete. Normalize missing-dist errors before password/setup or API spawn. Repeated nested folder names are supported; do not tell users to delete private files to repair a missing build.

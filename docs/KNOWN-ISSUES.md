@@ -86,3 +86,8 @@ Browser timer throttling/suspension and app closure/lock prevent guaranteed remi
 ## Session013 — 2026-11-02T08:33:21+02:00
 
 Wizard checks model-name metadata/file presence, not real inference/dependencies/voice quality. Cloud disable must be configured separately in Ollama and is not attested by JARVIS. Config changes require restarting JARVIS. Append-only overrides are bounded to256KiB; same-OS-user malicious races/power-loss leftovers are outside compare-before-rename guarantee. Unrepresentable quotes/control chars fail without save. Physical Windows interactive setup remains TODO.
+
+
+## Session014 — 2026-11-02T13:31:37+02:00
+
+Fresh GitHub source ZIPs exclude ignored apps/web/dist by design. Numbered setup now builds missing assets for a complete source copy; Internet/npm needed unless dependencies are already present. Incomplete preview without source cannot self-repair and requires full re-extraction. Local test uses installed dependencies, not a live npm download. Existing source edits with valid old dist still require an explicit rebuild. Owner D drive and physical Windows not accessed.

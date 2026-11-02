@@ -6,11 +6,11 @@ An original personal AI command center, built as a separate hybrid application.
 
 ## Try one complete preview
 
-Download **JARVIS-OS-Personal-Preview** from the [tested preview download](https://github.com/3bHussein/JARVIS-OS/actions/runs/41400878231#artifacts), extract into a new folder, install Node.js 24+ if needed, then run **Setup-JARVIS-Preview.bat** and **Start-JARVIS-Built.bat**. The artifact needs no npm install or build. Unlock from Settings with the local password you chose. No account credentials, models or personal data are bundled.
+Download **JARVIS-OS-Personal-Preview** from the [tested preview download](https://github.com/3bHussein/JARVIS-OS/actions/runs/41400878231#artifacts), extract into a new folder, install Node.js 24+ if needed, then read **00-READ-FIRST.md**, run **01-Setup-JARVIS.bat**, then **02-Start-JARVIS.bat**. Optional AI/voice setup is **03-Configure-AI-Voice.bat**. The artifact needs no npm install or build. Unlock from Settings with the local password you chose. No account credentials, models or personal data are bundled.
 
 Follow the [single combined acceptance journey](docs/USER-ACCEPTANCE.md). This is a local browser preview, not an EXE/Tauri installer. Keep the launcher open; Ctrl+C stops it. Preserve an older installation's private config/data/password instead of overwriting it.
 
-From a source checkout: run Setup-JARVIS.bat, `npm run build`, then Start-JARVIS-Built.bat. The original Start-JARVIS.bat remains the development launcher. [Run guide](docs/RUN-LOCALLY.md).
+From a fresh source checkout or Code → Download ZIP: run **01-Setup-JARVIS.bat**; it detects the missing compiled web folder, installs locked dependencies and builds it. Then run **02-Start-JARVIS.bat**. A source setup needs Internet/npm on the first run. Legacy Setup-JARVIS-Preview.bat now also handles a complete source copy instead of exposing a raw ENOENT. The original Start-JARVIS.bat remains the development launcher. [Run guide](docs/RUN-LOCALLY.md).
 
 ## Run the foundation
 

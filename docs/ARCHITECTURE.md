@@ -115,3 +115,8 @@ Voice welcome is a client session gate over validated personal briefing readines
 ## Session013 — 2026-11-02T08:33:21+02:00
 
 Local engine configuration stays outside the browser/API write surface. Terminal wizard permits only three engine keys, fixed loopback installed-model read and existing path validation, then explicit SAVE and restart. Current runtime configuration remains immutable during a running process. Settings reads existing authenticated flags only; no inference readiness claim.
+
+
+## Session014 — 2026-11-02T13:31:37+02:00
+
+Installation preflight separates valid compiled preview, complete source with missing web bundle and incomplete copy. Complete source fallback uses locked npm installation and local pinned Vite CLI, not another app or arbitrary remote code. Preview runtime remains Node24 with selected source modules/no npm dependencies. Built launcher validates the same bounded bundle reader before spawning the service.
