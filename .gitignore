@@ -12,3 +12,5 @@ target/
 __pycache__/
 *.pyc
 models/
+apps/desktop/src-tauri/icons/
+apps/desktop/src-tauri/gen/

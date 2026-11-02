@@ -93,3 +93,8 @@ ADR: preserve legacy filenames and add ordered aliases rather than break existin
 ## Session015 — 2026-11-02T13:54:55+02:00
 
 ADR: expose clear save-versus-session choice instead of silently enabling storage. Five recorded-input steps are not readiness/health scoring. Quick capture uses explicit form fields and review, not guessed natural-language dates or model writes. Stale local previews require another review even if only another field changed.
+
+
+## Session016 — 2026-11-02T14:45:01.942826+00:00
+
+ADR016: use a no-IPC fixed-origin Tauri2 host first, preserving the tested Node runtime and encrypted file format. This reduces native surface but requires step02 and separate WebView login; external app launches are blocked in the native preview. No installation/signing/tray/Agent claims. Direct Rust crates pinned; generated transitive lock must be captured and committed after bootstrap CI.

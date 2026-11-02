@@ -50,6 +50,7 @@ jobs:
           call 01-Setup-JARVIS.bat --help
           call 02-Start-JARVIS.bat --help
           call 03-Configure-AI-Voice.bat --help
+          call 04-Open-Desktop.bat --help
       - run: npm run test:launcher
 
       - name: Prepare clean personal preview
@@ -58,5 +59,61 @@ jobs:
         with:
           name: JARVIS-OS-Personal-Preview
           path: test-results/JARVIS-OS-Personal-Preview-*
+          if-no-files-found: error
+          retention-days: 14
+
+  desktop-windows:
+    runs-on: windows-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: node scripts/desktop-icon.mjs
+      - name: Select stable Rust toolchain
+        run: |
+          rustup update stable --no-self-update
+          rustup default stable
+          cargo --version
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            apps/desktop/src-tauri/target
+          key: windows-jarvis-desktop-${{ hashFiles('apps/desktop/src-tauri/Cargo.toml') }}
+      - name: Resolve pinned native dependency graph
+        shell: pwsh
+        run: |
+          if (!(Test-Path apps/desktop/src-tauri/Cargo.lock)) {
+            cargo generate-lockfile --manifest-path apps/desktop/src-tauri/Cargo.toml
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
+      - name: Test native policy and bounded probe
+        run: cargo test --manifest-path apps/desktop/src-tauri/Cargo.toml --release --locked
+        env:
+          JARVIS_SOURCE_SHA: ${{ github.sha }}
+      - name: Build native Windows host
+        run: cargo build --manifest-path apps/desktop/src-tauri/Cargo.toml --release --locked
+        env:
+          JARVIS_SOURCE_SHA: ${{ github.sha }}
+      - run: node tests/desktop-smoke.mjs
+      - run: node scripts/package-desktop.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: JARVIS-OS-Windows-Desktop-Preview
+          path: test-results/desktop/JARVIS-OS-Personal-Preview-*
+          if-no-files-found: error
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        with:
+          name: JARVIS-Desktop-Build-Evidence
+          path: |
+            apps/desktop/src-tauri/Cargo.lock
+            test-results/desktop-smoke.json
           if-no-files-found: error
           retention-days: 14

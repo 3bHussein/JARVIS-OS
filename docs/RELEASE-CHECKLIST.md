@@ -74,3 +74,8 @@ Check START06/07 on Windows CI, numbered BAT help from nested path, packaged set
 ## Session015 — 2026-11-02T13:54:55+02:00
 
 TODO owner combined first-use/storage/quick-entry acceptance and actual local voice/model/source validation. Confirm no write on preview, one on confirmation, persisted current records and no invented appointments. Preserve session records via encrypted saving/portable backup before changing installations. No release/native installer claim.
+
+
+## Session016 — 2026-11-02T14:45:01.942826+00:00
+
+M6 native preview gates: [ ] Windows Rust compilation/tests; [ ] committed Cargo.lock/exact-source rerun; [ ] EXE CLI/API synthetic smoke; [ ] downloaded manifest/provenance inspection; [ ] physical Windows GUI/WebView2 and device acceptance. Installer/signature/tray/autostart/Agent remain TODO. No deployment/release authorized.

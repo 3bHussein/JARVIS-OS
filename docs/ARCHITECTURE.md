@@ -125,3 +125,8 @@ Installation preflight separates valid compiled preview, complete source with mi
 ## Session015 — 2026-11-02T13:54:55+02:00
 
 First-use presentation derives only from validated data and existing fresh Home values. Persistence promotion passes remember=true explicitly on the existing owner save request; no new endpoint. Session acknowledgement stays in React memory. Quick capture stages one PersonalNote with revision and requires explicit confirmation; current API validation/limits/CSRF/conflict rules remain authoritative.
+
+
+## Session016 — 2026-11-02T14:45:01.942826+00:00
+
+M6 IMPLEMENTED source: optional Tauri2 host restricted to127.0.0.1:5173 and static help. No renderer IPC/capabilities/plugins. Native menu only; existing Node runtime remains independently owned by step02. WebView storage differs from browser. No sidecar, Agent, OS vault or native scheduler yet. See DESKTOP-PREVIEW.md.

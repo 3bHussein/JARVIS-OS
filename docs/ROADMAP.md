@@ -93,3 +93,8 @@ IMPLEMENTED numbered setup/start/configuration sequence and source-ZIP missing-d
 ## Session015 — 2026-11-02T13:54:55+02:00
 
 IMPLEMENTED first-use recorded-input checklist/storage choice and reviewed local Home capture. Local72/72 core,39/39 dev+39/39 built and5/5 launchers TESTED. Exact-source remote/archive verification pending. M3/M4/native/voice/production completion is not inferred.
+
+
+## Session016 — 2026-11-02T14:45:01.942826+00:00
+
+M6 IN PROGRESS: native-host source, bilingual help, policy tests and Windows CI packaging implemented. TODO: exact native compilation/probe acceptance, committed Cargo.lock, physical WebView2 GUI/device tests; later owned runtime, installer/signing, tray and allowlisted Windows Agent.

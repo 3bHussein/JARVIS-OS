@@ -96,3 +96,8 @@ Fresh GitHub source ZIPs exclude ignored apps/web/dist by design. Numbered setup
 ## Session015 — 2026-11-02T13:54:55+02:00
 
 First-use progress counts recorded choices, not integration completeness or health quality. Session-only acknowledgement resets on reload/lock and does not erase older encrypted data. Encrypted save excludes unsaved form drafts. Quick capture needs explicit dates/times; no natural-language scheduling. Failed/stale previews retain drafts, but lock/reload clears them. No owner screenshot data used for synthetic acceptance.
+
+
+## Session016 — 2026-11-02T14:45:01.942826+00:00
+
+M6 native host requires existing02 runtime, Node24 and Windows WebView2; no automatic runtime lifecycle. Browser and native sessions/preferences differ. Save encrypted records before switching. External/new-window launches denied. GUI/microphone/TTS/downloads/notifications untested in WebView2. Initial Rust graph/CI build pending; no local Rust toolchain. Not an installer.
