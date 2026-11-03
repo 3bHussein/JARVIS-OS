@@ -512,3 +512,7 @@ Localized the main Settings headings, local service and lock states, motion choi
 ## Session021 — 2026-11-03
 
 Home now shows an on-demand preview of its spoken briefing. Continue unified briefing acceptance with real owner sources only when authorized. The preview uses current local state and existing read-only connectors. Desktop remains deferred.
+
+## Session022 — Nutrition in the spoken briefing — 2026-11-03
+
+The bilingual briefing now reports logged intake even without a calorie target. If logged intake exceeds the entered target, it states the difference. Missing intake still produces no calorie figure. Existing source selection and storage rules apply. Local npm run check passed. GitHub CI pending, PR none, no deployment. Desktop deferred.

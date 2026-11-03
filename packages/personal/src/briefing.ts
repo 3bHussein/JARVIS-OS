@@ -16,7 +16,13 @@ export function personalBriefing(data:PersonalData,now:Date,zone:string,locale:L
   const sleepTarget=whoopCurrent&&whoop!.sleepNeedHours!==null?whoop!.sleepNeedHours:data.profile?.sleepTarget??null;
   const sleepTargetSource=whoopCurrent&&whoop!.sleepNeedHours!==null?(ar?'احتياج WHOOP المقدّر':'WHOOP estimate'):ar?'هدفك المختار':'your chosen target';
   if(sleep!==null)lines.push(ar?`نومك المسجّل ${sleep.toFixed(1)} ساعة (${sleepSource})${sleepTarget===null?'':`؛ المرجع ${sleepTarget.toFixed(1)} ساعة (${sleepTargetSource})`}.`:`Recorded sleep: ${sleep.toFixed(1)} hours (${sleepSource})${sleepTarget===null?'':`; reference ${sleepTarget.toFixed(1)} hours (${sleepTargetSource})`}.`);
-  if(remaining!==null)lines.push(ar?`المتبقي من هدفك المُدخل ${remaining.toFixed(0)} kcal مقارنة بالأكل المسجّل${day?.foodComplete?'':' فقط؛ اليوم غير مكتمل'}.`:`${remaining.toFixed(0)} kcal remain against your entered target and logged food${day?.foodComplete?'':' only; diary incomplete'}.`);
+  if (food !== null) lines.push(ar
+    ? `الأكل المسجّل ${food.toFixed(0)} سعر حراري.`
+    : `Recorded food: ${food.toFixed(0)} kcal.`);
+  if (over !== null && over > 0) lines.push(ar
+    ? `الأكل المسجّل أعلى من هدفك المُدخل بـ ${over.toFixed(0)} سعر حراري.`
+    : `Recorded food exceeds your entered target by ${over.toFixed(0)} kcal.`);
+  if(remaining!==null&&!over)lines.push(ar?`المتبقي من هدفك المُدخل ${remaining.toFixed(0)} kcal مقارنة بالأكل المسجّل${day?.foodComplete?'':' فقط؛ اليوم غير مكتمل'}.`:`${remaining.toFixed(0)} kcal remain against your entered target and logged food${day?.foodComplete?'':' only; diary incomplete'}.`);
   if(upcoming[0])lines.push(`${upcoming[0].text} · ${clock(new Date(upcoming[0].at!),zone,locale).time}`);
   if(due.length)lines.push(ar?`عندك ${due.length} تذكير مستحق أو متأخر.`:`${due.length} reminders are due or overdue.`);
   let freeSlot:{at:string;minutes:number}|null=null;
