@@ -578,3 +578,7 @@ Replaced the expanded first-use checklist with a compact next-step card and coll
 ## Session024 — Hosting assessment — 2026-11-03
 
 Reviewed loopback and Origin enforcement, local encrypted storage and host-only engines against official hosting documentation. Added a Git-based update route and documented prerequisites for private remote hosting. Documentation only. No deployment or live data transfer. Desktop deferred.
+
+## Session025 — Online single-owner pilot — 2026-11-03
+
+Added opt-in HTTPS reverse-proxy mode with exact Host/Origin checks and Secure session cookies. The listener remains on loopback. Hosted startup requires a built UI, password hash and absolute vault directory. Added hosting setup and synthetic HTTP coverage. Local npm run check passed. No cloud VM access available, no deployment, no PR or live data transfer. Next: provision an eligible VM and DNS, verify TLS and encrypted restart/restore with synthetic data before migration. Desktop deferred.

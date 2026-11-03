@@ -11,7 +11,7 @@ import {GitHubReader} from '../../../packages/connectors/src/github-reader.ts';
 import type { Resource } from '../../../packages/connectors/src/github.ts';
 import { manifests } from '../../../packages/connectors/src/contracts.ts';
 import { authorizeTool, redact } from '../../../packages/core/src/index.ts';
-export interface Config {origin:string;passwordHash:string;githubToken?:string;transport?:typeof fetch; audit?:(event:unknown)=>void;vaultDirectory?:string;whoopTransport?:typeof fetch;aiProvider?:AIProvider;speechProvider?:SpeechProvider;webBundle?:WebBundle;}
+export interface Config {origin:string;hosted?:boolean;passwordHash:string;githubToken?:string;transport?:typeof fetch; audit?:(event:unknown)=>void;vaultDirectory?:string;whoopTransport?:typeof fetch;aiProvider?:AIProvider;speechProvider?:SpeechProvider;webBundle?:WebBundle;}
 async function json(req:IncomingMessage,limit=8192){
   const chunks:Buffer[]=[];let bytes=0;
   for await(const chunk of req){bytes+=chunk.length;if(bytes>limit)throw new Error('Body too large');chunks.push(chunk);}
@@ -20,7 +20,16 @@ async function json(req:IncomingMessage,limit=8192){
 }
 export function makeServer(config:Config){
   const origin=new URL(config.origin);
-  if(origin.protocol!=='http:'||!['127.0.0.1','localhost'].includes(origin.hostname))throw new Error('Local development origin required');
+  if (config.hosted) {
+    if (origin.protocol !== 'https:' || config.origin !== origin.origin ||
+        !config.webBundle || !config.vaultDirectory ||
+        !/^[a-f0-9]{32}:[a-f0-9]{128}$/.test(config.passwordHash)) {
+      throw new Error('Hosted mode requires an HTTPS origin, built UI, vault path and password hash');
+    }
+  } else if (origin.protocol !== 'http:' || !['127.0.0.1','localhost'].includes(origin.hostname)) {
+    throw new Error('Local development origin required');
+  }
+  const cookieFlags = `HttpOnly; SameSite=Strict; Path=/api${config.hosted ? '; Secure' : ''}`;
   const sessions=new Sessions();let attempts:number[]=[];let reads:number[]=[];
   const personalStore=new PersonalStore(config.vaultDirectory),personal=new WeakMap<object,PersonalContext>(),whoop=new WeakMap<object,WhoopConnection>();
   let whoopAttempts:number[]=[],whoopReads:number[]=[];
@@ -38,7 +47,7 @@ export function makeServer(config:Config){
     try {
       // Reject DNS rebinding and all cross-origin requests, including GET.
       const host=req.headers.host?.split(':')[0];
-      if(!host||!['127.0.0.1','localhost'].includes(host))return reply(403,{error:'invalid_host'});
+      if(config.hosted ? req.headers.host!==origin.host : !host||!['127.0.0.1','localhost'].includes(host))return reply(403,{error:'invalid_host'});
       if(req.headers.origin&&req.headers.origin!==config.origin)return reply(403,{error:'invalid_origin'});
       if(req.headers['sec-fetch-site']==='cross-site')return reply(403,{error:'cross_site_denied'});
       const url=new URL(req.url||'/',config.origin),path=url.pathname;
@@ -60,7 +69,7 @@ export function makeServer(config:Config){
         if(attempts.length>=5)return reply(429,{error:'rate_limited'});attempts.push(now);
         const body=await json(req);
         if(typeof body.password!=='string'||!checkPassword(body.password,config.passwordHash)){audit('auth.denied');return reply(401,{error:'invalid_credentials'});}
-        const session=sessions.create();personal.set(sessions.get(session.token)!,personalStore.unlock(body.password));res.setHeader('Set-Cookie',`jarvis_session=${session.token}; HttpOnly; SameSite=Strict; Path=/api; Max-Age=3600`);
+        const session=sessions.create();personal.set(sessions.get(session.token)!,personalStore.unlock(body.password));res.setHeader('Set-Cookie',`jarvis_session=${session.token}; ${cookieFlags}; Max-Age=3600`);
         audit('auth.accepted');return reply(200,{user:{id:'local-owner',role:'owner'},csrf:session.csrf});
       }
       const token=req.headers.cookie?.match(/(?:^|;\s*)jarvis_session=([a-f0-9]{64})(?:;|$)/)?.[1]||'';
@@ -69,7 +78,7 @@ export function makeServer(config:Config){
       if(method==='POST'&&req.headers['x-csrf-token']!==session.csrf)return reply(403,{error:'csrf_required'});
       if(path==='/api/session'&&method==='GET')return reply(200,{user:{id:'local-owner',role:'owner'},csrf:session.csrf});
       if(path==='/api/logout'&&method==='POST'){
-        const ctx=personal.get(session);if(ctx)personalStore.forget(ctx);whoop.delete(session);chatFor(session).abort?.abort();chats.delete(session);speechRuns.get(session)?.abort();speechRuns.delete(session);sessions.revoke(token);res.setHeader('Set-Cookie','jarvis_session=; HttpOnly; SameSite=Strict; Path=/api; Max-Age=0');audit('auth.revoked');return reply(200,{ok:true});
+        const ctx=personal.get(session);if(ctx)personalStore.forget(ctx);whoop.delete(session);chatFor(session).abort?.abort();chats.delete(session);speechRuns.get(session)?.abort();speechRuns.delete(session);sessions.revoke(token);res.setHeader('Set-Cookie',`jarvis_session=; ${cookieFlags}; Max-Age=0`);audit('auth.revoked');return reply(200,{ok:true});
       }
       if(path==='/api/personal'&&method==='GET'){
         const ctx=personal.get(session);if(!ctx)return reply(409,{error:'reauthenticate'});
@@ -81,7 +90,7 @@ export function makeServer(config:Config){
         try{
           if(input.operation==='erase'){
             if(input.confirmation!=='DELETE PERSONAL DATA')return reply(403,{error:'confirmation_required'});
-            personalStore.erase(ctx);whoop.delete(session);chatFor(session).abort?.abort();chats.delete(session);speechRuns.get(session)?.abort();speechRuns.delete(session);sessions.revoke(token);res.setHeader('Set-Cookie','jarvis_session=; HttpOnly; SameSite=Strict; Path=/api; Max-Age=0');audit('personal.erased');return reply(200,{ok:true,reauthenticate:true});
+            personalStore.erase(ctx);whoop.delete(session);chatFor(session).abort?.abort();chats.delete(session);speechRuns.get(session)?.abort();speechRuns.delete(session);sessions.revoke(token);res.setHeader('Set-Cookie',`jarvis_session=; ${cookieFlags}; Max-Age=0`);audit('personal.erased');return reply(200,{ok:true,reauthenticate:true});
           }
           if(input.operation!=='save'||typeof input.remember!=='boolean')return reply(400,{error:'invalid_request'});
           const result=personalStore.save(ctx,input.data,input.revision,input.remember);audit('personal.saved',{persistent:input.remember});return reply(200,result);
