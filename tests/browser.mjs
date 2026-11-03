@@ -55,28 +55,6 @@ try{
  await page.getByRole('button',{name:'English',exact:true}).click();await page.getByRole('button',{name:'Overview',exact:true}).click();
  await page.emulateMedia({reducedMotion:'reduce'});assert.equal(await page.locator('.orbit-one').evaluate(el=>getComputedStyle(el).animationName),'none');passed++;console.log('PASS UI-09 OS reduced motion');
  await page.setViewportSize({width:1440,height:1060});await page.emulateMedia({reducedMotion:'no-preference'});await mkdir('test-results',{recursive:true});await page.screenshot({path:'test-results/overview-internal.png',fullPage:true});
- if (built) {
-  const installContext = await browser.newContext();
-  const installPage = await installContext.newPage();
-  await installPage.goto(origin);
-  await installPage.waitForFunction(() => navigator.serviceWorker.controller !== null);
-  const manifestResponse = await installContext.request.get(origin + '/jarvis.webmanifest');
-  assert.equal(manifestResponse.ok(), true);
-  assert.equal((await manifestResponse.json()).display, 'standalone');
-  await new Promise(resolve => {
-    server.close(resolve);
-    server.closeAllConnections();
-  });
-  const offlineResponse = await installPage.reload();
-  assert.equal(offlineResponse.status(), 503);
-  await installPage.getByRole('heading', {name: 'JARVIS is unavailable'}).waitFor();
-  assert.deepEqual(await installPage.evaluate(() => caches.keys()), []);
-  await new Promise(resolve => server.listen(5173, '127.0.0.1', resolve));
-  await installPage.reload();
-  await installPage.getByRole('heading', {name: 'Your world. One command.'}).waitFor();
-  await installContext.close();
-  console.log('PASS PWA-01 worker activates, shows offline fallback and resumes without cache storage');
- }
  assert.deepEqual(errors,[]);passed++;console.log('PASS UI-10 no browser runtime errors');
  await page.getByRole('button',{name:'Settings',exact:true}).click();await page.getByLabel('Timezone',{exact:true}).selectOption('Asia/Dubai');await page.getByLabel('Silent startup',{exact:true}).setChecked(false);
  await page.reload();await page.getByRole('button',{name:'Settings',exact:true}).click();assert.equal(await page.getByLabel('Timezone',{exact:true}).inputValue(),'Asia/Dubai');assert.equal(await page.getByLabel('Motion',{exact:true}).inputValue(),'off');assert.equal(await page.getByLabel('Silent startup',{exact:true}).isChecked(),false);
@@ -145,6 +123,20 @@ try{
   const installPage = await installContext.newPage();
   await installPage.goto(origin);
   await installPage.waitForFunction(() => navigator.serviceWorker.controller !== null);
+  await installPage.evaluate(() => {
+    const offer = new Event('beforeinstallprompt', {cancelable: true});
+    Object.assign(offer, {prompt: async () => window.dispatchEvent(new Event('appinstalled'))});
+    window.dispatchEvent(offer);
+  });
+  await installPage.getByRole('button', {name: 'Settings', exact: true}).click();
+  const installPanel = installPage.getByRole('region', {name: 'Install JARVIS from your browser'});
+  await installPanel.getByRole('button', {name: 'Install JARVIS', exact: true}).click();
+  await installPanel.getByRole('status').filter({hasText: 'JARVIS is installed in this browser.'}).waitFor();
+  await installPage.getByRole('button', {name: 'عربي', exact: true}).click();
+  await installPage.getByRole('region', {name: 'تثبيت جارفس من المتصفح'}).getByRole('status').waitFor();
+  await installPage.getByRole('button', {name: 'English', exact: true}).click();
+  console.log('PASS PWA-02 install offer survives navigation, prompts on click and updates in both languages');
+
   const manifestResponse = await installContext.request.get(origin + '/jarvis.webmanifest');
   assert.equal(manifestResponse.ok(), true);
   assert.equal((await manifestResponse.json()).display, 'standalone');

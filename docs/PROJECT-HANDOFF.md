@@ -500,3 +500,7 @@ Implemented step04 runtime ownership using the existing built launcher IPC, with
 ## Session018 — 2026-11-03
 
 Prioritize web and core integrations. Defer Desktop development and physical acceptance until core work finishes. Built web app now has a manifest and a network-only worker with a bilingual offline page. It requires the local service for workspace data. No public hosting, mobile remote access or offline record editing is implied. See DEVELOPMENT-LOG.md and PWA-01 in tests/browser.mjs.
+
+## Session019 — 2026-11-03
+
+Built Settings includes WebInstall with bilingual guidance and an explicit browser prompt. CI 41633318390 succeeded for the preceding PWA foundation. Test real installation across supported browsers and devices after core development. Continue verified source integration work before Desktop acceptance.
