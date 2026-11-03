@@ -564,3 +564,5 @@ Localized the main Settings headings, local service and lock states, motion choi
 ## Session021 — Morning briefing preview — 2026-11-03
 
 Added a collapsible bilingual preview of the exact spoken daily briefing in Home. It reuses the existing briefing text and source/freshness rules. UI-33 now compares the preview against synthetic speech after importing training and adding a note. npm run check passed with 75 Node tests. Desktop deferred. No production deployment or real-data test.
+
+Session021 verification: source 405c354c2e74f45a68e4fa7581d8244d128f6277 passed local built Chromium 39/39 plus PWA-01/02. UI-33 confirmed exact equality between the displayed preview and synthetic TTS input. GitHub CI pending at this entry. PR none.
