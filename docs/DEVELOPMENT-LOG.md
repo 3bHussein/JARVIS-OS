@@ -598,3 +598,7 @@ Added Vercel Vite config and a Node API catch-all. Redis now backs expiring hash
 ## Session029 — First Vercel production deployment — 2026-11-03
 
 Linked project jarvis-os to GitHub main and deployed source 6e751a0. Vercel marked the build Ready and the public UI loaded. API invocation returned 500; runtime logs identified the missing cloud-handler.ts dependency. Added explicit function includeFiles for API and personal model TypeScript sources. Hosted Redis and production secrets still pending. No personal records migrated.
+
+## Session030 — Online sign-in labels — 2026-11-03
+
+Production health confirmed configured cloud mode. Settings now distinguishes online and local sign-in in both languages and disables online submission while cloud configuration is incomplete. npm run check passed. Owner login and durable save remain to be verified with a real session.
