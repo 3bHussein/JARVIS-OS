@@ -1,5 +1,10 @@
 {
   "framework": "vite",
   "buildCommand": "npm run build",
-  "outputDirectory": "apps/web/dist"
+  "outputDirectory": "apps/web/dist",
+  "functions": {
+    "api/**/*.ts": {
+      "includeFiles": "{apps/api/src,packages/personal/src}/**/*.ts"
+    }
+  }
 }

@@ -594,3 +594,7 @@ Implemented server-side AES-256-GCM encryption with per-write nonce, namespace b
 ## Session028 — Vercel cloud workspace pilot — 2026-11-03
 
 Added Vercel Vite config and a Node API catch-all. Redis now backs expiring hashed-token sessions, login throttling and encrypted personal records for the pilot. Added exact origin and CSRF checks plus explicit bilingual cloud storage consent. Local npm run check passed 78 tests and build. Synthetic REST test verifies separate handler instances, explicit persistence, stale revision rejection, logout revocation and secure cookie attributes. Redis and Vercel live acceptance pending. Cloud WHOOP, engines and erase remain unavailable. No deployment or live personal data transfer. Next: configure a dedicated Redis store and production secrets in the Vercel project, then verify a synthetic save survives redeployment.
+
+## Session029 — First Vercel production deployment — 2026-11-03
+
+Linked project jarvis-os to GitHub main and deployed source 6e751a0. Vercel marked the build Ready and the public UI loaded. API invocation returned 500; runtime logs identified the missing cloud-handler.ts dependency. Added explicit function includeFiles for API and personal model TypeScript sources. Hosted Redis and production secrets still pending. No personal records migrated.
