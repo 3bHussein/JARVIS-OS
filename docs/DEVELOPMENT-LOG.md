@@ -574,3 +574,7 @@ The bilingual briefing now reports logged intake even without a calorie target. 
 ## Session023 — Compact onboarding and two-step launch guide — 2026-11-03
 
 Replaced the expanded first-use checklist with a compact next-step card and collapsed full checklist. Setup progress counts recorded inputs and choices. Planner and other panes are now reachable before profile creation. First profile save returns to Today. Rewrote 00-READ-FIRST.md with bilingual first-run and daily steps, optional voice setup and missing-build recovery. Existing encrypted save choice remains explicit. Local npm run check passed 75 cases and built Chromium passed 39 scenarios plus PWA-01/02. The browser suite verifies collapsed checklist, pre-profile Planner navigation and return via the next step. Prior source 74ec872 passed CI 41634939368. New CI pending, no PR or deployment. Desktop deferred. Next: verify GitHub artifact and continue source integration acceptance.
+
+## Session024 — Hosting assessment — 2026-11-03
+
+Reviewed loopback and Origin enforcement, local encrypted storage and host-only engines against official hosting documentation. Added a Git-based update route and documented prerequisites for private remote hosting. Documentation only. No deployment or live data transfer. Desktop deferred.

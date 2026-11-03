@@ -21,3 +21,5 @@ Download **JARVIS-OS-Personal-Preview** from the GitHub Actions artifacts and ex
 Before moving to another folder, export an encrypted backup from You & privacy. Keep your existing folder and original password until you verify your records in the new copy.
 
 [Daily use guide](docs/DAILY-QUICKSTART.md) · [AI and voice setup](docs/ENGINE-SETUP.md)
+
+[Update without downloading another ZIP](docs/HOSTING.md)
