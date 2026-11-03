@@ -504,3 +504,7 @@ Prioritize web and core integrations. Defer Desktop development and physical acc
 ## Session019 — 2026-11-03
 
 Built Settings includes WebInstall with bilingual guidance and an explicit browser prompt. CI 41633318390 succeeded for the preceding PWA foundation. Test real installation across supported browsers and devices after core development. Continue verified source integration work before Desktop acceptance.
+
+## Session020 — Arabic settings — 2026-11-03
+
+Localized the main Settings headings, local service and lock states, motion choices and voice greeting guidance. Existing preference values and controls are preserved. Desktop remains deferred.

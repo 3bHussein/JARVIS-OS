@@ -556,3 +556,7 @@ Session018 correction: Chromium context offline emulation left the worker's requ
 ## Session019 — Browser installation controls — 2026-11-03
 
 Previous source 5b3079f passed GitHub CI run 41633318390. Implemented bilingual installation controls in built Settings, retaining the browser offer across workspace navigation and invoking it only on a click. Browser menu instructions remain available without a prompt. Typecheck, 75 Node cases and build passed. PWA-02 exercises synthetic offer and installation events in Chromium. Removed a duplicate execution of the outage test in the browser suite. Actual OS installation remains a device acceptance gate. Desktop deferred. No deployment or release.
+
+## Session020 — Arabic settings — 2026-11-03
+
+Localized the main Settings headings, local service and lock states, motion choices and voice greeting guidance. Existing preference values and controls are preserved. Desktop remains deferred.
