@@ -63,12 +63,15 @@ try{
   const manifestResponse = await installContext.request.get(origin + '/jarvis.webmanifest');
   assert.equal(manifestResponse.ok(), true);
   assert.equal((await manifestResponse.json()).display, 'standalone');
-  await installContext.setOffline(true);
+  await new Promise(resolve => {
+    server.close(resolve);
+    server.closeAllConnections();
+  });
   const offlineResponse = await installPage.reload();
   assert.equal(offlineResponse.status(), 503);
   await installPage.getByRole('heading', {name: 'JARVIS is unavailable'}).waitFor();
   assert.deepEqual(await installPage.evaluate(() => caches.keys()), []);
-  await installContext.setOffline(false);
+  await new Promise(resolve => server.listen(5173, '127.0.0.1', resolve));
   await installPage.reload();
   await installPage.getByRole('heading', {name: 'Your world. One command.'}).waitFor();
   await installContext.close();
@@ -145,12 +148,15 @@ try{
   const manifestResponse = await installContext.request.get(origin + '/jarvis.webmanifest');
   assert.equal(manifestResponse.ok(), true);
   assert.equal((await manifestResponse.json()).display, 'standalone');
-  await installContext.setOffline(true);
+  await new Promise(resolve => {
+    server.close(resolve);
+    server.closeAllConnections();
+  });
   const offlineResponse = await installPage.reload();
   assert.equal(offlineResponse.status(), 503);
   await installPage.getByRole('heading', {name: 'JARVIS is unavailable'}).waitFor();
   assert.deepEqual(await installPage.evaluate(() => caches.keys()), []);
-  await installContext.setOffline(false);
+  await new Promise(resolve => server.listen(5173, '127.0.0.1', resolve));
   await installPage.reload();
   await installPage.getByRole('heading', {name: 'Your world. One command.'}).waitFor();
   await installContext.close();

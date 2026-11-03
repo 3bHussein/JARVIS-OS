@@ -550,3 +550,5 @@ Implemented step04 runtime ownership using the existing built launcher IPC, with
 ## Session018 — Web install foundation — 2026-11-03
 
 Desktop feature work deferred until core project completion per owner. Web manifest, original SVG icon, restricted built bundle assets and network-only navigation worker implemented. Offline fallback is bilingual and contains no private data. API requests are outside worker handling. Typecheck, 75 Node cases and build passed. Initial built browser launch was attempted before build completed, then the environment lacked the pinned Chromium executable. PWA-01 added to CI for worker control, fallback, empty cache storage and reconnect. Device installation and mobile reachability remain open. No deployment or release. Next: verify exact GitHub CI and continue core integration acceptance.
+
+Session018 correction: Chromium context offline emulation left the worker's request online, so the first outage assertion returned 200. PWA-01 now stops and restarts the actual test server. Worker navigation fetches explicitly bypass the HTTP cache. Local built Chromium passed UI-01 through UI-39 and PWA-01 after the correction.
