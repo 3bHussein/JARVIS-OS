@@ -2,8 +2,8 @@
 setlocal EnableDelayedExpansion
 cd /d "%~dp0"
 if "%~1"=="--help" (
-  echo Optional native window: requires the Windows Desktop Preview artifact and an existing runtime started with step 02.
-  echo This host does not start or stop the service. --probe checks only the fixed local health endpoint.
+  echo Optional native window: requires the Windows Desktop Preview artifact. Starts its own local service.
+  echo Use --attach if step 02 is already running. --probe checks the fixed local health endpoint.
   exit /b 0
 )
 if not exist "%~dp0JARVIS-OS-Desktop.exe" (
@@ -16,4 +16,12 @@ if "%~1"=="--probe" (
   "%~dp0JARVIS-OS-Desktop.exe" --probe
   exit /b !ERRORLEVEL!
 )
-start "" "%~dp0JARVIS-OS-Desktop.exe"
+if "%~1"=="--attach" (
+  start "" "%~dp0JARVIS-OS-Desktop.exe"
+  exit /b 0
+)
+node "%~dp0scripts/start-desktop.mjs"
+if errorlevel 1 (
+  pause
+  exit /b 1
+)

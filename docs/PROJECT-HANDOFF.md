@@ -492,3 +492,7 @@ Actual extracted native archive Node runtime on Linux passed no-node_modules/no-
 Files in final evidence follow-up: README current links/status; append-only tracking/handoff acceptance; native/browser archive, exact CI and extracted-runtime JSON. Commands: GitHub fetch/tree/commit/ref with expected-SHA guard; git stash/fetch/fast-forward; download via temporary URLs (not retained); Python ZIP/hash/manifest/PE/TOML inspection; Node extracted setup/fork/HTTP/auth/shutdown; local focused policy/package5/5; git diff --check. PR none. Deployment NOT DEPLOYED; release NOT RELEASED. No production DB, existing project, real owner account/record or model data touched. Checkout preserved via named stashes.
 
 Exact next: owner combined Windows WebView2 window/unlock/Arabic layout/file download/mic/voice acceptance when available; separately authenticate delegated source connectors and test actual local engines under explicit consent. M6 still IN PROGRESS: owned runtime/bundled installer/signature/tray/autostart/OS vault/allowlisted Agent/native closed-app scheduling remain TODO. Current host needs01/02 then04 and does not manage service lifetime. Save encrypted session records before switching browser/WebView; close does not auto-lock/logout. No v1.0 completion claim. Docs-only follow-up uses [skip ci], with no extra runtime acceptance claim.
+
+## Session017 — Managed desktop launch
+
+Implemented step04 runtime ownership using the existing built launcher IPC, with an explicit attach option. Local npm run check passed. Windows acceptance pending.
