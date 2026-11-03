@@ -508,3 +508,7 @@ Built Settings includes WebInstall with bilingual guidance and an explicit brows
 ## Session020 — Arabic settings — 2026-11-03
 
 Localized the main Settings headings, local service and lock states, motion choices and voice greeting guidance. Existing preference values and controls are preserved. Desktop remains deferred.
+
+## Session021 — 2026-11-03
+
+Home now shows an on-demand preview of its spoken briefing. Continue unified briefing acceptance with real owner sources only when authorized. The preview uses current local state and existing read-only connectors. Desktop remains deferred.

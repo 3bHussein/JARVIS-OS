@@ -560,3 +560,7 @@ Previous source 5b3079f passed GitHub CI run 41633318390. Implemented bilingual 
 ## Session020 — Arabic settings — 2026-11-03
 
 Localized the main Settings headings, local service and lock states, motion choices and voice greeting guidance. Existing preference values and controls are preserved. Desktop remains deferred.
+
+## Session021 — Morning briefing preview — 2026-11-03
+
+Added a collapsible bilingual preview of the exact spoken daily briefing in Home. It reuses the existing briefing text and source/freshness rules. UI-33 now compares the preview against synthetic speech after importing training and adding a note. npm run check passed with 75 Node tests. Desktop deferred. No production deployment or real-data test.
