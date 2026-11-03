@@ -60,3 +60,17 @@ Use a Linux VM with a persistent disk and a DNS name pointing to it. An eligible
    Preserve the public Host header. Keep port 4310 private. Confirm DNS, TLS and the service status before entering your password.
 
 Validate with synthetic records first: unlock, explicitly save encrypted, restart the process, unlock and verify the record. Test a portable encrypted export and restore before migrating personal data. Local AI and speech engines would require separately installed server-side runtimes and models. This is a single-owner pilot configuration.
+
+## Vercel migration
+
+The target is one Vercel project connected to the GitHub repository, with the built React UI and a same-origin API. The HTTP request handler is now separate from the local Node listener. The listener continues to serve the local and VM variants.
+
+Vercel Functions can replace the listener only after the state migration. The current encrypted disk vault, unlocked key and session-local contexts depend on the lifetime of one process. Function instances cannot share that state through memory or a local file. A cloud implementation needs durable encrypted records, atomic revision checks, revocable expiring sessions and a defined encryption-key lifecycle across instances. WHOOP connection secrets must be excluded from portable backups and protected independently if persisted. Local Ollama and speech subprocesses need a separate provider in hosted mode.
+
+Acceptance before enabling Git deployment:
+- Verify sign-in and CSRF across independent function instances and session revocation on logout.
+- Verify encrypted save, conflict handling, restart/redeploy retention and portable restore with synthetic records.
+- Verify exact production origin, secure cookies and preview isolation from production data.
+- Link the approved Vercel account and its durable datastore, then verify the deployment URL.
+
+Reference: [Vercel Functions runtimes](https://vercel.com/docs/functions/runtimes).

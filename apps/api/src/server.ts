@@ -1,3 +1,4 @@
+import type {RequestListener} from 'node:http';
 import {webCsp,type WebBundle} from './web-bundle.ts';
 import {speechInput,type SpeechProvider} from './local-speech.ts';
 import {clock} from '../../../packages/core/src/index.ts';
@@ -18,7 +19,7 @@ async function json(req:IncomingMessage,limit=8192){
   const value=JSON.parse(Buffer.concat(chunks).toString());
   if(!value||typeof value!=='object'||Array.isArray(value)) throw new Error('Invalid body');return value;
 }
-export function makeServer(config:Config){
+export function createRequestHandler(config: Config): RequestListener {
   const origin=new URL(config.origin);
   if (config.hosted) {
     if (origin.protocol !== 'https:' || config.origin !== origin.origin ||
@@ -39,7 +40,7 @@ export function makeServer(config:Config){
   const readers=new WeakMap<object,GitHubReader>();
   const readerFor=(session:object)=>{let reader=readers.get(session);if(!reader){reader=new GitHubReader(config.githubToken,config.transport);readers.set(session,reader);}return reader;};
   const audit=(type:string,metadata:unknown={})=>config.audit?.({at:new Date().toISOString(),type,metadata:redact(metadata)});
-  return createServer(async(req,res)=>{
+  return async (req, res) => {
     res.setHeader('Content-Type','application/json; charset=utf-8');res.setHeader('Cache-Control','no-store');
     res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Referrer-Policy','no-referrer');
     res.setHeader('Content-Security-Policy',"default-src 'none'; frame-ancestors 'none'");
@@ -181,5 +182,9 @@ export function makeServer(config:Config){
       if(path==='/api/tools'&&method==='POST'){audit('tool.denied');return reply(403,{error:'writes_disabled'});}
       return reply(404,{error:'not_found'});
     } catch {audit('request.failure');return reply(400,{error:'request_failed'});}
-  });
+  };
+}
+
+export function makeServer(config: Config) {
+  return createServer(createRequestHandler(config));
 }
