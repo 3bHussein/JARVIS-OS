@@ -586,3 +586,7 @@ Added opt-in HTTPS reverse-proxy mode with exact Host/Origin checks and Secure s
 ## Session026 — Vercel transport preparation — 2026-11-03
 
 Separated the HTTP handler from the Node listener. Typecheck, 76 tests and web build passed. Documented durable session and encrypted vault migration gates. Vercel project access and datastore are unavailable. No deployment or data transfer. Desktop deferred.
+
+## Session027 — Encrypted cloud vault adapter — 2026-11-03
+
+Implemented server-side AES-256-GCM encryption with per-write nonce, namespace binding and atomic Redis compare-and-set. Mock REST tests verified reload across adapter instances, wrong-key rejection and one successful concurrent writer. Initial typecheck rejected parameter properties under erasableSyntaxOnly; explicit fields fixed it. Final npm run check passed 77 tests and build. Adapter is not yet wired to the HTTP API. Durable session integration and real Redis/Vercel acceptance remain open. No cloud deployment, PR or personal data transfer.
