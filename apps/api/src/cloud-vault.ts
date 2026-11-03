@@ -1,3 +1,4 @@
+import {CloudRedis} from './cloud-redis.ts';
 import {createCipheriv, createDecipheriv, randomBytes} from 'node:crypto';
 import {validateData, type PersonalData} from '../../../packages/personal/src/model.ts';
 
@@ -11,43 +12,21 @@ return 1
 
 export class CloudVault {
   private readonly key: Buffer;
-  private readonly endpoint: URL;
-
-  private readonly token: string;
   private readonly namespace: string;
-  private readonly transport: typeof fetch;
+  private readonly redis: CloudRedis;
 
   constructor(endpoint: string, token: string, keyHex: string,
     namespace: string, transport: typeof fetch = fetch) {
-    this.token = token;
-    this.namespace = namespace;
-    this.transport = transport;
-    this.endpoint = new URL(endpoint);
-    if (this.endpoint.protocol !== 'https:' || this.endpoint.href !== this.endpoint.origin + '/' ||
-        this.endpoint.username || this.endpoint.password || !token ||
-        !/^[0-9a-f]{64}$/.test(keyHex) || !/^[a-z0-9-]{1,64}$/.test(namespace)) {
+    if (!/^[0-9a-f]{64}$/.test(keyHex) || !/^[a-z0-9-]{1,64}$/.test(namespace)) {
       throw new Error('Invalid cloud vault configuration');
     }
     this.key = Buffer.from(keyHex, 'hex');
-  }
-
-  private async command(args: Array<string | number>): Promise<unknown> {
-    const response = await this.transport(this.endpoint, {
-      method: 'POST', redirect: 'error', cache: 'no-store',
-      signal: AbortSignal.timeout(5000),
-      headers: {'Content-Type': 'application/json', Authorization: `Bearer ${this.token}`},
-      body: JSON.stringify(args),
-    });
-    if (!response.ok) throw new Error('cloud_vault_unavailable');
-    const raw = await response.text();
-    if (raw.length > limit + 256) throw new Error('cloud_vault_unavailable');
-    const payload = JSON.parse(raw);
-    if (!payload || !Object.hasOwn(payload, 'result') || payload.error) throw new Error('cloud_vault_unavailable');
-    return payload.result;
+    this.namespace = namespace;
+    this.redis = new CloudRedis(endpoint, token, transport);
   }
 
   async read() {
-    const envelope = await this.command(['GET', `jarvis:${this.namespace}:vault`]);
+    const envelope = await this.redis.command(['GET', `jarvis:${this.namespace}:vault`]);
     if (envelope === null) return null;
     if (typeof envelope !== 'string' || envelope.length > limit) throw new Error('cloud_vault_invalid');
     const encoded = Buffer.from(envelope, 'base64');
@@ -71,7 +50,7 @@ export class CloudVault {
     const encrypted = Buffer.concat([cipher.update(JSON.stringify({revision, data: validateData(data)})), cipher.final()]);
     const envelope = Buffer.concat([iv, cipher.getAuthTag(), encrypted]).toString('base64');
     if (envelope.length > limit) throw new Error('storage_unavailable');
-    const result = await this.command(['EVAL', compareAndSet, 1, `jarvis:${this.namespace}:vault`, current?.envelope ?? '', envelope]);
+    const result = await this.redis.command(['EVAL', compareAndSet, 1, `jarvis:${this.namespace}:vault`, current?.envelope ?? '', envelope]);
     if (result === 0) throw new Error('personal_conflict');
     if (result !== 1) throw new Error('cloud_vault_unavailable');
     return revision;

@@ -590,3 +590,7 @@ Separated the HTTP handler from the Node listener. Typecheck, 76 tests and web b
 ## Session027 — Encrypted cloud vault adapter — 2026-11-03
 
 Implemented server-side AES-256-GCM encryption with per-write nonce, namespace binding and atomic Redis compare-and-set. Mock REST tests verified reload across adapter instances, wrong-key rejection and one successful concurrent writer. Initial typecheck rejected parameter properties under erasableSyntaxOnly; explicit fields fixed it. Final npm run check passed 77 tests and build. Adapter is not yet wired to the HTTP API. Durable session integration and real Redis/Vercel acceptance remain open. No cloud deployment, PR or personal data transfer.
+
+## Session028 — Vercel cloud workspace pilot — 2026-11-03
+
+Added Vercel Vite config and a Node API catch-all. Redis now backs expiring hashed-token sessions, login throttling and encrypted personal records for the pilot. Added exact origin and CSRF checks plus explicit bilingual cloud storage consent. Local npm run check passed 78 tests and build. Synthetic REST test verifies separate handler instances, explicit persistence, stale revision rejection, logout revocation and secure cookie attributes. Redis and Vercel live acceptance pending. Cloud WHOOP, engines and erase remain unavailable. No deployment or live personal data transfer. Next: configure a dedicated Redis store and production secrets in the Vercel project, then verify a synthetic save survives redeployment.

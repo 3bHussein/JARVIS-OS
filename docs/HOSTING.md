@@ -74,3 +74,20 @@ Acceptance before enabling Git deployment:
 - Link the approved Vercel account and its durable datastore, then verify the deployment URL.
 
 Reference: [Vercel Functions runtimes](https://vercel.com/docs/functions/runtimes).
+
+### Vercel pilot configuration
+
+Import the repository from its root. The Vite build and output directory are configured in vercel.json. The API catch-all uses the Node runtime. Configure the following server-side environment variables in Vercel for the intended deployment only:
+
+| Name | Value |
+| --- | --- |
+| JARVIS_CLOUD_ORIGIN | Exact HTTPS production origin without a trailing slash |
+| JARVIS_CLOUD_NAMESPACE | Unique environment name, e.g. jarvis-production |
+| JARVIS_CLOUD_KEY | Random 32-byte key encoded as 64 lowercase hex characters |
+| JARVIS_PASSWORD_HASH | Output of the existing password helper |
+| UPSTASH_REDIS_REST_URL | Redis REST HTTPS endpoint |
+| UPSTASH_REDIS_REST_TOKEN | Redis REST read/write credential |
+
+Generate a key privately with `node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"`. Keep the key across redeployments. Store secrets in the hosting dashboard. Preview deployments must use separate credentials, keys and namespaces if enabled.
+
+This pilot supports owner login, logout, profile, notes, journal and explicit encrypted saving. Local engine, WHOOP connection and cloud erase endpoints are unavailable in this pilot. The file import and portable backup UI operate in the browser. Validate the exact Vercel URL, routing, TLS, Redis session expiration and encrypted save after redeployment using synthetic data before moving personal records.
