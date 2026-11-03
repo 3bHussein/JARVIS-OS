@@ -103,3 +103,5 @@ M6 IN PROGRESS: native-host source, bilingual help, policy tests and Windows CI 
 ## Session016 final status — 2026-11-02T14:57:03.396000+00:00
 
 M6 IN PROGRESS: Windows native build, Rust3/3, EXE CLI5/5 and downloaded58-file artifact audit TESTED on exact source674106f. Physical GUI/device, owned runtime, installer/signature, tray/autostart and Agent remain TODO. M8 not released. See TEST-REPORT.md and docs/evidence/desktop-final-ci.json.
+
+2026-11-03: M8 web install foundation IMPLEMENTED. Worker handles only same-origin workspace navigation and shows a bilingual offline fallback without caching private data. Browser CI and real-device installation are separate gates. Desktop work deferred until core completion.

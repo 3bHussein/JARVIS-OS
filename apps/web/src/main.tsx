@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import React, {useEffect, useRef, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {briefing, clock, freshness, type CoreState, type Locale} from '../../../packages/core/src/index.ts';
@@ -177,3 +178,10 @@ function App(){
  </div>
 }
 createRoot(document.getElementById('root')!).render(<App/>);
+
+// Register only for the built app. The worker never handles API requests or stores records.
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  void navigator.serviceWorker.register('/jarvis-worker.js').catch(() => {
+    // The workspace works without installation support.
+  });
+}

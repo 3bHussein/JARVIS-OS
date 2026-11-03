@@ -546,3 +546,7 @@ Exact next: owner combined Windows WebView2 window/unlock/Arabic layout/file dow
 ## Session017 — Managed desktop launch
 
 Implemented step04 runtime ownership using the existing built launcher IPC, with an explicit attach option. Local npm run check passed. Windows acceptance pending.
+
+## Session018 — Web install foundation — 2026-11-03
+
+Desktop feature work deferred until core project completion per owner. Web manifest, original SVG icon, restricted built bundle assets and network-only navigation worker implemented. Offline fallback is bilingual and contains no private data. API requests are outside worker handling. Typecheck, 75 Node cases and build passed. Initial built browser launch was attempted before build completed, then the environment lacked the pinned Chromium executable. PWA-01 added to CI for worker control, fallback, empty cache storage and reconnect. Device installation and mobile reachability remain open. No deployment or release. Next: verify exact GitHub CI and continue core integration acceptance.

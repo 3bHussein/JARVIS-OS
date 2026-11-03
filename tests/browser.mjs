@@ -55,6 +55,25 @@ try{
  await page.getByRole('button',{name:'English',exact:true}).click();await page.getByRole('button',{name:'Overview',exact:true}).click();
  await page.emulateMedia({reducedMotion:'reduce'});assert.equal(await page.locator('.orbit-one').evaluate(el=>getComputedStyle(el).animationName),'none');passed++;console.log('PASS UI-09 OS reduced motion');
  await page.setViewportSize({width:1440,height:1060});await page.emulateMedia({reducedMotion:'no-preference'});await mkdir('test-results',{recursive:true});await page.screenshot({path:'test-results/overview-internal.png',fullPage:true});
+ if (built) {
+  const installContext = await browser.newContext();
+  const installPage = await installContext.newPage();
+  await installPage.goto(origin);
+  await installPage.waitForFunction(() => navigator.serviceWorker.controller !== null);
+  const manifestResponse = await installContext.request.get(origin + '/jarvis.webmanifest');
+  assert.equal(manifestResponse.ok(), true);
+  assert.equal((await manifestResponse.json()).display, 'standalone');
+  await installContext.setOffline(true);
+  const offlineResponse = await installPage.reload();
+  assert.equal(offlineResponse.status(), 503);
+  await installPage.getByRole('heading', {name: 'JARVIS is unavailable'}).waitFor();
+  assert.deepEqual(await installPage.evaluate(() => caches.keys()), []);
+  await installContext.setOffline(false);
+  await installPage.reload();
+  await installPage.getByRole('heading', {name: 'Your world. One command.'}).waitFor();
+  await installContext.close();
+  console.log('PASS PWA-01 worker activates, shows offline fallback and resumes without cache storage');
+ }
  assert.deepEqual(errors,[]);passed++;console.log('PASS UI-10 no browser runtime errors');
  await page.getByRole('button',{name:'Settings',exact:true}).click();await page.getByLabel('Timezone',{exact:true}).selectOption('Asia/Dubai');await page.getByLabel('Silent startup',{exact:true}).setChecked(false);
  await page.reload();await page.getByRole('button',{name:'Settings',exact:true}).click();assert.equal(await page.getByLabel('Timezone',{exact:true}).inputValue(),'Asia/Dubai');assert.equal(await page.getByLabel('Motion',{exact:true}).inputValue(),'off');assert.equal(await page.getByLabel('Silent startup',{exact:true}).isChecked(),false);
@@ -118,6 +137,25 @@ try{
  const firstSession=await (await context.request.get(origin+'/api/session')).json(),firstState=await (await context.request.get(origin+'/api/personal')).json();assert.equal((await context.request.post(origin+'/api/personal',{headers:{Origin:origin,'Content-Type':'application/json','X-CSRF-Token':firstSession.csrf},data:{operation:'save',revision:firstState.revision,remember:false,data:{...firstState.data,notes:[...firstState.data.notes,{id:'session-only-choice',text:'Synthetic session edit',kind:'note',at:null,minutes:30,done:false}]}}})).status(),200);await page.reload();await page.locator('.personal-summary h2').waitFor();await page.getByRole('button',{name:'Save current data encrypted',exact:true}).click();await page.locator('.save-strip').filter({hasText:'Encrypted on this computer'}).waitFor();assert.equal(await page.locator('.storage-choice').count(),0);const encryptedChoice=await (await context.request.get(origin+'/api/personal')).json();assert.equal(encryptedChoice.persistent,true);assert.ok(encryptedChoice.data.notes.some(n=>n.text==='Synthetic session edit'));await page.getByRole('button',{name:'عربي',exact:true}).click();await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await page.screenshot({path:'test-results/first-use-ar-mobile-internal.png',fullPage:true});await page.getByRole('button',{name:'English',exact:true}).click();passed++;console.log('PASS UI-39 explicit encrypted-save onboarding persists current session edits, corrects state and preserves Arabic mobile bounds');
  await page.locator('.personal-home details').evaluateAll(nodes=>nodes.forEach(node=>node.open=false));
  await page.screenshot({path:'test-results/personal-mobile-internal.png',fullPage:true});await page.setViewportSize({width:1440,height:1060});await page.screenshot({path:'test-results/personal-desktop-internal.png',fullPage:true});
+ if (built) {
+  const installContext = await browser.newContext();
+  const installPage = await installContext.newPage();
+  await installPage.goto(origin);
+  await installPage.waitForFunction(() => navigator.serviceWorker.controller !== null);
+  const manifestResponse = await installContext.request.get(origin + '/jarvis.webmanifest');
+  assert.equal(manifestResponse.ok(), true);
+  assert.equal((await manifestResponse.json()).display, 'standalone');
+  await installContext.setOffline(true);
+  const offlineResponse = await installPage.reload();
+  assert.equal(offlineResponse.status(), 503);
+  await installPage.getByRole('heading', {name: 'JARVIS is unavailable'}).waitFor();
+  assert.deepEqual(await installPage.evaluate(() => caches.keys()), []);
+  await installContext.setOffline(false);
+  await installPage.reload();
+  await installPage.getByRole('heading', {name: 'Your world. One command.'}).waitFor();
+  await installContext.close();
+  console.log('PASS PWA-01 worker activates, shows offline fallback and resumes without cache storage');
+ }
  assert.deepEqual(errors,[]);console.log(`Browser acceptance (${built?'built bundle':'development'}): ${passed}/39 passed. Synthetic fixtures only.`);
 }finally{
  await browser?.close();vite?.kill('SIGTERM');server.closeAllConnections();await new Promise(r=>server.close(r));await rm(vaultDirectory,{recursive:true,force:true});

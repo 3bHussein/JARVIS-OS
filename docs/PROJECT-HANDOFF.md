@@ -496,3 +496,7 @@ Exact next: owner combined Windows WebView2 window/unlock/Arabic layout/file dow
 ## Session017 — Managed desktop launch
 
 Implemented step04 runtime ownership using the existing built launcher IPC, with an explicit attach option. Local npm run check passed. Windows acceptance pending.
+
+## Session018 — 2026-11-03
+
+Prioritize web and core integrations. Defer Desktop development and physical acceptance until core work finishes. Built web app now has a manifest and a network-only worker with a bilingual offline page. It requires the local service for workspace data. No public hosting, mobile remote access or offline record editing is implied. See DEVELOPMENT-LOG.md and PWA-01 in tests/browser.mjs.
