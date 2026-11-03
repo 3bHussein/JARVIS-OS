@@ -516,3 +516,7 @@ Home now shows an on-demand preview of its spoken briefing. Continue unified bri
 ## Session022 — Nutrition in the spoken briefing — 2026-11-03
 
 The bilingual briefing now reports logged intake even without a calorie target. If logged intake exceeds the entered target, it states the difference. Missing intake still produces no calorie figure. Existing source selection and storage rules apply. Local npm run check passed. GitHub CI pending, PR none, no deployment. Desktop deferred.
+
+## Session023 — Compact onboarding and two-step launch guide — 2026-11-03
+
+Replaced the expanded first-use checklist with a compact next-step card and collapsed full checklist. Setup progress counts recorded inputs and choices. Planner and other panes are now reachable before profile creation. First profile save returns to Today. Rewrote 00-READ-FIRST.md with bilingual first-run and daily steps, optional voice setup and missing-build recovery. Existing encrypted save choice remains explicit. Local npm run check passed 75 cases and built Chromium passed 39 scenarios plus PWA-01/02. The browser suite verifies collapsed checklist, pre-profile Planner navigation and return via the next step. Prior source 74ec872 passed CI 41634939368. New CI pending, no PR or deployment. Desktop deferred. Next: verify GitHub artifact and continue source integration acceptance.

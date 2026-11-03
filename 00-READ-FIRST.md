@@ -1,15 +1,23 @@
-# JARVIS OS — start here
+# Start JARVIS in two steps / شغّل جارفس في خطوتين
 
-Requires Node.js 24+. Keep all extracted files together. You may use a folder with spaces or nested JARVIS-OS-main folders; open the numbered files beside this document. Do not move individual BAT files out of the app folder.
+Use Windows with Node.js 24 or newer. Extract the full ZIP into one folder.
 
-1. **01-Setup-JARVIS.bat** — run once. Choose a local password if none exists. Existing password/private data are preserved. A source-code download has no apps/web/dist: setup installs the locked dependencies and builds the web app (Internet/npm required). A complete ready-built preview skips installation/build.
-2. **02-Start-JARVIS.bat** — open the app. Keep its terminal open; Ctrl+C stops it. In Settings, unlock with your local password. Use this file each day.
-3. **03-Configure-AI-Voice.bat** — optional. Choose an already installed local AI model or existing offline speech paths. It does not install models or execute Python. Restart step02 afterward. The daily workspace works without this step.
+| When | File | What to do |
+| --- | --- | --- |
+| First time | **01-Setup-JARVIS.bat** | Run it and choose a local password when asked. |
+| Every day | **02-Start-JARVIS.bat** | Keep its window open. In JARVIS, open Settings and unlock with your password. |
 
-If setup reports an incomplete copy, re-extract the complete preview download into a new folder. Do not delete or overwrite an existing .env or .jarvis-data to fix a missing build. Preserve your original password and export an encrypted portable backup before moving personal records. A new folder starts with its own private setup; no automatic data migration is performed.
+على Windows ثبّت Node.js 24 أو أحدث وفكّ الملف المضغوط بالكامل في فولدر واحد.
 
-Source downloaded with GitHub's Code → Download ZIP requires the build in step01. The JARVIS-OS-Personal-Preview artifact includes the build already. Setup-JARVIS-Preview.bat remains a compatible alias that can also prepare a complete source download. Other legacy filenames are retained for existing users.
+1. أول مرة افتح **01-Setup-JARVIS.bat** واختار كلمة مرور لو البرنامج طلبها.
+2. كل يوم افتح **02-Start-JARVIS.bat** وسيب الشباك مفتوح. افتح الإعدادات في جارفس وسجّل الدخول بكلمة المرور.
 
-More: docs/DAILY-QUICKSTART.md, docs/ENGINE-SETUP.md, docs/USER-ACCEPTANCE.md. This is a personal preview, not the final native Windows installer.
+**03-Configure-AI-Voice.bat** is optional. Use it after installing your chosen local model or speech engine, then restart step 02.
 
-Optional desktop host: only the JARVIS-OS-Windows-Desktop-Preview artifact includes JARVIS-OS-Desktop.exe and04-Open-Desktop.bat. Read DESKTOP-README.md there, start02 first, then04. Source/browser-only copies do not include the native EXE. Save records encrypted before switching; browser and WebView sessions differ. The host is not a bundled installer.
+## If setup cannot find the build
+
+Download **JARVIS-OS-Personal-Preview** from the GitHub Actions artifacts and extract it completely. If you used **Code → Download ZIP**, step 01 builds the source and needs internet for dependencies.
+
+Before moving to another folder, export an encrypted backup from You & privacy. Keep your existing folder and original password until you verify your records in the new copy.
+
+[Daily use guide](docs/DAILY-QUICKSTART.md) · [AI and voice setup](docs/ENGINE-SETUP.md)
