@@ -38,6 +38,16 @@ test('cloud session and encrypted records survive separate handler instances', a
   const cookie = login.headers.get('set-cookie')!;
   assert.match(cookie, /Secure; HttpOnly; SameSite=Strict/);
   const headers = {Cookie:cookie.split(';')[0], 'X-CSRF-Token':(await login.json()).csrf};
+  const connectors = await (await call('/api/connectors', headers)).json();
+  assert.ok(connectors.connectors.every((connector: {lastSuccessfulSync: string | null}) => connector.lastSuccessfulSync === null));
+  assert.equal(connectors.connectors.find((connector: {id: string}) => connector.id === 'autel').status, 'blocked');
+  for (const path of ['/api/ai', '/api/speech']) {
+    const status = await (await call(path, headers)).json();
+    assert.equal(status.configured, false);
+    assert.equal(status.available, false);
+  }
+  assert.equal((await call('/api/chat/clear', headers, {})).status, 200);
+  assert.equal((await (await call('/api/whoop', headers)).json()).facts, null);
   const data = emptyData();
   data.notes.push({id:'fixture',text:'synthetic cloud record',kind:'note',at:null,minutes:30,done:false});
   const save = {operation:'save', remember:true, revision:0, data};

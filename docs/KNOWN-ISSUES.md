@@ -106,3 +106,8 @@ M6 native host requires existing02 runtime, Node24 and Windows WebView2; no auto
 ## Session016 final status — 2026-11-02T14:57:03.396000+00:00
 
 Final automated build/package gates passed; initial missing local Rust is covered by exact-source Windows CI, not local native execution. Initial archive lock byte difference was Windows CRLF only, with identical normalized source/graph. Physical WebView2 GUI/audio/download/notification acceptance remains TODO. Host requires02 and separate unlock, blocks external windows and does not auto-lock or own runtime. See TEST-REPORT.md and docs/evidence/desktop-final-ci.json.
+
+
+## Session031 — 2026-11-06T19:28:47.554395+00:00
+
+Cloud WHOOP and model execution remain unavailable. Previous501 responses from status endpoints caused generic UI errors. Session031 provides explicit availability/inventory responses. Readiness health means configuration shape only, not Redis or model acceptance.

@@ -119,6 +119,31 @@ try{
  await page.locator('.personal-home details').evaluateAll(nodes=>nodes.forEach(node=>node.open=false));
  await page.screenshot({path:'test-results/personal-mobile-internal.png',fullPage:true});await page.setViewportSize({width:1440,height:1060});await page.screenshot({path:'test-results/personal-desktop-internal.png',fullPage:true});
  if (built) {
+  const cloudContext = await browser.newContext();
+  let configured = false;
+  await cloudContext.route('**/api/health', route => route.fulfill({
+    status: configured ? 200 : 503,
+    contentType: 'application/json',
+    body: JSON.stringify(configured ? {ok: true, configured: true, mode: 'cloud'} : {error: 'cloud_setup_required'}),
+  }));
+  const cloudPage = await cloudContext.newPage();
+  await cloudPage.goto(origin);
+  await cloudPage.getByRole('button', {name: 'Settings', exact: true}).click();
+  const unlock = cloudPage.getByRole('button', {name: 'Unlock online workspace', exact: true});
+  await unlock.waitFor();
+  assert.equal(await unlock.isDisabled(), true);
+  await cloudPage.getByText('Cloud setup is still incomplete.', {exact: true}).waitFor();
+  configured = true;
+  await cloudPage.reload();
+  await cloudPage.getByRole('button', {name: 'Settings', exact: true}).click();
+  await cloudPage.getByRole('heading', {name: 'Online workspace sign-in', exact: true}).waitFor();
+  assert.equal(await unlock.isEnabled(), true);
+  await cloudPage.getByRole('button', {name: 'عربي', exact: true}).click();
+  await cloudPage.getByLabel('باسورد جارفس الأونلاين', {exact: true}).waitFor();
+  await cloudContext.close();
+  console.log('PASS CLOUD-UI-01 incomplete cloud login is blocked and ready state is bilingual');
+ }
+ if (built) {
   const installContext = await browser.newContext();
   const installPage = await installContext.newPage();
   await installPage.goto(origin);

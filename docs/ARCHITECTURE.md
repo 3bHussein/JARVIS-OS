@@ -135,3 +135,8 @@ M6 IMPLEMENTED source: optional Tauri2 host restricted to127.0.0.1:5173 and stat
 ## Session016 final status — 2026-11-02T14:57:03.396000+00:00
 
 M6 optional fixed-origin Tauri host now has compiled Windows x64 evidence and a committed crates.io dependency lock. Existing Node/API/vault architecture and browser mode unchanged. No renderer IPC, plugins or OS action permissions introduced; no bundled runtime/installer. See TEST-REPORT.md and docs/evidence/desktop-final-ci.json.
+
+
+## Session031 — 2026-11-06T19:28:47.554395+00:00
+
+Cloud status endpoints use existing connector manifests with disconnected/blocked states. Vercel packaging explicitly includes connector TypeScript source alongside API/personal source. TypeScript checks now include api/**/*.ts.

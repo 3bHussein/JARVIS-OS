@@ -117,3 +117,8 @@ Native host adds no external connector or data permission. It probes unauthentic
 ## Session016 final status — 2026-11-02T14:57:03.396000+00:00
 
 Session016 exact-source native preview introduces no connector credential or external data access. Browser/WebView session separation and blocked new-window links remain explicit. Existing source audit limitations/automatic sync blockers unchanged. See TEST-REPORT.md and docs/evidence/desktop-final-ci.json.
+
+
+## Session031 — 2026-11-06T19:28:47.554395+00:00
+
+Session031 adds no upstream credential, data read or account link. WHOOP status in cloud returns no facts. Corporate connectors stay blocked. Cloud connector inventory has null last successful sync and unavailable freshness.

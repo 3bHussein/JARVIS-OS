@@ -1,3 +1,4 @@
+import {manifests} from '../../../packages/connectors/src/contracts.ts';
 import {createHash, randomBytes} from 'node:crypto';
 import {checkPassword} from './auth.ts';
 import {CloudRedis} from './cloud-redis.ts';
@@ -72,6 +73,22 @@ export function createCloudHandler(config: CloudConfig, transport: typeof fetch 
       if (post && path === '/api/logout') {
         await redis.command(['DEL', sessionKey(token)]);
         return reply(200, {ok: true}, `jarvis_session=; ${cookieFlags}; Max-Age=0`);
+      }
+      if (!post && path === '/api/connectors') {
+        return reply(200, {connectors: manifests.map(manifest => ({
+          ...manifest,
+          status: manifest.domain === 'corporate' ? 'blocked' : 'disconnected',
+          lastSuccessfulSync: null, freshness: 'unavailable', lastError: null,
+        }))});
+      }
+      if (!post && path === '/api/whoop') {
+        return reply(200, {status: 'unavailable', facts: null, error: 'cloud_feature_unavailable'});
+      }
+      if (!post && (path === '/api/ai' || path === '/api/speech')) {
+        return reply(200, {configured: false, mode: 'cloud', available: false});
+      }
+      if (post && path === '/api/chat/clear') {
+        return reply(200, {ok: true});
       }
       if (path === '/api/personal') {
         if (!post) {

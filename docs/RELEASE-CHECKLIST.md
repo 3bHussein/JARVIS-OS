@@ -84,3 +84,8 @@ M6 native preview gates: [ ] Windows Rust compilation/tests; [ ] committed Cargo
 ## Session016 final status — 2026-11-02T14:57:03.396000+00:00
 
 M6 automated gates VERIFIED: committed lock, exact-source three-job CI, native Rust3/3/EXE CLI5/5, archive manifest/AMD64/provenance. Physical WebView2 GUI/voice/session/file acceptance remains unchecked. No installer/signature/deployment/release. See TEST-REPORT.md and docs/evidence/desktop-final-ci.json.
+
+
+## Session031 — 2026-11-06T19:28:47.554395+00:00
+
+Session031 automated gate local78/78/typecheck/build passed. Browser cloud-mode and exact-source GitHub/Vercel verification pending. Owner real-data preservation and cloud source/engine acceptance remain open.

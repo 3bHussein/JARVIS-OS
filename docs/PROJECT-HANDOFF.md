@@ -544,3 +544,14 @@ Added Vercel Vite config and a Node API catch-all. Redis now backs expiring hash
 ## Session029 — First Vercel production deployment — 2026-11-03
 
 Linked project jarvis-os to GitHub main and deployed source 6e751a0. Vercel marked the build Ready and the public UI loaded. API invocation returned 500; runtime logs identified the missing cloud-handler.ts dependency. Added explicit function includeFiles for API and personal model TypeScript sources. Hosted Redis and production secrets still pending. No personal records migrated.
+
+
+## Session031 — Online capability states — 2026-11-06T19:28:47.554395+00:00
+
+Requested continuation of web-first development with GitHub/Vercel delivery. Starting source3836e92159dca5b29a7a27cd5f7f3357425fc01d. IMPLEMENTED authenticated cloud status endpoints for connector inventory, unavailable WHOOP facts and optional engine availability. Cloud chat-clear confirms the currently stateless cloud chat has no retained server history. Settings now shows bilingual online capability guidance instead of local BAT setup instructions. Connector freshness remains unavailable and corporate access blocked.
+
+Extended the synthetic multi-instance cloud handler scenario to verify no fabricated sync dates/WHOOP readings, disabled engines, corporate isolation and authenticated clear. Added actual Vercel api entry files to TypeScript checks and included connector manifest source in function packaging. No Redis key, password, real account record or production datastore read/written. Existing cloud vault/session formats preserved.
+
+Commands executed: git fetch/worktree, rg/cat, Python source edits, npm run check, npm run typecheck, npm run test:e2e:built, pinned Playwright Chromium install and git diff --check. TESTED78/78 Node plus typecheck/build. Initial browser attempt was blocked by a missing cached browser binary, restored using the pinned Playwright download. Existing built browser39/39 plus PWA01/02 passed. Additional cloud login UI scenario and final GitHub/Vercel acceptance pending at this entry. PR none. Source SHA and deployment result will be appended after publication. Desktop remains deferred. Exact next actions: finish synthetic cloud UI checks, push the JARVIS-only batch, inspect CI and deployed interface, append exact results.
+
+Session031 local final verification: built Chromium UI01–39, CLOUD-UI-01 and PWA01/02 PASS. The first cloud UI scenario timed out because reloading resets navigation to Overview. The scenario now explicitly opens Settings after reload. This was corrected in the test harness. No production navigation behavior changed.

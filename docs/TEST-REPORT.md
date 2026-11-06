@@ -451,3 +451,10 @@ Exact next: owner combined Windows WebView2 window/unlock/Arabic layout/file dow
 PWA-01 verifies the standalone manifest and worker control in built Chromium. Stopping the actual loopback API produces the bilingual 503 fallback, cache storage stays empty, and restarting the service restores normal navigation. The existing 39 built Chromium scenarios also passed. Browser installation UI and mobile device access remain unverified.
 
 PWA-02 checks the Settings installation panel with synthetic browser events. It captures an offer before navigating to Settings, invokes the prompt after a click, and checks installed status in both languages. Real OS installation remains pending.
+
+
+## Session031 — 2026-11-06T19:28:47.554395+00:00
+
+CLOUD-HTTP existing multi-instance scenario extended for corporate blocked state, null upstream dates/facts, disabled engines and CSRF-protected cloud chat clear. Local78/78 typecheck/build PASS. Built39/39 plus PWA01/02 PASS before adding CLOUD-UI-01. CLOUD-UI-01 checks disabled login during incomplete configuration, ready state and Arabic labels using synthetic health responses.
+
+Session031 local final verification: built Chromium UI01–39, CLOUD-UI-01 and PWA01/02 PASS. The first cloud UI scenario timed out because reloading resets navigation to Overview. The scenario now explicitly opens Settings after reload. This was corrected in the test harness. No production navigation behavior changed.

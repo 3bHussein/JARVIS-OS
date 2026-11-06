@@ -103,3 +103,8 @@ ADR016: use a no-IPC fixed-origin Tauri2 host first, preserving the tested Node 
 ## Session016 final status — 2026-11-02T14:57:03.396000+00:00
 
 ADR016 acceptance: the fixed-origin no-IPC host compiled and passed Rust/EXE probes on Windows CI. Retain separately owned Node runtime for this preview; add sidecar lifecycle/secure Agent only with dedicated tests. Windows checkout CRLF is normalized only when comparing lock to Git source; archive manifest hashes remain byte-exact. See TEST-REPORT.md and docs/evidence/desktop-final-ci.json.
+
+
+## Session031 — 2026-11-06T19:28:47.554395+00:00
+
+Online Settings describes hosted capabilities rather than local setup commands. The cloud API returns authenticated explicit availability metadata for unsupported optional services, with no invented sync dates or health facts. Server chat-clear acknowledges absence of retained cloud conversation state.
