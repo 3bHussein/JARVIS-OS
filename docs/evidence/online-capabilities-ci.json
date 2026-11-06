@@ -1,0 +1,472 @@
+{
+  "source": "dbc79f2cd3924e148aad01d87f378ddd6c5f780a",
+  "run": 42280120298,
+  "url": "https://github.com/3bHussein/JARVIS-OS/actions/runs/42280120298",
+  "jobs": [
+    {
+      "id": 128106631049,
+      "name": "foundation",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-06T19:29:56Z",
+          "completed_at": "2026-11-06T19:29:57Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-06T19:29:57Z",
+          "completed_at": "2026-11-06T19:29:58Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-06T19:29:58Z",
+          "completed_at": "2026-11-06T19:29:59Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-06T19:29:59Z",
+          "completed_at": "2026-11-06T19:30:00Z"
+        },
+        {
+          "name": "Run python -m unittest discover -s apps/voice-worker -p test_worker.py",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-06T19:30:00Z",
+          "completed_at": "2026-11-06T19:30:00Z"
+        },
+        {
+          "name": "Run npm ci --ignore-scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-06T19:30:00Z",
+          "completed_at": "2026-11-06T19:30:01Z"
+        },
+        {
+          "name": "Run npm run check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-06T19:30:01Z",
+          "completed_at": "2026-11-06T19:30:10Z"
+        },
+        {
+          "name": "Run npm run test:launcher",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-06T19:30:10Z",
+          "completed_at": "2026-11-06T19:30:14Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium --only-shell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-06T19:30:14Z",
+          "completed_at": "2026-11-06T19:30:28Z"
+        },
+        {
+          "name": "Run npm run test:e2e",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-06T19:30:28Z",
+          "completed_at": "2026-11-06T19:30:48Z"
+        },
+        {
+          "name": "Run npm run test:e2e:built",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-06T19:30:48Z",
+          "completed_at": "2026-11-06T19:31:04Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-11-06T19:31:04Z",
+          "completed_at": "2026-11-06T19:31:05Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-11-06T19:31:05Z",
+          "completed_at": "2026-11-06T19:31:05Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-11-06T19:31:05Z",
+          "completed_at": "2026-11-06T19:31:05Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-06T19:31:05Z",
+          "completed_at": "2026-11-06T19:31:05Z"
+        }
+      ]
+    },
+    {
+      "id": 128106631078,
+      "name": "desktop-windows",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-06T19:29:56Z",
+          "completed_at": "2026-11-06T19:29:58Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-06T19:29:58Z",
+          "completed_at": "2026-11-06T19:30:03Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-06T19:30:03Z",
+          "completed_at": "2026-11-06T19:30:10Z"
+        },
+        {
+          "name": "Run npm ci --ignore-scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-06T19:30:10Z",
+          "completed_at": "2026-11-06T19:30:15Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-06T19:30:15Z",
+          "completed_at": "2026-11-06T19:30:17Z"
+        },
+        {
+          "name": "Run node scripts/desktop-icon.mjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-06T19:30:17Z",
+          "completed_at": "2026-11-06T19:30:18Z"
+        },
+        {
+          "name": "Select stable Rust toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-06T19:30:18Z",
+          "completed_at": "2026-11-06T19:30:24Z"
+        },
+        {
+          "name": "Run actions/cache@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-06T19:30:24Z",
+          "completed_at": "2026-11-06T19:30:46Z"
+        },
+        {
+          "name": "Require committed native dependency lock",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-06T19:30:46Z",
+          "completed_at": "2026-11-06T19:30:46Z"
+        },
+        {
+          "name": "Test native policy and bounded probe",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-06T19:30:46Z",
+          "completed_at": "2026-11-06T19:31:04Z"
+        },
+        {
+          "name": "Build native Windows host",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-06T19:31:04Z",
+          "completed_at": "2026-11-06T19:31:32Z"
+        },
+        {
+          "name": "Run node tests/desktop-smoke.mjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-06T19:31:32Z",
+          "completed_at": "2026-11-06T19:31:35Z"
+        },
+        {
+          "name": "Run node scripts/package-desktop.mjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-06T19:31:35Z",
+          "completed_at": "2026-11-06T19:31:36Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-06T19:31:36Z",
+          "completed_at": "2026-11-06T19:31:38Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-06T19:31:38Z",
+          "completed_at": "2026-11-06T19:31:39Z"
+        },
+        {
+          "name": "Post Run actions/cache@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-11-06T19:31:39Z",
+          "completed_at": "2026-11-06T19:31:40Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-11-06T19:31:40Z",
+          "completed_at": "2026-11-06T19:31:40Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-11-06T19:31:40Z",
+          "completed_at": "2026-11-06T19:31:42Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-11-06T19:31:42Z",
+          "completed_at": "2026-11-06T19:31:42Z"
+        }
+      ]
+    },
+    {
+      "id": 128106631261,
+      "name": "windows-launcher",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-06T19:29:56Z",
+          "completed_at": "2026-11-06T19:29:57Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-06T19:29:57Z",
+          "completed_at": "2026-11-06T19:30:02Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-06T19:30:02Z",
+          "completed_at": "2026-11-06T19:30:20Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-06T19:30:20Z",
+          "completed_at": "2026-11-06T19:30:20Z"
+        },
+        {
+          "name": "Run python -m unittest discover -s apps/voice-worker -p test_worker.py",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-06T19:30:20Z",
+          "completed_at": "2026-11-06T19:30:22Z"
+        },
+        {
+          "name": "Run npm ci --ignore-scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-06T19:30:22Z",
+          "completed_at": "2026-11-06T19:30:30Z"
+        },
+        {
+          "name": "Run npm run check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-06T19:30:30Z",
+          "completed_at": "2026-11-06T19:30:43Z"
+        },
+        {
+          "name": "Check Windows batch entry points",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-06T19:30:43Z",
+          "completed_at": "2026-11-06T19:30:46Z"
+        },
+        {
+          "name": "Run npm run test:launcher",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-06T19:30:46Z",
+          "completed_at": "2026-11-06T19:30:54Z"
+        },
+        {
+          "name": "Prepare clean personal preview",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-06T19:30:54Z",
+          "completed_at": "2026-11-06T19:30:55Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-06T19:30:55Z",
+          "completed_at": "2026-11-06T19:30:57Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-11-06T19:30:57Z",
+          "completed_at": "2026-11-06T19:30:57Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-11-06T19:30:57Z",
+          "completed_at": "2026-11-06T19:30:57Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-11-06T19:30:57Z",
+          "completed_at": "2026-11-06T19:31:00Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-06T19:31:00Z",
+          "completed_at": "2026-11-06T19:31:00Z"
+        }
+      ]
+    }
+  ],
+  "logAssertions": [
+    {
+      "job_id": 128106631049,
+      "assertions": [
+        "2026-11-06T19:30:00.2976665Z Ran 4 tests in 0.048s",
+        "2026-11-06T19:30:08.8301938Z ℹ tests 78",
+        "2026-11-06T19:30:08.8302734Z ℹ pass 78",
+        "2026-11-06T19:30:08.8303094Z ℹ fail 0",
+        "2026-11-06T19:30:14.8641619Z ℹ tests 5",
+        "2026-11-06T19:30:14.8642453Z ℹ pass 5",
+        "2026-11-06T19:30:14.8644318Z ℹ fail 0",
+        "2026-11-06T19:30:48.1264757Z Browser acceptance (development): 39/39 passed. Synthetic fixtures only.",
+        "2026-11-06T19:31:04.0714872Z PASS CLOUD-UI-01 incomplete cloud login is blocked and ready state is bilingual",
+        "2026-11-06T19:31:04.7495273Z PASS PWA-02 install offer survives navigation, prompts on click and updates in both languages",
+        "2026-11-06T19:31:04.8342898Z PASS PWA-01 worker activates, shows offline fallback and resumes without cache storage",
+        "2026-11-06T19:31:04.8344359Z Browser acceptance (built bundle): 39/39 passed. Synthetic fixtures only."
+      ],
+      "isError": false
+    },
+    {
+      "job_id": 128106631261,
+      "assertions": [
+        "2026-11-06T19:30:22.5424044Z Ran 4 tests in 0.085s\r",
+        "2026-11-06T19:30:41.4962078Z ℹ tests 78\r",
+        "2026-11-06T19:30:41.4962857Z ℹ pass 77\r",
+        "2026-11-06T19:30:41.4963180Z ℹ fail 0\r",
+        "2026-11-06T19:30:41.4963921Z ℹ skipped 1\r",
+        "2026-11-06T19:30:54.6744544Z ℹ tests 5\r",
+        "2026-11-06T19:30:54.6745649Z ℹ pass 5\r",
+        "2026-11-06T19:30:54.6746083Z ℹ fail 0\r"
+      ],
+      "isError": false
+    }
+  ],
+  "vercel": [
+    {
+      "context": "Vercel",
+      "state": "success",
+      "target_url": "https://vercel.com/3bhusseins-projects/jarvis-os/5d3jAxDFMnqMTR9tmpajpxcmidXo",
+      "description": "Deployment has completed"
+    }
+  ],
+  "liveSettings": {
+    "url": "https://jarvis-os-henna-sigma.vercel.app/",
+    "onlineSignInVisible": true,
+    "configuredCloudReady": true,
+    "authenticatedOwnerDataRead": false
+  },
+  "syntheticDataOnly": true
+}
