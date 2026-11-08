@@ -564,3 +564,8 @@ Source dbc79f2cd3924e148aad01d87f378ddd6c5f780a. GitHub run https://github.com/3
 Vercel commit status SUCCESS at https://vercel.com/3bhusseins-projects/jarvis-os/5d3jAxDFMnqMTR9tmpajpxcmidXo. Live production UI https://jarvis-os-henna-sigma.vercel.app/ opened and Settings displayed Online workspace sign-in with configured cloud service ready. No password/Redis key or authenticated owner record was inspected. This verifies deployment and public readiness UI only. Source-level cloud endpoint acceptance used synthetic REST transport. Actual owner data persistence/WHOOP/cloud AI acceptance remains open.
 
 Evidence docs/evidence/online-capabilities-ci.json. Implementation and tests VERIFIED for the stated automated scope. PR none, v1 NOT RELEASED. Deployment DEPLOYED by the existing authorized Git connection. Checkout preserved by a named stash and fast-forward. Docs-only final follow-up uses [skip ci]. Exact next: authenticated synthetic end-to-end cloud vault save/reload/logout acceptance when a test session is available, then approved source/AI linking. Preserve existing owner records and cloud key.
+
+
+## Session 032 — Cloud body limits
+
+TESTED locally: streaming request/Redis response reader cancels oversize bodies, strict UTF-8, request errors 400/413; Redis errors remain generic. npm run check: typecheck, 84/84 Node tests, production build pass. No UI changes; browser/native tests not rerun. Remote checks pending at publication. No secrets or owner records read. Continue with exact source CI/deployment checks and owner cloud persistence acceptance; desktop remains deferred.

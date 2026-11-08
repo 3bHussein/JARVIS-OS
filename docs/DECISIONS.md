@@ -108,3 +108,8 @@ ADR016 acceptance: the fixed-origin no-IPC host compiled and passed Rust/EXE pro
 ## Session031 — 2026-11-06T19:28:47.554395+00:00
 
 Online Settings describes hosted capabilities rather than local setup commands. The cloud API returns authenticated explicit availability metadata for unsupported optional services, with no invented sync dates or health facts. Server chat-clear acknowledges absence of retained cloud conversation state.
+
+
+## Session 032 — Enforce limits while reading
+
+Adopt one streaming UTF-8 reader for cloud request and Redis response boundaries. Check Content-Length when present, but independently count actual bytes for missing or misleading lengths. Cancel on failure. Keep upstream failure details out of client responses. Retain existing encrypted vault and session design.

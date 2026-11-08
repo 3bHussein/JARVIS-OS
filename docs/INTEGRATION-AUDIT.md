@@ -122,3 +122,8 @@ Session016 exact-source native preview introduces no connector credential or ext
 ## Session031 — 2026-11-06T19:28:47.554395+00:00
 
 Session031 adds no upstream credential, data read or account link. WHOOP status in cloud returns no facts. Corporate connectors stay blocked. Cloud connector inventory has null last successful sync and unavailable freshness.
+
+
+## Session 032 — Redis transport hardening
+
+Redis remains an encrypted application-vault transport. Responses now have streaming byte bounds with cancellation. No new credentials, integrations, scopes, production database changes, or WHOOP reads were introduced. Existing cloud connector availability remains unchanged.

@@ -1,3 +1,5 @@
+import {readBoundedText} from './bounded-body.ts';
+
 export class CloudRedis {
   private readonly endpoint: URL;
   private readonly token: string;
@@ -19,8 +21,8 @@ export class CloudRedis {
       body: JSON.stringify(args),
     });
     if (!response.ok) throw new Error('cloud_vault_unavailable');
-    const raw = await response.text();
-    if (raw.length > 1024 * 1024 + 256) throw new Error('cloud_vault_unavailable');
+    const raw = await readBoundedText(response, 1024 * 1024 + 256)
+      .catch(() => { throw new Error('cloud_vault_unavailable'); });
     const payload = JSON.parse(raw);
     if (!payload || !Object.hasOwn(payload, 'result') || payload.error) throw new Error('cloud_vault_unavailable');
     return payload.result;

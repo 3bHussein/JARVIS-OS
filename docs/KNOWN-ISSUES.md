@@ -111,3 +111,8 @@ Final automated build/package gates passed; initial missing local Rust is covere
 ## Session031 — 2026-11-06T19:28:47.554395+00:00
 
 Cloud WHOOP and model execution remain unavailable. Previous501 responses from status endpoints caused generic UI errors. Session031 provides explicit availability/inventory responses. Readiness health means configuration shape only, not Redis or model acceptance.
+
+
+## Session 032 — Body buffering issue resolved locally
+
+TESTED: oversized cloud request/Redis response streams no longer require complete buffering. Malformed owner JSON now reports a client error. Remaining: process concurrency/time limits and real owner persistence acceptance are not established by these tests. Cloud WHOOP/AI execution and cloud erase remain unavailable.

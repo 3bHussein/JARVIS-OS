@@ -89,3 +89,12 @@ M6 automated gates VERIFIED: committed lock, exact-source three-job CI, native R
 ## Session031 — 2026-11-06T19:28:47.554395+00:00
 
 Session031 automated gate local78/78/typecheck/build passed. Browser cloud-mode and exact-source GitHub/Vercel verification pending. Owner real-data preservation and cloud source/engine acceptance remain open.
+
+
+## Session 032 — Additional release evidence
+
+- [x] Streaming payload limit and cancellation regression tests pass locally.
+- [x] Malformed request 400 / oversized request 413 tested.
+- [x] Typecheck, 84 Node tests and production web build pass.
+- [ ] Exact source remote CI and Vercel status accepted after publication.
+- [ ] Real owner cloud persistence acceptance and complete v1 release gates.

@@ -140,3 +140,8 @@ M6 optional fixed-origin Tauri host now has compiled Windows x64 evidence and a 
 ## Session031 — 2026-11-06T19:28:47.554395+00:00
 
 Cloud status endpoints use existing connector manifests with disconnected/blocked states. Vercel packaging explicitly includes connector TypeScript source alongside API/personal source. TypeScript checks now include api/**/*.ts.
+
+
+## Session 032 — Streaming transport boundary
+
+Cloud request JSON is read through a shared byte-limited reader (1 MiB); Redis response limit is 1 MiB + 256 bytes. Oversized streams are cancelled before remaining content is buffered. Decoder rejects invalid UTF-8. Request parse failures return 400/413; upstream body failures remain generic service failures. This is a per-message boundary, not a process memory/concurrency guarantee.

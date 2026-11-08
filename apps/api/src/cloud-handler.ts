@@ -1,3 +1,4 @@
+import {BodyReadError, readBoundedText} from './bounded-body.ts';
 import {manifests} from '../../../packages/connectors/src/contracts.ts';
 import {createHash, randomBytes} from 'node:crypto';
 import {checkPassword} from './auth.ts';
@@ -43,9 +44,8 @@ export function createCloudHandler(config: CloudConfig, transport: typeof fetch 
       return reply(403, {error: 'invalid_request'});
     }
     async function body() {
-      const text = await request.text();
-      if (Buffer.byteLength(text) > 1048576) throw new Error('invalid_request');
-      return JSON.parse(text);
+      const text = await readBoundedText(request, 1048576);
+      try { return JSON.parse(text); } catch { throw new BodyReadError(400); }
     }
 
     try {
@@ -105,6 +105,7 @@ export function createCloudHandler(config: CloudConfig, transport: typeof fetch 
       }
       return reply(501, {error: 'cloud_feature_unavailable'});
     } catch (error) {
+      if (error instanceof BodyReadError) return reply(error.status, {error: error.message});
       if (error instanceof Error && error.message === 'personal_conflict') return reply(409, {error: 'personal_conflict'});
       return reply(503, {error: 'cloud_unavailable'});
     }

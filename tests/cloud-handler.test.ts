@@ -60,3 +60,19 @@ test('cloud session and encrypted records survive separate handler instances', a
   assert.equal((await call('/api/logout', headers, {})).status, 200);
   assert.equal((await call('/api/personal', headers)).status, 401);
 });
+
+test('cloud login returns actionable client errors for malformed and oversized bodies', async () => {
+  const origin = 'https://jarvis.example.test';
+  const handler = createCloudHandler({origin, endpoint:'https://redis.example.test', token:'fixture',
+    key:'a'.repeat(64), namespace:'fixture', passwordHash:hashPassword('synthetic-password')},
+    async () => Response.json({result:1}));
+  const send = (body: string) => handler(new Request(origin + '/api/session', {
+    method:'POST', headers:{Origin:origin, 'Content-Type':'application/json'}, body,
+  }));
+  const malformed = await send('{');
+  assert.equal(malformed.status, 400);
+  assert.deepEqual(await malformed.json(), {error:'invalid_request'});
+  const oversized = await send('x'.repeat(1048577));
+  assert.equal(oversized.status, 413);
+  assert.deepEqual(await oversized.json(), {error:'payload_too_large'});
+});

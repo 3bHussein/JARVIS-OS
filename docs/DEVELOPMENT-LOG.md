@@ -622,3 +622,19 @@ Source dbc79f2cd3924e148aad01d87f378ddd6c5f780a. GitHub run https://github.com/3
 Vercel commit status SUCCESS at https://vercel.com/3bhusseins-projects/jarvis-os/5d3jAxDFMnqMTR9tmpajpxcmidXo. Live production UI https://jarvis-os-henna-sigma.vercel.app/ opened and Settings displayed Online workspace sign-in with configured cloud service ready. No password/Redis key or authenticated owner record was inspected. This verifies deployment and public readiness UI only. Source-level cloud endpoint acceptance used synthetic REST transport. Actual owner data persistence/WHOOP/cloud AI acceptance remains open.
 
 Evidence docs/evidence/online-capabilities-ci.json. Implementation and tests VERIFIED for the stated automated scope. PR none, v1 NOT RELEASED. Deployment DEPLOYED by the existing authorized Git connection. Checkout preserved by a named stash and fast-forward. Docs-only final follow-up uses [skip ci]. Exact next: authenticated synthetic end-to-end cloud vault save/reload/logout acceptance when a test session is available, then approved source/AI linking. Preserve existing owner records and cloud key.
+
+
+## Session 032 — Bounded cloud transport (2026-11-08T14:19:22.977171+00:00)
+
+Status: TESTED locally; remote CI/deployment pending at source publication.
+Requested: continue web implementation and maintain the development history.
+Completed: enforce streaming byte limits on cloud JSON requests and Redis responses; cancel oversized streams; reject invalid UTF-8; return 400 invalid_request for malformed JSON and 413 payload_too_large for oversized owner requests. Redis failures remain generic 503 responses through the handler.
+Created: apps/api/src/bounded-body.ts, tests/bounded-body.test.ts.
+Modified: cloud-handler.ts, cloud-redis.ts, cloud-handler.test.ts and the nine tracking documents.
+Commands: repository inspection (git status/log, rg, cat); npm ci --ignore-scripts; npm run check (twice, second includes handler error tests); git diff --stat. npm proxy-config warning is nonfatal.
+Tests: final typecheck PASS; Node 84/84 PASS, no skips; Vite production build PASS. Synthetic fixtures only. Browser/Windows tests not rerun: no UI/native changes.
+Decision: shared streaming reader enforces bytes before accumulation; strict UTF-8 preserves record integrity. Upstream parsing failures are not exposed as owner input errors.
+Bug resolved: previous request.text()/response.text() buffered the entire untrusted message before size checks.
+Limits: per-body limits do not establish total process concurrency or request-duration limits. Config health does not prove Redis reachability. Owner cloud save/reload acceptance remains pending; no production personal records accessed.
+Commit: source commit containing this entry (resolve via Git history); parent f1b07a4ab143f320d5df2072f6dd7dc4f01d8c2d. PR: none. CI and deployment: pending, do not infer success from local tests.
+Next: inspect exact source CI/Vercel status; perform owner-authorized save/reload acceptance without requesting secrets in chat; continue cloud integration work. Desktop deferred.
