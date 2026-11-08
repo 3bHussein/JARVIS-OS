@@ -660,3 +660,8 @@ Changed files: cloud-handler.ts, main.tsx, cloud-handler.test.ts, browser.mjs, p
 Traceability: AUTH-RESET-01 => cloud-handler.test.ts synthetic old credential/cookie rejection and retained record; AUTH-RESET-UI-01 => CLOUD-UI-01 bilingual recovery guide; CI-COMPAT-01 => exact-source Actions after publication. Base commit fa910d1478034237605c5de79b2be1e5d0b7659b; resulting source SHA resolved in Git history. PR none. CI/deployment pending for this source.
 
 Next: inspect exact-source CI and Vercel; owner generates and replaces only Production JARVIS_PASSWORD_HASH, saves and redeploys; verify production-domain login/retained records. Password reset is BLOCKED on owner entry, not completed. Continue cloud integrations; desktop deferred.
+
+
+### Session 033 publication — 2026-11-08
+
+Source feae0afbf74ab235a20ee677405f21b9e61cc314 published to main. Vercel status SUCCESS: https://vercel.com/3bhusseins-projects/jarvis-os/7ry9CRoR63X5CJoqwMiSVNKmcD4p . CI https://github.com/3bHussein/JARVIS-OS/actions/runs/42502632416 in progress at inspection. Owner reset remains pending: prepared existing Production JARVIS_PASSWORD_HASH edit form with empty Value; no credential entered or saved. Owner must generate the hash privately, save only that secret and redeploy. No data key changes. Local built browser acceptance passed as recorded above.
