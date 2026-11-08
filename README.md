@@ -108,3 +108,8 @@ Assistant experience: [Voice welcome and recorded reminders](docs/WELCOME-AND-RE
 Run Configure-JARVIS.bat for local engine selection without editing .env. [Engine setup](docs/ENGINE-SETUP.md) preserves your password and requires restart. Settings shows configuration flags, not inference certification.
 
 Home [first-use guidance and reviewed quick capture](docs/FIRST-USE.md) makes storage choices explicit and saves local notes/tasks only after preview and confirmation. No external action or automatic integration is implied.
+
+
+## Online password recovery
+
+Settings includes email-code password recovery. It requires one-time owner configuration of a recovery mailbox and Resend sending service; no email is sent while unconfigured. See [05 — Recover the online workspace password](docs/05-RESET-ONLINE-PASSWORD.md). After setup, resets happen inside the app without downloading files or redeploying each time.

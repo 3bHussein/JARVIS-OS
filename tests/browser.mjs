@@ -126,6 +126,10 @@ try{
     contentType: 'application/json',
     body: JSON.stringify(configured ? {ok: true, configured: true, mode: 'cloud'} : {error: 'cloud_setup_required'}),
   }));
+  let recoveryReady=false, recoverySent=0, recoveryCompleted=0;
+  await cloudContext.route('**/api/recovery',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({available:recoveryReady})}));
+  await cloudContext.route('**/api/recovery/request',route=>{recoverySent++;return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({challenge:'a'.repeat(32),expiresIn:600})});});
+  await cloudContext.route('**/api/recovery/complete',route=>{const input=route.request().postDataJSON();assert.equal(input.code,'12345678');assert.equal(input.password,'synthetic-recovery-password');recoveryCompleted++;return route.fulfill({status:200,contentType:'application/json',body:'{"ok":true}'});});
   const cloudPage = await cloudContext.newPage();
   await cloudPage.goto(origin);
   await cloudPage.getByRole('button', {name: 'Settings', exact: true}).click();
@@ -139,10 +143,33 @@ try{
   await cloudPage.getByRole('heading', {name: 'Online workspace sign-in', exact: true}).waitFor();
   assert.equal(await unlock.isEnabled(), true);
   await cloudPage.getByText('Forgot your online password?', {exact:true}).click();
-  await cloudPage.getByText('Reset through the project owner’s Vercel account. There is no default password.', {exact:true}).waitFor();
+  await cloudPage.getByText('Email recovery is not enabled yet. The project owner needs to connect an email service and recovery address once. No code has been sent.', {exact:true}).waitFor();
+  assert.equal(recoverySent,0);
   await cloudPage.getByRole('button', {name: 'عربي', exact: true}).click();
   await cloudPage.getByLabel('باسورد جارفس الأونلاين', {exact: true}).waitFor();
   await cloudPage.getByText('نسيت باسورد الأونلاين؟', {exact:true}).waitFor();
+  recoveryReady=true;
+  await cloudPage.getByRole('button',{name:'English',exact:true}).click();
+  await cloudPage.reload();
+  await cloudPage.getByRole('button',{name:'Settings',exact:true}).click();
+  await cloudPage.getByText('Forgot your online password?',{exact:true}).click();
+  await cloudPage.getByRole('button',{name:'Email me a reset code',exact:true}).click();
+  await cloudPage.getByLabel('Reset code',{exact:true}).fill('12345678');
+  await cloudPage.getByLabel('New online password',{exact:true}).fill('synthetic-recovery-password');
+  await cloudPage.getByLabel('Confirm new password',{exact:true}).fill('synthetic-wrong-password');
+  await cloudPage.getByRole('button',{name:'Save new password',exact:true}).click();
+  await cloudPage.getByRole('alert').filter({hasText:'The passwords do not match.'}).waitFor();
+  assert.equal(recoveryCompleted,0);
+  await cloudPage.getByLabel('Confirm new password',{exact:true}).fill('synthetic-recovery-password');
+  await cloudPage.getByRole('button',{name:'Save new password',exact:true}).click();
+  await cloudPage.getByRole('status').filter({hasText:'Password changed. Sign in above'}).waitFor();
+  assert.equal(recoverySent,1);assert.equal(recoveryCompleted,1);
+  assert.equal(await cloudPage.getByLabel('Online workspace password',{exact:true}).inputValue(),'');
+  await cloudPage.getByRole('button',{name:'عربي',exact:true}).click();
+  await cloudPage.getByRole('status').filter({hasText:'الباسورد اتغيّر.'}).waitFor();
+  await cloudPage.setViewportSize({width:390,height:844});
+  assert.equal(await cloudPage.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  console.log('PASS RECOVERY-UI-01 unavailable setup, explicit send, mismatch non-mutation, reset success and Arabic mobile bounds');
   await cloudContext.close();
   console.log('PASS CLOUD-UI-01 incomplete cloud login is blocked and ready state is bilingual');
  }

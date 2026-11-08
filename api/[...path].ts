@@ -14,6 +14,7 @@ export default {
         key: env.JARVIS_CLOUD_KEY ?? '',
         namespace: env.JARVIS_CLOUD_NAMESPACE ?? '',
         passwordHash: env.JARVIS_PASSWORD_HASH ?? '',
+        recovery: {email:env.JARVIS_RECOVERY_EMAIL, from:env.JARVIS_EMAIL_FROM, apiKey:env.RESEND_API_KEY},
       })(request);
     } catch {
       return Response.json({error: 'cloud_setup_required'}, {status: 503, headers: {'Cache-Control': 'no-store'}});

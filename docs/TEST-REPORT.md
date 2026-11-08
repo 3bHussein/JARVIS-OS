@@ -494,3 +494,28 @@ Changed files: cloud-handler.ts, main.tsx, cloud-handler.test.ts, browser.mjs, p
 Traceability: AUTH-RESET-01 => cloud-handler.test.ts synthetic old credential/cookie rejection and retained record; AUTH-RESET-UI-01 => CLOUD-UI-01 bilingual recovery guide; CI-COMPAT-01 => exact-source Actions after publication. Base commit fa910d1478034237605c5de79b2be1e5d0b7659b; resulting source SHA resolved in Git history. PR none. CI/deployment pending for this source.
 
 Next: inspect exact-source CI and Vercel; owner generates and replaces only Production JARVIS_PASSWORD_HASH, saves and redeploys; verify production-domain login/retained records. Password reset is BLOCKED on owner entry, not completed. Continue cloud integrations; desktop deferred.
+
+
+## Session 034 — In-app email recovery (2026-11-08T19:18:16.980338+02:00)
+
+Status: IMPLEMENTED and TESTED locally; real email provisioning/delivery BLOCKED on owner-controlled recovery mailbox and sender credentials.
+Requested: replace the failing PowerShell reset procedure with an easier email flow inside the app. Acknowledged that the supplied inline command failed Windows argument quoting. Removed it from the current guide with an explicit dated correction.
+Completed: optional Resend adapter; fixed server-configured recipient; 8-digit CSPRNG code with 128-bit challenge, 600-second expiry, HMAC proof (no plaintext code in Redis), five wrong guesses, shared send cooldown/hour budget and verify-hour budget. Atomic code consumption/password-hash CAS; new function instances read shared current credentials; earlier cookies fail after reset on updated deployments; vault key/data remain separate. No auto-login after recovery. Provider failures invalidate the challenge and return generic errors.
+UI: bilingual Forgot password form, one explicit send button, delivery-acceptance wording (not guaranteed delivery), code/new-password/confirmation fields, mismatch no-write, retry countdown, explicit unavailable-setup state. No secrets persisted in browser storage.
+One-time configuration: JARVIS_RECOVERY_EMAIL, JARVIS_EMAIL_FROM, RESEND_API_KEY in Vercel Production, entered privately by owner, then one redeploy. Recovery remains disabled while missing; no live email was sent and no production credential or personal record changed. Everyday reset requires no terminal or redeploy after activation.
+Created: apps/api/src/cloud-recovery.ts, apps/web/src/PasswordRecovery.tsx, tests/cloud-recovery.test.ts, tests/recovery-redis.test.ts. Modified: cloud-handler.ts, api/[...path].ts, main.tsx, tests/browser.mjs, .github/workflows/ci.yml, README.md, docs/05-RESET-ONLINE-PASSWORD.md, nine tracking documents.
+Commands: git fetch and isolated worktree creation; rg/cat; npm run check; npm run test:e2e:built; git diff --check; official Resend API documentation lookup. Local dependency symlink is untracked and excluded from publication.
+Validation: final npm run check PASS — typecheck, 89 passing Node tests, 1 explicitly skipped real-Redis test (no local Redis service), production build. Built browser 39/39 plus RECOVERY-UI-01, CLOUD-UI-01, PWA-01/PWA-02 PASS, all synthetic. Early typecheck failed because Vite reference directive moved below an import; corrected its placement. First browser run failed after a locale-preserving reload; corrected test to switch English explicitly before using English selectors, then reran successfully. No real code/mail or Windows terminal acceptance claimed.
+CI adds an ephemeral Redis 7.4 service on loopback and enables RECOVERY-REDIS-01 only under CI with explicit test port. This runs actual Lua for expiry preservation, racing completion, single use, revocation and vault retention. Local REST fake tests are not evidence of real Lua execution; exact-source CI outcome pending publication.
+Security limits: owner must confirm control of the configured mailbox, which is a recovery authority. Sender/domain must be authorized by mail provider. Older immutable deployments/credential generations may retain previous behavior; no global revocation claim. Changing the bootstrap environment hash resets the Redis credential generation. Existing generic cloud health is not a connectivity probe. No provider account was created; sending service setup is not complete.
+Source parent de11d30b89b000ca8579e23740bfaab852f560bb; source commit discoverable via Git history. PR none. CI and deployment pending for this source at this entry.
+Next: inspect exact-source CI, especially real Redis integration, and Vercel; obtain owner's recovery mailbox and provision mail service/sender privately; owner configures secrets; perform explicitly authorized real email/reset/retained-data acceptance. Continue web integrations; desktop remains deferred.
+
+
+| Requirement | Evidence | Status |
+| --- | --- | --- |
+| AUTH-EMAIL-01 private fixed-recipient send | RECOVERY-01/03/05 | TESTED synthetic |
+| AUTH-EMAIL-02 wrong/expired/replayed code rejection | RECOVERY-01/02 | TESTED fake Redis clock |
+| AUTH-EMAIL-03 single-use race and retained vault | RECOVERY-01/04; RECOVERY-REDIS-01 | TESTED fake; real Redis pending CI |
+| AUTH-EMAIL-04 bilingual accessible browser flow | RECOVERY-UI-01 | TESTED built browser |
+| AUTH-EMAIL-05 actual owner delivery and recovery | owner acceptance | BLOCKED on provider/mailbox setup |
