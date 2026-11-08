@@ -472,3 +472,8 @@ Evidence docs/evidence/online-capabilities-ci.json. Implementation and tests VER
 ## Session 032 — Transport regression evidence
 
 TESTED: npm run check passed (84/84 Node tests, typecheck, production build). Requirement CLOUD-BOUND-01: bounded-body.test.ts covers split Arabic UTF-8, exact limit, chunked overrun with cancellation and only two pulls, declared oversize without reads, invalid UTF-8, generic Redis failure. CLOUD-BOUND-02: cloud-handler.test.ts verifies malformed JSON 400 and oversized login 413. Existing cloud auth/encryption/CAS tests still pass. CI/live/browser results not implied by these local checks.
+
+
+### Session 032 publication evidence — 2026-11-08 14:20 UTC
+
+Source commit: 8e8b1d62a2e27c7990e6cb53b3499e3e5bf63332. GitHub Actions: https://github.com/3bHussein/JARVIS-OS/actions/runs/42489256555 — in progress at inspection (foundation/windows-launcher/desktop-windows). Vercel commit status: SUCCESS, https://vercel.com/3bhusseins-projects/jarvis-os/94FHMkVWasvzQPfpKkK4B8PEXiMX . This proves platform deployment status, not authenticated production acceptance. Additional local checks: git diff --check PASS and npm run test:launcher 5/5 PASS, including missing-dist recovery. No real owner data or secret values accessed. Next: inspect final CI outcome and complete owner persistence acceptance. PR: none.

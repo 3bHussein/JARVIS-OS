@@ -569,3 +569,8 @@ Evidence docs/evidence/online-capabilities-ci.json. Implementation and tests VER
 ## Session 032 — Cloud body limits
 
 TESTED locally: streaming request/Redis response reader cancels oversize bodies, strict UTF-8, request errors 400/413; Redis errors remain generic. npm run check: typecheck, 84/84 Node tests, production build pass. No UI changes; browser/native tests not rerun. Remote checks pending at publication. No secrets or owner records read. Continue with exact source CI/deployment checks and owner cloud persistence acceptance; desktop remains deferred.
+
+
+### Session 032 publication evidence — 2026-11-08 14:20 UTC
+
+Source commit: 8e8b1d62a2e27c7990e6cb53b3499e3e5bf63332. GitHub Actions: https://github.com/3bHussein/JARVIS-OS/actions/runs/42489256555 — in progress at inspection (foundation/windows-launcher/desktop-windows). Vercel commit status: SUCCESS, https://vercel.com/3bhusseins-projects/jarvis-os/94FHMkVWasvzQPfpKkK4B8PEXiMX . This proves platform deployment status, not authenticated production acceptance. Additional local checks: git diff --check PASS and npm run test:launcher 5/5 PASS, including missing-dist recovery. No real owner data or secret values accessed. Next: inspect final CI outcome and complete owner persistence acceptance. PR: none.
