@@ -138,8 +138,11 @@ try{
   await cloudPage.getByRole('button', {name: 'Settings', exact: true}).click();
   await cloudPage.getByRole('heading', {name: 'Online workspace sign-in', exact: true}).waitFor();
   assert.equal(await unlock.isEnabled(), true);
+  await cloudPage.getByText('Forgot your online password?', {exact:true}).click();
+  await cloudPage.getByText('Reset through the project owner’s Vercel account. There is no default password.', {exact:true}).waitFor();
   await cloudPage.getByRole('button', {name: 'عربي', exact: true}).click();
   await cloudPage.getByLabel('باسورد جارفس الأونلاين', {exact: true}).waitFor();
+  await cloudPage.getByText('نسيت باسورد الأونلاين؟', {exact:true}).waitFor();
   await cloudContext.close();
   console.log('PASS CLOUD-UI-01 incomplete cloud login is blocked and ready state is bilingual');
  }

@@ -643,3 +643,20 @@ Next: inspect exact source CI/Vercel status; perform owner-authorized save/reloa
 ### Session 032 publication evidence — 2026-11-08 14:20 UTC
 
 Source commit: 8e8b1d62a2e27c7990e6cb53b3499e3e5bf63332. GitHub Actions: https://github.com/3bHussein/JARVIS-OS/actions/runs/42489256555 — in progress at inspection (foundation/windows-launcher/desktop-windows). Vercel commit status: SUCCESS, https://vercel.com/3bhusseins-projects/jarvis-os/94FHMkVWasvzQPfpKkK4B8PEXiMX . This proves platform deployment status, not authenticated production acceptance. Additional local checks: git diff --check PASS and npm run test:launcher 5/5 PASS, including missing-dist recovery. No real owner data or secret values accessed. Next: inspect final CI outcome and complete owner persistence acceptance. PR: none.
+
+
+## Session 033 — Online password recovery (2026-11-08T16:58:56.947796+00:00)
+
+TESTED locally: cloud sessions are bound to a SHA-256 digest of the configured password hash; changing that hash invalidates old cookies on the updated deployment while preserving the encrypted vault. Tests reject old login/cookie/read/write and verify the new login can retrieve the original synthetic record. Immutable older deployments retain their configuration; no global revocation claim.
+
+Added hidden double-entry `npm run password:online` helper (no file/network changes), numbered docs/05-RESET-ONLINE-PASSWORD.md including a no-download PowerShell procedure, and bilingual locked Settings recovery instructions. Actual production credential entry/submission is reserved for the owner; no password/hash/key was read or reset by the agent. Preserve JARVIS_CLOUD_KEY, namespace and Redis values.
+
+Validation: npm run check PASS (84/84 Node tests, typecheck, production build); built browser 39/39 plus CLOUD-UI-01 (now tests recovery copy in both languages), PWA-01/PWA-02 PASS with synthetic fixtures. Initial browser run BLOCKED by missing Chromium; installed pinned headless browser from official Playwright mirror and reran successfully. Helper refuses non-interactive stdin with exit 1. git diff --check PASS. Interactive real-password entry remains owner acceptance.
+
+Dated correction to Session 032 pending CI: run 42489256555 concluded FAILURE in foundation browser installation because ubuntu-latest moved to Ubuntu 26.04 unsupported by Playwright 1.55.1. Node/build/launcher steps passed; Windows jobs passed. Pin foundation to ubuntu-24.04; remote validation of this fix pending publication. Existing Vercel source deployment succeeded.
+
+Changed files: cloud-handler.ts, main.tsx, cloud-handler.test.ts, browser.mjs, package.json, .github/workflows/ci.yml; new scripts/online-password.mjs and numbered recovery guide; appended nine tracking documents. Commands: git fetch/worktree add; source inspection; npm run check; npm run test:e2e:built; Playwright install; helper non-TTY refusal; git diff --check. No production database mutations.
+
+Traceability: AUTH-RESET-01 => cloud-handler.test.ts synthetic old credential/cookie rejection and retained record; AUTH-RESET-UI-01 => CLOUD-UI-01 bilingual recovery guide; CI-COMPAT-01 => exact-source Actions after publication. Base commit fa910d1478034237605c5de79b2be1e5d0b7659b; resulting source SHA resolved in Git history. PR none. CI/deployment pending for this source.
+
+Next: inspect exact-source CI and Vercel; owner generates and replaces only Production JARVIS_PASSWORD_HASH, saves and redeploys; verify production-domain login/retained records. Password reset is BLOCKED on owner entry, not completed. Continue cloud integrations; desktop deferred.

@@ -25,7 +25,9 @@ export function createCloudHandler(config: CloudConfig, transport: typeof fetch 
   const redis = new CloudRedis(config.endpoint, config.token, transport);
   const vault = new CloudVault(config.endpoint, config.token, config.key, config.namespace, transport);
   const prefix = `jarvis:${config.namespace}:`;
-  const sessionKey = (token: string) => prefix + 'session:' + createHash('sha256').update(token).digest('hex');
+  // A credential change invalidates sessions without touching the encrypted vault key.
+  const authEpoch = createHash('sha256').update(config.passwordHash).digest('hex');
+  const sessionKey = (token: string) => prefix + 'session:' + authEpoch + ':' + createHash('sha256').update(token).digest('hex');
   const owner = {id: 'local-owner', role: 'owner'};
   const reply = (status: number, body: unknown, cookie?: string) => Response.json(body, {
     status, headers: {'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff',

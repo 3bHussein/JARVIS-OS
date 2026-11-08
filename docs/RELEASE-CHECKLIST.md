@@ -98,3 +98,8 @@ Session031 automated gate local78/78/typecheck/build passed. Browser cloud-mode 
 - [x] Typecheck, 84 Node tests and production web build pass.
 - [ ] Exact source remote CI and Vercel status accepted after publication.
 - [ ] Real owner cloud persistence acceptance and complete v1 release gates.
+
+
+## Session 033 — Password recovery boundary
+
+TESTED locally: password-hash-scoped cloud sessions reject prior credentials/cookies without changing vault encryption. Bilingual Settings recovery guidance and docs/05-RESET-ONLINE-PASSWORD.md describe owner-managed Production secret replacement and redeploy. Actual secret reset awaits owner entry; old immutable deployments retain their config. Local typecheck/build, 84 Node tests and built browser 39/39 plus cloud/PWA checks passed. CI runner pinned Ubuntu 24.04 after observed Playwright incompatibility with ubuntu-latest/26.04; exact-source remote CI pending. No production records accessed; desktop deferred.

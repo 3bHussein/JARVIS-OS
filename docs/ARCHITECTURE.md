@@ -145,3 +145,8 @@ Cloud status endpoints use existing connector manifests with disconnected/blocke
 ## Session 032 — Streaming transport boundary
 
 Cloud request JSON is read through a shared byte-limited reader (1 MiB); Redis response limit is 1 MiB + 256 bytes. Oversized streams are cancelled before remaining content is buffered. Decoder rejects invalid UTF-8. Request parse failures return 400/413; upstream body failures remain generic service failures. This is a per-message boundary, not a process memory/concurrency guarantee.
+
+
+## Session 033 — Password recovery boundary
+
+TESTED locally: password-hash-scoped cloud sessions reject prior credentials/cookies without changing vault encryption. Bilingual Settings recovery guidance and docs/05-RESET-ONLINE-PASSWORD.md describe owner-managed Production secret replacement and redeploy. Actual secret reset awaits owner entry; old immutable deployments retain their config. Local typecheck/build, 84 Node tests and built browser 39/39 plus cloud/PWA checks passed. CI runner pinned Ubuntu 24.04 after observed Playwright incompatibility with ubuntu-latest/26.04; exact-source remote CI pending. No production records accessed; desktop deferred.

@@ -127,3 +127,8 @@ Session031 adds no upstream credential, data read or account link. WHOOP status 
 ## Session 032 — Redis transport hardening
 
 Redis remains an encrypted application-vault transport. Responses now have streaming byte bounds with cancellation. No new credentials, integrations, scopes, production database changes, or WHOOP reads were introduced. Existing cloud connector availability remains unchanged.
+
+
+## Session 033 — Password recovery boundary
+
+TESTED locally: password-hash-scoped cloud sessions reject prior credentials/cookies without changing vault encryption. Bilingual Settings recovery guidance and docs/05-RESET-ONLINE-PASSWORD.md describe owner-managed Production secret replacement and redeploy. Actual secret reset awaits owner entry; old immutable deployments retain their config. Local typecheck/build, 84 Node tests and built browser 39/39 plus cloud/PWA checks passed. CI runner pinned Ubuntu 24.04 after observed Playwright incompatibility with ubuntu-latest/26.04; exact-source remote CI pending. No production records accessed; desktop deferred.

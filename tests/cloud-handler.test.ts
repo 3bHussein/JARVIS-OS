@@ -57,6 +57,20 @@ test('cloud session and encrypted records survive separate handler instances', a
   assert.equal((await call('/api/personal', headers, save)).status, 200);
   assert.equal((await call('/api/personal', headers, save)).status, 409);
   assert.deepEqual((await (await call('/api/personal', headers)).json()).data, data);
+  // Password reset must revoke the old cookie while preserving the same encrypted record.
+  const newPassword = 'synthetic-reset-password';
+  const resetHandler = createCloudHandler({...config, passwordHash:hashPassword(newPassword)}, transport);
+  const resetCall = (path: string, auth: Record<string,string> = {}, input?: unknown) =>
+    resetHandler(new Request(origin + path, {method:input === undefined ? 'GET' : 'POST',
+      headers:{Origin:origin, 'Content-Type':'application/json', ...auth},
+      body:input === undefined ? undefined : JSON.stringify(input)}));
+  assert.equal((await resetCall('/api/personal', headers)).status, 401);
+  assert.equal((await resetCall('/api/personal', headers, {...save, revision:1})).status, 401);
+  assert.equal((await resetCall('/api/session', {}, {password})).status, 401);
+  const newLogin = await resetCall('/api/session', {}, {password:newPassword});
+  assert.equal(newLogin.status, 200);
+  const newCookie = newLogin.headers.get('set-cookie')!.split(';')[0];
+  assert.deepEqual((await (await resetCall('/api/personal', {Cookie:newCookie})).json()).data, data);
   assert.equal((await call('/api/logout', headers, {})).status, 200);
   assert.equal((await call('/api/personal', headers)).status, 401);
 });
