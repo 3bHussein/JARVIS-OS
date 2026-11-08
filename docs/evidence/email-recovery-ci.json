@@ -1,0 +1,38 @@
+{
+  "source": "2a9819d9b77fdbd54ef2971dbdf94b3502a6e7ac",
+  "run": 42504304278,
+  "jobs": [
+    {
+      "id": 128803517435,
+      "name": "foundation",
+      "conclusion": "success"
+    },
+    {
+      "id": 128803517818,
+      "name": "desktop-windows",
+      "conclusion": "success"
+    },
+    {
+      "id": 128803517841,
+      "name": "windows-launcher",
+      "conclusion": "success"
+    }
+  ],
+  "selectedLogAssertions": [
+    "s)\\n2026-11-08T17:19:13.7262872Z ✔ RECOVERY-REDIS-01 real Lua TTL, one-use races, session invalidation and retained vault (465.302809ms)\\n2026-11-08T17:19:13.7421846Z ✔ REMIND-01 explicit arming, grace boundary, completion and once-per-occurrence delivery (2.163753ms)\\n2026-11-08T1",
+    "8ms)\\n2026-11-08T17:19:14.0087558Z ℹ tests 90\\n2026-11-08T17:19:14.0087966Z ℹ suites 0\\n2026-11-08T17:19:14.0088279Z ℹ pass 90\\n2026-11-08T17:19:14.0088554Z ℹ fail 0\\n2026-11-08T17:19:14.0088880Z ℹ cancelled 0\\n2026-11-08T17:19:14.0089250Z ℹ skipped 0\\n2026-11-08T17:19:14.00",
+    "ed 0\\n2026-11-08T17:19:18.9440574Z ℹ skipped 0\\n2026-11-08T17:19:18.9440884Z ℹ todo 0\\n2026-11-08T17:19:18.9441197Z ℹ duration_ms 3544.372837\\n2026-11-08T17:19:18.9579868Z ##[group]Run npx playwright install --with-deps chromium --only-shell\\n2026-11-08T17:19:18.9580343Z \\u00",
+    "unds\\n2026-11-08T17:19:54.4020921Z Browser acceptance (development): 39/39 passed. Synthetic fixtures only.\\n2026-11-08T17:19:54.5013473Z ##[group]Run npm run test:e2e:built\\n2026-11-08T17:19:54.5013899Z \\u001b[36;1mnpm run test:e2e:built\\u001b[0m\\n2026-11-08T17:19:54.5035689Z shell",
+    "n2026-11-08T17:20:11.2681242Z PASS RECOVERY-UI-01 unavailable setup, explicit send, mismatch non-mutation, reset success and Arabic mobile bounds\\n2026-11-08T17:20:11.2760787Z PASS CLOUD-UI-01 incomplete cloud login is blocked and ready state is bilingual\\n2026-11-08T17:20:11.90",
+    "rage\\n2026-11-08T17:20:11.9732373Z Browser acceptance (built bundle): 39/39 passed. Synthetic fixtures only.\\n2026-11-08T17:20:12.0363270Z Post job cleanup.\\n2026-11-08T17:20:12.1368142Z (node:4102) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a user"
+  ],
+  "deployment": {
+    "state": "success",
+    "url": "https://vercel.com/3bhusseins-projects/jarvis-os/7sDVhbjqRh1hpTVCvmwqj6VMr43r"
+  },
+  "liveObservation": {
+    "url": "https://jarvis-os-henna-sigma.vercel.app/",
+    "state": "Online workspace ready/locked; expanded recovery shows not enabled; no code sent",
+    "authenticatedDataAccess": false
+  }
+}
