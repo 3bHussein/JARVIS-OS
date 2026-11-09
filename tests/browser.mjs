@@ -209,6 +209,7 @@ try{
   await whoopForm.getByRole('button',{name:'Connect read-only',exact:true}).click();
   await whoopForm.getByRole('button',{name:'Disconnect from JARVIS',exact:true}).waitFor();
   assert.equal(cloudAccountWrites,2);
+  await progressForm.getByRole('button',{name:'Read saved records',exact:true}).click();
   await cloudPage.getByRole('navigation',{name:'Daily workspace'}).getByRole('button',{name:'Today',exact:true}).click();
   await cloudPage.locator('.personal-metrics>div').first().getByText(/^WHOOP/).waitFor();
   await cloudPage.locator('.live-progress').getByText('777 kcal',{exact:true}).waitFor();
@@ -224,6 +225,14 @@ try{
   await assertNarrowLayout('English');
   await cloudPage.getByRole('button',{name:'عربي',exact:true}).click();
   await assertNarrowLayout('Arabic');
+  await cloudPage.getByRole('button',{name:'English',exact:true}).click();
+  await cloudPage.getByRole('navigation',{name:'Daily workspace'}).getByRole('button',{name:'Connections',exact:true}).click();
+  await progressForm.getByRole('button',{name:'Disconnect from JARVIS',exact:true}).click();
+  await progressForm.getByRole('button',{name:'Connect read-only',exact:true}).waitFor();
+  await progressForm.getByLabel('ProgressXX app password',{exact:true}).fill('NEVER_KEEP_NAV_DRAFT');
+  await cloudPage.getByRole('navigation',{name:'Daily workspace'}).getByRole('button',{name:'Today',exact:true}).click();
+  assert.equal(await progressForm.getByLabel('ProgressXX app password',{exact:true}).inputValue(),'');
+  assert.equal(await cloudPage.locator('.personal-metrics').getByText('777 kcal',{exact:true}).count(),0);
   console.log('PASS UX-06 cloud source consent, password/email-link connect, live food projection and bilingual mobile bounds');
   await cloudContext.close();
   console.log('PASS CLOUD-UI-01 incomplete cloud login is blocked and ready state is bilingual');

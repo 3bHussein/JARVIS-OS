@@ -21,6 +21,7 @@ Use the account for your existing **WHOOP Intelligence** application, not your W
 
 ## 3. Understand automatic updates
 
+- In a connected account panel, **Read saved records** returns you to Today with the latest permitted read. You do not need to disconnect/re-enter credentials to retry.
 - While the unlocked web page is visible, JARVIS checks saved source data every five minutes. The server shares a five-minute cache across instances for that JARVIS session; manual refresh has a 30-second cache cooldown.
 - Access is limited to the current unlocked JARVIS session, up to one hour or the source token's earlier expiry. Reconnect after expiry. Passwords and refresh tokens are not retained. This release does not offer unattended background sync or durable account linking.
 - **Last successful read** means JARVIS read saved source records. It is not proof that the original app uploaded every edit or that WHOOP synced its device. WHOOP's last complete upstream sync is shown separately. Missing/stale readings do not drive health suggestions.

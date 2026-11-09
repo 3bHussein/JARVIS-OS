@@ -19,7 +19,7 @@ Choose **encrypted cloud saving** explicitly when prompted if you want your prof
 | Today | See your recorded sleep/food, next appointments and recent notes |
 | Planner | Add, edit, complete or review notes and timed commitments |
 | Check-in | Record sleep hours and food calories for a selected date |
-| Sources | Import a ProgressXX backup and review available connections |
+| Sources | Connect original fitness accounts or import a ProgressXX backup |
 | You | Edit your profile, storage choice and portable backup controls |
 
 These buttons stay visible while scrolling within your daily workspace. Subsections include **Back to today**. Your drafts stay in their existing section when switching between these sections; locking/reloading is a separate boundary.
@@ -33,8 +33,8 @@ Notes can be untimed. Expand **Add a time or duration** if needed. Tasks and wor
 ## 5. Understand your sources
 
 - Manual sleep and food stay labelled as manual records.
-- ProgressXX currently imports a backup file; it is not automatic live synchronization. The Home nutrition checkbox is an explicit choice to use a recent imported file.
-- Automatic WHOOP reading is not available in the online workspace yet. Sources offers manual sleep entry and a link to your original WHOOP Intelligence app. It does not ask for health-account credentials that the cloud cannot use.
+- ProgressXX supports saved cloud-row reads for the unlocked session and a separate backup import. Select cloud food or imported food explicitly to use it on Home; manual entries are preserved.
+- WHOOP reads saved records through your existing WHOOP Intelligence account after explicit session consent. No new vendor OAuth or vendor sync is started. See [07 — Connect fitness accounts](07-CONNECT-FITNESS-ACCOUNTS.md) for password/email-link instructions and one-hour session limits.
 - Missing or outdated readings are not replaced with sample values. Food intake and WHOOP energy expenditure are different measurements.
 
 ## 6. Find apps and install the web app

@@ -1,6 +1,6 @@
 # ProgressXX read-only backup bridge
 
-Status: IMPLEMENTED, synthetic tests only. Automatic authenticated sync remains TODO.
+Status: IMPLEMENTED, synthetic tests only. This document describes the file bridge. A separate online saved-row account reader is now available for the unlocked session; see [07 — Connect fitness accounts](07-CONNECT-FITNESS-ACCOUNTS.md). Durable background synchronization and full pending/snapshot reconciliation remain TODO.
 
 In the original ProgressXX app choose Settings → Backup & recovery → Download full backup. In authenticated JARVIS Overview, expand Read a ProgressXX backup and select that JSON file. JARVIS accepts the existing `app: ProgressX`, `backup_version: 3` full-backup format, up to 10 MiB and 50,000 rows per collection. Legacy history-only/other versions fail explicitly.
 

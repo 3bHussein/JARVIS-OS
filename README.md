@@ -2,7 +2,7 @@
 
 An original personal AI command center, built as a separate hybrid application.
 
-**Current status: personal preview 0.1.0 — not a production release.** A bilingual daily workspace combines a source-labelled briefing, planner, journal, optional WHOOP saved-record reads and a transient ProgressXX backup view. Optional Ollama conversation and reviewed speech are wired; real model/voice/device acceptance, automatic delegated integrations, PWA and full native/device acceptance remain open. An optional Tauri window host passed Windows build/CLI acceptance; actual WebView2 GUI/device acceptance remains open and it requires the existing step02 runtime.
+**Current status: personal preview 0.1.0 — not a production release.** A bilingual daily workspace combines a source-labelled briefing, planner, journal, optional WHOOP saved-record reads and a transient ProgressXX backup view. Optional Ollama conversation and reviewed speech are wired; real model/voice/device acceptance, durable background integrations and full PWA/native device acceptance remain open. An optional Tauri window host passed Windows build/CLI acceptance; actual WebView2 GUI/device acceptance remains open and it requires the existing step02 runtime.
 
 ## Try one complete preview
 
@@ -101,7 +101,7 @@ After setup, run `npm run build`, then `Start-JARVIS-Built.bat` (or `npm run sta
 
 Portable recovery: [Encrypted personal backups](docs/PORTABLE-BACKUP.md) includes independent-password export and reviewed replacement. Preview only; real-device acceptance remains open.
 
-For daily setup and source limitations: [Daily quickstart](docs/DAILY-QUICKSTART.md). Home now includes recorded WHOOP cycle/recovery details, ProgressXX file context and untimed-note review. Automatic ProgressXX sync remains unconnected.
+For daily setup and source limitations: [Daily quickstart](docs/DAILY-QUICKSTART.md). Home now includes recorded WHOOP cycle/recovery details, ProgressXX file context and untimed-note review. Online saved-row reads are available for the unlocked session; unattended background synchronization remains unconnected. See [fitness account connection](docs/07-CONNECT-FITNESS-ACCOUNTS.md).
 
 Assistant experience: [Voice welcome and recorded reminders](docs/WELCOME-AND-REMINDERS.md). Optional device-voice greeting and session-only reminders; no closed-app/native scheduler claim.
 
