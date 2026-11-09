@@ -185,9 +185,15 @@ try{
   await cloudPage.getByLabel('Manual sleep hours (optional)',{exact:true}).waitFor();
   await cloudPage.getByRole('navigation',{name:'Daily workspace'}).getByRole('button',{name:'Today',exact:true}).click();
   await cloudPage.setViewportSize({width:320,height:740});
-  assert.equal(await cloudPage.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  const assertNarrowLayout=async language=>{
+   // Wait for resize/React presentation, then measure the rendered document.
+   await cloudPage.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+   const bounds=await cloudPage.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,overflow:[...document.querySelectorAll('body *')].flatMap(e=>{const r=e.getBoundingClientRect();return r.width&&(r.right>innerWidth||r.left<0)?[{tag:e.tagName,className:e.className,left:r.left,right:r.right}]:[]})}));
+   assert.ok(bounds.scroll<=bounds.width,`${language} 320px overflow: ${JSON.stringify(bounds)}`);
+  };
+  await assertNarrowLayout('English');
   await cloudPage.getByRole('button',{name:'عربي',exact:true}).click();
-  assert.equal(await cloudPage.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  await assertNarrowLayout('Arabic');
   console.log('PASS UX-06 cloud sources show usable manual fallback without collecting unsupported health credentials');
   await cloudContext.close();
   console.log('PASS CLOUD-UI-01 incomplete cloud login is blocked and ready state is bilingual');

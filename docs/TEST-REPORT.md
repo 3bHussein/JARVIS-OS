@@ -596,3 +596,10 @@ Base commit 0d9291fb050f827f4850745a083351150289b3b1; source SHA will be recorde
 ### Session 042 final local acceptance — 2026-11-09
 
 Final built-browser rerun PASS: baseline 39/39, UX-01 through UX-06, recovery/cloud/PWA cases. Added 320px English and Arabic Home checks both passed with no horizontal document overflow; 390px RTL and draft-preservation checks also passed. UX-MOBILE-320 is TESTED with this evidence. git diff --check PASS. No further runtime edits after these checks.
+
+
+### Session 042 CI follow-up — 2026-11-09
+
+Source 556b2e709016691098abb970f81a7e079d5072da deployed READY (dpl_9q9SeWMDkz1SQXBHYC6FXv19M9Dc), but GitHub run 42611912523 foundation failed at the immediate English 320px document-width assertion in tests/browser.mjs:188. This corrects any inference that local success established remote acceptance. Windows launcher passed; desktop status is recorded separately, with desktop product work deferred.
+
+Three additional local built-browser reproductions passed, including an explicit 45-degree decorative orbit probe; no remote cause was established from the old boolean-only assertion. The narrow-screen test now waits two animation frames after resize/language changes before measuring rendered layout and includes element bounds on failure. This is test synchronization, not a claimed CSS root-cause fix. No assertion was removed, widened or replaced with page overflow hiding. Exact-source CI must pass before final acceptance. Added docs/06-USE-JARVIS-ONLINE.md and README link for six simple everyday steps and honest online/source limitations. No owner data or recovery email used.

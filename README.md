@@ -113,3 +113,8 @@ Home [first-use guidance and reviewed quick capture](docs/FIRST-USE.md) makes st
 ## Online password recovery
 
 Settings includes email-code password recovery. It requires one-time owner configuration of a recovery mailbox and Resend sending service; no email is sent while unconfigured. See [05 — Recover the online workspace password](docs/05-RESET-ONLINE-PASSWORD.md). After setup, resets happen inside the app without downloading files or redeploying each time.
+
+
+## Everyday online use
+
+Start with [06 — Use JARVIS online](docs/06-USE-JARVIS-ONLINE.md): sign in, finish one setup step, record your day, review before saving, and find your connected apps. The online version does not require downloading or running the local preview.
