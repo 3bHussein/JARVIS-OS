@@ -40,3 +40,10 @@ Use the account for your existing **WHOOP Intelligence** application, not your W
 Bounded reads refuse incomplete totals when a 500-row cap is reached. Invalid records, duplicates, failed permissions or unavailable source tables produce an unavailable state rather than invented/partial totals. Resolve paused sync or conflicts inside ProgressXX first; JARVIS never replays its outbox or modifies its conflict-handling system.
 
 The original ProgressXX file import remains available as a separate fallback. Health data is not silently added to long-term AI memory.
+
+
+## 5. Status and retry
+
+Sources shows session expiry and the last successful saved-record read in your configured timezone. Connected means a source grant exists; it does not prove a device/vendor sync completed. Status updates when opening Sources, returning to the page and every minute while Sources is open. Expired grants require reconnection.
+
+Home explains expired sessions, busy reads, rate limits, invalid fields and row-limit refusal. Use **Retry saved read** after a temporary failure. No incomplete total or sample reading replaces failed data. A selected cloud-food source stays selected during a temporary failure; its total is unavailable until a successful retry. Disconnecting ProgressXX clears the selection. Disconnecting WHOOP preserves your ProgressXX food choice.
