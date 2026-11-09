@@ -39,6 +39,9 @@ export function createCloudHandler(config: CloudConfig, transport: typeof fetch 
     const url = new URL(request.url);
     const path = url.pathname;
     const sender = request.headers.get('origin');
+    if(path.includes('/recovery/'))console.info('jarvis_recovery_dispatch',{
+      knownRoute:['/api/recovery/request','/api/recovery/complete'].includes(path),
+      method:request.method==='POST'?'POST':'other',originMatches:url.origin===origin.origin,senderMatches:sender===origin.origin});
     if (url.origin !== origin.origin || (sender && sender !== origin.origin) ||
         request.headers.get('sec-fetch-site') === 'cross-site') return reply(403, {error: 'invalid_origin'});
     const post = request.method === 'POST';
@@ -46,7 +49,9 @@ export function createCloudHandler(config: CloudConfig, transport: typeof fetch 
     if (post && (sender !== origin.origin || !request.headers.get('content-type')?.startsWith('application/json'))) {
       return reply(403, {error: 'invalid_request'});
     }
+    let stage='dispatch';
     async function body() {
+      stage='body';
       const text = await readBoundedText(request, 1048576);
       try { return JSON.parse(text); } catch { throw new BodyReadError(400); }
     }
@@ -56,6 +61,7 @@ export function createCloudHandler(config: CloudConfig, transport: typeof fetch 
       if (!post && path === '/api/recovery') return reply(200, {available:recovery.available});
       if (post && path === '/api/recovery/request') {
         await body();
+        stage='recovery';
         return reply(200, await recovery.request());
       }
       if (post && path === '/api/recovery/complete') {
@@ -120,8 +126,12 @@ export function createCloudHandler(config: CloudConfig, transport: typeof fetch 
       return reply(501, {error: 'cloud_feature_unavailable'});
     } catch (error) {
       if (error instanceof RecoveryError) return reply(error.status, {error:error.message});
-      if (error instanceof BodyReadError) return reply(error.status, {error: error.message});
+      if (error instanceof BodyReadError) {
+        console.warn('jarvis_cloud_body_failure',{stage,status:error.status});
+        return reply(error.status, {error: error.message});
+      }
       if (error instanceof Error && error.message === 'personal_conflict') return reply(409, {error: 'personal_conflict'});
+      console.warn('jarvis_cloud_failure',{stage,kind:error instanceof TypeError?'type_error':'unavailable'});
       return reply(503, {error: 'cloud_unavailable'});
     }
   };

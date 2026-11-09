@@ -128,3 +128,13 @@ test('RECOVERY-05 corrupt shared credentials fail closed and invalid recipient c
   f.entries.get(authKey)!.value='corrupt-record';
   assert.equal((await f.call('/api/session',{password:f.initialPassword})).status,503);
 });
+
+test('RECOVERY-LOG-01 dispatch diagnostics retain booleans only, never origins or input secrets',async(t)=>{
+  const f=fixture();const messages:unknown[][]=[];
+  t.mock.method(console,'info',(...args:unknown[])=>{messages.push(args);});
+  const response=await f.call('/api/recovery/request',{password:'synthetic-private-input'}, {Origin:'https://private-origin.example.test'});
+  assert.equal(response.status,403);
+  assert.deepEqual(messages,[['jarvis_recovery_dispatch',{knownRoute:true,method:'POST',originMatches:true,senderMatches:false}]]);
+  assert.ok(!JSON.stringify(messages).includes('synthetic-private-input'));
+  assert.ok(!JSON.stringify(messages).includes('private-origin.example.test'));
+});

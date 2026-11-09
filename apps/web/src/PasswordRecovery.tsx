@@ -31,6 +31,10 @@ export function PasswordRecovery({ar}: {ar:boolean}) {
   function errorText(error:unknown) {
     const key=error instanceof Error ? error.message : '';
     const messages:Record<string,[string,string]>={
+      authentication_required:['Recovery endpoint did not accept the request. Contact the project owner.','مسار الاسترجاع ما قبلش الطلب. راجع صاحب المشروع.'],
+      invalid_origin:['The site address did not match the configured workspace. Open the main production domain.','عنوان الموقع مش مطابق لإعداد المساحة. افتح رابط الموقع الأساسي.'],
+      invalid_request:['The recovery request format was rejected. Refresh and retry.','صيغة طلب الاسترجاع اترفضت. حدّث الصفحة وجرب تاني.'],
+      cloud_unavailable:['The cloud recovery service could not complete this request. Your password has not been confirmed changed.','خدمة الاسترجاع السحابية ما كملتش الطلب. تغيير الباسورد مش مؤكّد.'],
       recovery_not_configured:['Email recovery needs a one-time setup by the project owner. No email was sent.','استرجاع الإيميل محتاج تفعيل مرة واحدة من صاحب المشروع. مفيش إيميل اتبعت.'],
       recovery_send_failed:['The email service could not accept the request. Wait a minute and retry.','خدمة الإيميل ما قبلتش الطلب. استنى دقيقة وجرب تاني.'],
       recovery_rate_limited:['Too many attempts. Wait before retrying; sending is limited to three requests per hour.','محاولات كتير. استنى قبل ما تجرب تاني؛ الإرسال محدود بثلاث طلبات في الساعة.'],
