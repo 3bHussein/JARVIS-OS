@@ -122,3 +122,5 @@ Start with [06 — Use JARVIS online](docs/06-USE-JARVIS-ONLINE.md): sign in, fi
 ### Connect your fitness accounts online
 
 Follow [07 — Connect WHOOP and ProgressXX](docs/07-CONNECT-FITNESS-ACCOUNTS.md). The online app can read saved source data for the current unlocked session with explicit consent. This is not unattended background synchronization; source credentials and live owner-data acceptance are separate from synthetic automated tests.
+
+For recorded next steps and source-labelled read-aloud: [08 — Read your daily briefing](docs/08-READ-YOUR-DAILY-BRIEFING.md).

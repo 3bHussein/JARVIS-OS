@@ -760,3 +760,27 @@ Final scope: source status/expiry/read dates use configured timezone; source-onl
 | SYNC-RECOVER-01 | UX-06 row-limit failure hides totals and retry restores selected cloud food | VERIFIED synthetic |
 | SYNC-ISOLATE-UI-01 | UX-06 WHOOP disconnect preserves ProgressXX food; ProgressXX disconnect clears it | VERIFIED synthetic |
 | SYNC-OWNER-01 | Actual owner source sign-in/data | TODO |
+
+
+## Session 045 — Recorded daily next steps (2026-11-09T21:52:49.816027+02:00)
+
+IN PROGRESS, M3 daily briefing. Requested continued development. Base 24282ed6b6a7b810ff7cf36c5b981c9f6e469f66. Implemented a deterministic Start here section below recorded metrics, capped at three navigational next steps: review live overlaps affecting today's entries, next actual timed commitment today, due entries, missing usable sleep/selected food, and untimed-note review. Missing values remain unknown, zero is known, completed and next-day commitments are not invented as today's agenda. Empty/complete recorded input leads to reviewing the recorded plan, never a claim the user is free.
+
+Source provenance identifies WHOOP/manual sleep and selected cloud/file/manual food. Missing-data statements and provenance enter the existing explicit read-aloud briefing; no new AI request, health prescription, memory persistence, notification or source read occurs. Button navigation does not write personal records. Existing science-limited training advice and confirmed-schedule-only free-slot behavior unchanged.
+
+Files: new packages/personal/src/daily-focus.ts, apps/web/src/DailyFocus.tsx, tests/daily-focus.test.ts; changed PersonalHome.tsx, style.css, tests/browser.mjs and tracking docs. No dependency/API/auth/source-app/schema changes. Desktop deferred. Commands: git fetch and isolated worktree, source/planner review, npm run check, built browser acceptance; all test data synthetic. Local check/build initially PASS; browser is running and final check follows a wording clarification about today's overlap count. No source credentials, actual owner health data or email operations. Commit/PR/CI/deployment pending.
+
+Next: complete typecheck/Node/browser and narrow-screen checks, publish guarded source and verify exact-source CI/Vercel; append final evidence. Real source-account acceptance remains owner task within Sources.
+
+
+### Session 045 local acceptance — 2026-11-09, Africa/Cairo
+
+TESTED npm run check PASS: 110 registered Node tests, 108 pass/two CI-only Redis skips, typecheck/build PASS. Built browser 39/39 baseline plus UX-08 next-step navigation without personal revision changes, existing source error/retry/isolation/credential cleanup, RTL 320px and PWA cases PASS. Visual inspection of synthetic desktop screenshot confirms metrics remain above the compact next-step list and no stretched panel regression. Minor count-wording cleanup followed, with FOCUS-01..03 rerun PASS; no business-logic change. Added numbered guide08 and README link. git diff --check PASS. CI/deployment for published source still pending; real owner source data not used.
+
+
+| Requirement | Evidence | Status |
+| --- | --- | --- |
+| BRIEF-FOCUS-01 no invented steps, zero vs unknown, no mutation | FOCUS-01/03 | TESTED synthetic |
+| BRIEF-FOCUS-02 real dates, active overlap, completed exclusion, cap three | FOCUS-02 | TESTED synthetic |
+| BRIEF-FOCUS-03 action navigation never saves/completes a record | UX-08 | TESTED synthetic |
+| BRIEF-SOURCE-01 selected source labels and missing-data statements | FOCUS-01, existing cloud masking/voice consent browser cases | TESTED synthetic |
