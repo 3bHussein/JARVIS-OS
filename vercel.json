@@ -4,7 +4,7 @@
   "outputDirectory": "apps/web/dist",
   "functions": {
     "api/**/*.ts": {
-      "includeFiles": "{apps/api/src,packages/personal/src,packages/connectors/src}/**/*.ts"
+      "includeFiles": "{apps/api/src,packages/personal/src,packages/connectors/src,packages/core/src}/**/*.ts"
     }
   }
 }

@@ -52,3 +52,4 @@ label{font-size:14px}.source-note,.personal-home .source-note{font-size:11px;lin
 /* Constrain sidebar tracks to the available width, including wider system fonts. */
 .daily-side{grid-template-columns:minmax(0,1fr)}.daily-side>.panel{min-width:0}.next-agenda .section-heading,.captured-notes .section-heading{flex-wrap:wrap}.next-agenda strong,.personal-title h2{overflow-wrap:anywhere}.personal-title h2{min-width:0}
 @media(max-width:600px){.core-stage{overflow:clip}.core-stage:before{inset:0}}
+.source-signin{display:grid;gap:12px;max-width:620px;margin-top:16px}.source-signin label{display:grid;gap:8px;min-width:0}.source-signin input{width:100%}.source-signin .checkbox{display:flex;align-items:start;line-height:1.6}.source-signin .checkbox input{width:auto;margin-top:5px}.source-signin details>p{line-height:1.7}.cloud-connections>p{font-size:13px}.live-progress small{display:block;line-height:1.7}.live-progress .checkbox{line-height:1.7}

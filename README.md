@@ -118,3 +118,7 @@ Settings includes email-code password recovery. It requires one-time owner confi
 ## Everyday online use
 
 Start with [06 — Use JARVIS online](docs/06-USE-JARVIS-ONLINE.md): sign in, finish one setup step, record your day, review before saving, and find your connected apps. The online version does not require downloading or running the local preview.
+
+### Connect your fitness accounts online
+
+Follow [07 — Connect WHOOP and ProgressXX](docs/07-CONNECT-FITNESS-ACCOUNTS.md). The online app can read saved source data for the current unlocked session with explicit consent. This is not unattended background synchronization; source credentials and live owner-data acceptance are separate from synthetic automated tests.

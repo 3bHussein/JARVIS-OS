@@ -1,3 +1,6 @@
+import {whoopFacts} from '../packages/connectors/src/whoop.ts';
+import {progressSummary} from '../packages/connectors/src/progress-backup.ts';
+import {clock} from '../packages/core/src/index.ts';
 import {loadWebBundle} from '../apps/api/src/web-bundle.ts';
 import {fileURLToPath} from 'node:url';
 import {mkdtemp,rm} from 'node:fs/promises';
@@ -176,15 +179,41 @@ try{
   assert.equal(await cloudPage.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
   console.log('PASS RECOVERY-UI-01 unavailable setup, explicit send, mismatch non-mutation, reset success and Arabic mobile bounds');
   await cloudPage.getByRole('button',{name:'English',exact:true}).click();
+  let cloudProgressConnected=false,cloudWhoopConnected=false,cloudAccountWrites=0;
+  const cloudFacts=()=>{const fixture=healthFixture();return whoopFacts({accessToken:'SYNTHETIC',expiresAt:Date.now()+3600000,connected:true,records:fixture.records,observedAt:new Date().toISOString(),lastSync:fixture.sync_history[0].finished_at},'Africa/Cairo');};
+  const cloudSummary=()=>{const n=new Date(),date=clock(n,'Africa/Cairo').date;return {...progressSummary({exportedAt:n.toISOString(),foods:[{date,calories:777,protein:55,carbs:60,fat:20}],workouts:[{date,exercise:'Synthetic Cloud Squat',day:'Lower',status:'Done'}],weights:[],target:null,schedule:{}},date,n),source:'progressxx-cloud',observedAt:n.toISOString(),coverage:[]};};
+  await cloudContext.route('**/api/integrations',async route=>{
+   if(route.request().method()==='POST'){const input=route.request().postDataJSON();if(input.operation==='connect'){assert.equal(input.consent,true);cloudAccountWrites++;if(input.provider==='progress'){assert.equal(input.password,'synthetic-progress-password');cloudProgressConnected=true;}else{assert.equal(input.link,'https://jsfeybhgobmrydcfnyjg.supabase.co/auth/v1/verify?token='+ 'a'.repeat(64)+'&type=magiclink');cloudWhoopConnected=true;}}if(input.operation==='disconnect'){if(input.provider==='progress')cloudProgressConnected=false;else cloudWhoopConnected=false;}if(input.operation==='refresh')return route.fulfill({json:input.provider==='progress'?{status:cloudProgressConnected?'connected':'disconnected',summary:cloudProgressConnected?cloudSummary():null}:{status:cloudWhoopConnected?'connected':'disconnected',facts:cloudWhoopConnected?cloudFacts():null}});return route.fulfill({json:{ok:true}});}
+   return route.fulfill({json:{whoop:{connected:cloudWhoopConnected,expiresAt:Date.now()+3600000,lastRead:null},progress:{connected:cloudProgressConnected,expiresAt:Date.now()+3600000,lastRead:null}}});
+  });
+  await cloudContext.route('**/api/whoop?*',route=>route.fulfill({json:{status:cloudWhoopConnected?'connected':'disconnected',facts:cloudWhoopConnected?cloudFacts():null}}));
+  await cloudContext.route('**/api/progress?*',route=>route.fulfill({json:{status:cloudProgressConnected?'connected':'disconnected',summary:cloudProgressConnected?cloudSummary():null}}));
   await cloudContext.addCookies(await context.cookies());
   await cloudContext.route('**/api/personal',async route=>{const response=await route.fetch();const data=await response.json();await route.fulfill({response,json:{...data,storage:'cloud'}});});
   await cloudPage.reload();
   await cloudPage.getByRole('navigation',{name:'Daily workspace'}).getByRole('button',{name:'Connections',exact:true}).click();
-  await cloudPage.getByText('Automatic WHOOP reading is not available on this online workspace yet. You can use manual sleep check-ins or open your original app.',{exact:true}).waitFor();
-  assert.equal(await cloudPage.getByLabel('WHOOP Intelligence password',{exact:true}).count(),0);
-  await cloudPage.getByRole('button',{name:'Record sleep manually',exact:true}).click();
-  await cloudPage.getByLabel('Manual sleep hours (optional)',{exact:true}).waitFor();
+  await cloudPage.getByRole('heading',{name:'Connect once for this session',exact:true}).waitFor();
+  assert.equal(cloudAccountWrites,0);
+  const progressForm=cloudPage.locator('.cloud-connections>details').filter({has:cloudPage.locator('summary',{hasText:'ProgressXX'})});
+  await progressForm.locator('summary').first().click();
+  await progressForm.getByLabel('ProgressXX email',{exact:true}).fill('fixture@example.test');
+  await progressForm.getByLabel('ProgressXX app password',{exact:true}).fill('synthetic-progress-password');
+  await progressForm.getByRole('checkbox').check();
+  await progressForm.getByRole('button',{name:'Connect read-only',exact:true}).click();
+  await progressForm.getByRole('button',{name:'Disconnect from JARVIS',exact:true}).waitFor();
+  const whoopForm=cloudPage.locator('.cloud-connections>details').filter({has:cloudPage.locator('summary',{hasText:'WHOOP Intelligence'})});
+  await whoopForm.locator('summary').first().click();
+  await whoopForm.getByText('My WHOOP Intelligence uses an email link',{exact:true}).click();
+  await whoopForm.getByLabel('Unused WHOOP Intelligence sign-in link',{exact:true}).fill('https://jsfeybhgobmrydcfnyjg.supabase.co/auth/v1/verify?token='+ 'a'.repeat(64)+'&type=magiclink');
+  await whoopForm.getByRole('checkbox').check();
+  await whoopForm.getByRole('button',{name:'Connect read-only',exact:true}).click();
+  await whoopForm.getByRole('button',{name:'Disconnect from JARVIS',exact:true}).waitFor();
+  assert.equal(cloudAccountWrites,2);
   await cloudPage.getByRole('navigation',{name:'Daily workspace'}).getByRole('button',{name:'Today',exact:true}).click();
+  await cloudPage.locator('.personal-metrics>div').first().getByText(/^WHOOP/).waitFor();
+  await cloudPage.locator('.live-progress').getByText('777 kcal',{exact:true}).waitFor();
+  await cloudPage.getByRole('checkbox',{name:'Use cloud food on Home for this session',exact:true}).check();
+  await cloudPage.locator('.personal-metrics').getByText('777 kcal',{exact:true}).waitFor();
   await cloudPage.setViewportSize({width:320,height:740});
   const assertNarrowLayout=async language=>{
    // Wait for resize/React presentation, then measure the rendered document.
@@ -195,7 +224,7 @@ try{
   await assertNarrowLayout('English');
   await cloudPage.getByRole('button',{name:'عربي',exact:true}).click();
   await assertNarrowLayout('Arabic');
-  console.log('PASS UX-06 cloud sources show usable manual fallback without collecting unsupported health credentials');
+  console.log('PASS UX-06 cloud source consent, password/email-link connect, live food projection and bilingual mobile bounds');
   await cloudContext.close();
   console.log('PASS CLOUD-UI-01 incomplete cloud login is blocked and ready state is bilingual');
  }

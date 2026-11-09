@@ -1,3 +1,5 @@
+import {CloudAccounts} from '../apps/api/src/cloud-accounts.ts';
+import {CloudRedis} from '../apps/api/src/cloud-redis.ts';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {createConnection} from 'node:net';
@@ -76,4 +78,27 @@ test('RECOVERY-REDIS-01 real Lua TTL, one-use races, session invalidation and re
   } finally {
     if(keys.size)await command(['DEL',...keys]);
   }
+});
+
+
+test('ACCOUNTS-REDIS-01 real Lua CAS/TTL/cache/lock and disconnect race', {skip:!port}, async()=>{
+ const keys=new Set<string>();let sourceReads=0,release:()=>void=()=>{};let gate:Promise<void>|null=null;
+ const transport:typeof fetch=async(url,init)=>{
+  const u=new URL(String(url));
+  if(u.hostname==='jsfeybhgobmrydcfnyjg.supabase.co'){
+   if(u.pathname.includes('/auth/'))return Response.json({access_token:'SYNTHETIC_ACCESS',expires_in:3600,user:{id:'11111111-1111-4111-8111-111111111111'}});
+   assert.equal(u.pathname,'/functions/v1/whoop-data');assert.deepEqual(JSON.parse(String(init?.body)),{action:'read'});sourceReads++;if(gate)await gate;return Response.json({connected:false,records:{}});
+  }
+  assert.equal(String(url),'https://redis.example.test/');const args=JSON.parse(String(init?.body));if(args[0]==='EVAL')for(const key of args.slice(3,3+args[2]))keys.add(key);else if(args[1])keys.add(args[1]);return Response.json({result:await command(args)});
+ };
+ const namespace='test-account-'+randomBytes(8).toString('hex');
+ const accounts=()=>new CloudAccounts(new CloudRedis('https://redis.example.test','fixture',transport),'b'.repeat(64),namespace,'a'.repeat(64),transport);
+ try{
+  await accounts().connect('whoop',{email:'fixture@example.test',password:'synthetic'},true);
+  const key=[...keys].find(k=>k.endsWith(':whoop'))!;assert.ok(Number(await command(['TTL',key]))>0);assert.ok(Number(await command(['TTL',key]))<=3600);
+  await accounts().read('whoop','Africa/Cairo');await accounts().read('whoop','Africa/Cairo',true);assert.equal(sourceReads,1);
+  await accounts().connect('whoop',{email:'fixture@example.test',password:'synthetic'},true);gate=new Promise(r=>release=r);
+  const pending=accounts().read('whoop','Africa/Cairo');while(sourceReads<2)await new Promise(r=>setTimeout(r,1));
+  assert.equal((await accounts().read('whoop','Africa/Cairo')).status,'busy');await accounts().disconnect('whoop');release();assert.equal((await pending).status,'disconnected');assert.equal((await accounts().status('whoop')).connected,false);
+ }finally{release();if(keys.size)await command(['DEL',...keys]);}
 });

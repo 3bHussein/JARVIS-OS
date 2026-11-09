@@ -1,3 +1,5 @@
+import {CloudAccounts} from './cloud-accounts.ts';
+import {AccountError,type AccountProvider} from '../../../packages/connectors/src/account-reader.ts';
 import {BodyReadError, readBoundedText} from './bounded-body.ts';
 import {manifests} from '../../../packages/connectors/src/contracts.ts';
 import {createHash, randomBytes} from 'node:crypto';
@@ -90,19 +92,35 @@ export function createCloudHandler(config: CloudConfig, transport: typeof fetch 
       if (typeof csrf !== 'string' || !/^[a-f0-9]{64}$/.test(csrf)) return reply(401, {error: 'authentication_required'});
       if (post && request.headers.get('x-csrf-token') !== csrf) return reply(403, {error: 'csrf_required'});
       if (!post && path === '/api/session') return reply(200, {user: owner, csrf});
+      const accounts=new CloudAccounts(redis,config.key,config.namespace,token,transport);
       if (post && path === '/api/logout') {
+        await accounts.disconnect('whoop');await accounts.disconnect('progress');
         await redis.command(['DEL', sessionKey(token, active.hash)]);
         return reply(200, {ok: true}, `jarvis_session=; ${cookieFlags}; Max-Age=0`);
       }
       if (!post && path === '/api/connectors') {
+        const grants={whoop:await accounts.status('whoop'),progressxx:await accounts.status('progress')};
         return reply(200, {connectors: manifests.map(manifest => ({
           ...manifest,
-          status: manifest.domain === 'corporate' ? 'blocked' : 'disconnected',
+          status: manifest.domain === 'corporate' ? 'blocked' : (manifest.id==='whoop'?grants.whoop.connected:manifest.id==='progressxx'?grants.progressxx.connected:false)?((manifest.id==='whoop'?grants.whoop.lastRead:grants.progressxx.lastRead)?'ready':'configured'):'disconnected',
           lastSuccessfulSync: null, freshness: 'unavailable', lastError: null,
         }))});
       }
-      if (!post && path === '/api/whoop') {
-        return reply(200, {status: 'unavailable', facts: null, error: 'cloud_feature_unavailable'});
+      if (path === '/api/integrations') {
+        if(!post)return reply(200,{whoop:await accounts.status('whoop'),progress:await accounts.status('progress')});
+        const input=await body();
+        if(!['whoop','progress'].includes(input?.provider))return reply(400,{error:'invalid_provider'});
+        const provider=input.provider as AccountProvider;
+        const count=await redis.command(['EVAL',loginLimit,1,prefix+'account-limit:'+provider]);
+        if(typeof count!=='number'||count>10)return reply(429,{error:'source_rate_limited'});
+        if(input.operation==='connect'){const value=await accounts.connect(provider,input,input.consent);console.info('jarvis_account_action',{provider,operation:'connect',outcome:'success'});return reply(200,value);}
+        if(input.operation==='disconnect'){await accounts.disconnect(provider);console.info('jarvis_account_action',{provider,operation:'disconnect',outcome:'success'});return reply(200,{ok:true});}
+        if(input.operation==='refresh'){const value=await accounts.read(provider,input.zone||'Africa/Cairo',true);console.info('jarvis_account_action',{provider,operation:'read',status:value.status});return reply(200,value);}
+        return reply(400,{error:'invalid_operation'});
+      }
+      if (!post && (path === '/api/whoop'||path === '/api/progress')) {
+        const provider=path==='/api/whoop'?'whoop':'progress',value=await accounts.read(provider,url.searchParams.get('zone')||'Africa/Cairo');
+        console.info('jarvis_account_action',{provider,operation:'read',status:value.status});return reply(200,value);
       }
       if (!post && (path === '/api/ai' || path === '/api/speech')) {
         return reply(200, {configured: false, mode: 'cloud', available: false});
@@ -125,6 +143,7 @@ export function createCloudHandler(config: CloudConfig, transport: typeof fetch 
       }
       return reply(501, {error: 'cloud_feature_unavailable'});
     } catch (error) {
+      if (error instanceof AccountError){console.warn('jarvis_account_failure',{code:error.message});return reply(error.status,{error:error.message,facts:null,summary:null});}
       if (error instanceof RecoveryError) return reply(error.status, {error:error.message});
       if (error instanceof BodyReadError) {
         console.warn('jarvis_cloud_body_failure',{stage,status:error.status});
