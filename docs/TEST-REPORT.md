@@ -561,3 +561,38 @@ An additional UI send attempt after the earlier single retry was REJECTED by aut
 ## Session 041 — Live email request accepted (2026-11-09, approximately 13:31 Africa/Cairo)
 
 Owner explicitly approved one additional code request after the Session 040 review blocker. Performed exactly one UI send click on the production Settings recovery form. VERIFIED positive application result: recovery challenge form appeared with eight-digit code/new-password/confirmation fields and text stating the email service accepted the request, ten-minute expiry and five incorrect attempts. This establishes application/provider acceptance, not inbox receipt or successful password reset. No code, password, API key, mailbox contents or personal records inspected. Do not send another code in this session. Prepared owner handoff for code/new-password entry and submission; credential changes must be owner performed. No source changes/new tests; prior exact-source CI remains Session 040. Tools: browser inventory, production navigation, explicit single send and positive rendered result; GitHub append-only tracking update. PR none; this docs commit skips CI. Next: owner checks inbox/spam and completes the prepared form before expiry, then inspect only success/sign-in state without reading password fields; verify owner login/retained data only with suitable authorization. No vault key/namespace changes. Desktop deferred.
+
+
+## Session 042 — Everyday web usability sprint (2026-11-09T13:47:51.496948+02:00)
+
+Milestone: M1/M3 web usability. Requested: continue the program and simplify UI/UX. Desktop remains deferred. No credential recovery action was performed; owner password-reset completion from Session 041 remains unverified, independently of this UI work.
+
+IMPLEMENTED: prominent Open your workspace action focuses sign-in; keyboard skip link; readable typography and tighter navigation; sticky five-section daily navigation with explicit selected state and Back to today; pre-profile navigation is usable rather than forcing every tab back to profile; successful profile save returns Home. Onboarding now shows one next step with the full checklist collapsed, disappears when recorded steps are complete, and keeps explicit saving consent. Quick capture starts with text/type and hides optional scheduling for notes; tasks/workouts reveal scheduling, and review-before-save/revision conflict/draft persistence are preserved. Project search filters app metadata locally. Online install copy no longer claims a local service is required. Online Sources explains unavailable automatic WHOOP access and offers manual sleep entry/original app without collecting unsupported health credentials; local WHOOP flow unchanged.
+
+Design: retain original navy/cyan core, logical RTL CSS and reduced-motion support. Increase reading/control sizes, make five mobile destinations fit without horizontal page scrolling, respect bottom safe area, prioritize recorded metrics above imported-source controls, and stop the summary panel stretching to a tall sidebar. No fabricated connected data or new backend integrations.
+
+Files modified: apps/web/src/FirstUse.tsx, PersonalHome.tsx, QuickCapture.tsx, WebInstall.tsx, main.tsx, style.css; tests/browser.mjs; nine tracking docs. No dependency changes. Local node_modules symlink excluded from publication.
+
+Commands/actions: isolated git fetch/worktree; rg/source/CSS inspection; npm run check during implementation and after observed fixes; npm run test:e2e:built during UI acceptance; install pinned Chromium headless shell from official Playwright mirror after cache was absent; git diff --check; visual inspection of generated synthetic desktop/Arabic-mobile screenshots. A temporary overflow DOM diagnostic was removed after identifying the decorative core pseudo-element; no debugging output remains. React review: hooks unconditional, no new package, stable list keys, existing async/auth lifetimes preserved, no sensitive state added to browser storage, focus labels/skip-link and motion settings retained.
+
+Tests: local final typecheck/build PASS; 90 Node tests pass, one intentional real-Redis CI-only skip. Built browser baseline 39/39 plus six UX cases, recovery/cloud and PWA cases passed before the final additional 320px probe; that last probe outcome is pending at this entry. UX-01 entry focus; UX-02 pre-profile navigation/compact checklist; UX-03 conditional scheduling; UX-04 sticky navigation; UX-05 local project search; UX-06 authenticated synthetic cloud fallback/no health credential form, mobile bounds. Existing tests verify no-write preview, explicit confirm, stale revision blocking and draft persistence. Real owner records never used.
+
+Observed failures/resolutions: initial browser run could not find cached Chromium, installed exact pinned binary; first CTA exact-name test failed because the decorative arrow was in its accessible name, corrected with a concise aria-label; Arabic mobile page had a few pixels of overflow from glow inset, corrected the pseudo-element inset instead of concealing page overflow. Re-ran acceptance after fixes. No physical device, real speech accuracy, native desktop or production owner-data acceptance claimed.
+
+Base commit 0d9291fb050f827f4850745a083351150289b3b1; source SHA will be recorded after publication. PR none. CI/deployment pending for this source. Next: inspect final 320px probe and resolve if needed, publish guarded GitHub commit, inspect exact-source CI/Vercel, verify public entry UI without accessing owner records, append final evidence/handoff.
+
+
+| Requirement | Acceptance evidence | Status |
+| --- | --- | --- |
+| UX-ENTRY-01 clear focused sign-in | UX-01 browser | TESTED synthetic |
+| UX-SETUP-01 concise onboarding and free navigation | UX-02, UI-14/39 | TESTED synthetic |
+| UX-CAPTURE-01 simple notes and explicit scheduling | UX-03, UI-38 | TESTED synthetic |
+| UX-NAV-01 persistent mobile navigation | UX-04, RTL overflow checks | TESTED synthetic |
+| UX-SEARCH-01 local app search | UX-05, connector read counters | TESTED synthetic |
+| UX-CLOUD-01 honest online fallback | UX-06, CLOUD-UI-01 | TESTED synthetic |
+| UX-MOBILE-320 | final narrow-screen probe | IN PROGRESS |
+
+
+### Session 042 final local acceptance — 2026-11-09
+
+Final built-browser rerun PASS: baseline 39/39, UX-01 through UX-06, recovery/cloud/PWA cases. Added 320px English and Arabic Home checks both passed with no horizontal document overflow; 390px RTL and draft-preservation checks also passed. UX-MOBILE-320 is TESTED with this evidence. git diff --check PASS. No further runtime edits after these checks.

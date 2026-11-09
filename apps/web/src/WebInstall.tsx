@@ -4,7 +4,7 @@ interface InstallPrompt extends Event {
   prompt(): Promise<void>;
 }
 
-export function WebInstall({visible, ar}: {visible: boolean; ar: boolean}) {
+export function WebInstall({visible, ar, cloud=false}: {visible: boolean; ar: boolean; cloud?: boolean}) {
   const [offer, setOffer] = useState<InstallPrompt | null>(null);
   const [installed, setInstalled] = useState(false);
 
@@ -46,7 +46,7 @@ export function WebInstall({visible, ar}: {visible: boolean; ar: boolean}) {
 
   return <section className="panel" aria-label={title}>
     <h2>{title}</h2>
-    <p>{ar ? 'جارفس بيحتاج الخدمة المحلية وهي شغّالة علشان يفتح مساحة العمل.' : 'The workspace needs the local JARVIS service running.'}</p>
+    <p>{cloud ? (ar ? 'افتح جارفس كتطبيق من الموبايل أو الكمبيوتر. الدخول والبيانات السحابية محتاجين إنترنت.' : 'Open JARVIS as an app on your phone or computer. Sign-in and cloud data need an internet connection.') : (ar ? 'جارفس بيحتاج الخدمة المحلية وهي شغّالة علشان يفتح مساحة العمل.' : 'The workspace needs the local JARVIS service running.')}</p>
     {installed ? <p role="status">{ar ? 'جارفس متثبّت في المتصفح ده.' : 'JARVIS is installed in this browser.'}</p> :
       <>
         {offer && <button type="button" className="primary" onClick={() => void install()}>
