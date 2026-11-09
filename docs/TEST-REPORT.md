@@ -743,3 +743,20 @@ TESTED npm run check PASS: 107 registered Node tests, 105 pass/two intentional C
 | SYNC-RECOVER-01 fail closed and retry without losing nutrition choice | extended UX-06 | TESTED synthetic |
 | SYNC-ISOLATE-UI-01 WHOOP changes preserve ProgressXX choice | extended UX-06 | TESTED synthetic |
 | SYNC-OWNER-01 actual owner accounts | Not used in this session | TODO |
+
+
+### Session 044 final evidence and handoff — 2026-11-09T16:54:56.586847+02:00
+
+VERIFIED automated source 3ab5726d69bea911b868ad9687b9c6777272ee8a. GitHub run https://github.com/3bHussein/JARVIS-OS/actions/runs/42638797812 completed SUCCESS, all three jobs: foundation 129234013830, desktop-windows 129234014223, windows-launcher 129234014369. Foundation logs confirm 107/107 Node tests, zero failures/skips, real isolated Redis tests retained, typecheck/build, launcher tests, development/built browser 39/39 each plus extended cloud retry/isolation/credential/RTL/PWA cases. This verifies synthetic behavior and automated packaging, not actual owner source login or physical Windows operation.
+
+Production dpl_3HAvnrjsk7hGYYMSjxyqnZHMRWJV READY at exact githubCommitSha 3ab5726d69bea911b868ad9687b9c6777272ee8a; primary alias https://jarvis-os-henna-sigma.vercel.app/. Error scan 2026-11-09T14:39:27.856Z–14:54:27.856Z returned no matching logs; not proof of authenticated live-data access. No new mail/keys/env/schema/source-repo operations. GitHub guarded main update succeeded, PR none. Log/handoff and all tracking docs appended. Docs-only final evidence commit uses [skip ci]. No extra deployment requested.
+
+Final scope: source status/expiry/read dates use configured timezone; source-only metadata refresh and stale-response guards; bounded bilingual failure explanations/retry; changing WHOOP preserves ProgressXX nutrition selection, and source-read failures hide totals until successful retry. Session-scoped access still expires within one hour, with no durable background refresh or MFA/PKCE support. Owner acceptance of actual source sign-in and saved data coverage remains TODO. Exact next: owner uses Sources and original-app account credentials/unused WHOOP app sign-in link in the web form only; inspect redacted errors if unavailable, reproduce synthetically before modifying any source app or schema. Never ask for passwords/links in chat or infer missing health readings. Desktop remains deferred. Next product sprint can improve briefing/voice usefulness using only verified available sources; real health tests need explicit owner authorization.
+
+
+| Requirement | Final exact-source evidence | Status |
+| --- | --- | --- |
+| SYNC-STATUS-01 | STATUS-01..03, CI 42638797812 | VERIFIED synthetic |
+| SYNC-RECOVER-01 | UX-06 row-limit failure hides totals and retry restores selected cloud food | VERIFIED synthetic |
+| SYNC-ISOLATE-UI-01 | UX-06 WHOOP disconnect preserves ProgressXX food; ProgressXX disconnect clears it | VERIFIED synthetic |
+| SYNC-OWNER-01 | Actual owner source sign-in/data | TODO |
