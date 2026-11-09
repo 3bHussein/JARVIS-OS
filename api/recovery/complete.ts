@@ -1,2 +1,7 @@
-// Keep password recovery on the shared authenticated-origin handler.
-export {default} from '../[...path].ts';
+import {cloudFetch} from '../../apps/api/src/cloud-entry.ts';
+
+export default {
+  async fetch(request: Request) {
+    return cloudFetch(request);
+  },
+};
