@@ -141,7 +141,7 @@ function App(){
  }
  function localAnswer(text:string){
   if(authenticated){const saved=answerPersonalQuery(text,queryContext.current,new Date(),zone,locale);if(saved!==null)return saved;}
-  let answer=locale==='ar'?'المساعد الذكي لسه غير متصل. أقدر أقولك الوقت أو أوضح حالة الربط؛ مش هنفّذ أي تعديل.':'AI is not connected yet. I can report time or connection availability; no write actions are enabled.';
+  let answer=locale==='ar'?'جرّب سؤال جاهز عن أولوياتك أو نومك أو السعرات أو الموعد الجاي. الإجابات من البيانات المحفوظة؛ التعديلات من الجدول والإدخال اليومي.':'Try a saved-data question about priorities, sleep, calories or your next appointment. Edit records through Planner or Check-in.';
   if(isClockQuestion(text))answer=`${c.greeting} · ${c.time} · ${zone}`;
   else if(/today|النهارده|النهاردة|tasks|مهام/i.test(text))answer=authenticated?(personalMessage||'Personal briefing is loading; no AI model is connected.'):b.message;
   else if(/connect|ربط|متصل/i.test(text))answer=authenticated?sources.map(source=>`${source.name}: ${statusLabel(source.id)}`).join(' · '):(locale==='ar'?'سجّل دخول علشان نفحص حالة المصادر.':'Sign in to check source status.');

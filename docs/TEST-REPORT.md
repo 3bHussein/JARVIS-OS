@@ -838,3 +838,8 @@ Commit/PR/remote CI/deployment pending. Next: publish guarded source, inspect ex
 ### Session 046 final query disambiguation and local verification — 2026-11-10, Africa/Cairo
 
 Final review tightened current-clock matching and added workout/appointment time variants plus code-switching; a question about a workout time must not be mistaken for the current clock. This supersedes only the earlier no-further-runtime-edits statement. Re-ran npm run check PASS (116 registered, 114 pass/two isolated CI Redis skips, typecheck/build) and built browser PASS 39/39 baseline plus UX-09/10 and all retained cloud/RTL/PWA cases on the updated source. QUERY-01 now also covers clock versus workout-time separation and mixed Arabic/English. No additional runtime edits after this verification. Publication/remote results pending.
+
+
+### Session 046 final chat lifecycle polish — 2026-11-10, Africa/Cairo
+
+Source 27259753f843a54abe23d7bc55893772aba6afde published and Vercel dpl_DVbv7wNaJrEsTuThyRJKGyU581Cj READY. Its CI run 42825033525 is still in progress at this entry. Final review added an alive guard to late chat authentication failures so an unmounted old chat cannot close a newer workspace, and changed unsupported-question help to advertise supported saved-data questions. Final follow-up typecheck/build and built-browser 39/39 baseline plus UX-09/10, cloud selected-food arithmetic and retained source/RTL/PWA cases PASS (session046-release-browser.log). No backend business logic, permission or data-retention changes. Final source commit/CI/deployment follow.

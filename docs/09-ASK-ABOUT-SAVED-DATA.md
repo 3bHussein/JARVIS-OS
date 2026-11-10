@@ -12,6 +12,8 @@ Unlock JARVIS, let the daily workspace load, then use the conversation box on To
 | Show my notes | ملاحظاتي | Up to three open untimed notes, plus total count |
 | Summarize my day | لخص يومي | Recorded daily briefing and source/missing-data statements |
 
+Replies use your selected interface language; recognized input wording can be Arabic or English. Clock questions are distinguished from questions about a recorded appointment/workout time.
+
 ## Use the quick questions
 
 Click a suggestion to put it in the input. It does not send automatically. Review it and press **Send**. Reviewed speech drafts use the same input and still require Send. Use **Read reply aloud** if needed; existing device/network voice permissions apply.
