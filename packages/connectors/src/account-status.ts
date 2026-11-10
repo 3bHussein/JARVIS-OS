@@ -17,6 +17,7 @@ export function sourceReadMessage(code:string,ar:boolean):string|null{
   busy:['A read is already running. Wait a moment, then retry.','في قراءة شغّالة بالفعل. استنى لحظة وجرّب تاني.'],
   source_rate_limited:['Too many requests. Wait a minute, then retry saved-record reading.','طلبات كتير. استنى دقيقة وجرّب قراءة السجلات تاني.'],
   source_result_limit:['The bounded read reached its row limit. No partial total is shown; use the original app while this is reviewed.','القراءة وصلت لحد السجلات. مش هنعرض مجموع ناقص؛ استخدم التطبيق الأصلي لحد مراجعة السبب.'],
+  source_food_identity_conflict:['Two saved rows represent one diary entry but disagree. Food total is unavailable; review the original app before retrying.','في سجلين محفوظين لنفس عنصر الأكل لكن قيمهم مختلفة. إجمالي الأكل غير متاح؛ راجع التطبيق الأصلي قبل المحاولة تاني.'],
   source_invalid_response:['Some source fields are missing or invalid. No partial total is shown; check the original app.','في حقول ناقصة أو غير صالحة من المصدر. مش هنعرض مجموع ناقص؛ راجع التطبيق الأصلي.'],
   source_access_denied:['The source account cannot read the required saved data. Review its permissions in the original app; do not disable access controls.','حساب المصدر مش قادر يقرأ البيانات المطلوبة. راجع صلاحياته في التطبيق الأصلي؛ ما تعطلش الحماية.'],
   source_schema_unavailable:['The source read endpoint or fields are unavailable. The connector needs review; manual records were not substituted.','نقطة القراءة أو حقول المصدر مش متاحة. الموصل محتاج مراجعة؛ ما استبدلناش البيانات بإدخال يدوي.'],

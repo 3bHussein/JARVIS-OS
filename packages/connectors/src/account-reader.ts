@@ -30,7 +30,7 @@ export async function authorizeAccount(provider:AccountProvider,input:{email?:un
  // Access token only. Discard refresh token and password; reconnect after this short grant expires.
  return {accessToken:data.access_token,userId:data.user.id,expiresAt:now+Math.min(data.expires_in,3600)*1000};
 }
-export type LiveProgress=ReturnType<typeof progressSummary>&{source:'progressxx-cloud';observedAt:string;coverage:string[];issues?:{dataset:'food'|'workouts'|'weight'|'schedule';error:string}[]};
+export type LiveProgress=ReturnType<typeof progressSummary>&{source:'progressxx-cloud';observedAt:string;coverage:string[];foodRows?:{time:string;calories:number}[];collapsedFoodRows?:number;issues?:{dataset:'food'|'workouts'|'weight'|'schedule';error:string}[]};
 const number=(v:unknown,max:number)=>{const n=typeof v==='number'?v:typeof v==='string'&&v.trim()?Number(v):NaN;if(!Number.isFinite(n)||n<0||n>max)throw new AccountError('source_invalid_response',502);return n;};
 const text=(v:unknown,max=200)=>{if(typeof v!=='string'||v.length>max)throw new AccountError('source_invalid_response',502);return v;};
 export async function readAccount(provider:AccountProvider,grant:AccountGrant,zone:string,transport:typeof fetch=fetch,now=new Date()){
@@ -52,7 +52,7 @@ export async function readAccount(provider:AccountProvider,grant:AccountGrant,zo
  // Wide UTC window is filtered again by the configured IANA timezone. Never silently total a truncated page.
  const since=new Date(+now-48*3600000).toISOString();
  const results=await Promise.allSettled([
-  query('food_entries',{select:'id,logged_at,calories,protein_g,carbs_g,fat_g',logged_at:'gte.'+since,order:'logged_at.desc,id.asc',limit:'500'}),
+  query('food_entries',{select:'id,client_id,logged_at,calories,protein_g,carbs_g,fat_g',logged_at:'gte.'+since,order:'logged_at.desc,id.asc',limit:'500'}),
   query('legacy_workout_entries',{select:'source_id,original_date,exercise_name,day_name,status',original_date:'gte.'+new Date(+now-30*86400000).toISOString().slice(0,10),source_id:'like.pxlog:*',order:'original_date.desc,source_id.asc',limit:'500'}),
   query('weight_checkins',{select:'id,measured_at,weight_kg',measured_at:'gte.'+new Date(+now-15*86400000).toISOString(),order:'measured_at.desc,id.asc',limit:'500'}),
   query('user_app_snapshots',{select:'updated_at,schedule:payload->>progressx-workout-schedule-v1',limit:'1'}),
@@ -70,9 +70,28 @@ export async function readAccount(provider:AccountProvider,grant:AccountGrant,zo
  const schedule=project('schedule',()=>{const schedule:Record<string,string>={};if(snapshots.length>1)throw new AccountError('source_invalid_response',502);
  if(snapshots[0]?.schedule!==null&&snapshots[0]?.schedule!==undefined){let value;try{value=JSON.parse(snapshots[0].schedule);}catch{throw new AccountError('source_invalid_response',502);}if(!value||typeof value!=='object'||Array.isArray(value))throw new AccountError('source_invalid_response',502);for(const key of ['sun','mon','tue','wed','thu','fri','sat'])if(value[key])schedule[key]=text(value[key]);}
 return schedule;},{} as Record<string,string>);
+ // Match ProgressXX __pxLoadFoodDiary logical identity. Conflicting aliases fail closed.
+ // A migrated pxlegacy:<uuid> row and the original UUID row are one diary entry.
+ // Never deduplicate by calories/time: identical meals can be distinct valid entries.
+ const foodProjection=project('food',()=>{
+  const diary=new Map<string,{date:string;time:string;calories:number;protein:number;carbs:number;fat:number}>();
+  const rows=unique(foods,'id');
+  for(const r of rows){
+   if(r.client_id!==null&&r.client_id!==undefined&&(typeof r.client_id!=='string'||r.client_id.length>300))throw new AccountError('source_invalid_response',502);
+   const id=typeof r.client_id==='string'&&r.client_id.startsWith('pxlegacy:')?r.client_id.slice(9):r.id;
+   if(!id)throw new AccountError('source_invalid_response',502);
+   const timestamp=new Date(stamp(r.logged_at));
+   const time=new Intl.DateTimeFormat('en-GB',{timeZone:zone,hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(timestamp);
+   const entry={date:clock(timestamp,zone).date,time,calories:number(r.calories,20000),protein:number(r.protein_g,5000),carbs:number(r.carbs_g,5000),fat:number(r.fat_g,5000)};
+   const previous=diary.get(id);
+   if(previous&&JSON.stringify(previous)!==JSON.stringify(entry))throw new AccountError('source_food_identity_conflict',502);
+   diary.set(id,entry);
+  }
+  return {entries:[...diary.values()],collapsed:rows.length-diary.size};
+ },{entries:[] as {date:string;time:string;calories:number;protein:number;carbs:number;fat:number}[],collapsed:0});
  const backup:ProgressBackup={exportedAt:now.toISOString(),target:null,schedule,
-  foods:project('food',()=>unique(foods,'id').map(r=>({date:clock(new Date(stamp(r.logged_at)),zone).date,calories:number(r.calories,20000),protein:number(r.protein_g,5000),carbs:number(r.carbs_g,5000),fat:number(r.fat_g,5000)})),[]),
+  foods:foodProjection.entries,
   workouts:project('workouts',()=>unique(workouts,'source_id').map(r=>({date:date(r.original_date),exercise:text(r.exercise_name),day:text(r.day_name),status:text(r.status)})),[]),
   weights:project('weight',()=>unique(weights,'id').map(r=>{const weight=number(r.weight_kg,1000);if(!weight)throw new AccountError('source_invalid_response',502);return {date:clock(new Date(stamp(r.measured_at)),zone).date,weight};}),[])};
- return {status:issues.length?'partial':'connected',summary:{...progressSummary(backup,today,now),source:'progressxx-cloud',issues,observedAt:now.toISOString(),coverage:['Saved food rows only; excludes pending device changes.','Workout table: last 30 days; older snapshot-only entries excluded.','Weight: last 15 days. Schedule: saved snapshot labels, not appointment times.']} satisfies LiveProgress};
+ return {status:issues.length?'partial':'connected',summary:{...progressSummary(backup,today,now),source:'progressxx-cloud',issues,foodRows:foodProjection.entries.filter(r=>r.date===today).map(({time,calories})=>({time,calories})),collapsedFoodRows:foodProjection.collapsed,observedAt:now.toISOString(),coverage:['Saved food rows only; excludes pending device changes.','Workout table: last 30 days; older snapshot-only entries excluded.','Weight: last 15 days. Schedule: saved snapshot labels, not appointment times.']} satisfies LiveProgress};
 }

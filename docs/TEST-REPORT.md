@@ -917,3 +917,28 @@ Remaining TODO: owner connects WHOOP Intelligence in the visible source form and
 | SOURCE-EXPIRY-01 | ACCT-07/08, CLOUD-ACCT-07, real Redis integration, CI42836054715 | VERIFIED synthetic |
 | SOURCE-PARTIAL-01 / SOURCE-DIAGNOSTIC-01 | ACCT-04/07/08, CI42836054715 | VERIFIED synthetic |
 | SOURCE-OWNER-01 | No authenticated owner-record read performed | TODO |
+
+
+## Session 048 — Investigate a food-total mismatch (2026-11-10T15:07:55.316355+00:00)
+
+Milestone M3, IN PROGRESS. Requested: ProgressXX food total differs from the owner's original app. Do not hardcode the reported number or silently change manual/source data. Base dfdf2ffe8a2d962f6b01cea7ba40a3824b034290. Inspected ProgressXX-Web index.html pinned to26f96d24045a896688c69e7acc3083013d97dc9f; pinned contents match discovery. Its __pxLoadFoodDiary maps pxlegacy:<id> client_id to original diary identity and otherwise uses row UUID. Its nutritionTotals sums that logical diary. JARVIS previously summed every distinct database UUID without client_id projection; a legacy UUID plus migrated alias could be double-counted. This is a confirmed code discrepancy, NOT proof of the owner's specific mismatch. Pending edits/deletes, cache, selected day/timezone and source upload state remain other possible causes. No private source rows, credentials or actual owner's meal data read.
+
+IMPLEMENTED: select only one additional source field client_id; collapse equivalent legacy aliases before the date-specific calorie/macronutrient sum. Distinct records with identical calories/time remain separate; differing values for the same logical identity make food unavailable with safe source_food_identity_conflict rather than arbitrarily choosing a number. Invalid/capped food remains wholly unavailable. No food names/UUIDs/client IDs added to projections, AI context or logs. Added collapsed read-window alias count and today's time/calorie breakdown; visible date/timezone, bounded scroll and original-app save/sync guidance. Empty food remains unknown, never fabricated zero. Existing manual values and source writes untouched.
+
+Cache: encrypted projection cache version2 invalidates old derived totals without revoking grants, rotating keys or changing upstream data. Existing thirty-second manual cooldown/five-minute cache applies to new-version reads. UI read-only diagnostics remain private to unlocked session. React review: native details/list, no extra fetch or effect, text escaped, stable primitive state unchanged; only one zone prop added. No dependencies.
+
+Files modified: account-reader.ts, account-status.ts, cloud-accounts.ts, LiveProgress.tsx, PersonalHome.tsx, style.css, focused account-reader/browser tests and tracking/docs. Commands: git worktree add; read source via GitHub connector and pinned ref; npm run check (initial/expanded/final); built browser pending; git diff --check pending. Supabase changelog fetched/read; no applicable Data API breaking change identified. Web markdown fetch unsupported, initial filter-doc URL404; corrected to REST introduction markdown. No Supabase API/library/schema/auth feature change or database query performed. No existing source-app repository changed.
+
+TESTED: final check PASS TypeScript/production build,122 registered Node tests,120 PASS/two CI-only Redis skips. ACCT-09 tests logical alias reconciliation, legitimate repeated meals, safe time/calorie projection, no raw identities, disagreeing aliases and malformed client_id; built UX-12 pending for the visible counted-entry breakdown. Source/PR/CI/deployment pending; no PR in authorized direct-main workflow. Exact next: complete built browser; publish guarded JARVIS source; inspect exact-source CI/deployment; append results. Actual owner-row confirmation remains TODO and must not be inferred from a synthetic fix.
+
+| Requirement | Evidence | Status |
+| --- | --- | --- |
+| FOOD-IDENTITY-01 alias normalization without merging distinct meals | ACCT-09 | TESTED synthetic |
+| FOOD-CONFLICT-01 no total for conflicting logical aliases | ACCT-09 | TESTED synthetic |
+| FOOD-RECONCILE-01 counted entry sum/date/zone, no raw identities | ACCT-09; UX-12 pending | TESTED unit |
+| FOOD-OWNER-01 reconcile actual owner mismatch | No private source records inspected | TODO |
+
+
+### Session 048 local acceptance — 2026-11-10T15:08:15.901804+00:00
+
+VERIFIED synthetic: built browser exit0,39/39 numbered UI checks plus UX-12 PASS (counted-entry list/date/zone), existing UX-06/11 and PWA/recovery PASS. Existing English/Arabic320px bounds still PASS with details present. Final check122 registered/120 PASS/two CI-only Redis skips, TypeScript/build PASS. git diff --check PASS. Historical docs contain no owner-specific calories or source identifiers. Exact-source remoteCI and production deployment remain pending.

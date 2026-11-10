@@ -2,7 +2,7 @@ import {createCipheriv,createDecipheriv,randomBytes,createHash} from 'node:crypt
 import {CloudRedis} from './cloud-redis.ts';
 import {authorizeAccount,readAccount,AccountError,type AccountGrant,type AccountProvider} from '../../../packages/connectors/src/account-reader.ts';
 export const accountCompareAndSetScript="local v=redis.call('GET',KEYS[1]); if (v or '')~=ARGV[1] then return 0 end; redis.call('SET',KEYS[1],ARGV[2],'EX',ARGV[3]); return 1";
-interface RecordValue {grant:AccountGrant|null;cache?:{zone:string;at:number;result:Awaited<ReturnType<typeof readAccount>>};}
+interface RecordValue {grant:AccountGrant|null;cache?:{version?:number;zone:string;at:number;result:Awaited<ReturnType<typeof readAccount>>};}
 /** Short-lived, session-bound grants. No password, refresh token or raw health payload is persisted. */
 export class CloudAccounts {
  private redis:CloudRedis;private keyHex:string;private namespace:string;private session:string;private transport:typeof fetch;
@@ -26,7 +26,7 @@ export class CloudAccounts {
   if(!grant)return {status:'disconnected',facts:null,summary:null};
   if(grant.expiresAt<=now)return {status:'expired',facts:null,summary:null,error:'source_session_expired'};
   const age=cache?now-cache.at:Infinity;
-  if(cache&&cache.zone===zone&&age>=0&&age<(force?30000:300000))return cache.result;
+  if(cache&&cache.version===2&&cache.zone===zone&&age>=0&&age<(force?30000:300000))return cache.result;
   // Distributed request coalescing bounds upstream reads across serverless instances.
   const attempts=await this.redis.command(['EVAL',"local n=redis.call('INCR',KEYS[1]); if n==1 then redis.call('EXPIRE',KEYS[1],60) end; return n",1,this.key(provider)+':read-rate']);
   if(typeof attempts!=='number'||attempts>10)throw new AccountError('source_rate_limited',429);
@@ -35,7 +35,7 @@ export class CloudAccounts {
   try{
    const result=await readAccount(provider,grant,zone,this.transport);
    if('summary'in result&&result.summary?.issues?.length)console.warn('jarvis_source_sections',{provider,issues:result.summary?.issues});
-   if(await this.redis.command(['EVAL',accountCompareAndSetScript,1,this.key(provider),old.raw,this.encrypt(provider,{grant,cache:{zone,at:now,result}}),Math.max(1,Math.floor((grant.expiresAt-Date.now())/1000))])!==1)return {status:'disconnected',facts:null,summary:null};
+   if(await this.redis.command(['EVAL',accountCompareAndSetScript,1,this.key(provider),old.raw,this.encrypt(provider,{grant,cache:{version:2,zone,at:now,result}}),Math.max(1,Math.floor((grant.expiresAt-Date.now())/1000))])!==1)return {status:'disconnected',facts:null,summary:null};
    return result;
   }catch(error){
    if(error instanceof AccountError&&error.status===401){await this.redis.command(['EVAL',accountCompareAndSetScript,1,this.key(provider),old.raw,this.encrypt(provider,{grant:null}),3600]);return {status:'expired',facts:null,summary:null,error:'source_session_expired'};}

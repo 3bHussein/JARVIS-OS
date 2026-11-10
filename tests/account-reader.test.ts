@@ -53,3 +53,15 @@ test('ACCT-08 one broken legacy section does not suppress valid food; source aut
  const v=await readAccount('progress',grant,'Africa/Cairo',dataTransport({legacy_workout_entries:[{source_id:'pxlog:old',original_date:'11/09/2026',exercise_name:'Synthetic',day_name:'Lower',status:'Done'}]}),now);assert.equal(v.status,'partial');assert.ok('summary'in v);assert.equal(v.summary!.food?.calories,400);assert.deepEqual(v.summary!.issues,[{dataset:'workouts',error:'source_invalid_response'}]);assert.deepEqual(v.summary!.recentWorkouts,[]);
  const base=dataTransport();await assert.rejects(readAccount('progress',grant,'Africa/Cairo',async(url,init)=>String(url).includes('food_entries')?Response.json({error:'private'},{status:401}):base(url,init),now),/source_session_expired/);
 });
+
+
+test('ACCT-09 ProgressXX legacy aliases count once, distinct identical meals remain separate, breakdown reconciles',async()=>{
+ const row={id:'legacy-uuid',client_id:null,logged_at:now.toISOString(),calories:200,protein_g:10,carbs_g:20,fat_g:5};
+ const foods=[{...row,id:'migrated-uuid',client_id:'pxlegacy:legacy-uuid'},row,{...row,id:'separate-meal',client_id:'pxlegacy:another-entry',calories:700}];
+ const result=await readAccount('progress',grant,'Africa/Cairo',dataTransport({food_entries:foods}),now);assert.ok('summary'in result);const s=result.summary!;
+ assert.equal(s.food?.calories,900);assert.equal(s.foodEntries,2);assert.equal(s.collapsedFoodRows,1);assert.equal(s.foodRows?.reduce((a,r)=>a+r.calories,0),900);assert.ok(s.foodRows?.every(r=>r.time==='14:00'));assert.equal(JSON.stringify(s).includes('legacy-uuid'),false);
+ const repeated=await readAccount('progress',grant,'Africa/Cairo',dataTransport({food_entries:[row,{...row,id:'different-uuid'}]}),now);assert.ok('summary'in repeated);assert.equal(repeated.summary!.food?.calories,400);assert.equal(repeated.summary!.collapsedFoodRows,0);
+ // Conflicting aliases must not silently choose an arbitrary source value.
+ const changed=await readAccount('progress',grant,'Africa/Cairo',dataTransport({food_entries:[{...row,id:'migrated',client_id:'pxlegacy:legacy-uuid',calories:300},row]}),now);assert.ok('summary'in changed);assert.equal(changed.summary!.food,null);assert.deepEqual(changed.summary!.issues,[{dataset:'food',error:'source_food_identity_conflict'}]);
+ const invalid=await readAccount('progress',grant,'Africa/Cairo',dataTransport({food_entries:[row,{...row,id:'bad',client_id:7}]}),now);assert.ok('summary'in invalid);assert.equal(invalid.summary!.food,null);assert.deepEqual(invalid.summary!.foodRows,[]);
+});

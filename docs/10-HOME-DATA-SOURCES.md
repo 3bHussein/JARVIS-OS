@@ -19,3 +19,11 @@
 Manual records remain saved separately. Choose **Manual check-in** explicitly if you want to use them. A disconnected, stale or failed cloud source never silently substitutes manual input. Reload/lock returns online Home to cloud-first defaults. Local preview keeps its existing manual/file behavior.
 
 WHOOP reads the existing Intelligence backend's saved data; it does not start a new vendor OAuth flow or device sync. ProgressXX reads only uploaded, authorized owner rows; pending local edits and sync conflicts must be resolved in ProgressXX. Current source grants last up to one hour and do not provide unattended background sync.
+
+## If food totals differ from ProgressXX
+
+1. Confirm the selected day and timezone, then finish saving/syncing inside ProgressXX. Pending device edits/deletes are not a saved cloud diary.
+2. In JARVIS, refresh saved data and expand **Check counted food entries**. Compare each time/calorie entry, not just the headline total. Read time is not proof of upstream sync.
+3. Equivalent old/migrated aliases use the original app's logical diary identity and count once. Separate identical meals still count separately. Conflicting aliases make the food section unavailable rather than silently selecting a value.
+4. The legacy-alias count covers the bounded read window, while the displayed breakdown covers the stated day only. No food names or raw source identifiers are included.
+5. JARVIS does not delete source rows or replace a calculated total with a number entered in chat. If the difference remains after refresh, compare the visible counted entries with the original app. Do not share account passwords or tokens.
