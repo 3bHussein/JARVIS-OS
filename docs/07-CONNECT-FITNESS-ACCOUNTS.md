@@ -9,7 +9,7 @@ Open https://jarvis-os-henna-sigma.vercel.app/ and unlock your online workspace.
 3. Read and select the session-only fitness-data consent checkbox.
 4. Click **Connect read-only**. Password controls clear immediately.
 5. Return to **Today**. The **Cloud read** section shows saved food, protein, weight trend when enough measured days exist, recent exercise rows and weekday training labels where available.
-6. Optionally select **Use cloud food on Home for this session**. JARVIS uses its own profile calorie target and does not overwrite your manual food entry. Imported-file and cloud-food selections are mutually exclusive. The choice resets when the workspace is locked/reloaded.
+6. Online Home defaults to **ProgressXX cloud** food and **WHOOP Intelligence** sleep. Connecting selects that provider automatically. Use the visible **Food source** and **Sleep source** controls to choose manual input deliberately. Manual records are retained separately. Reload restores cloud-first defaults; preferences do not modify your saved diary. JARVIS uses your chosen profile calorie target, not an invented target.
 
 ## 2. Connect WHOOP Intelligence
 
@@ -37,7 +37,7 @@ Use the account for your existing **WHOOP Intelligence** application, not your W
 | ProgressXX weight | Owner's last 15 days of weight rows | Trend requires at least three measured days in each seven-day comparison |
 | ProgressXX schedule | Only the saved weekly schedule field from the app snapshot | A weekday label has no appointment time or proof of a completed session |
 
-Bounded reads refuse incomplete totals when a 500-row cap is reached. Invalid records, duplicates, failed permissions or unavailable source tables produce an unavailable state rather than invented/partial totals. Resolve paused sync or conflicts inside ProgressXX first; JARVIS never replays its outbox or modifies its conflict-handling system.
+Bounded reads refuse incomplete totals when a 500-row cap is reached. A failed or invalid section is marked unavailable independently: valid food can still display when workout, weight or schedule reads fail. Invalid, duplicate or capped food records make the entire food total unknown; JARVIS never adds up an incomplete diary. Any source authentication expiry invalidates the grant and all its projected data. Resolve paused sync or conflicts inside ProgressXX first; JARVIS never replays its outbox or modifies its conflict-handling system.
 
 The original ProgressXX file import remains available as a separate fallback. Health data is not silently added to long-term AI memory.
 
@@ -46,4 +46,4 @@ The original ProgressXX file import remains available as a separate fallback. He
 
 Sources shows session expiry and the last successful saved-record read in your configured timezone. Connected means a source grant exists; it does not prove a device/vendor sync completed. Status updates when opening Sources, returning to the page and every minute while Sources is open. Expired grants require reconnection.
 
-Home explains expired sessions, busy reads, rate limits, invalid fields and row-limit refusal. Use **Retry saved read** after a temporary failure. No incomplete total or sample reading replaces failed data. A selected cloud-food source stays selected during a temporary failure; its total is unavailable until a successful retry. Disconnecting ProgressXX clears the selection. Disconnecting WHOOP preserves your ProgressXX food choice.
+Home explains expired sessions, busy reads, rate limits, invalid fields and row-limit refusal. Use **Retry saved read** after a temporary failure. No incomplete total or sample reading replaces failed data. A selected cloud-food source stays selected during a temporary failure; its total is unavailable until a successful retry. Disconnecting preserves the source choice: a selected cloud source becomes unavailable rather than silently showing manual data. Explicit manual selection remains manual. Disconnecting WHOOP preserves your ProgressXX food choice. See [10 — Fix Home data sources](10-HOME-DATA-SOURCES.md).

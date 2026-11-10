@@ -67,3 +67,14 @@ test('PERSON-06 completed commitments do not reserve free time after explicit sc
  const note={id:'done',text:'Finished synthetic task',kind:'task' as const,at:'2026-10-28T09:00:00Z',minutes:60,done:true};
  const data={profile,days:[{date:'2026-10-28',sleepHours:null,foodKcal:null,foodComplete:false,scheduleComplete:true}],notes:[note]};assert.equal(personalBriefing(data,now,'Africa/Cairo','en').freeSlot?.at,now.toISOString());
 });
+
+test('PERSON-07 explicit cloud sleep never silently falls back to manual; manual choice ignores WHOOP estimate',()=>{
+ const data={profile,days:[{date:'2026-10-28',sleepHours:6,foodKcal:1400,foodComplete:false,scheduleComplete:false}],notes:[]};
+ const before=structuredClone(data);
+ assert.equal(personalBriefing(data,now,'Africa/Cairo','en',null,'whoop').sleep,null);
+ const facts={date:'2026-10-28',sleepHours:8,sleepNeedHours:9,recovery:70,observedAt:now.toISOString(),lastSync:'2026-10-28T08:00:00Z'};
+ const cloud=personalBriefing(data,now,'Africa/Cairo','en',facts,'whoop');assert.equal(cloud.sleep,8);assert.equal(cloud.sleepSource,'WHOOP');assert.equal(cloud.sleepTarget,9);
+ const manual=personalBriefing(data,now,'Africa/Cairo','en',facts,'manual');assert.equal(manual.sleep,6);assert.equal(manual.sleepTarget,8);assert.equal(manual.whoopCurrent,true);
+ assert.equal(personalBriefing(data,new Date(+now+900001),'Africa/Cairo','en',facts,'whoop').sleep,null);
+ assert.deepEqual(data,before);
+});

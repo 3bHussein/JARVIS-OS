@@ -68,3 +68,7 @@ test('CLOUD-ACCT-06 handler requires JARVIS auth, CSRF, consent and provider all
  assert.equal((await call('/api/logout',{},headers)).status,200);
  assert.equal((await call('/api/whoop',undefined,headers)).status,401);
 });
+
+test('CLOUD-ACCT-07 ProgressXX 401 revokes only its grant and returns expired rather than a generic read error',async()=>{
+ const f=fixture();await f.accounts().connect('progress',input,true);f.setFail(true);const result=await f.accounts().read('progress','Africa/Cairo');assert.equal(result.status,'expired');assert.equal('summary'in result?result.summary:null,null);assert.equal((await f.accounts().status('progress')).connected,false);
+});

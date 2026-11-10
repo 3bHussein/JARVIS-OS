@@ -34,6 +34,7 @@ export class CloudAccounts {
   if(await this.redis.command(['SET',lock,owner,'NX','EX',25])!=='OK')return {status:'busy',facts:null,summary:null,error:'source_read_in_progress'};
   try{
    const result=await readAccount(provider,grant,zone,this.transport);
+   if('summary'in result&&result.summary?.issues?.length)console.warn('jarvis_source_sections',{provider,issues:result.summary?.issues});
    if(await this.redis.command(['EVAL',accountCompareAndSetScript,1,this.key(provider),old.raw,this.encrypt(provider,{grant,cache:{zone,at:now,result}}),Math.max(1,Math.floor((grant.expiresAt-Date.now())/1000))])!==1)return {status:'disconnected',facts:null,summary:null};
    return result;
   }catch(error){

@@ -85,7 +85,7 @@ No production database, application repository or external deployment was modifi
 
 ## Personal daily home
 
-After local sign-in, complete the editable profile on Overview. Choose optional encrypted persistence in the privacy controls, add timed notes/tasks, and connect the existing WHOOP Intelligence account with explicit health-read consent. Food and workout schedule input is currently manual and labelled; no ProgressXX sync is implied. See [Personal briefing](docs/PERSONAL-BRIEFING.md) for calculations, sources, privacy and limitations.
+After local sign-in, complete the editable profile on Overview. Choose optional encrypted persistence in the privacy controls, add timed notes/tasks, and connect the existing WHOOP Intelligence account with explicit health-read consent. Local preview uses labelled manual/file input; online source-account reads require separate consent and session linking. No source-app synchronization is started. See [Personal briefing](docs/PERSONAL-BRIEFING.md) for calculations, sources, privacy and limitations.
 
 ## Optional conversation, speech and ProgressXX snapshot
 
@@ -126,3 +126,5 @@ Follow [07 — Connect WHOOP and ProgressXX](docs/07-CONNECT-FITNESS-ACCOUNTS.md
 For recorded next steps and source-labelled read-aloud: [08 — Read your daily briefing](docs/08-READ-YOUR-DAILY-BRIEFING.md).
 
 For supported read-only Egyptian Arabic/English questions: [09 — Ask about saved data](docs/09-ASK-ABOUT-SAVED-DATA.md).
+
+For visible primary-source controls and troubleshooting: [10 — Home data sources](docs/10-HOME-DATA-SOURCES.md). Online Home defaults to cloud food and WHOOP sleep; unavailable reads never silently replace them with manual records.

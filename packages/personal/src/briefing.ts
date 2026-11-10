@@ -3,18 +3,19 @@ import {localInstant,type PersonalData} from './model.ts';
 export interface WhoopDetails {hrv:number|null;rhr:number|null;sleepPerformance:number|null;sleepEfficiency:number|null;calibrating:boolean|null;sleepStart:string|null;sleepEnd:string|null;cycle:{start:string;updatedAt:string|null;strain:number|null;energyKcal:number|null;steps:number|null}|null;workouts:{start:string;end:string;minutes:number;name:string|null;strain:number|null}[];}
 export interface WhoopFacts {details?:WhoopDetails;sleepHours:number|null;sleepNeedHours:number|null;recovery:number|null;observedAt:string|null;lastSync:string|null;date:string;}
 export const science={sleep:'https://www.cdc.gov/sleep/about/index.html',recovery:'https://pubmed.ncbi.nlm.nih.gov/28247026/',sodium:'https://www.ausport.gov.au/ais/nutrition/supplements/group_a/sports-foods2/electrolyte-supplement2/how-and-when-do-i-use-it'};
-export function personalBriefing(data:PersonalData,now:Date,zone:string,locale:Locale,whoop:WhoopFacts|null=null){
+export function personalBriefing(data:PersonalData,now:Date,zone:string,locale:Locale,whoop:WhoopFacts|null=null,sleepPreference:'auto'|'manual'|'whoop'='auto'){
   const c=clock(now,zone,locale),day=data.days.find(d=>d.date===c.date),ar=locale==='ar';
   const whoopCurrent=whoop?.date===c.date&&whoop.observedAt&&whoop.lastSync&&now.getTime()-Date.parse(whoop.lastSync)>=0&&now.getTime()-Date.parse(whoop.lastSync)<=86400000&&now.getTime()-Date.parse(whoop.observedAt)>=0&&now.getTime()-Date.parse(whoop.observedAt)<=900000;
-  const sleep=whoopCurrent&&whoop!.sleepHours!==null?whoop!.sleepHours:day?.sleepHours??null;
-  const sleepSource=whoopCurrent&&whoop!.sleepHours!==null?'WHOOP':sleep!==null?(ar?'إدخال يدوي':'Self-reported'):null;
+  const useWhoop=sleepPreference!=='manual'&&whoopCurrent&&whoop!.sleepHours!==null;
+  const sleep=useWhoop?whoop!.sleepHours:sleepPreference==='whoop'?null:day?.sleepHours??null;
+  const sleepSource=useWhoop?'WHOOP':sleep!==null?(ar?'إدخال يدوي':'Self-reported'):null;
   const target=data.profile?.calorieTarget??null,food=day?.foodKcal??null;
   const remaining=target!==null&&food!==null?Math.max(0,target-food):null,over=target!==null&&food!==null?Math.max(0,food-target):null;
   const due=data.notes.filter(n=>!n.done&&n.at!==null&&Date.parse(n.at)<=+now).sort((a,b)=>Date.parse(a.at!)-Date.parse(b.at!));
   const upcoming=data.notes.filter(n=>!n.done&&n.at!==null&&Date.parse(n.at)>+now&&clock(new Date(n.at),zone).date===c.date).sort((a,b)=>Date.parse(a.at!)-Date.parse(b.at!));
   const lines:string[]=[];
-  const sleepTarget=whoopCurrent&&whoop!.sleepNeedHours!==null?whoop!.sleepNeedHours:data.profile?.sleepTarget??null;
-  const sleepTargetSource=whoopCurrent&&whoop!.sleepNeedHours!==null?(ar?'احتياج WHOOP المقدّر':'WHOOP estimate'):ar?'هدفك المختار':'your chosen target';
+  const sleepTarget=useWhoop&&whoop!.sleepNeedHours!==null?whoop!.sleepNeedHours:data.profile?.sleepTarget??null;
+  const sleepTargetSource=useWhoop&&whoop!.sleepNeedHours!==null?(ar?'احتياج WHOOP المقدّر':'WHOOP estimate'):ar?'هدفك المختار':'your chosen target';
   if(sleep!==null)lines.push(ar?`نومك المسجّل ${sleep.toFixed(1)} ساعة (${sleepSource})${sleepTarget===null?'':`؛ المرجع ${sleepTarget.toFixed(1)} ساعة (${sleepTargetSource})`}.`:`Recorded sleep: ${sleep.toFixed(1)} hours (${sleepSource})${sleepTarget===null?'':`; reference ${sleepTarget.toFixed(1)} hours (${sleepTargetSource})`}.`);
   if (food !== null) lines.push(ar
     ? `الأكل المسجّل ${food.toFixed(0)} سعر حراري.`

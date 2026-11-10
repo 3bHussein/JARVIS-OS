@@ -143,7 +143,7 @@ export function createCloudHandler(config: CloudConfig, transport: typeof fetch 
       }
       return reply(501, {error: 'cloud_feature_unavailable'});
     } catch (error) {
-      if (error instanceof AccountError){console.warn('jarvis_account_failure',{code:error.message});return reply(error.status,{error:error.message,facts:null,summary:null});}
+      if (error instanceof AccountError){console.warn('jarvis_account_failure',{code:error.message,dataset:error.dataset??'account'});return reply(error.status,{error:error.message,dataset:error.dataset,facts:null,summary:null});}
       if (error instanceof RecoveryError) return reply(error.status, {error:error.message});
       if (error instanceof BodyReadError) {
         console.warn('jarvis_cloud_body_failure',{stage,status:error.status});

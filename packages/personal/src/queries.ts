@@ -5,7 +5,7 @@ import {nutritionView} from './planner.ts';
 import type {PersonalData} from './model.ts';
 import {progressSummary,type ProgressBackup} from '../../connectors/src/progress-backup.ts';
 import type {LiveProgress} from '../../connectors/src/account-reader.ts';
-export interface PersonalQueryContext {data:PersonalData;whoop:WhoopFacts|null;file:ProgressBackup|null;cloud:LiveProgress|null;useFile:boolean;useCloud:boolean;unavailable:boolean;}
+export interface PersonalQueryContext {data:PersonalData;whoop:WhoopFacts|null;file:ProgressBackup|null;cloud:LiveProgress|null;useFile:boolean;useCloud:boolean;sleepPreference?:'auto'|'manual'|'whoop';unavailable:boolean;}
 export type PersonalIntent='write-blocked'|'priorities'|'calories'|'sleep'|'next-workout'|'next'|'notes'|'day';
 function normalizeQuestion(input:string){
  return input.normalize('NFKC').toLowerCase().replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[^\p{L}\p{N}\s]/gu,' ').replace(/\s+/g,' ').trim();
@@ -33,7 +33,7 @@ export function answerPersonalQuery(text:string,ctx:PersonalQueryContext|null,no
  const currentCloud=ctx.cloud?.today===today&&+now-Date.parse(ctx.cloud.observedAt)>=0&&+now-Date.parse(ctx.cloud.observedAt)<=900000;
  const foodSource=ctx.useCloud?'cloud':ctx.useFile?'file':'manual';
  const nutrition=ctx.useCloud?(currentCloud?{food:ctx.cloud!.food?.calories??null,target:ctx.data.profile?.calorieTarget??null,current:true}:null):ctx.useFile&&file?{food:file.food?.calories??null,target:file.target,current:!file.stale}:null;
- const data=nutritionView(ctx.data,today,ctx.useCloud||ctx.useFile,nutrition),b=personalBriefing(data,now,zone,locale,ctx.whoop);
+ const data=nutritionView(ctx.data,today,ctx.useCloud||ctx.useFile,nutrition),b=personalBriefing(data,now,zone,locale,ctx.whoop,ctx.sleepPreference??'auto');
  const focus=dailyFocus(ctx.data,now,zone,locale,{sleep:b.sleep,sleepSource:b.sleepSource,food:b.food,foodSource});
  const footer=pick('Saved-data answer · no model or write action.','إجابة من البيانات المحفوظة · بدون نموذج أو تعديل سجلات.');
  const source=ctx.useCloud?pick('ProgressXX cloud saved rows','سجلات ProgressXX السحابية المحفوظة'):ctx.useFile?pick('ProgressXX imported file','ملف ProgressXX المستورد'):pick('JARVIS manual check-in','إدخال جارفس اليدوي');

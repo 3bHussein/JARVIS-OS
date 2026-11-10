@@ -33,7 +33,7 @@ Notes can be untimed. Expand **Add a time or duration** if needed. Tasks and wor
 ## 5. Understand your sources
 
 - Manual sleep and food stay labelled as manual records.
-- ProgressXX supports saved cloud-row reads for the unlocked session and a separate backup import. Select cloud food or imported food explicitly to use it on Home; manual entries are preserved.
+- ProgressXX supports saved cloud-row reads for the unlocked session and a separate backup import. Online Home defaults to cloud food; the visible source selector lets you choose manual input or an imported file deliberately. Manual entries are preserved. Missing cloud reads never silently use them.
 - WHOOP reads saved records through your existing WHOOP Intelligence account after explicit session consent. No new vendor OAuth or vendor sync is started. See [07 — Connect fitness accounts](07-CONNECT-FITNESS-ACCOUNTS.md) for password/email-link instructions and one-hour session limits.
 - Missing or outdated readings are not replaced with sample values. Food intake and WHOOP energy expenditure are different measurements.
 

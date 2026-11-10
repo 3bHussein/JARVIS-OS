@@ -43,3 +43,8 @@ test('QUERY-06 notes are bounded, read-only and profile/health provenance stays 
  const answer=answerPersonalQuery('my notes',ctx,now,zone,'en')!;assert.match(answer,/Synthetic note 5/);assert.equal(answer.includes('Synthetic note 2'),false);assert.match(answer,/notes: 6/);assert.match(answer,/no model or write/);assert.deepEqual(ctx,before);
  assert.match(answerPersonalQuery('What should I start with?',ctx,now,zone,'en')!,/JARVIS|Planner/);
 });
+
+test('QUERY-07 query follows explicit WHOOP primary selection rather than manual fallback',()=>{
+ const ctx=context();ctx.sleepPreference='whoop';const answer=answerPersonalQuery('my sleep',ctx,now,zone,'en')!;assert.match(answer,/No usable sleep/);assert.equal(answer.includes('6.0 hours'),false);
+ ctx.sleepPreference='manual';assert.match(answerPersonalQuery('my sleep',ctx,now,zone,'en')!,/6.0 hours/);
+});
