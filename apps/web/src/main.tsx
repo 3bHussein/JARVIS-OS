@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+import {answerPersonalQuery,isClockQuestion,type PersonalQueryContext} from '../../../packages/personal/src/queries.ts';
 import {PasswordRecovery} from './PasswordRecovery.tsx';
 import React, {useEffect, useRef, useState} from 'react';
 import {createRoot} from 'react-dom/client';
@@ -37,6 +38,7 @@ function App(){
  const audio=useRef<{stream:MediaStream;ctx:AudioContext;frame:number}|null>(null),mounted=useRef(true),micPending=useRef(false),micGeneration=useRef(0),csrf=useRef('');
  const [sources,setSources]=useState<ConnectorView[]>([]),[sourceError,setSourceError]=useState(false),[online,setOnline]=useState(navigator.onLine);
  const [personalMessage,setPersonalMessage]=useState(''),[voiceDraft,setVoiceDraft]=useState(''),[draftKey,setDraftKey]=useState(0),[voiceStop,setVoiceStop]=useState(0),[localStop,setLocalStop]=useState(0),[browserStop,setBrowserStop]=useState(0);
+ const queryContext=useRef<PersonalQueryContext|null>(null);
  const sessionEpoch=useRef(0),welcomeGate=useRef(new WelcomeGate());
  const [personalReady,setPersonalReady]=useState(false),[documentVisible,setDocumentVisible]=useState(document.visibilityState==='visible');
  const t=words[locale],c=clock(now,zone,locale),b=briefing([],now,zone,locale);
@@ -59,7 +61,7 @@ function App(){
   }catch{if(epoch===sessionEpoch.current)setSourceError(true);}
  }
  function clearWorkspace(){
-  sessionEpoch.current++;csrf.current='';setAuthenticated(false);setGithub(null);setSources([]);setChat([]);setPassword('');setInput('');setPersonalMessage('');setPersonalReady(false);setVoiceDraft('');setNetworkVoice(false);setVoiceName('');stopMic();if('speechSynthesis'in window)window.speechSynthesis.cancel();setCore('idle');setBusy(false);
+  sessionEpoch.current++;queryContext.current=null;csrf.current='';setAuthenticated(false);setGithub(null);setSources([]);setChat([]);setPassword('');setInput('');setPersonalMessage('');setPersonalReady(false);setVoiceDraft('');setNetworkVoice(false);setVoiceName('');stopMic();if('speechSynthesis'in window)window.speechSynthesis.cancel();setCore('idle');setBusy(false);
  }
  function statusLabel(id:string){
   const source=sources.find(s=>s.id===id);
@@ -138,8 +140,9 @@ function App(){
   finally{if(epoch===sessionEpoch.current){setBusy(false);setCore('idle');}}
  }
  function localAnswer(text:string){
+  if(authenticated){const saved=answerPersonalQuery(text,queryContext.current,new Date(),zone,locale);if(saved!==null)return saved;}
   let answer=locale==='ar'?'المساعد الذكي لسه غير متصل. أقدر أقولك الوقت أو أوضح حالة الربط؛ مش هنفّذ أي تعديل.':'AI is not connected yet. I can report time or connection availability; no write actions are enabled.';
-  if(/time|الوقت|الساعه|الساعة/i.test(text))answer=`${c.greeting} · ${c.time} · ${zone}`;
+  if(isClockQuestion(text))answer=`${c.greeting} · ${c.time} · ${zone}`;
   else if(/today|النهارده|النهاردة|tasks|مهام/i.test(text))answer=authenticated?(personalMessage||'Personal briefing is loading; no AI model is connected.'):b.message;
   else if(/connect|ربط|متصل/i.test(text))answer=authenticated?sources.map(source=>`${source.name}: ${statusLabel(source.id)}`).join(' · '):(locale==='ar'?'سجّل دخول علشان نفحص حالة المصادر.':'Sign in to check source status.');
   return answer;
@@ -161,7 +164,7 @@ function App(){
    <section className="page">
     <div className="overview-workspace" hidden={tab!=='overview'}>
      <div className="eyebrow"><span className="status-dot"/>{t.briefing}<span className="date">{c.date}</span></div>
-     {authenticated&&<PersonalHome visible={tab==='overview'} locale={locale} zone={zone} csrf={()=>csrf.current} onExpired={clearWorkspace} onBriefing={setPersonalMessage} onReady={setPersonalReady} onShow={()=>setTab('overview')} onSourcesChanged={()=>{void updateSources();}} onAsk={prepareChat} onVoice={()=>setTab('voice')} onSpeak={speak}/>}
+     {authenticated&&<PersonalHome visible={tab==='overview'} locale={locale} zone={zone} csrf={()=>csrf.current} onExpired={clearWorkspace} onBriefing={setPersonalMessage} onQueryContext={value=>{queryContext.current=value;}} onReady={setPersonalReady} onShow={()=>setTab('overview')} onSourcesChanged={()=>{void updateSources();}} onAsk={prepareChat} onVoice={()=>setTab('voice')} onSpeak={speak}/>}
      {!authenticated&&<div className="hero"><div className="hero-copy"><p className="greeting">{c.greeting}, Hussein.</p><h1>{t.welcome}</h1><p>{t.intro}</p><div className="hero-actions"><button className="primary" aria-label={locale==='ar'?'افتح مساحتك':'Open your workspace'} onClick={()=>{setTab('settings');requestAnimationFrame(()=>document.querySelector<HTMLInputElement>('input[autocomplete="current-password"]')?.focus());}}>{locale==='ar'?'افتح مساحتك':'Open your workspace'} <span>↗</span></button><button className="text-button" onClick={()=>document.getElementById('command')?.focus()}>{t.ask}</button><button className="secondary" onClick={()=>setTab('voice')}>◉ {t.voice}</button></div><span className="readonly"><span/> {t.mode}</span></div>
       <div className="core-stage"><div className={`core ${core}`} style={{'--level':level} as React.CSSProperties} aria-label={`JARVIS core: ${core}`}><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="core-ring"/><div className="core-inner"><span>J</span><small>J.A.R.V.I.S.</small></div><div className="core-point"/></div><span className="core-label">{core.toUpperCase()}<span>●</span><small>{t.status}</small></span></div>
      </div>}
@@ -170,7 +173,7 @@ function App(){
      <details className="overview-apps panel"><summary>{locale==='ar'?'برامجك · فتح سريع':'Your apps · quick launch'}</summary>     <div className="section-heading"><h2>{t.projects}</h2><button className="text-button" onClick={()=>setTab('projects')}>{locale==='en'?'View all':'عرض الكل'} ↗</button></div>
      <div className="quick-apps">{manifests.filter(m=>['progressxx','whoop','factory','lexora'].includes(m.id)).map((m,i)=><a className="quick-app" key={m.id} href={m.launchUrl} target="_blank" rel="noopener noreferrer"><span className={`app-icon app-${i}`}>{['P','W','⌁','L'][i]}</span><span><strong>{m.name}</strong><small>{t.launch} · {statusLabel(m.id)}</small></span><span className="launch-arrow">↗</span></a>)}</div>
 </details>
-     {authenticated&&<><AIChat locale={locale} zone={zone} csrf={()=>csrf.current} onExpired={clearWorkspace} onState={setCore} localAnswer={localAnswer} draft={voiceDraft} draftKey={draftKey} onSpeak={speakText}/></>}
+     {authenticated&&<><AIChat cloud={cloudMode} locale={locale} zone={zone} csrf={()=>csrf.current} onExpired={clearWorkspace} onState={setCore} localAnswer={localAnswer} draft={voiceDraft} draftKey={draftKey} onSpeak={speakText}/></>}
      {!authenticated&&<section className="chat-section" aria-label="Local assistant"><div className="chat-heading"><span className="mini-core">◈</span><strong>JARVIS</strong><small>{t.notAI}</small>{chat.length>0&&<button className="text-button" onClick={()=>setChat([])}>{t.clear}</button>}</div>
       <div className="messages" aria-live="polite">{chat.map((m,i)=><p key={i} className={m.role}><small>{m.role==='user'?'YOU':'JARVIS'}</small>{m.text}</p>)}</div><form className="command" onSubmit={command}><span>✧</span><input id="command" aria-label={t.ask} placeholder={t.placeholder} value={input} maxLength={1000} onChange={e=>setInput(e.target.value)}/><button type="submit" aria-label={t.send}>↑</button></form></section>}
     </div>

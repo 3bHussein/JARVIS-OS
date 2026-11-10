@@ -279,3 +279,23 @@ Next actions: observe native CI terminal status, append final result; owner can 
 ### Session 045 terminal evidence — 2026-11-09, Africa/Cairo
 
 All three exact-source CI jobs in run 42687861863 completed SUCCESS: foundation 129399417107, windows-launcher 129399417442, desktop-windows 129399417687. Native automated packaging success is not physical Windows acceptance. Vercel error scan 2026-11-09T19:42:08.833Z–19:57:08.833Z returned no matching logs; no actual owner-data request was generated, so this is not proof of live source access. No remaining automated CI blocker for source ed182699221b7586ed8e024b817d9394ba62859d. Final docs-only evidence publication follows; owner acceptance and other v1 gaps remain as documented.
+
+
+## Session 046 — Read-only saved-data conversation (2026-11-10T15:26:24.968977+02:00)
+
+Requested continued development. Base fa84e0f530821b5039f8ed259e640787565f230d. Implemented a bounded Egyptian-Arabic/English query router for recorded priorities, selected food/remaining budget, usable sleep, next actual appointment/workout, open untimed notes and daily summary. Normalizes common Arabic variants; explicitly refuses create/edit/delete requests. Recomputes local date and freshness at question time, preserves selected-source unknown/zero behavior, never invents targets or appointment times from training labels. Unsupported input returns to existing help; no broad language/voice accuracy claim.
+
+UI: draft-only question shortcuts, source-labelled read-only answer footer and existing opt-in read-aloud. Cloud engine help no longer tells online users to run a local Windows batch. The optional existing model branch receives no new automatic context and retains consent controls; shortcuts are hidden there. Personal query context is a private UI-held reference, not persisted or passed to a model, cleared on lock/unmount. Source data is withheld from query context during in-flight source reads.
+
+Fixed asynchronous clear race: local chat messages clear immediately, epochs prevent an older clear acknowledgement from deleting a newer saved-data reply. Added explicit api/chat/clear.ts wrapper for existing authenticated/CSRF-protected cloud handler, following the validated nested route pattern; no new write capability or backend business logic.
+
+Files: new packages/personal/src/queries.ts, tests/personal-queries.test.ts, api/chat/clear.ts, docs/09-ASK-ABOUT-SAVED-DATA.md; modified main.tsx, PersonalHome.tsx, AIChat.tsx, style.css, tests/browser.mjs, README and nine tracking docs. No new dependency, provider key, model call, source-app change, production schema change or desktop engineering. Only synthetic test data used; no credentials, owner health record or email operation.
+
+Commands: git fetch/worktree, source/route inspection, npm run typecheck, npm run check, built-browser acceptance, git diff --check. Initial import insertion preceded the existing Vite triple-slash reference and broke ImportMeta.env typing; moved the reference back to file start and checks passed. Final local check: 116 registered Node tests, 114 pass/two intentional CI-only Redis skips, typecheck/build PASS. Built browser PASS 39/39 baseline plus UX-09 draft-only bilingual read queries/no model/no writes, UX-10 delayed-clear race, cloud selected-food arithmetic, and retained RTL/source/PWA cases. No runtime edits after final acceptance.
+
+Commit/PR/remote CI/deployment pending. Next: publish guarded source, inspect exact-source CI/Vercel/log metadata, append final evidence/handoff. Actual owner-account source acceptance remains TODO. Do not claim a generative AI engine, full dialect understanding, background sync or physical desktop acceptance.
+
+
+### Session 046 final query disambiguation and local verification — 2026-11-10, Africa/Cairo
+
+Final review tightened current-clock matching and added workout/appointment time variants plus code-switching; a question about a workout time must not be mistaken for the current clock. This supersedes only the earlier no-further-runtime-edits statement. Re-ran npm run check PASS (116 registered, 114 pass/two isolated CI Redis skips, typecheck/build) and built browser PASS 39/39 baseline plus UX-09/10 and all retained cloud/RTL/PWA cases on the updated source. QUERY-01 now also covers clock versus workout-time separation and mixed Arabic/English. No additional runtime edits after this verification. Publication/remote results pending.
