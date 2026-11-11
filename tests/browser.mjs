@@ -190,9 +190,9 @@ try{
   assert.equal(await cloudPage.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
   console.log('PASS RECOVERY-UI-01 unavailable setup, explicit send, mismatch non-mutation, reset success and Arabic mobile bounds');
   await cloudPage.getByRole('button',{name:'English',exact:true}).click();
-  let cloudProgressConnected=false,cloudWhoopConnected=false,cloudAccountWrites=0,cloudProgressFailed=false;
+  let cloudProgressConnected=false,cloudWhoopConnected=false,cloudAccountWrites=0,cloudProgressFailed=false,cloudFoodMissing=false,cloudNow=null,cloudFoodKcal=777;
   const cloudFacts=()=>{const fixture=healthFixture();return whoopFacts({accessToken:'SYNTHETIC',expiresAt:Date.now()+3600000,connected:true,records:fixture.records,observedAt:new Date().toISOString(),lastSync:fixture.sync_history[0].finished_at},'Africa/Cairo');};
-  const cloudSummary=()=>{const n=new Date(),date=clock(n,'Africa/Cairo').date;return {...progressSummary({exportedAt:n.toISOString(),foods:[{date,calories:777,protein:55,carbs:60,fat:20}],workouts:[{date,exercise:'Synthetic Cloud Squat',day:'Lower',status:'Done'}],weights:[],target:null,schedule:{}},date,n),source:'progressxx-cloud',observedAt:n.toISOString(),coverage:[],foodRows:[{time:'12:30',calories:500},{time:'14:00',calories:277}],collapsedFoodRows:1};};
+  const cloudSummary=()=>{const n=new Date(cloudNow??Date.now()),date=clock(n,'Africa/Cairo').date;return {...progressSummary({exportedAt:n.toISOString(),foods:cloudFoodMissing?[]:[{date,calories:cloudFoodKcal,protein:55,carbs:60,fat:20}],workouts:[{date,exercise:'Synthetic Cloud Squat',day:'Lower',status:'Done'}],weights:[],target:null,schedule:{}},date,n),source:'progressxx-cloud',observedAt:n.toISOString(),coverage:[],foodRows:[{time:'12:30',calories:500},{time:'14:00',calories:277}],collapsedFoodRows:1};};
   await cloudContext.route('**/api/integrations',async route=>{
    if(route.request().method()==='POST'){const input=route.request().postDataJSON();if(input.operation==='connect'){assert.equal(input.consent,true);cloudAccountWrites++;if(input.provider==='progress'){assert.equal(input.password,'synthetic-progress-password');cloudProgressConnected=true;}else{assert.equal(input.link,'https://jsfeybhgobmrydcfnyjg.supabase.co/auth/v1/verify?token='+ 'a'.repeat(64)+'&type=magiclink');cloudWhoopConnected=true;}}if(input.operation==='disconnect'){if(input.provider==='progress')cloudProgressConnected=false;else cloudWhoopConnected=false;}if(input.operation==='refresh'&&input.provider==='progress'&&cloudProgressFailed)return route.fulfill({status:502,json:{error:'source_result_limit'}});if(input.operation==='refresh')return route.fulfill({json:input.provider==='progress'?{status:cloudProgressConnected?'connected':'disconnected',summary:cloudProgressConnected?cloudSummary():null}:{status:cloudWhoopConnected?'connected':'disconnected',facts:cloudWhoopConnected?cloudFacts():null}});return route.fulfill({json:{ok:true}});}
    return route.fulfill({json:{whoop:{connected:cloudWhoopConnected,expiresAt:Date.now()+3600000,lastRead:null},progress:{connected:cloudProgressConnected,expiresAt:Date.now()+3600000,lastRead:null}}});
@@ -228,12 +228,14 @@ try{
   await cloudPage.getByRole('navigation',{name:'Daily workspace'}).getByRole('button',{name:'Today',exact:true}).click();
   await cloudPage.locator('.personal-metrics>div').first().locator('span').filter({hasText:/^WHOOP/}).waitFor();
   await cloudPage.locator('.live-progress').getByText('777 kcal',{exact:true}).waitFor();
+  if(!await cloudPage.locator('.source-options').evaluate(e=>e.open))await cloudPage.getByText('Home display options',{exact:true}).click();
   assert.equal(await cloudPage.getByRole('checkbox',{name:'Use cloud food on Home for this session',exact:true}).isChecked(),true);
-  await cloudPage.getByRole('checkbox',{name:'Use cloud food on Home for this session',exact:true}).check();
+  await cloudPage.getByRole('checkbox',{name:'Use cloud food on Home for this session',exact:true}).waitFor();
   await cloudPage.locator('.personal-metrics').getByText('777 kcal',{exact:true}).waitFor();
   await cloudPage.getByText('Check counted food entries',{exact:false}).click();await cloudPage.locator('.food-audit-list').getByText('500.0 kcal',{exact:true}).waitFor();assert.equal(await cloudPage.locator('.food-audit-list li').count(),2);assert.ok((await cloudPage.locator('.food-read-audit').innerText()).includes('Africa/Cairo'));console.log('PASS UX-12 counted food breakdown uses source entries and configured timezone');
   const cloudQuery=cloudPage.getByRole('region',{name:'Assistant conversation',exact:true});await cloudQuery.getByRole('textbox',{name:'Ask JARVIS',exact:true}).fill('How many calories are left?');await cloudQuery.getByRole('button',{name:'Send',exact:true}).click();await cloudQuery.locator('.messages .assistant').last().getByText(/1623 kcal remain/).waitFor();
   await cloudPage.reload();await cloudPage.locator('.personal-metrics').getByText('777 kcal',{exact:true}).waitFor();assert.equal(await cloudPage.getByLabel('Food source',{exact:true}).inputValue(),'cloud');
+  cloudFoodMissing=true;const resumeResponse=cloudPage.waitForResponse(r=>r.url().includes('/api/progress?')&&r.request().method()==='GET');await cloudPage.evaluate(()=>document.dispatchEvent(new Event('visibilitychange')));await (await resumeResponse).finished();await cloudPage.getByText('ProgressXX: Read completed · food unavailable today',{exact:true}).waitFor();assert.equal(await cloudPage.locator('.personal-metrics').getByText('777 kcal',{exact:true}).count(),0);assert.equal(await cloudPage.locator('.personal-metrics').getByText('1400 kcal',{exact:true}).count(),0);cloudFoodMissing=false;await cloudPage.locator('.live-progress').getByRole('button',{name:'Refresh saved data',exact:true}).click();await cloudPage.locator('.personal-metrics').getByText('777 kcal',{exact:true}).waitFor();console.log('PASS UX-13 visible-tab resume re-reads saved sources and missing food is explicit, never manual fallback');
   cloudProgressFailed=true;
   await cloudPage.locator('.live-progress').getByRole('button',{name:'Refresh saved data',exact:true}).click();
   await cloudPage.locator('.live-progress').getByText('The bounded read reached its row limit. No partial total is shown; use the original app while this is reviewed.',{exact:true}).waitFor();
@@ -258,6 +260,7 @@ try{
   await whoopForm.getByRole('button',{name:'Disconnect from JARVIS',exact:true}).click();
   await cloudPage.getByRole('navigation',{name:'Daily workspace'}).getByRole('button',{name:'Today',exact:true}).click();
   await cloudPage.locator('.personal-metrics').getByText('777 kcal',{exact:true}).waitFor();
+  if(!await cloudPage.locator('.source-options').evaluate(e=>e.open))await cloudPage.getByText('Home display options',{exact:true}).click();
   assert.equal(await cloudPage.getByRole('checkbox',{name:'Use cloud food on Home for this session',exact:true}).isChecked(),true);
   await cloudPage.getByRole('navigation',{name:'Daily workspace'}).getByRole('button',{name:'Connections',exact:true}).click();
   if(!await progressForm.evaluate(e=>e.open))await progressForm.locator('summary').first().click();
@@ -271,6 +274,7 @@ try{
   await cloudPage.getByLabel('Food source',{exact:true}).selectOption('manual');await cloudPage.getByLabel('Sleep source',{exact:true}).selectOption('manual');await cloudPage.locator('.personal-metrics').getByText('1400 kcal',{exact:true}).waitFor();await cloudPage.locator('.personal-metrics').getByText('6.0 h',{exact:true}).waitFor();
   console.log('PASS UX-11 cloud-first Home, automatic connected food, reload and explicit manual fallback preserve source provenance');
   console.log('PASS UX-06 cloud source consent, password/email-link connect, live food projection and bilingual mobile bounds');
+  cloudProgressConnected=true;cloudNow=Date.parse(clock(new Date(),'Africa/Cairo').date+'T21:59:40Z');await cloudPage.clock.install({time:new Date(cloudNow)});await cloudPage.reload();await cloudPage.locator('.personal-metrics').getByText('777 kcal',{exact:true}).waitFor();cloudNow+=35000;cloudFoodKcal=888;await cloudPage.clock.fastForward(35000);await cloudPage.locator('.personal-metrics').getByText('888 kcal',{exact:true}).waitFor();await cloudPage.locator('.source-date').getByText(clock(new Date(cloudNow),'Africa/Cairo').date,{exact:true}).waitFor();console.log('PASS UX-14 local midnight re-reads current-day food automatically without reload or reconnect');
   await cloudContext.close();
   console.log('PASS CLOUD-UI-01 incomplete cloud login is blocked and ready state is bilingual');
  }

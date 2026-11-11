@@ -72,3 +72,15 @@ test('CLOUD-ACCT-06 handler requires JARVIS auth, CSRF, consent and provider all
 test('CLOUD-ACCT-07 ProgressXX 401 revokes only its grant and returns expired rather than a generic read error',async()=>{
  const f=fixture();await f.accounts().connect('progress',input,true);f.setFail(true);const result=await f.accounts().read('progress','Africa/Cairo');assert.equal(result.status,'expired');assert.equal('summary'in result?result.summary:null,null);assert.equal((await f.accounts().status('progress')).connected,false);
 });
+
+
+test('CLOUD-ACCT-08 local midnight bypasses recent cache and refresh cooldown without reconnecting',async t=>{
+ let tick=Date.parse('2026-11-10T21:59:40Z');t.mock.method(Date,'now',()=>tick);
+ const f=fixture(),accounts=f.accounts();await accounts.connect('whoop',input,true);
+ await accounts.read('whoop','Africa/Cairo');const reads=()=>f.calls.filter(p=>p.endsWith('/whoop-data')).length;assert.equal(reads(),1);
+ tick+=10000;await accounts.read('whoop','Africa/Cairo',true);assert.equal(reads(),1);
+ tick+=15000;await accounts.read('whoop','Africa/Cairo',true);assert.equal(reads(),2);assert.equal((await accounts.status('whoop')).connected,true);
+ await accounts.read('whoop','Africa/Cairo');assert.equal(reads(),2);
+ // A different configured zone has its own projection even on the same UTC date.
+ await accounts.read('whoop','UTC');assert.equal(reads(),3);
+});

@@ -27,3 +27,9 @@ WHOOP reads the existing Intelligence backend's saved data; it does not start a 
 3. Equivalent old/migrated aliases use the original app's logical diary identity and count once. Separate identical meals still count separately. Conflicting aliases make the food section unavailable rather than silently selecting a value.
 4. The legacy-alias count covers the bounded read window, while the displayed breakdown covers the stated day only. No food names or raw source identifiers are included.
 5. JARVIS does not delete source rows or replace a calculated total with a number entered in chat. If the difference remains after refresh, compare the visible counted entries with the original app. Do not share account passwords or tokens.
+
+## Daily rollover and returning to the tab
+
+Home requests saved source data when the configured local day changes, and when the unlocked tab becomes visible again. The source backend is still read-only: this does not trigger WHOOP device sync or replay ProgressXX edits. Same-day reads retain the existing server cache/cooldown; crossing local midnight invalidates the prior day's projection immediately on the next read.
+
+ProgressXX shows its diary date, configured timezone and readable last-read time. A completed read with no usable food today is labelled unavailable rather than suggesting confirmed nutrition. WHOOP likewise distinguishes an available read from available sleep. The optional secondary food-display checkbox is under **Home display options**; top Home selectors remain the primary controls.

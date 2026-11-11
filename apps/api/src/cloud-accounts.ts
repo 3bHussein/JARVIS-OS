@@ -1,4 +1,5 @@
 import {createCipheriv,createDecipheriv,randomBytes,createHash} from 'node:crypto';
+import {clock} from '../../../packages/core/src/index.ts';
 import {CloudRedis} from './cloud-redis.ts';
 import {authorizeAccount,readAccount,AccountError,type AccountGrant,type AccountProvider} from '../../../packages/connectors/src/account-reader.ts';
 export const accountCompareAndSetScript="local v=redis.call('GET',KEYS[1]); if (v or '')~=ARGV[1] then return 0 end; redis.call('SET',KEYS[1],ARGV[2],'EX',ARGV[3]); return 1";
@@ -26,14 +27,16 @@ export class CloudAccounts {
   if(!grant)return {status:'disconnected',facts:null,summary:null};
   if(grant.expiresAt<=now)return {status:'expired',facts:null,summary:null,error:'source_session_expired'};
   const age=cache?now-cache.at:Infinity;
-  if(cache&&cache.version===2&&cache.zone===zone&&age>=0&&age<(force?30000:300000))return cache.result;
+  // A recent projection belongs to its local day, not just its five-minute TTL.
+  const sameDay=cache&&Number.isFinite(cache.at)&&clock(new Date(cache.at),zone).date===clock(new Date(now),zone).date;
+  if(cache&&cache.version===2&&cache.zone===zone&&sameDay&&age>=0&&age<(force?30000:300000))return cache.result;
   // Distributed request coalescing bounds upstream reads across serverless instances.
   const attempts=await this.redis.command(['EVAL',"local n=redis.call('INCR',KEYS[1]); if n==1 then redis.call('EXPIRE',KEYS[1],60) end; return n",1,this.key(provider)+':read-rate']);
   if(typeof attempts!=='number'||attempts>10)throw new AccountError('source_rate_limited',429);
   const lock=this.key(provider)+':read-lock',owner=randomBytes(16).toString('hex');
   if(await this.redis.command(['SET',lock,owner,'NX','EX',25])!=='OK')return {status:'busy',facts:null,summary:null,error:'source_read_in_progress'};
   try{
-   const result=await readAccount(provider,grant,zone,this.transport);
+   const result=await readAccount(provider,grant,zone,this.transport,new Date(now));
    if('summary'in result&&result.summary?.issues?.length)console.warn('jarvis_source_sections',{provider,issues:result.summary?.issues});
    if(await this.redis.command(['EVAL',accountCompareAndSetScript,1,this.key(provider),old.raw,this.encrypt(provider,{grant,cache:{version:2,zone,at:now,result}}),Math.max(1,Math.floor((grant.expiresAt-Date.now())/1000))])!==1)return {status:'disconnected',facts:null,summary:null};
    return result;

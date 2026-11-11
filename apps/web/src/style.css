@@ -60,3 +60,5 @@ label{font-size:14px}.source-note,.personal-home .source-note{font-size:11px;lin
 .source-state.is-ready{color:#a1e9d8}.source-state.needs-attention{color:#f0c794}.source-partial{padding:10px 12px;border:1px solid #775f35;border-radius:10px;background:#302718;margin-block:12px}.source-partial p{font-size:12px;overflow-wrap:anywhere}
 
 .food-read-audit{margin-block:16px;padding:12px;border:1px solid #294a5d;border-radius:10px}.food-read-audit summary{cursor:pointer;line-height:1.6}.food-audit-list{max-height:280px;overflow-y:auto;padding-inline:24px 4px}.food-audit-list li{display:flex;justify-content:space-between;gap:16px;font-variant-numeric:tabular-nums}
+
+.source-date{font-size:12px;color:#a9c7d5;line-height:1.7;overflow-wrap:anywhere}.source-options{margin-block:12px}.source-options summary{cursor:pointer;font-size:13px}.source-options .checkbox{margin-top:12px}
