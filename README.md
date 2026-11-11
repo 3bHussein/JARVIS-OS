@@ -128,3 +128,5 @@ For recorded next steps and source-labelled read-aloud: [08 — Read your daily 
 For supported read-only Egyptian Arabic/English questions: [09 — Ask about saved data](docs/09-ASK-ABOUT-SAVED-DATA.md).
 
 For visible primary-source controls and troubleshooting: [10 — Home data sources](docs/10-HOME-DATA-SOURCES.md). Online Home defaults to cloud food and WHOOP sleep; unavailable reads never silently replace them with manual records.
+
+Online Home now starts secondary health readings, quick capture and open-note lists collapsed. Core daily facts/sources/agenda stay visible; native details preserve unsaved capture drafts until lock/reload and retain normal save confirmation. See [online use](docs/06-USE-JARVIS-ONLINE.md).

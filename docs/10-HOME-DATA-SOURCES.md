@@ -1,7 +1,7 @@
 # 10 — Fix Home data sources
 
 1. Open the online app and unlock your workspace.
-2. On **Today**, find **Choose what powers your day** above your briefing. Check **Sleep source** and **Food source**. Online defaults are WHOOP Intelligence and ProgressXX cloud.
+2. On **Today**, find **Choose what powers your day** beside your daily summary. Check **Sleep source** and **Food source**. Online defaults are WHOOP Intelligence and ProgressXX cloud.
 3. Click **Connect / review accounts**. Connect each original application account with the consent form in JARVIS. Follow [07 — Connect fitness accounts](07-CONNECT-FITNESS-ACCOUNTS.md). Never send passwords or email sign-in links in chat.
 4. Return to Today. Use **Refresh connected data** if necessary. Reads have a five-minute cache and thirty-second manual cooldown. Check each provider's last successful read and detailed status.
 5. If remaining calories are blank, choose your own usable calorie target in your profile. A target alone cannot supply a missing food total.
@@ -33,3 +33,7 @@ WHOOP reads the existing Intelligence backend's saved data; it does not start a 
 Home requests saved source data when the configured local day changes, and when the unlocked tab becomes visible again. The source backend is still read-only: this does not trigger WHOOP device sync or replay ProgressXX edits. Same-day reads retain the existing server cache/cooldown; crossing local midnight invalidates the prior day's projection immediately on the next read.
 
 ProgressXX shows its diary date, configured timezone and readable last-read time. A completed read with no usable food today is labelled unavailable rather than suggesting confirmed nutrition. WHOOP likewise distinguishes an available read from available sleep. The optional secondary food-display checkbox is under **Home display options**; top Home selectors remain the primary controls.
+
+## Finding detailed readings in the shorter Home
+
+Expand **Health & nutrition details** below your primary daily summary to see WHOOP readings and ProgressXX saved totals/counting details. Source choices and missing-data state remain visible beside the daily metrics. Expanding a section does not request extra source data or change selected sources; use the existing refresh button when needed.

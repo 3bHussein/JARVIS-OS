@@ -44,3 +44,7 @@ Open **Projects** and use **Find your app** to filter the app list. Search does 
 In Settings, use **Install JARVIS** if your browser offers it, or the browser menu's **Install app / Add to Home Screen**. Online sign-in and cloud records need an internet connection. Installation does not make record editing available offline.
 
 Use the language button for Arabic/English. Motion preferences include reduced or disabled animation. These device preferences are separate from saved personal records.
+
+## A shorter Home
+
+Online Home keeps daily facts, source controls and your next appointments visible. Open **Health & nutrition details** for WHOOP/ProgressXX readings and the counted-food list. Open **Quick note / appointment** to capture a reviewed entry, or **Review open notes** for untimed notes. These three sections start closed online to reduce scrolling. Closing capture keeps the current unsaved draft; nothing saves until its normal preview and confirmation. Lock/reload clears an unsaved draft. Local preview starts these sections open.
