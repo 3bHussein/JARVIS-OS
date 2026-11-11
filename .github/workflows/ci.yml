@@ -33,7 +33,12 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm run check
       - run: npm run test:launcher
-      - run: npx playwright install --with-deps chromium --only-shell
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ubuntu24-playwright-${{ hashFiles('package-lock.json') }}
+      # Hosted Ubuntu already supplies Chrome runtime dependencies. Avoid unrelated apt mirror failures.
+      - run: npx playwright install chromium --only-shell
       - run: npm run test:e2e
       - run: npm run test:e2e:built
   windows-launcher:

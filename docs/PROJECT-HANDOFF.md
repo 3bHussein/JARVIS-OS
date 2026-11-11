@@ -1084,3 +1084,16 @@ Remaining exact actions: inspect source47a4737 CI43042128174 completion (especia
 ### Session 052 live static verification — 2026-11-11T14:58:36.894954+00:00
 
 Public production jarvis-assets.json returned its named hashed entries; HEAD on all four CSS/entry/runtime/worker assets returnedHTTP200, including the optional device worker and runtime. No asset scripts were executed and no model weights/inference were requested by this verification. Vercel-built chunk hashes differ from the local build; both are explicit manifests for their own build, while deployment metadata pins source47a4737. Foundation job130596404990 remains IN PROGRESS at Chromium installation at final pre-documentation check; Windows jobs SUCCESS. Final handoff must retain this outstanding remote browser result.
+
+
+### Session 053 — Free fitness answers — 2026-11-12
+
+IMPLEMENTED: expanded deterministic saved-data questions for WHOOP recovery/HRV/RHR/strain and cycle expenditure, selected-source ProgressXX protein, recent exercise rows and measured weight trends. Added draft-only quick questions. No new model, account, card, key, network request, write action or persistent health memory. Missing/stale/future readings stay unavailable; manual calories never imply protein. Exercise/weight section failures remain independent.
+
+TESTED local: npm run check passed typecheck, 137 registered Node tests /135 PASS /two Redis CI-only skips, and production build. QUERY-08..11 cover bilingual intent and write precedence, freshness, zero, missing fields, protein source selection, exercise row limits, section failures and measured weight limitations using synthetic fixtures. Existing built browser regression is running; final result will be appended. Real owner fitness reconciliation, GPU inference, Arabic voice quality and latency remain TODO.
+
+Correction to Session052: remote foundation job130596404990 failed during Playwright --with-deps Ubuntu apt installation (azure.archive.ubuntu.com DNS failure), before browser suites ran. Windows jobs succeeded. Session053 caches Playwright and installs Chromium without redundant apt dependency reinstall on hosted Ubuntu24; remote verification remains pending, not VERIFIED.
+
+Files changed: packages/personal/src/queries.ts, apps/web/src/AIChat.tsx, tests/personal-queries.test.ts, .github/workflows/ci.yml, docs/09-ASK-ABOUT-SAVED-DATA.md and the nine tracking documents. Commands: npm run check; npm run test:e2e:built with existing browser cache; git diff --check. Source SHA/CI/deployment pending publication. PR none (authorized direct-main workflow). No source application repository or production database modifications. Next: finish browser regression, guarded GitHub publication, inspect exact-source CI/deployment, and retain owner-data/voice/device acceptance as open work.
+
+Session053 local completion: built-browser regression39/39 PASS using synthetic fixtures; git diff --check PASS. New intent branches are covered by QUERY08..11 unit tests; no new end-to-end intent assertions or real owner-data acceptance claimed.

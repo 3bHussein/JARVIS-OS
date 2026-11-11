@@ -10,6 +10,11 @@ Unlock JARVIS, let the daily workspace load, then use the conversation box on To
 | What is my next appointment? | موعدي الجاي؟ | The next actual future timed Planner entry, with configured timezone |
 | When is my next workout? | التمرين امتى؟ | A timed workout in Planner; weekday training labels never become invented times |
 | Show my notes | ملاحظاتي | Up to three open untimed notes, plus total count |
+| My recovery and HRV | الاستشفاء وHRV | Fresh WHOOP recovery, HRV, RHR and cycle strain; missing fields remain unknown |
+| Calories burned | حرقت كام؟ | WHOOP physiological-cycle expenditure, separate from intake and calendar-day totals |
+| Protein today | البروتين النهارده | Protein from the explicitly selected current ProgressXX food source |
+| Recent exercises | آخر تمارين | Up to three exercise rows, not a count of completed workouts |
+| My weight trend | اتجاه الوزن | Available measured-week averages and limits, not body-fat change |
 | Summarize my day | لخص يومي | Recorded daily briefing and source/missing-data statements |
 
 Replies use your selected interface language; recognized input wording can be Arabic or English. Clock questions are distinguished from questions about a recorded appointment/workout time.
