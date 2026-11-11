@@ -17,9 +17,10 @@ export function normalizedWordErrorRate(reference: string, hypothesis: string) {
 export interface VoiceMetadata {name:string;lang:string;localService?:boolean;}
 /** Never delegate an unknown/default voice to a network service without opt-in. */
 export function chooseSpeechVoice<T extends VoiceMetadata>(voices:T[],preferred:string,language:string,allowNetwork=false):T|null {
-  const chosen=preferred?voices.find(v=>v.name===preferred):undefined;
-  if(chosen)return chosen.localService===true||allowNetwork?chosen:null;
-  if(preferred)return null;
   const matches=(v:T)=>v.lang.toLowerCase().split('-')[0]===language.toLowerCase().split('-')[0];
-  return voices.find(v=>v.localService===true&&matches(v))||(allowNetwork?voices.find(matches):undefined)||null;
+  const chosen=preferred?voices.find(v=>v.name===preferred):undefined;
+  if(chosen)return matches(chosen)&&(chosen.localService===true||allowNetwork)?chosen:null;
+  if(preferred)return null;
+  const exact=(v:T)=>v.lang.toLowerCase()===language.toLowerCase();
+  return voices.find(v=>v.localService===true&&exact(v))||voices.find(v=>v.localService===true&&matches(v))||(allowNetwork?voices.find(exact)||voices.find(matches):undefined)||null;
 }

@@ -130,3 +130,5 @@ For supported read-only Egyptian Arabic/English questions: [09 — Ask about sav
 For visible primary-source controls and troubleshooting: [10 — Home data sources](docs/10-HOME-DATA-SOURCES.md). Online Home defaults to cloud food and WHOOP sleep; unavailable reads never silently replace them with manual records.
 
 Online Home now starts secondary health readings, quick capture and open-note lists collapsed. Core daily facts/sources/agenda stay visible; native details preserve unsaved capture drafts until lock/reload and retain normal save confirmation. See [online use](docs/06-USE-JARVIS-ONLINE.md).
+
+Functional readiness: [12 — Daily-use release gates](docs/12-DAILY-USE-READINESS.md). Optional first-phase cloud AI adapter: [11 — Connect cloud AI](docs/11-CONNECT-CLOUD-AI.md); disabled until owner configuration, stateless/text-only, no private records supplied. Synthetic acceptance is not proof of provider connectivity or natural voice quality.

@@ -1,3 +1,7 @@
+import type {AIProvider} from '../../../packages/ai/src/ollama.ts';
+import {chatInput,assistantPolicy} from '../../../packages/ai/src/ollama.ts';
+import {GatewayError} from '../../../packages/ai/src/gateway.ts';
+import {clock} from '../../../packages/core/src/index.ts';
 import {CloudAccounts} from './cloud-accounts.ts';
 import {AccountError,type AccountProvider} from '../../../packages/connectors/src/account-reader.ts';
 import {BodyReadError, readBoundedText} from './bounded-body.ts';
@@ -20,6 +24,8 @@ interface CloudConfig {
   namespace: string;
   passwordHash: string;
   recovery?: RecoveryConfig;
+  aiProvider?:AIProvider;
+  aiModel?:string;
 }
 
 export function createCloudHandler(config: CloudConfig, transport: typeof fetch = fetch) {
@@ -122,8 +128,28 @@ export function createCloudHandler(config: CloudConfig, transport: typeof fetch 
         const provider=path==='/api/whoop'?'whoop':'progress',value=await accounts.read(provider,url.searchParams.get('zone')||'Africa/Cairo');
         console.info('jarvis_account_action',{provider,operation:'read',status:value.status});return reply(200,value);
       }
-      if (!post && (path === '/api/ai' || path === '/api/speech')) {
+      if (!post && path === '/api/ai') return reply(200,{configured:Boolean(config.aiProvider),available:Boolean(config.aiProvider),mode:'cloud',provider:config.aiProvider?'vercel-ai-gateway':null,model:config.aiModel??null,context:false,history:false,tools:false});
+      if (!post && path === '/api/speech') {
         return reply(200, {configured: false, mode: 'cloud', available: false});
+      }
+      if(post&&path==='/api/chat'){
+        if(!config.aiProvider)return reply(503,{error:'ai_not_configured'});
+        const raw=await body();let input;try{input=chatInput(raw);}catch{return reply(400,{error:'invalid_chat'});}
+        if(raw.consent!==true)return reply(400,{error:'ai_consent_required'});
+        if(input.personal||input.health)return reply(400,{error:'cloud_context_not_supported'});
+        const scope=prefix+'ai:'+createHash('sha256').update(token).digest('hex');
+        const minute=await redis.command(['EVAL',loginLimit,1,scope+':minute']);
+        const day=await redis.command(['EVAL',"local n=redis.call('INCR',KEYS[1]); if n==1 then redis.call('EXPIRE',KEYS[1],86400) end; return n",1,prefix+'ai:daily']);
+        if(typeof minute!=='number'||minute>6||typeof day!=='number'||day>50)return reply(429,{error:'ai_rate_limited'});
+        const lock=scope+':lock',lockOwner=randomBytes(16).toString('hex');
+        if(await redis.command(['SET',lock,lockOwner,'NX','EX',25])!=='OK')return reply(429,{error:'ai_busy'});
+        try{
+          const answer=await config.aiProvider.complete([{role:'system',content:assistantPolicy+'\nThis cloud conversation is stateless. No saved records, health data or prior turns are supplied. Do not pretend to remember them. Requested language: '+input.locale+'. Clock: '+JSON.stringify(clock(new Date(),input.zone,input.locale))},{role:'user',content:input.text}],request.signal);
+          if(await redis.command(['GET',sessionKey(token,active.hash)])!==csrf)return reply(401,{error:'authentication_required'});
+          console.info('jarvis_ai_action',{operation:'chat',outcome:'success',context:false,history:false});
+          return reply(200,{answer,sources:[],provider:'vercel-ai-gateway',history:false});
+        }catch(error){console.warn('jarvis_ai_action',{operation:'chat',outcome:'failed',code:error instanceof GatewayError?error.message:'ai_connection_failed'});if(error instanceof GatewayError)return reply(error.status,{error:error.message});return reply(502,{error:'ai_connection_failed'});}
+        finally{await redis.command(['EVAL',"if redis.call('GET',KEYS[1])==ARGV[1] then return redis.call('DEL',KEYS[1]) end; return 0",1,lock,lockOwner]);}
       }
       if (post && path === '/api/chat/clear') {
         return reply(200, {ok: true});
