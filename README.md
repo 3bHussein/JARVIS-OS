@@ -4,7 +4,18 @@ An original personal AI command center, built as a separate hybrid application.
 
 **Current status: personal preview 0.1.0 — not a production release.** A bilingual daily workspace combines a source-labelled briefing, planner, journal, optional WHOOP saved-record reads and a transient ProgressXX backup view. Optional Ollama conversation and reviewed speech are wired; real model/voice/device acceptance, durable background integrations and full PWA/native device acceptance remain open. An optional Tauri window host passed Windows build/CLI acceptance; actual WebView2 GUI/device acceptance remains open and it requires the existing step02 runtime.
 
-## Try one complete preview
+## Open the current online preview
+
+Use https://jarvis-os-henna-sigma.vercel.app/ — no ZIP/local setup is required for everyday web use. Unlock your existing JARVIS workspace. Current preference is **free operation without payment cards or API keys**.
+
+- Saved-data questions work without a generative model; these are bounded answers, not general AI.
+- Optional **Free device AI** runs Qwen3 0.6B in a WebGPU worker after you explicitly download it. No model download at startup. Hardware, memory/storage and internet for the initial download are required; real device performance and Arabic quality remain unverified.
+- Cloud AI remains disabled. No paid credits, automatic recharge or new account are required for the device option.
+- Voice still uses browser/device engines; natural Egyptian neural speech and actual accuracy/latency are not certified.
+
+Start with [13 — Free device AI](docs/13-FREE-DEVICE-AI.md) and [12 — Daily-use readiness](docs/12-DAILY-USE-READINESS.md). Fitness connections remain read-only/session-limited and actual owner totals still need acceptance. Desktop development is deferred.
+
+## Optional local previews
 
 Download **JARVIS-OS-Personal-Preview** from the [tested preview download](https://github.com/3bHussein/JARVIS-OS/actions/runs/41465987871#artifacts), extract into a new folder, install Node.js 24+ if needed, then read **00-READ-FIRST.md**, run **01-Setup-JARVIS.bat**, then **02-Start-JARVIS.bat**. Optional AI/voice setup is **03-Configure-AI-Voice.bat**. The artifact needs no npm install or build. Unlock from Settings with the local password you chose. No account credentials, models or personal data are bundled.
 
@@ -81,7 +92,7 @@ See [test evidence](docs/TEST-REPORT.md), [integration audit](docs/INTEGRATION-A
 | tests | Synthetic unit/HTTP/browser acceptance |
 | docs | Append-only history, evidence, decisions and remaining work |
 
-No production database, application repository or external deployment was modified. No license or commercial reuse claim is made for the existing integrated projects.
+JARVIS is deployed separately. Its connectors do not modify source-application repositories or production schemas. No license or commercial reuse claim is made for the existing integrated projects.
 
 ## Personal daily home
 
