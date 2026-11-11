@@ -17,9 +17,15 @@ test('BUNDLE-02 symlink assets cannot expose outside bundle',{skip:process.platf
 });
 test('BUNDLE-HTTP-01 public built UI, cache/CSP, denied private paths and preserved API auth/origin',async()=>{
   const dir=await fixture(),origin='http://127.0.0.1:5173';const server=makeServer({origin,passwordHash:hashPassword('synthetic-bundle-password'),webBundle:loadWebBundle(dir)});await new Promise<void>(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${(server.address() as any).port}`;
-  try{const index=await fetch(base+'/');assert.equal(index.status,200);assert.match(index.headers.get('content-type')!,/html/);assert.equal(index.headers.get('cache-control'),'no-store');assert.match(index.headers.get('content-security-policy')!,/script-src 'self'/);assert.ok(!index.headers.get('content-security-policy')!.includes('unsafe-eval'));
+  try{const index=await fetch(base+'/');assert.equal(index.status,200);assert.match(index.headers.get('content-type')!,/html/);assert.equal(index.headers.get('cache-control'),'no-store');assert.match(index.headers.get('content-security-policy')!,/script-src 'self'/);assert.ok(!index.headers.get('content-security-policy')!.includes("'unsafe-eval'"));
     const asset=await fetch(base+'/assets/index-abcdef.js');assert.equal(asset.status,200);assert.match(asset.headers.get('cache-control')!,/immutable/);assert.equal((await fetch(base+'/assets/index-abcdef.js',{method:'HEAD'})).status,200);
     for(const path of ['/.env','/.jarvis-data/personal.enc.json','/apps/api/src/main.ts','/assets/index-abcdef.js.map','/%2eenv','/assets/../.env']){const r=await fetch(base+path);assert.equal(r.status,404);assert.ok(!(await r.text()).includes('NEVER_SERVE_SECRET'));}
     assert.equal((await fetch(base+'/',{headers:{Origin:'https://untrusted.invalid'}})).status,403);assert.equal((await fetch(base+'/api/session')).status,401);assert.equal((await (await fetch(base+'/api/health')).json()).mode,'local-built');
   }finally{server.closeAllConnections();await new Promise<void>(r=>server.close(()=>r()));await rm(dir,{recursive:true,force:true});}
+});
+
+test('BUNDLE-03 explicit lazy/worker manifest is bounded, packaged and rejects arbitrary paths',async()=>{
+ const dir=await fixture();try{await writeFile(join(dir,'assets/device-worker-abcdef.js'),'synthetic worker');await writeFile(join(dir,'jarvis-assets.json'),JSON.stringify(['assets/device-worker-abcdef.js']));const bundle=loadWebBundle(dir);assert.equal(bundle.get('/assets/device-worker-abcdef.js')?.body.toString(),'synthetic worker');assert.equal(bundle.has('/jarvis-assets.json'),true);assert.equal(bundle.has('/.env'),false);
+ for(const value of [['../.env'],['assets/private.env'],Array(33).fill('assets/index-abcdef.js'),['assets/index-abcdef.js.map']]){await writeFile(join(dir,'jarvis-assets.json'),JSON.stringify(value));assert.throws(()=>loadWebBundle(dir),/Unsupported/);}
+ }finally{await rm(dir,{recursive:true,force:true});}
 });

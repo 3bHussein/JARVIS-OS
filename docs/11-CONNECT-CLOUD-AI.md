@@ -1,4 +1,6 @@
-# 11 — Connect cloud AI (not activated by this release)
+# 11 — Connect cloud AI (deferred)
+
+Owner selected free operation without card/key setup. This optional guide is deferred; follow [13 — Free device AI](13-FREE-DEVICE-AI.md).
 
 The online workspace previously had no generative provider. The new server adapter supports Vercel AI Gateway Chat Completions, but it remains disabled until the owner configures it and verifies a real reply. No API key, credit purchase, live generation or billing change was performed during development.
 

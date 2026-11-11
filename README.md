@@ -132,3 +132,5 @@ For visible primary-source controls and troubleshooting: [10 — Home data sourc
 Online Home now starts secondary health readings, quick capture and open-note lists collapsed. Core daily facts/sources/agenda stay visible; native details preserve unsaved capture drafts until lock/reload and retain normal save confirmation. See [online use](docs/06-USE-JARVIS-ONLINE.md).
 
 Functional readiness: [12 — Daily-use release gates](docs/12-DAILY-USE-READINESS.md). Optional first-phase cloud AI adapter: [11 — Connect cloud AI](docs/11-CONNECT-CLOUD-AI.md); disabled until owner configuration, stateless/text-only, no private records supplied. Synthetic acceptance is not proof of provider connectivity or natural voice quality.
+
+Current free path: [13 — Device AI without a card or API key](docs/13-FREE-DEVICE-AI.md). Optional explicit model download/WebGPU hardware required; real GPU performance and Arabic quality remain unverified. Saved-data questions continue on unsupported devices. Cloud billing remains disabled.

@@ -27,6 +27,7 @@
     "password:online": "node scripts/online-password.mjs"
   },
   "dependencies": {
+    "@mlc-ai/web-llm": "0.2.88",
     "react": "19.1.1",
     "react-dom": "19.1.1"
   },
