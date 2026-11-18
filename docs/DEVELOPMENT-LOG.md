@@ -1188,3 +1188,8 @@ Attempt: initial typecheck rejected TypeScript parameter properties under erasab
 Commands: git fetch origin main, npm run typecheck, npm run check, cached npm run test:e2e:built, git diff --check. Source base03b4e7071176ea56545a4174bd13526ab805fd50. Source commit/PR/CI/deployment pending; PR none planned (authorized direct main). Exact next: finish browser suite, publish guarded update, inspect exact-source CI/Vercel, append final evidence. Remaining: actual owner fitness reconciliation, real voice/transcription quality and latency, optional device AI hardware acceptance. Desktop remains deferred.
 
 Session054 local completion 2026-11-18T19:08:01.440753+00:00: built browser39/39 PASS plus PLAYBACK-UI-01 (held synthetic speech, global stop across navigation, late events ignored); git diff --check PASS. No actual audio/latency acceptance implied.
+
+
+Session054 correction 2026-11-18T19:10:36.234052+00:00: source0eab5503a0b50e78384d4e6e25cb4ef6e5bebd2d deployed READY (dpl_Fo2EbVdtyS3aZyVs2Vrmmg26gePr), public HEAD200, scoped fifteen-minute error/fatal log counts empty. CI44377277811 foundation failed in existing VOICE-UI-02 at an immediate detached-state assertion following React locale update; local built pass did not establish remote pass. New PLAYBACK-UI-01 passed remotely. Replaced immediate zero-count assertions after stop/locale change with Playwright waitFor detached; test intent retained, no product or security checks removed. Dev browser rerun pending. Windows launcher passed; final desktop result and corrected-source CI/deployment pending.
+
+Corrected Session054 development-browser rerun39/39 PASS, including both playback/locale assertions; git diff --check PASS. Exact-source remote rerun pending.
