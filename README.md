@@ -149,3 +149,5 @@ Current free path: [13 — Device AI without a card or API key](docs/13-FREE-DEV
 Free voice controls: [14 — Use free speech](docs/14-USE-FREE-VOICE.md). Playback controls do not imply measured voice quality.
 
 Saved-data conversation: searchable bilingual question library, explicit short questions and selected-source macro summaries. [09 — Ask about saved data](docs/09-ASK-ABOUT-SAVED-DATA.md). No paid engine or hidden model calls.
+
+Missing fitness values: [15 — Diagnose source reads](docs/15-FIX-MISSING-FITNESS-DATA.md). Per-source guidance distinguishes connection, recent saved reading, missing fields and upstream synchronization.
