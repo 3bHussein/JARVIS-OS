@@ -19,6 +19,14 @@ Unlock JARVIS, let the daily workspace load, then use the conversation box on To
 
 Replies use your selected interface language; recognized input wording can be Arabic or English. Clock questions are distinguished from questions about a recorded appointment/workout time.
 
+## Find the question you need
+
+The first three quick questions stay visible. Open **More questions · free saved-data answers** for a searchable library grouped into Your day, Food, and Fitness and sleep. Search in Arabic or English (for example protein, نوم, or notes). No match means the capability is not offered by this bounded library, not missing personal data. Selection fills the draft and focuses Send; it never submits automatically.
+
+**My macros today / ماكروز النهارده** reads calories, protein, carbohydrates and fat from the selected current ProgressXX food source. Manual check-in records calories only; missing macros stay unavailable. These are logged values, not a complete diary, prescribed targets or a diagnosis.
+
+Short explicit questions such as **والنوم؟**, **والسعرات؟**, **والبروتين؟** and **والاستشفاء؟** are recognized independently. Ambiguous references such as “and that?” do not reuse a previous health answer or guess its subject. **What can I ask? / أسأل عن إيه؟** lists supported examples. No generative conversation memory is added.
+
 ## Use the quick questions
 
 Click a suggestion to put it in the input. It does not send automatically. Review it and press **Send**. Reviewed speech drafts use the same input and still require Send. Use **Read reply aloud** if needed; existing device/network voice permissions apply.

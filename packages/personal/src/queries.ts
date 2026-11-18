@@ -1,3 +1,4 @@
+import {normalizeSavedQuestion,savedQuestions} from './questions.ts';
 import {clock,type Locale} from '../../core/src/index.ts';
 import {personalBriefing,type WhoopFacts} from './briefing.ts';
 import {dailyFocus} from './daily-focus.ts';
@@ -6,21 +7,22 @@ import type {PersonalData} from './model.ts';
 import {progressSummary,type ProgressBackup} from '../../connectors/src/progress-backup.ts';
 import type {LiveProgress} from '../../connectors/src/account-reader.ts';
 export interface PersonalQueryContext {data:PersonalData;whoop:WhoopFacts|null;file:ProgressBackup|null;cloud:LiveProgress|null;useFile:boolean;useCloud:boolean;sleepPreference?:'auto'|'manual'|'whoop';unavailable:boolean;}
-export type PersonalIntent='write-blocked'|'priorities'|'calories'|'sleep'|'next-workout'|'next'|'notes'|'day'|'recovery'|'energy'|'protein'|'exercise-history'|'weight';
-function normalizeQuestion(input:string){
- return input.normalize('NFKC').toLowerCase().replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[^\p{L}\p{N}\s]/gu,' ').replace(/\s+/g,' ').trim();
-}
+export type PersonalIntent='write-blocked'|'priorities'|'calories'|'sleep'|'next-workout'|'next'|'notes'|'day'|'recovery'|'energy'|'protein'|'exercise-history'|'weight'|'nutrition'|'help';
+const normalizeQuestion=normalizeSavedQuestion;
 export function isClockQuestion(input:string){return /^(?:jarvis )?(?:what time is it|what is the time|current time|time now|time|الساعه كام(?: دلوقتي)?|الوقت|الوقت دلوقتي|كم الساعه)$/.test(normalizeQuestion(input));}
 export function personalIntent(input:string):PersonalIntent|null{
  const s=normalizeQuestion(input);
  if(/\b(delete|erase|remove|create|add|update|overwrite)\b|(?:^|\s)(امسح|احذف|اضف|ضيف|عدل|انشئ)(?:\s|$)/u.test(s))return 'write-blocked';
+ if(/^(?:help|what can i ask|supported questions|مساعده|اسال عن ايه|ايه الاسئله المتاحه)$/.test(s))return 'help';
+ if(/\b(macros?|carbs?|carbohydrates?|fats?)\b|ماكروز|ماكرو|الكارب|كربوهيدرات|الدهون/.test(s))return 'nutrition';
  if(/\b(recovery|hrv|rhr|strain)\b|استشفا|تعافي|نبض الراحه|اجهاد ووب/.test(s))return 'recovery';
  if(/(?:energy|calories|kcal).*(?:burn|expend)|(?:burn|expend).*calories|حرقت كام|حرق ووب|سعرات الحرق|طاقه الدوره/.test(s))return 'energy';
  if(/\bprotein\b|بروتين/.test(s))return 'protein';
  if(/recent (?:exercise|workout)|last (?:exercise|workout)|exercise history|اخر تمارين|اخر تمرين|سجل التمارين/.test(s))return 'exercise-history';
  if(/weight trend|my weight|وزني|اتجاه الوزن|متوسط الوزن/.test(s))return 'weight';
  if(/what.*(start|first)|where.*start|next steps|priorit|ابدا بايه|اعمل ايه الاول|اولوياتي|اولويات/.test(s))return 'priorities';
- if(/(?:calories?|kcal).*(?:left|remaining)|remaining calories|how many.*calories.*left|فاضل.*(?:سعر|كالوري)|متبقي.*(?:سعر|كالوري)|اكلت كام|سعراتي/.test(s)||s==='calories')return 'calories';
+ if(/(?:calories?|kcal).*(?:left|remaining)|remaining calories|how many.*calories.*left|فاضل.*(?:سعر|كالوري)|متبقي.*(?:سعر|كالوري)|اكلت كام|سعراتي/.test(s)||/^(?:and |what about |how about )?(?:calories|food total)$|^(?:و)?(?:السعرات|سعرات النهارده)$/.test(s))return 'calories';
+ if(/^(?:and |what about |how about )?(?:sleep|my sleep)$|^(?:و)?(?:النوم|نومي)$/.test(s))return 'sleep';
  if(/how (?:long|many hours).*sleep|how did i sleep|my sleep|نمت (?:كام|قد ?ايه)|نومي|ساعات نومي/.test(s))return 'sleep';
  if(/next (?:workout|training)|(?:when|what time).*(?:workout|training)|workout.*امتي|امتي.*workout|(?:التمرين|تمريني) (?:امتي|الساعه)|موعد التمرين/.test(s))return 'next-workout';
  if(/next (?:appointment|meeting|commitment)|(?:when|what time).*(?:appointment|meeting)|موعدي الجاي|ميعادي الجاي|عندي ايه بعد كده/.test(s))return 'next';
@@ -33,6 +35,7 @@ export function answerPersonalQuery(text:string,ctx:PersonalQueryContext|null,no
  const intent=personalIntent(text);if(!intent)return null;
  const ar=locale==='ar',pick=(en:string,arabic:string)=>ar?arabic:en;
  if(intent==='write-blocked')return pick('This chat does not create, edit or delete records. Open Planner or Check-in and review the change there.','المحادثة دي مش بتضيف أو بتعدّل أو بتمسح سجلات. افتح الجدول أو الإدخال اليومي وراجع التعديل هناك.');
+ if(intent==='help')return pick('Supported saved-data questions (choose one):','أسئلة البيانات المحفوظة المتاحة (اختار سؤال):')+'\n'+savedQuestions.map(q=>ar?q.ar:q.en).join('\n')+'\n'+pick('No model, source refresh or write action is performed.','بدون نموذج أو تحديث مصادر أو تعديل سجلات.');
  if(!ctx||ctx.unavailable)return pick('Your personal data is not ready. Unlock or reload the workspace before asking about saved records.','بياناتك الشخصية مش جاهزة. افتح مساحة العمل أو أعد تحميلها قبل السؤال عن السجلات.');
  const today=clock(now,zone).date,file=ctx.file?progressSummary(ctx.file,today,now):null;
  const currentCloud=ctx.cloud?.today===today&&+now-Date.parse(ctx.cloud.observedAt)>=0&&+now-Date.parse(ctx.cloud.observedAt)<=900000;
@@ -53,6 +56,10 @@ export function answerPersonalQuery(text:string,ctx:PersonalQueryContext|null,no
    if(d?.calibrating)answer+='\n'+pick('WHOOP reports calibration is still in progress. No personal baseline or diagnosis is inferred.','WHOOP بيقول إن المعايرة لسه شغّالة. مش بنستنتج خط أساس شخصي أو تشخيص.');
   }else answer=pick('Current physiological-cycle energy estimate: ','تقدير طاقة الدورة الفسيولوجية الحالية: ')+metric(ctx.whoop?.details?.cycle?.energyKcal,' kcal')+'\n'+pick('This is expenditure, not food intake or a confirmed calendar-day total. It is never added to your food allowance.','ده إنفاق طاقة، مش أكل ولا إجمالي مؤكد لليوم التقويمي. مش بنضيفه لميزانية أكلك.');
   answer+='\n'+pick('Source: WHOOP Intelligence saved records.','المصدر: سجلات WHOOP Intelligence المحفوظة.')+(b.whoopCurrent?` · ${ctx.whoop?.observedAt} · ${pick('source sync','مزامنة المصدر')}: ${ctx.whoop?.lastSync}`:'');
+ }
+ if(intent==='nutrition'){
+  const food=ctx.useCloud?(currentCloud?ctx.cloud?.food:null):ctx.useFile&&file&&!file.stale?file.food:null;
+  answer=pick('Recorded food macros today:','ماكروز الأكل المسجّل النهارده:')+'\n'+pick('Energy: ','السعرات: ')+metric(ctx.useCloud||ctx.useFile?food?.calories:b.food,' kcal')+'\n'+pick('Protein: ','البروتين: ')+metric(food?.protein,' g')+'\n'+pick('Carbohydrates: ','الكربوهيدرات: ')+metric(food?.carbs,' g')+'\n'+pick('Fat: ','الدهون: ')+metric(food?.fat,' g')+'\n'+pick(`Source: ${source} · ${foodStamp||'unknown'}. Logged food only; no diary completeness, macro targets or values inferred from calories.`,`المصدر: ${source} · ${foodStamp||'غير معروف'}. الأكل المسجّل فقط؛ مش بنفترض اكتمال السجل أو أهداف ماكروز أو نحسبها من السعرات.`);
  }
  if(intent==='protein'){
   const total=ctx.useCloud?(currentCloud?ctx.cloud?.food?.protein:null):ctx.useFile&&file&&!file.stale?file.food?.protein:null;

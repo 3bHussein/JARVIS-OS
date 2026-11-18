@@ -147,3 +147,5 @@ Functional readiness: [12 — Daily-use release gates](docs/12-DAILY-USE-READINE
 Current free path: [13 — Device AI without a card or API key](docs/13-FREE-DEVICE-AI.md). Optional explicit model download/WebGPU hardware required; real GPU performance and Arabic quality remain unverified. Saved-data questions continue on unsupported devices. Cloud billing remains disabled.
 
 Free voice controls: [14 — Use free speech](docs/14-USE-FREE-VOICE.md). Playback controls do not imply measured voice quality.
+
+Saved-data conversation: searchable bilingual question library, explicit short questions and selected-source macro summaries. [09 — Ask about saved data](docs/09-ASK-ABOUT-SAVED-DATA.md). No paid engine or hidden model calls.

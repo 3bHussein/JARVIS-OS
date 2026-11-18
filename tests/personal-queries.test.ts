@@ -70,3 +70,15 @@ test('QUERY-11 history/weight use independent available sections, bounded rows a
  ctx.cloud!.issues=[{dataset:'workouts',error:'source_unavailable'}];assert.match(answerPersonalQuery('recent workouts',ctx,now,zone,'en')!,/section is unavailable/);assert.match(answerPersonalQuery('my weight',ctx,now,zone,'en')!,/90.0 kg/);
  ctx.cloud!.weight.delta=null;assert.match(answerPersonalQuery('my weight',ctx,now,zone,'en')!,/Mean change: unavailable/);
 });
+
+test('QUERY-12 short bilingual follow-ups stay explicit, independent and refuse writes',()=>{
+ for(const [q,intent]of [['والنوم؟','sleep'],['والسعرات؟','calories'],['والبروتين؟','protein'],['والاستشفاء؟','recovery'],['how about sleep?','sleep'],['and calories?','calories'],['My macros today','nutrition'],['الكربوهيدرات النهارده','nutrition'],['what can I ask?','help']])assert.equal(personalIntent(q),intent);
+ for(const q of ['وهو؟','and that?','do the same tomorrow'])assert.equal(personalIntent(q),null);
+ assert.equal(personalIntent('عدل الدهون النهارده'),'write-blocked');
+});
+test('QUERY-13 nutrition follows current selected data; manual calories never imply macros',()=>{
+ const ctx=fitnessContext(),before=structuredClone(ctx);const manual=answerPersonalQuery('my macros',ctx,now,zone,'en')!;assert.match(manual,/1400.0 kcal/);assert.match(manual,/Protein: unavailable/);assert.equal(manual.includes('55.0 g'),false);assert.deepEqual(ctx,before);
+ ctx.useCloud=true;const cloud=answerPersonalQuery('my macros',ctx,now,zone,'en')!;assert.match(cloud,/777.0 kcal/);assert.match(cloud,/55.0 g/);assert.match(cloud,/60.0 g/);assert.match(cloud,/20.0 g/);assert.match(cloud,/no diary completeness/);assert.match(cloud,/ProgressXX cloud/);
+ const stale=answerPersonalQuery('my macros',ctx,new Date(+now+900001),zone,'en')!;assert.match(stale,/Energy: unavailable/);assert.equal(stale.includes('1400'),false);assert.equal(stale.includes('55.0'),false);
+ ctx.cloud!.food={calories:0,protein:0,carbs:0,fat:0};assert.match(answerPersonalQuery('my macros',ctx,now,zone,'en')!,/Protein: 0.0 g/);
+});
